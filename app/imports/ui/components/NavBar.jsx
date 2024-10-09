@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { NavLink } from 'react-router-dom';
 import { Roles } from 'meteor/alanning:roles';
-import { Container, Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Container, Navbar, Nav, NavDropdown, Image } from 'react-bootstrap';
 import { BoxArrowRight, CloudDownload, PersonFill, PersonPlusFill } from 'react-bootstrap-icons';
 import { ROLE } from '../../api/role/Role';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
@@ -14,17 +14,22 @@ const NavBar = () => {
     currentUser: Meteor.user() ? Meteor.user().username : '',
   }), []);
   const menuStyle = { marginBottom: '10px' };
+
   return (
     <Navbar bg="light" expand="lg" style={menuStyle}>
       <Container>
-        <Navbar.Brand id={COMPONENT_IDS.NAVBAR_LANDING_PAGE} as={NavLink} to="/"><h1>meteor-application-template-production</h1></Navbar.Brand>
+        {/* Logo placeholder */}
+        <Navbar.Brand id={COMPONENT_IDS.NAVBAR_LANDING_PAGE} as={NavLink} to="/">
+          <Image src="/img/logo.png" alt="logo" width={50} height={50} className="d-inline-block align-top" />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls={COMPONENT_IDS.NAVBAR_COLLAPSE} />
         <Navbar.Collapse id={COMPONENT_IDS.NAVBAR_COLLAPSE}>
-          <Nav className="me-auto justify-content-start">
-            {currentUser ? ([
-              <Nav.Link id={COMPONENT_IDS.NAVBAR_ADD_STUFF} as={NavLink} to="/add" key="add">Add Stuff</Nav.Link>,
-              <Nav.Link id={COMPONENT_IDS.NAVBAR_LIST_STUFF} as={NavLink} to="/list" key="list">List Stuff</Nav.Link>,
-            ]) : ''}
+          <Nav className="me-auto">
+            {/* Adding the new headers */}
+            <Nav.Link id={COMPONENT_IDS.NAVBAR_HOME} as={NavLink} to="/home">Home</Nav.Link>
+            <Nav.Link id={COMPONENT_IDS.NAVBAR_ASK_A_DOC} as={NavLink} to="/ask-a-doc">Ask a Doc</Nav.Link>
+            <Nav.Link id={COMPONENT_IDS.NAVBAR_QUESTION_COMPASS} as={NavLink} to="/question-compass">Question Compass</Nav.Link>
+            <Nav.Link id={COMPONENT_IDS.NAVBAR_FAQ} as={NavLink} to="/faq">FAQ</Nav.Link>
             {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? (
               [<Nav.Link id={COMPONENT_IDS.NAVBAR_LIST_STUFF_ADMIN} as={NavLink} to="/admin" key="admin">Admin</Nav.Link>,
                 <NavDropdown id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN} title="Manage" key="manage-dropdown">
