@@ -20,7 +20,7 @@ const NavBar = () => {
       <Container>
         {/* Logo placeholder */}
         <Navbar.Brand id={COMPONENT_IDS.NAVBAR_LANDING_PAGE} as={NavLink} to="/">
-          <Image src="/img/logo.png" alt="logo" width={50} height={50} className="d-inline-block align-top" />
+          <Image src="/images/BadDoc.jpeg" alt="logo" width={50} height={50} className="d-inline-block align-top" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls={COMPONENT_IDS.NAVBAR_COLLAPSE} />
         <Navbar.Collapse id={COMPONENT_IDS.NAVBAR_COLLAPSE}>
