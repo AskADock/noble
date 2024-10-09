@@ -5,6 +5,9 @@
 :root {
   --matr-navbar-bg: #ECECEC;
   --matr-navbar-bg-rgb: 236, 236, 236;
+  --color1: #687DAC;
+  --color2: #D2E0EE;
+  --color3: #F2E3D2;
 }
 
 /* Change bootstrap variable values.
@@ -25,4 +28,10 @@ body {
   color: var(--bs-dark);
   padding-top: 10px;
   padding-bottom: 20px;
+}
+
+.landing-background {
+  background-color: var(--color1);
+  min-height: 50vh;
+  color: white;
 }
