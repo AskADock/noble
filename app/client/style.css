@@ -5,6 +5,9 @@
 :root {
   --matr-navbar-bg: #ECECEC;
   --matr-navbar-bg-rgb: 236, 236, 236;
+  --color1: #687DAC;
+  --color2: #D2E0EE;
+  --color3: #F2E3D2;
 }
 
 /* Change bootstrap variable values.
@@ -19,10 +22,50 @@ body {
   --bs-alert-bg: var(--matr-navbar-bg);
 }
 
+/* Default colors for the application. */
+.color1 {
+  background-color: var(--color1);
+  color: white;
+}
+
+.color2 {
+  background-color: var(--color2);
+  color: white;
+}
+
+.color3 {
+  background-color: var(--color3);
+  color: white;
+}
+
+.color4
+{
+  background-color: gray;
+  color: white;
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.50);
+}
+
 /* Define custom styles */
 .gray-background {
   background-color: var(--bs-gray-200);
   color: var(--bs-dark);
   padding-top: 10px;
   padding-bottom: 20px;
+}
+
+.landing-background {
+  background: url('/images/landing/blue-sky-with-clouds.jpg') fixed center;
+  background-size: cover;
+  color: white;
+  min-height: 85vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+  object-fit: contain;
 }
