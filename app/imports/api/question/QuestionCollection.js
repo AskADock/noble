@@ -1,17 +1,22 @@
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import { check } from 'meteor/check';
+import { Roles } from 'meteor/alanning:roles';
 import BaseCollection from '../base/BaseCollection';
 import { ROLE } from '../role/Role';
 
-export const questionCategories = ['Career', 'Education', 'Hobbies', 'Other'];
+// export const questionCategories = ['Career', 'Education', 'Hobbies', 'Other'];
+export const questionPublications = {
+  question: 'Question',
+  questionAdmin: 'QuestionAdmin',
+};
 
 class QuestionCollection extends BaseCollection {
   constructor() {
     super('Question', new SimpleSchema({
       category: {
         type: String,
-        allowedValues: questionCategories,
+        regEx: SimpleSchema.RegEx.Id, // references the category collection
       },
       question: {
         type: String,
@@ -78,15 +83,23 @@ class QuestionCollection extends BaseCollection {
 
   /**
    * Default publication method for entities.
-   * It publishes the entire collection.
+   * It publishes the entire collection for admin and just the questions not answered.
    */
   publish() {
     if (Meteor.isServer) {
       // get the QuestionCollection instance.
       const instance = this;
-      /** This subscription publishes only the documents associated with the logged-in user */
-      Meteor.publish('questionPublications.all', function publish() {
-        if (this.userId) {
+      /** This subscription publishes documents when users are logged in */
+      Meteor.publish(questionPublications.question, function publish() {
+        if (this.userId && Roles.userIsInRole(this.userId, ROLE.USER)) {
+          return instance._collection.find({ answered: false });
+        }
+        return this.ready();
+      });
+
+      /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
+      Meteor.publish(questionPublications.questionAdmin, function publish() {
+        if (this.userId && Roles.userIsInRole(this.userId, ROLE.ADMIN)) {
           return instance._collection.find();
         }
         return this.ready();
@@ -111,7 +124,10 @@ class QuestionCollection extends BaseCollection {
    */
   dumpOne(docID) {
     const doc = this.findDoc(docID);
-    const { category, question, answer, answered } = doc;
+    const category = doc.category;
+    const question = doc.question;
+    const answer = doc.answer;
+    const answered = doc.answered;
     return { category, question, answer, answered };
   }
 }
