@@ -1,5 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/StuffCollection';
+import { Categories } from '../../api/category/CategoryCollection';
+import { Questions } from '../../api/question/QuestionCollection';
+import { FAQ } from '../../api/faq/FAQCollection';
 /* eslint-disable no-console */
 
 // Initialize the database with a default data document.
@@ -12,6 +15,30 @@ function addData(data) {
 if (Stuffs.count() === 0) {
   if (Meteor.settings.defaultData) {
     console.log('Creating default data.');
+    Meteor.settings.defaultData.forEach(data => addData(data));
+  }
+}
+
+// Initialize the CategoriesCollection if empty.
+if (Categories.count() === 0) {
+  if (Meteor.settings.defaultCategories) {
+    console.log('Creating default categories.');
+    Meteor.settings.defaultCategories.forEach(data => Categories.define(data));
+  }
+}
+
+// Initialize the QuestionCollection if empty.
+if (Questions.count() === 0) {
+  if (Meteor.settings.defaultQuestions) {
+    console.log('Creating default questions.');
+    Meteor.settings.defaultData.forEach(data => addData(data));
+  }
+}
+
+// Initialize the FAQCollection if empty.
+if (FAQ.count() === 0) {
+  if (Meteor.settings.defaultFAQs) {
+    console.log('Creating default FAQs.');
     Meteor.settings.defaultData.forEach(data => addData(data));
   }
 }

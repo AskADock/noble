@@ -11,6 +11,36 @@
     { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
   ],
+
+  "defaultCategories": [
+    "Physical Health",
+    "Mental Health",
+    "Medical Readiness",
+    "Mens Health",
+    "Womens Health",
+    "Injury & Illness Management",
+    "Substance Use & Addiction",
+    "Self-Care & Resilience",
+    "Medical Resources"
+  ],
+
+  "defaultQuestions": [
+    { "category": "Physical Health", "question": "How can I reduce my blood pressure?", "answer": "", "answered": false },
+    { "category": "Mental Health", "question": "I'm feeling hopeless. What should I do?", "answer": "", "answered": false },
+    { "category": "Medical Readiness", "question": "Will I automatically be put on the No Fly List if I don't make retention?", "answer": "", "answered": false },
+    { "category": "Mens Health", "question": "Why do my balls have a weird lump on them?", "answer": "", "answered": false },
+    { "category": "Womens Health", "question": "Why do my breasts hurt?", "answer": "", "answered": false },
+    { "category": "Injury & Illness Management", "question": "I've been taking antibiotics for days now. When should the infection get better?", "answer": "Antibiotics take about 24-48 hrs to see results. Please see a doctor if symptoms have not improved.", "answered": true },
+    { "category": "Substance Use & Addiction", "question": "I'm concerned about a friend who takes advil to get high. How can I help?", "answered": false },
+    { "category": "Self-Care & Resilience", "question": "What kind of training should I do to help with bone density", "answer": "Strength training, such as lifting weights, can help in the long run.", "answered": true },
+    { "category": "Medical Resources", "question": "Where can I learn more about medical readiness?", "answer": "", "answered": false }
+  ],
+
+  "defaultFAQ": [
+    { "category": "Physical Health", "question": "How can I reduce my blood pressure?", "answer": "You can reduce your blood pressure by eating a healthy diet, exercising regularly, and avoiding tobacco and alcohol." },
+    { "category": "Mental Health", "question": "I'm feeling hopeless. What should I do?", "answer": "If you're feeling hopeless, it's important to talk to someone you trust." }
+  ],
+
   "public": {
     "development": true
   }
