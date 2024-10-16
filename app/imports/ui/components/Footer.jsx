@@ -8,9 +8,9 @@ const Footer = () => {
     <footer className="mt-auto bg-light">
       <Container style={divStyle}>
         <Col className="text-center">
-          "Ask A Doc" <br />
-          Lauren Clayton, Rina Ogino, Thomas Rivera, Ryne Stagen, Brandon Underwood <br />
-          University of Hawaii at Manoa<br />
+          Department of Information and Computer Sciences <br />
+          University of Hawaii<br />
+          Honolulu, HI 96822 <br />
           <a href="http://ics-software-engineering.github.io/meteor-application-template-production">Template Home Page</a>
         </Col>
       </Container>
