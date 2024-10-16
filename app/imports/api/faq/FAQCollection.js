@@ -14,7 +14,7 @@ class FAQCollection extends BaseCollection {
     super('FAQ', new SimpleSchema({
       category: {
         type: String,
-        regEx: SimpleSchema.RegEx.Id, // references the category collection
+        required: true,
       },
       question: {
         type: String,

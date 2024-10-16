@@ -15,7 +15,8 @@ class CategoryCollection extends BaseCollection {
     super('Category', new SimpleSchema({
       category: {
         type: String,
-        regEx: SimpleSchema.RegEx.Id, // references the category collection
+        allowedValues: categories,
+        required: true,
       },
     }));
   }
