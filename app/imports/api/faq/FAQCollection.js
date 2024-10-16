@@ -1,18 +1,17 @@
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import { check } from 'meteor/check';
-import { Roles } from 'meteor/alanning:roles';
 import BaseCollection from '../base/BaseCollection';
 import { ROLE } from '../role/Role';
 
-export const questionPublications = {
-  question: 'Question',
-  questionAdmin: 'QuestionAdmin',
+export const faqPublications = {
+  faq: 'FAQ',
+  faqAdmin: 'FAQAdmin',
 };
 
-class QuestionCollection extends BaseCollection {
+class FAQCollection extends BaseCollection {
   constructor() {
-    super('Question', new SimpleSchema({
+    super('FAQ', new SimpleSchema({
       category: {
         type: String,
         regEx: SimpleSchema.RegEx.Id, // references the category collection
@@ -25,27 +24,21 @@ class QuestionCollection extends BaseCollection {
         type: String,
         optional: true,
       },
-      answered: {
-        type: Boolean,
-        defaultValue: false,
-      },
     }));
   }
 
   /**
-   * Defines a new Question item.
+   * Defines a new FAQ item.
    * @param category the category of the question.
    * @param question the question.
    * @param answer the answer.
-   * @param answered whether the question has been answered.
    * @return {String} the docID of the new document.
    */
-  define({ category, question = '', answer = '', answered = false }) {
+  define({ category, question = '', answer = '' }) {
     const docID = this._collection.insert({
       category,
       question,
       answer,
-      answered,
     });
     return docID;
   }
@@ -56,21 +49,19 @@ class QuestionCollection extends BaseCollection {
    * @param category the new category (optional).
    * @param question the new question (optional).
    * @param answer the new answer (optional).
-   * @param answered the new answered status (optional).
    */
-  update(docID, { category, question, answer, answered }) {
+  update(docID, { category, question, answer }) {
     const updateData = {};
     if (category) updateData.category = category;
     if (question) updateData.question = question;
     if (answer !== undefined) updateData.answer = answer;
-    if (answered !== undefined) updateData.answered = answered;
 
     this._collection.update(docID, { $set: updateData });
   }
 
   /**
    * A stricter form of remove that throws an error if the document or docID could not be found in this collection.
-   * @param { String | Object } question The document ID or object.
+   * @param { String | Object } faq The document ID or object.
    * @returns true
    */
   removeIt(question) {
@@ -86,22 +77,11 @@ class QuestionCollection extends BaseCollection {
    */
   publish() {
     if (Meteor.isServer) {
-      // get the QuestionCollection instance.
+      // get the FAQCollection instance.
       const instance = this;
-      /** This subscription publishes documents when users are logged in */
-      Meteor.publish(questionPublications.question, function publish() {
-        if (this.userId && Roles.userIsInRole(this.userId, ROLE.USER)) {
-          return instance._collection.find({ answered: false });
-        }
-        return this.ready();
-      });
-
-      /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
-      Meteor.publish(questionPublications.questionAdmin, function publish() {
-        if (this.userId && Roles.userIsInRole(this.userId, ROLE.ADMIN)) {
-          return instance._collection.find();
-        }
-        return this.ready();
+      /** This subscription publishes documents for all users */
+      Meteor.publish(faqPublications.question, function publish() {
+        return instance._collection.find();
       });
     }
   }
@@ -118,20 +98,19 @@ class QuestionCollection extends BaseCollection {
 
   /**
    * Returns an object representing the definition of docID in a format acceptable to the restoreOne or define function.
-   * @param docID The docID of a Question
-   * @returns {{category: *, question: *, answer: *, answered: *}}
+   * @param docID The docID of a FAQ
+   * @returns {{category: *, question: *, answer: * }}
    */
   dumpOne(docID) {
     const doc = this.findDoc(docID);
     const category = doc.category;
     const question = doc.question;
     const answer = doc.answer;
-    const answered = doc.answered;
-    return { category, question, answer, answered };
+    return { category, question, answer };
   }
 }
 
 /**
  * Provides the singleton instance of this class to all other entities.
  */
-export const Questions = new QuestionCollection();
+export const FAQ = new FAQCollection();
