@@ -11,6 +11,11 @@ function addData(data) {
   Stuffs.define(data);
 }
 
+function addCategory(data) {
+  console.log(`  Adding: ${data.category}`);
+  Categories.define(data);
+}
+
 // Initialize the StuffsCollection if empty.
 if (Stuffs.count() === 0) {
   if (Meteor.settings.defaultData) {
@@ -19,11 +24,11 @@ if (Stuffs.count() === 0) {
   }
 }
 
-// Initialize the CategoriesCollection if empty.
+// Initialize the CategoriesCollection if empty
 if (Categories.count() === 0) {
   if (Meteor.settings.defaultCategories) {
     console.log('Creating default categories.');
-    Meteor.settings.defaultCategories.forEach(data => Categories.define(data));
+    Meteor.settings.defaultCategories.forEach(data => addCategory(data));
   }
 }
 
@@ -31,14 +36,14 @@ if (Categories.count() === 0) {
 if (Questions.count() === 0) {
   if (Meteor.settings.defaultQuestions) {
     console.log('Creating default questions.');
-    Meteor.settings.defaultData.forEach(data => addData(data));
+    Meteor.settings.defaultQuestions.forEach(data => Questions.define(data));
   }
 }
 
 // Initialize the FAQCollection if empty.
 if (FAQ.count() === 0) {
-  if (Meteor.settings.defaultFAQs) {
+  if (Meteor.settings.defaultFAQ) {
     console.log('Creating default FAQs.');
-    Meteor.settings.defaultData.forEach(data => addData(data));
+    Meteor.settings.defaultFAQ.forEach(data => FAQ.define(data));
   }
 }

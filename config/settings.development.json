@@ -13,15 +13,15 @@
   ],
 
   "defaultCategories": [
-    "Physical Health",
-    "Mental Health",
-    "Medical Readiness",
-    "Mens Health",
-    "Womens Health",
-    "Injury & Illness Management",
-    "Substance Use & Addiction",
-    "Self-Care & Resilience",
-    "Medical Resources"
+    { "category": "Physical Health"},
+    { "category": "Mental Health"},
+    { "category": "Medical Readiness"},
+    { "category": "Mens Health"},
+    { "category": "Womens Health"},
+    { "category": "Injury & Illness Management"},
+    { "category": "Substance Use & Addiction"},
+    { "category": "Self-Care & Resilience"},
+    { "category": "Medical Resources"}
   ],
 
   "defaultQuestions": [
