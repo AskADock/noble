@@ -1,26 +1,21 @@
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import { check } from 'meteor/check';
-import { Roles } from 'meteor/alanning:roles';
+// import { Roles } from 'meteor/alanning:roles';
 import BaseCollection from '../base/BaseCollection';
 import { ROLE } from '../role/Role';
 
 export const questionPublications = {
-  question: 'Question',
-  questionAdmin: 'QuestionAdmin',
+  questionAnswer: 'questionAnswer',
+  questionNotAnswer: 'questionNotAnswer',
+  questionAll: 'questionAll',
 };
 
 class QuestionCollection extends BaseCollection {
   constructor() {
-    super('Question', new SimpleSchema({
-      category: {
-        type: String,
-        required: true,
-      },
-      question: {
-        type: String,
-        required: true,
-      },
+    super('Questions', new SimpleSchema({
+      category: String,
+      question: String,
       answer: {
         type: String,
         optional: true,
@@ -40,7 +35,7 @@ class QuestionCollection extends BaseCollection {
    * @param answered whether the question has been answered.
    * @return {String} the docID of the new document.
    */
-  define({ category, question = '', answer = '', answered = false }) {
+  define({ category, question, answer, answered }) {
     const docID = this._collection.insert({
       category,
       question,
@@ -60,10 +55,18 @@ class QuestionCollection extends BaseCollection {
    */
   update(docID, { category, question, answer, answered }) {
     const updateData = {};
-    if (category) updateData.category = category;
-    if (question) updateData.question = question;
-    if (answer !== undefined) updateData.answer = answer;
-    if (answered !== undefined) updateData.answered = answered;
+    if (category) {
+      updateData.category = category;
+    }
+    if (question) {
+      updateData.question = question;
+    }
+    if (answer) {
+      updateData.answer = answer;
+    }
+    if (answered) {
+      updateData.answered = answered;
+    }
 
     this._collection.update(docID, { $set: updateData });
   }
@@ -82,28 +85,57 @@ class QuestionCollection extends BaseCollection {
 
   /**
    * Default publication method for entities.
-   * It publishes the entire collection for admin and just the questions not answered.
+   * It publishes the entire collection and just the questions not answered.
    */
   publish() {
     if (Meteor.isServer) {
       // get the QuestionCollection instance.
       const instance = this;
-      /** This subscription publishes documents when users are logged in */
-      Meteor.publish(questionPublications.question, function publish() {
-        if (this.userId && Roles.userIsInRole(this.userId, ROLE.USER)) {
-          return instance._collection.find({ answered: false });
-        }
-        return this.ready();
+      /** This subscription publishes unanswered questions */
+      Meteor.publish(questionPublications.questionAnswer, function publish() {
+        return instance._collection.find({ answered: true });
       });
 
-      /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
-      Meteor.publish(questionPublications.questionAdmin, function publish() {
-        if (this.userId && Roles.userIsInRole(this.userId, ROLE.ADMIN)) {
-          return instance._collection.find();
-        }
-        return this.ready();
+      /** This subscription publishes answered questions */
+      Meteor.publish(questionPublications.questionNotAnswer, function publish() {
+        return instance._collection.find({ answered: false });
+      });
+
+      /** This subscription publishes all questions */
+      Meteor.publish(questionPublications.questionAll, function publish() {
+        return instance._collection.find();
       });
     }
+  }
+
+  /**
+   * Subscription method for answered questions
+   */
+  subscribeQuestionAnswer() {
+    if (Meteor.isClient) {
+      return Meteor.subscribe(questionPublications.questionAnswer);
+    }
+    return null;
+  }
+
+  /**
+   * Subscription method for questions not answered
+   */
+  subscribeQuestionNotAnswer() {
+    if (Meteor.isClient) {
+      return Meteor.subscribe(questionPublications.questionNotAnswer);
+    }
+    return null;
+  }
+
+  /**
+   * Subscription method for all questions
+   */
+  subscribeQuestionAll() {
+    if (Meteor.isClient) {
+      return Meteor.subscribe(questionPublications.questionAll);
+    }
+    return null;
   }
 
   /**
