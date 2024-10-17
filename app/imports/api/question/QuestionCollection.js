@@ -6,9 +6,9 @@ import BaseCollection from '../base/BaseCollection';
 import { ROLE } from '../role/Role';
 
 export const questionPublications = {
-  questionAnswer: 'questionAnswer',
-  questionNotAnswer: 'questionNotAnswer',
-  questionAll: 'questionAll',
+  questionAnswer: 'QuestionAnswer',
+  questionNotAnswer: 'QuestionNotAnswer',
+  questionAll: 'QuestionAll',
 };
 
 class QuestionCollection extends BaseCollection {

@@ -12,18 +12,9 @@ export const faqPublications = {
 class FAQCollection extends BaseCollection {
   constructor() {
     super('FAQ', new SimpleSchema({
-      category: {
-        type: String,
-        required: true,
-      },
-      question: {
-        type: String,
-        required: true,
-      },
-      answer: {
-        type: String,
-        optional: true,
-      },
+      category: String,
+      question: String,
+      answer: String,
     }));
   }
 
@@ -34,7 +25,7 @@ class FAQCollection extends BaseCollection {
    * @param answer the answer.
    * @return {String} the docID of the new document.
    */
-  define({ category, question = '', answer = '' }) {
+  define({ category, question, answer }) {
     const docID = this._collection.insert({
       category,
       question,
@@ -52,9 +43,15 @@ class FAQCollection extends BaseCollection {
    */
   update(docID, { category, question, answer }) {
     const updateData = {};
-    if (category) updateData.category = category;
-    if (question) updateData.question = question;
-    if (answer !== undefined) updateData.answer = answer;
+    if (category) {
+      updateData.category = category;
+    }
+    if (question) {
+      updateData.question = question;
+    }
+    if (answer) {
+      updateData.answer = answer;
+    }
 
     this._collection.update(docID, { $set: updateData });
   }
@@ -80,10 +77,20 @@ class FAQCollection extends BaseCollection {
       // get the FAQCollection instance.
       const instance = this;
       /** This subscription publishes documents for all users */
-      Meteor.publish(faqPublications.question, function publish() {
+      Meteor.publish(faqPublications.faq, function publish() {
         return instance._collection.find();
       });
     }
+  }
+
+  /**
+   * Subscription method for faqs.
+   */
+  subscribeFAQ() {
+    if (Meteor.isClient) {
+      return Meteor.subscribe(faqPublications.faq);
+    }
+    return null;
   }
 
   /**
