@@ -35,7 +35,7 @@ const Landing = () => (
             <Col className="col-6">
               <h1>IMAGE</h1>
             </Col>
-            <Col className="col-6 text-shadow">
+            <Col className="col-6">
               <h2>Ask health-related questions anonymously</h2>
               <p>Whether it&apos;s a minor query or a more complex issue, you&apos;ll find the guidance you need.</p>
             </Col>
@@ -47,7 +47,7 @@ const Landing = () => (
       <Col className="col-10">
         <Card className="rounded-3 p-5 m-5">
           <Row className="text-center">
-            <Col className="col-6 text-shadow">
+            <Col className="col-6">
               <h2>Question Compass</h2>
               <p>Find the right path to your health answers</p>
             </Col>
@@ -65,7 +65,7 @@ const Landing = () => (
             <Col className="col-6">
               <h1>IMAGE</h1>
             </Col>
-            <Col className="col-6 text-shadow">
+            <Col className="col-6">
               <h2>Ask A Doc</h2>
               <p>Can&apos;t find an answer? Ask a medical professional directly!</p>
             </Col>
