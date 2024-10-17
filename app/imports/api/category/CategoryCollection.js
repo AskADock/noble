@@ -7,7 +7,7 @@ export const categories = ['Physical Health', 'Mental Health', 'Medical Readines
   'Womens Health', 'Mens Health', 'Injury & Illness Management', 'Substance Use & Addiction',
   'Self-Care & Resilience', 'Medical Resources'];
 export const categoryPublications = {
-  category: 'Category',
+  categoryAll: 'categoryAll',
 };
 
 class CategoryCollection extends BaseCollection {
@@ -68,10 +68,20 @@ class CategoryCollection extends BaseCollection {
       // get the Category instance.
       const instance = this;
       /** This subscription publishes documents regardless of user and if signed in */
-      Meteor.publish(categoryPublications.category, function publish() {
+      Meteor.publish(categoryPublications.categoryAll, function publish() {
         return instance._collection.find();
       });
     }
+  }
+
+  /**
+   * Subscription method for categoies.
+   */
+  subscribeCategoryAll() {
+    if (Meteor.isClient) {
+      return Meteor.subscribe(categoryPublications.categoryAll);
+    }
+    return null;
   }
 
   /**
