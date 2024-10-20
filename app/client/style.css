@@ -25,23 +25,19 @@ body {
 /* Default colors for the application. */
 .color1 {
   background-color: var(--color1);
-  color: white;
 }
 
 .color2 {
   background-color: var(--color2);
-  color: white;
 }
 
 .color3 {
   background-color: var(--color3);
-  color: white;
 }
 
 .color4
 {
   background-color: gray;
-  color: white;
 }
 
 .text-shadow {

@@ -13,7 +13,7 @@ const Landing = () => (
     </Row>
     <Row className="mt-2 mb-5 py-5 g-3 justify-content-center text-shadow">
       <Col xs="auto">
-        <Button className="rounded-3" variant="outline-light" size="lg" href="/">
+        <Button className="rounded-3" variant="outline-light" size="lg" href="/faq">
           FAQ
         </Button>
       </Col>
