@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Card, Form } from 'react-bootstrap';
+import { Container, Row, Col, Card, Form, Button, Pagination, Accordion, Badge } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { FAQ } from '../../api/faq/FAQCollection';
 import { Categories } from '../../api/category/CategoryCollection';
@@ -23,45 +23,76 @@ const FrequentlyAskedQuestions = () => {
   });
 
   return (ready ? (
-    <Container>
-      <Row className="py-3">
-        <h1>Frequently Asked Questions</h1>
-      </Row>
-      <Row>
-        <Col>
-          <Card className="rounded-3 p-3">
-            <Row>
-              <Col>
-                <Form.Label>Search</Form.Label>
-                <Form.Control type="text" placeholder="I want to know..." />
-              </Col>
-              <Col>
-                <Form.Label>Category</Form.Label>
-                <Form.Select>
-                  {categories.map((category) => (
-                    <option key={category._id}>{category.category}</option>
-                  ))}
-                </Form.Select>
-              </Col>
-            </Row>
-          </Card>
-          {faq.map((question) => (
-            <Card key={question._id} className="my-3 rounded-3">
-              <Card.Header>
-                {question.question}
-              </Card.Header>
-              <Card.Body>
-                <Card.Text>
-                  <p>{question.answer}</p>
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          ))}
+    <Container fluid className="color2">
+      <Row className="justify-content-center mb-5">
+        <Col className="col-8">
+          <Row className="py-4 text-center">
+            <h1>Frequently Asked Questions</h1>
+          </Row>
+          <Row className="justify-content-center">
+            <Col className="col-9">
+              <Row>
+                <Col classNmae="col-8">
+                  <Form.Control type="text" placeholder="I want to know..." />
+                </Col>
+                <Col className="col-3">
+                  <Form.Select>
+                    <option>All Categories</option>
+                    {categories.map((category) => (
+                      <option key={category._id}>{category.category}</option>
+                    ))}
+                  </Form.Select>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              {faq.map((question) => (
+                <Card className="my-3" key={question._id}>
+                  <Accordion>
+                    <Accordion.Item eventKey={question._id} className="p-2">
+                      <Badge bg="primary" className="ms-auto">{question.category}</Badge>
+                      <Accordion.Header>
+                        <h5>{question.question}</h5>
+                      </Accordion.Header>
+                      <Accordion.Body>{question.answer}</Accordion.Body>
+                    </Accordion.Item>
+                  </Accordion>
+                </Card>
+              ))}
+            </Col>
+          </Row>
+          <Row className="py-3">
+            <Col className="d-flex justify-content-center">
+              <Pagination>
+                <Pagination.Prev />
+                <Pagination.Item>{1}</Pagination.Item>
+                <Pagination.Item>{2}</Pagination.Item>
+                <Pagination.Item>{3}</Pagination.Item>
+                <Pagination.Next />
+              </Pagination>
+            </Col>
+          </Row>
+          <Row className="justify-content-center text-center py-3">
+            <Col className="col-4">
+              <Card className="rounded-3 p-3">
+                <Row>
+                  <Col>
+                    <h4>Can&apos;t find an answer?</h4>
+                    <Button href="/" className="rounded-3">
+                      Ask A Doc
+                    </Button>
+                  </Col>
+                </Row>
+              </Card>
+            </Col>
+          </Row>
         </Col>
       </Row>
     </Container>
-  ) : <LoadingSpinner message="Loading FAQ" />
-  );
+  ) : (
+    <LoadingSpinner message="Loading FAQ" />
+  ));
 };
-
 export default FrequentlyAskedQuestions;
