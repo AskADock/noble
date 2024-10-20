@@ -3,6 +3,12 @@ import PropTypes from 'prop-types';
 import { Button, Row, Col, Container, Dropdown, Form } from 'react-bootstrap';
 import FAQList from './FAQList';
 
+/**
+ * Renders the FAQ filter component. This component is responsible for filtering the FAQ questions by category.
+ * Passes the filtered FAQ questions to the FAQList component.
+ * @param faq
+ * @param categories
+ */
 const FAQFilter = ({ faq, categories }) => {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const resetFilter = () => {
@@ -26,11 +32,8 @@ const FAQFilter = ({ faq, categories }) => {
   return (
     <Container>
       <Row>
-        <Col md={12} className="col-lg-11">
-          <FAQList theFAQs={filteredFAQ} />
-        </Col>
-        <Col md={12} className="col-lg-1 pb-3 text-center">
-          <Dropdown className="rounded-4">
+        <Col md={12} className="col-lg-1 pb-3 text-start">
+          <Dropdown className="rounded-3">
             <Dropdown.Toggle id="dropdown-basic-button">Filter by Category</Dropdown.Toggle>
             <Dropdown.Menu>
               <Form>
@@ -51,6 +54,9 @@ const FAQFilter = ({ faq, categories }) => {
               </Form>
             </Dropdown.Menu>
           </Dropdown>
+        </Col>
+        <Col md={12} className="col-lg-11">
+          <FAQList theFAQs={filteredFAQ} />
         </Col>
       </Row>
     </Container>

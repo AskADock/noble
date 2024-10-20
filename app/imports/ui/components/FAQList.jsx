@@ -4,8 +4,8 @@ import { Form, Row, Col, Container, Card, Pagination, Accordion, Badge } from 'r
 import Fuse from 'fuse.js';
 
 /*
- * renders the searchBar, the events passed in, as well as the pagination for the page.
- * @param theEvents the events that needs to be rendered.
+ * renders the searchBar, the faq questions passed in, as well as the pagination for the page.
+ * @param theFAQs the faq question that needs to be rendered.
  */
 const FAQList = ({ theFAQs }) => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -18,7 +18,7 @@ const FAQList = ({ theFAQs }) => {
     setSearchPerformed(faq.target.value); // Set searchPerformed to true if search query is not empty
   };
 
-  let displayedQuestions = theFAQs; // Default to all events
+  let displayedQuestions = theFAQs; // Default to all faqs
 
   if (searchPerformed && theFAQs.length > 0) {
     const fuseOptions = {
@@ -35,7 +35,7 @@ const FAQList = ({ theFAQs }) => {
     const result = fuse.search(searchQuery);
     displayedQuestions = result.map((item) => item.item);
   } else {
-    // If no search is performed, take the first eventsPerPage events
+    // If no search is performed, take the first questionsPerPage faqs
     displayedQuestions = theFAQs.slice(0, questionsPerPage);
   }
 
@@ -53,12 +53,13 @@ const FAQList = ({ theFAQs }) => {
 
   return (
     <Container>
-      <Container className="justify-content-center">
+      <Container className="d-flex justify-content-center">
         <Form.Group>
           <Form.Control
             type="text"
             placeholder="I want to know..."
             className="mb-2 align-content-center"
+            style={{ minWidth: '35vw', maxWidth: '45vw' }}
             value={searchQuery}
             onChange={handleSearchChange}
           />

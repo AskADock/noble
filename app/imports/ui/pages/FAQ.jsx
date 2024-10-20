@@ -39,7 +39,7 @@ const FrequentlyAskedQuestions = () => {
                 <Row>
                   <Col>
                     <h4>Can&apos;t find an answer?</h4>
-                    <Button href="/" className="rounded-3">
+                    <Button href="/askadoc" className="rounded-3">
                       Ask A Doc
                     </Button>
                   </Col>
