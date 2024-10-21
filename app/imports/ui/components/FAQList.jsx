@@ -12,10 +12,11 @@ const FAQList = ({ theFAQs }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchPerformed, setSearchPerformed] = useState(false);
   const questionsPerPage = 9;
+
   const handleSearchChange = (faq) => {
     setSearchQuery(faq.target.value);
     setCurrentPage(1);
-    setSearchPerformed(faq.target.value); // Set searchPerformed to true if search query is not empty
+    setSearchPerformed(!!faq.target.value); // Set searchPerformed to true if search query is not empty
   };
 
   let displayedQuestions = theFAQs; // Default to all faqs
@@ -34,14 +35,11 @@ const FAQList = ({ theFAQs }) => {
     const fuse = new Fuse(theFAQs, fuseOptions);
     const result = fuse.search(searchQuery);
     displayedQuestions = result.map((item) => item.item);
-  } else {
-    // If no search is performed, take the first questionsPerPage faqs
-    displayedQuestions = theFAQs.slice(0, questionsPerPage);
   }
 
   const indexOfLastQuestion = currentPage * questionsPerPage;
   const indexOfFirstQuestion = indexOfLastQuestion - questionsPerPage;
-  const currentQuestion = displayedQuestions.slice(indexOfFirstQuestion, indexOfLastQuestion);
+  const currentQuestions = displayedQuestions.slice(indexOfFirstQuestion, indexOfLastQuestion);
 
   const totalPages = Math.ceil(displayedQuestions.length / questionsPerPage);
 
@@ -65,6 +63,7 @@ const FAQList = ({ theFAQs }) => {
           />
         </Form.Group>
       </Container>
+
       {searchPerformed ? (
         <Row className="text-start mt-2 py-1 text-color">
           <h4>Total Results: {displayedQuestions.length}</h4>
@@ -74,9 +73,10 @@ const FAQList = ({ theFAQs }) => {
           <h4>Latest FAQ</h4>
         </Row>
       )}
+
       <Row>
         <Col>
-          {currentQuestion.map((item) => (
+          {currentQuestions.map((item) => (
             <Card className="my-2" key={item._id}>
               <Accordion>
                 <Accordion.Item eventKey={item._id} className="p-2">
@@ -91,7 +91,8 @@ const FAQList = ({ theFAQs }) => {
           ))}
         </Col>
       </Row>
-      {/* PaginationTool buttons */}
+
+      {/* Pagination buttons */}
       {totalPages > 1 && (
         <Container className="d-flex justify-content-center">
           <Pagination>
