@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Row, Col, Container, Dropdown, Form } from 'react-bootstrap';
+import { Button, Row, Col, Container, Form, Card, Accordion } from 'react-bootstrap';
 import FAQList from './FAQList';
 
 /**
@@ -31,32 +31,59 @@ const FAQFilter = ({ faq, categories }) => {
 
   return (
     <Container>
-      <Row>
-        <Col md={12} className="col-lg-1 pb-3 text-start">
-          <Dropdown className="rounded-3">
-            <Dropdown.Toggle id="dropdown-basic-button">Filter by Category</Dropdown.Toggle>
-            <Dropdown.Menu>
-              <Form>
-                {categories.map((theCategory, index) => (
-                  <div className="d-flex m-2" key={index}>
-                    <Form.Check
-                      type="checkbox"
-                      value={theCategory.category}
-                      onChange={handleCheckboxChange}
-                      checked={isCategoryChecked(theCategory.category)}
-                    />
-                    <div className="ms-1">
-                      {theCategory.category}
+      <Row className="my-4">
+        {/* Filter Section */}
+        <Col md={12} lg={3} className="pb-3 text-start">
+          <Accordion>
+            <Accordion.Item eventKey={0}>
+              <Accordion.Header>
+                <h4>Filter by Category</h4>
+              </Accordion.Header>
+              <Accordion.Body>
+                <Form>
+                  {categories.map((theCategory, index) => (
+                    <div className="d-flex m-1" key={index}>
+                      <Form.Check
+                        type="checkbox"
+                        value={theCategory.category}
+                        onChange={handleCheckboxChange}
+                        checked={isCategoryChecked(theCategory.category)}
+                      />
+                      <div className="ms-1">
+                        <h5>{theCategory.category}</h5>
+                      </div>
                     </div>
-                  </div>
-                ))}
-                <Button variant="primary" className="m-2" onClick={resetFilter}>reset</Button>
-              </Form>
-            </Dropdown.Menu>
-          </Dropdown>
+                  ))}
+                  <Button variant="primary" className="m-2" onClick={resetFilter}>reset</Button>
+                </Form>
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
+
+          {/* Ask A Doc Button (Only for large screens) */}
+          <div className="d-none d-lg-block mt-4">
+            <Card className="rounded-3 p-3 text-center color3">
+              <h4>Can&apos;t find an answer?</h4>
+              <Button href="/askadoc" className="rounded-3">
+                Ask A Doc
+              </Button>
+            </Card>
+          </div>
         </Col>
-        <Col md={12} className="col-lg-11">
+
+        {/* FAQ List Section */}
+        <Col md={12} lg={9}>
           <FAQList theFAQs={filteredFAQ} />
+
+          {/* Ask A Doc Button (Only for mobile screens) */}
+          <div className="d-lg-none mt-4">
+            <Card className="rounded-3 p-3 text-center">
+              <h4>Can&apos;t find an answer?</h4>
+              <Button href="/askadoc" className="rounded-3">
+                Ask A Doc
+              </Button>
+            </Card>
+          </div>
         </Col>
       </Row>
     </Container>

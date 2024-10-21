@@ -58,19 +58,19 @@ const FAQList = ({ theFAQs }) => {
           <Form.Control
             type="text"
             placeholder="I want to know..."
-            className="mb-2 align-content-center"
-            style={{ minWidth: '35vw', maxWidth: '45vw' }}
+            className="p-2"
+            style={{ minWidth: '45vw', maxWidth: '50vw' }}
             value={searchQuery}
             onChange={handleSearchChange}
           />
         </Form.Group>
       </Container>
       {searchPerformed ? (
-        <Row className="text-start py-1 text-color">
+        <Row className="text-start mt-2 py-1 text-color">
           <h4>Total Results: {displayedQuestions.length}</h4>
         </Row>
       ) : (
-        <Row className="text-start py-1 text-color">
+        <Row className="text-start mt-2 py-1 text-color">
           <h4>Latest FAQ</h4>
         </Row>
       )}
