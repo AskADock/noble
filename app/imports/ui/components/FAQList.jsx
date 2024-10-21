@@ -93,7 +93,7 @@ const FAQList = ({ theFAQs }) => {
       </Row>
 
       {/* Pagination buttons */}
-      {totalPages > 1 && (
+      {totalPages > 0 && (
         <Container className="d-flex justify-content-center">
           <Pagination>
             <Pagination.First onClick={() => paginate(1)} />
