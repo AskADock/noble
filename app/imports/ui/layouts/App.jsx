@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import FrequentlyAskedQuestions from '../pages/FAQ';
+import MedHome from '../pages/MedHome';
 import ListStuff from '../pages/ListStuff';
 import ListStuffAdmin from '../pages/ListStuffAdmin';
 import AddStuff from '../pages/AddStuff';
@@ -39,7 +40,7 @@ const App = () => {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signout" element={<SignOut />} />
           <Route path="/faq" element={<FrequentlyAskedQuestions />} />
-          <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
+          <Route path="/home" element={<ProtectedRoute><MedHome /></ProtectedRoute>} />
           <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
           <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
