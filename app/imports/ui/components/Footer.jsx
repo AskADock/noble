@@ -9,7 +9,7 @@ const Footer = () => {
       <Container style={divStyle}>
         <Row className="text-center">
           <Col md={4}>
-            <img src="/images/IMG_4826.jpeg" alt="Logo" width="50" height="50" />
+            <img src="/images/Noble_Logo.png" alt="Logo" width="150" height="150" />
           </Col>
           <Col md={4}>
             <Nav className="justify-content-center">
@@ -28,9 +28,8 @@ const Footer = () => {
         </Row>
         <Row className="text-center mt-3">
           <Col>
-            Department of Information and Computer Sciences <br />
+            Noble <br />
             University of Hawaii<br />
-            Honolulu, HI 96822
           </Col>
         </Row>
       </Container>
