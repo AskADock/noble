@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Row, Col, Container, Card, Pagination, Accordion, Badge } from 'react-bootstrap';
 import Fuse from 'fuse.js';
+
 /*
  * renders the searchBar, the faq questions passed in, as well as the pagination for the page.
  * @param theFAQs the faq question that needs to be rendered.
