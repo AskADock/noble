@@ -18,7 +18,7 @@ const NavBar = () => {
     <Navbar bg="light" expand="lg">
       <Container className="text-start"> {/* Aligns everything to the start (left) */}
         <Navbar.Brand id={COMPONENT_IDS.NAVBAR_LANDING_PAGE}>
-          <img src="/images/IMG_4826.jpeg" alt="Home Image" width="50" height="50" />
+          <img src="/images/Noble-Logo.png" alt="Home Image" width="50" height="50" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls={COMPONENT_IDS.NAVBAR_COLLAPSE} />
         <Navbar.Collapse id={COMPONENT_IDS.NAVBAR_COLLAPSE}>

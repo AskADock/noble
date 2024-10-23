@@ -9,7 +9,7 @@ const Footer = () => {
       <Container style={divStyle}>
         <Row className="text-center">
           <Col md={4}>
-            <img src="/images/IMG_4826.jpeg" alt="Logo" width="50" height="50" />
+            <img src="/images/Noble-Logo.png" alt="Logo" width="50" height="50" />
           </Col>
           <Col md={4}>
             <Nav className="justify-content-center">
