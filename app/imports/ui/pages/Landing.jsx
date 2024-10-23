@@ -33,7 +33,7 @@ const Landing = () => (
         <Card className="rounded-3 p-5 m-5">
           <Row className="text-center">
             <Col className="col-6">
-              <h1>IMAGE</h1>
+              <img src="/images/askadoc.png" alt="Logo" width="100" height="100" />
             </Col>
             <Col className="col-6">
               <h2>Ask health-related questions anonymously</h2>
@@ -52,7 +52,7 @@ const Landing = () => (
               <p>Find the right path to your health answers</p>
             </Col>
             <Col className="col-6">
-              <h1>IMAGE</h1>
+              <img src="/images/askadoc.png" alt="Logo" width="100" height="100" />
             </Col>
           </Row>
         </Card>
@@ -63,7 +63,7 @@ const Landing = () => (
         <Card className="rounded-3 p-5 m-5">
           <Row className="text-center">
             <Col className="col-6">
-              <h1>IMAGE</h1>
+              <img src="/images/askadoc.png" alt="Logo" width="100" height="100" />
             </Col>
             <Col className="col-6">
               <h2>Ask A Doc</h2>
