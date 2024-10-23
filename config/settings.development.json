@@ -13,15 +13,14 @@
   ],
 
   "defaultCategories": [
-    { "category": "Physical Health"},
-    { "category": "Mental Health"},
-    { "category": "Medical Readiness"},
-    { "category": "Mens Health"},
-    { "category": "Womens Health"},
-    { "category": "Injury & Illness Management"},
-    { "category": "Substance Use & Addiction"},
-    { "category": "Self-Care & Resilience"},
-    { "category": "Medical Resources"}
+    { "category": "Readiness" },
+    { "category": "Deplyment" },
+    { "category": "Line of Duty" },
+    { "category": "Occuptional Health" },
+    { "category": "Non-flyers" },
+    { "category": "Flyers" },
+    { "category": "Medical Clearance" },
+    { "category": "Profiles/Waivers" }
   ],
 
   "defaultQuestions": [

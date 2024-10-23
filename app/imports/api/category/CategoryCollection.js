@@ -3,9 +3,8 @@ import SimpleSchema from 'simpl-schema';
 import { check } from 'meteor/check';
 import BaseCollection from '../base/BaseCollection';
 
-export const categories = ['Physical Health', 'Mental Health', 'Medical Readiness',
-  'Womens Health', 'Mens Health', 'Injury & Illness Management', 'Substance Use & Addiction',
-  'Self-Care & Resilience', 'Medical Resources'];
+export const categories = ['Readiness', 'Deployment', 'Line of Duty', 'Occupational Health',
+  'Non-flyers', 'Flyers', 'Medical Clearance', 'Profiles/Waivers'];
 export const categoryPublications = {
   categoryAll: 'categoryAll',
 };
