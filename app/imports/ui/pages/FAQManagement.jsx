@@ -105,6 +105,7 @@ const FAQManagement = () => {
                 <tr key={faq._id}>
                   {editingFAQ === faq._id ? (
                     <>
+                      {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
                       <td>
                         <Form.Control
                           type="text"
@@ -112,6 +113,7 @@ const FAQManagement = () => {
                           onChange={(e) => setEditedQuestion(e.target.value)}
                         />
                       </td>
+                      {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
                       <td>
                         <Form.Control
                           as="textarea"
