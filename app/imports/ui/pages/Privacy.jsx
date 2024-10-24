@@ -1,32 +1,26 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
+import { Container, Row, Col, Card } from 'react-bootstrap';
 
-const Privacy = () => {
-  const textStyle = {
-    textAlign: 'center',
-    marginTop: '50px',
-    lineHeight: '1.6',
-  };
-
-  const headerStyle = {
-    textAlign: 'center',
-    marginBottom: '30px',
-  };
-
-  return (
-    <Container className="d-flex flex-column justify-content-center align-items-center">
-      <h1 style={headerStyle}>Privacy Policy</h1>
-      <p style={textStyle}>
-        At Noble, your privacy is our top priority. We ensure that any information you provide remains anonymous
-        and will never be used against you. No personally identifiable information is collected unless you choose
-        to share it for communication purposes. Your inquiries are not linked to your identity, and your data will
-        not be shared with any military or government entities without your consent. We use secure encryption to
-        protect your information, which is only accessible to authorized personnel. You have full control over your
-        data and can delete it at any time. We will never share your data with third parties without your explicit
-        permission.
-      </p>
-    </Container>
-  );
-};
+const Privacy = () => (
+  <Container fluid className="color1 justify-content-center align-items-center">
+    <Row className="py-4 my-5 align-content-center justify-content-center">
+      <Col className="col-9">
+        <Card className="rounded-4 p-4 text-center">
+          <h1 className="mb-4">Privacy Policy</h1>
+          <Row className="text-start px-5">
+            <p>
+              At Noble, your privacy is our top priority. We are committed to ensuring that any information you provide remains completely anonymous. No personally identifiable information is collected unless you explicitly choose to share it
+              for communication purposes. Your questions are submitted securely, and we take extensive measures to ensure that your data is encrypted and stored safely.
+            </p>
+            <p>
+              We understand the importance of confidentiality in healthcare, which is why we never track or associate questions with user profiles. This approach allows you to seek the medical information you need without any concerns about
+              privacy. Trust is at the heart of our mission, and we are dedicated to maintaining it by keeping your identity protected at all times.
+            </p>
+          </Row>
+        </Card>
+      </Col>
+    </Row>
+  </Container>
+);
 
 export default Privacy;
