@@ -56,7 +56,7 @@ export const AskADoc = () => {
               <p>Anonymously ask a Doctor any question. Your answer will appear in the FAQ page soon.</p>
             </Col>
           </Row>
-          <Row className="justify-content-center" style={{ width: '100%', marginBottom: '20px' }}>
+          <Row className="justify-content-center py-5">
             <Col xs={12} md={10} lg={8} className="text-center">
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-4">
@@ -99,7 +99,7 @@ export const AskADoc = () => {
                   />
                 </Form.Group>
 
-                <Button variant="primary" type="submit">
+                <Button variant="primary" type="submit" style={{ padding: '1vh 2vw', fontSize: '1.2rem' }}>
                   Submit
                 </Button>
               </Form>
