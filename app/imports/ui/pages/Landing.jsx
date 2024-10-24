@@ -52,7 +52,7 @@ const Landing = () => (
               <p>Find the right path to your health answers</p>
             </Col>
             <Col xs={12} md={6}>
-              <img src="/images/C.png" alt="Logo" width="200" height="200" />
+              <img src="/images/Compass.png" alt="Logo" width="200" height="200" />
             </Col>
           </Row>
         </Card>
