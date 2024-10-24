@@ -53,8 +53,9 @@ body {
 }
 
 .landing-background {
-  background: url('/images/f-22-raptors.jpg') fixed center;
+  background: url('/images/landing/us.jpg') fixed;
   background-size: cover;
+  background-position: 20% center;
   color: white;
   min-height: 85vh;
   width: 100%;

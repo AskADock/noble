@@ -20,6 +20,19 @@ const FAQManagement = () => {
     };
   }, []);
 
+  // The categories for category dropdown options.
+  const categories = [
+    'Readiness',
+    'Line of Duty',
+    'Profiles/Waivers',
+    'Medical Clearance',
+    'FLYERS',
+    'NON-FLYERS',
+    'Deployment',
+    'Occupational Health',
+    'Other',
+  ];
+
   // State to handle editing
   const [editingFAQ, setEditingFAQ] = useState(null);
   const [editedQuestion, setEditedQuestion] = useState('');
@@ -73,7 +86,11 @@ const FAQManagement = () => {
     <Container id={PAGE_IDS.FAQ_MANAGEMENT} className="py-3">
       <Row className="justify-content-center">
         <Col md={10}>
-          <Col className="text-center"><h2>FAQ Management (Admin)</h2></Col>
+          <Container>
+            <Row>
+              <h1 className="text-center">Frequently Asked Questions (Admin)</h1>
+            </Row>
+          </Container>
           <Table striped bordered hover>
             <thead>
               <tr>
@@ -104,11 +121,17 @@ const FAQManagement = () => {
                         />
                       </td>
                       <td>
-                        <Form.Control
-                          type="text"
+                        <Form.Select
                           value={editedCategory}
                           onChange={(e) => setEditedCategory(e.target.value)}
-                        />
+                        >
+                          <option value="">Select Category</option>
+                          {categories.map((category) => (
+                            <option key={category} value={category}>
+                              {category}
+                            </option>
+                          ))}
+                        </Form.Select>
                       </td>
                       <td>
                         <Button variant="success" onClick={() => saveEditFAQ(faq._id)}>Save</Button>{' '}
