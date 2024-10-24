@@ -20,15 +20,20 @@ import NotAuthorized from '../pages/NotAuthorized';
 import { ROLE } from '../../api/role/Role';
 import LoadingSpinner from '../components/LoadingSpinner';
 import ManageDatabase from '../pages/ManageDatabase';
+import FAQManagement from '../pages/FAQManagement';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
-  const { ready } = useTracker(() => {
-    const rdy = Roles.subscription.ready();
+  const { ready, isAdmin } = useTracker(() => {
+    const subscription = Roles.subscription.ready();
+    const rdy = subscription;
+    const loggedIn = Meteor.userId() !== null;
+    const adminCheck = loggedIn ? Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) : false;
     return {
       ready: rdy,
+      isAdmin: adminCheck,
     };
-  });
+  }, []);
   return (
     <Router>
       <div className="d-flex flex-column min-vh-100">
@@ -43,8 +48,8 @@ const App = () => {
           <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
           <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
-          <Route path="/admin" element={<AdminProtectedRoute ready={ready}><ListStuffAdmin /></AdminProtectedRoute>} />
-          <Route path="/manage-database" element={<AdminProtectedRoute ready={ready}><ManageDatabase /></AdminProtectedRoute>} />
+          <Route path="/admin" element={<AdminProtectedRoute ready={ready} isAdmin={isAdmin}><ListStuffAdmin /></AdminProtectedRoute>} />
+          <Route path="/manage-database" element={<AdminProtectedRoute ready={ready} isAdmin={isAdmin}><ManageDatabase /></AdminProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
@@ -55,22 +60,19 @@ const App = () => {
 };
 
 /*
- * ProtectedRoute (see React Router v6 sample)
- * Checks for Meteor login before routing to the requested page, otherwise goes to signin page.
- * @param {any} { component: Component, ...rest }
+ * ProtectedRoute
+ * Checks for Meteor login before routing to the requested page.
  */
 const ProtectedRoute = ({ children }) => {
   const isLogged = Meteor.userId() !== null;
-  console.log('ProtectedRoute', isLogged);
   return isLogged ? children : <Navigate to="/signin" />;
 };
 
-/**
- * AdminProtectedRoute (see React Router v6 sample)
- * Checks for Meteor login and admin role before routing to the requested page, otherwise goes to signin page.
- * @param {any} { component: Component, ...rest }
+/*
+ * AdminProtectedRoute
+ * Checks for Meteor login and admin role before routing to the requested page.
  */
-const AdminProtectedRoute = ({ ready, children }) => {
+const AdminProtectedRoute = ({ ready, isAdmin, children }) => {
   const isLogged = Meteor.userId() !== null;
   if (!isLogged) {
     return <Navigate to="/signin" />;
@@ -78,12 +80,9 @@ const AdminProtectedRoute = ({ ready, children }) => {
   if (!ready) {
     return <LoadingSpinner />;
   }
-  const isAdmin = Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]);
-  console.log('AdminProtectedRoute', isLogged, isAdmin);
   return (isLogged && isAdmin) ? children : <Navigate to="/notauthorized" />;
 };
 
-// Require a component and location to be passed to each ProtectedRoute.
 ProtectedRoute.propTypes = {
   children: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
 };
@@ -92,9 +91,9 @@ ProtectedRoute.defaultProps = {
   children: <Landing />,
 };
 
-// Require a component and location to be passed to each AdminProtectedRoute.
 AdminProtectedRoute.propTypes = {
-  ready: PropTypes.bool,
+  ready: PropTypes.bool.isRequired,
+  isAdmin: PropTypes.bool.isRequired,
   children: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
 };
 

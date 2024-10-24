@@ -9,9 +9,9 @@ import { ROLE } from '../../api/role/Role';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 const NavBar = () => {
-  // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { currentUser } = useTracker(() => ({
     currentUser: Meteor.user() ? Meteor.user().username : '',
+    isStaff: Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, 'staff']),
   }), []);
 
   return (
@@ -28,13 +28,29 @@ const NavBar = () => {
             <Nav.Link id={COMPONENT_IDS.NAVBAR_QUESTION_COMPASS} as={NavLink} to="/question-compass">Question Compass</Nav.Link>
             <Nav.Link id={COMPONENT_IDS.NAVBAR_ASK_A_DOC} as={NavLink} to="/ask-a-doc">Ask A Doc</Nav.Link>
 
+            {/* Show admin or staff-only links */}
             {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? (
               [<Nav.Link id={COMPONENT_IDS.NAVBAR_LIST_STUFF_ADMIN} as={NavLink} to="/admin" key="admin">Admin</Nav.Link>,
                 <NavDropdown id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN} title="Manage" key="manage-dropdown">
                   <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN_DATABASE} key="manage-database" as={NavLink} to="/manage-database">
                     <CloudDownload /> Database
                   </NavDropdown.Item>
+                  <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN_FAQ_MANAGEMENT} key="manage-faq" as={NavLink} to="/faq-management">
+                    FAQ Management
+                  </NavDropdown.Item>
                 </NavDropdown>]
+            ) : ''}
+
+            {/* Staff-specific links */}
+            {Roles.userIsInRole(Meteor.userId(), ['staff']) ? (
+              <NavDropdown id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN_STAFF} title="Staff Manage" key="staff-manage-dropdown">
+                <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN_FAQ_MANAGEMENT} key="staff-manage-faq" as={NavLink} to="/faq-management">
+                  FAQ Management
+                </NavDropdown.Item>
+                <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN_DATABASE_STAFF} key="staff-manage-database" as={NavLink} to="/manage-database">
+                  <CloudDownload /> Manage Database
+                </NavDropdown.Item>
+              </NavDropdown>
             ) : ''}
           </Nav>
           <Nav className="justify-content-end">
