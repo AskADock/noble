@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import FrequentlyAskedQuestions from '../pages/FAQ';
-import QuestionCompass from '../pages/QuestionCompass';
+// import QuestionCompass from '../pages/QuestionCompass';
 import AskADocPage from '../pages/AskADoc';
 import Privacy from '../pages/Privacy';
 import FAQManagement from '../pages/FAQManagement';
@@ -47,7 +47,7 @@ const App = () => {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signout" element={<SignOut />} />
           <Route path="/faq" element={<FrequentlyAskedQuestions />} />
-          <Route path="/question-compass" element={<QuestionCompass />} />
+          { /* <Route path="/question-compass" element={<QuestionCompass />} /> */ }
           <Route path="/ask-a-doc" element={<AskADocPage />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
