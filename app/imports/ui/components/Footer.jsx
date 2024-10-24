@@ -22,7 +22,7 @@ const Footer = () => {
           <Col md={4}>
             <Nav className="justify-content-center">
               <Nav.Link href="/terms">Terms</Nav.Link>
-              <Nav.Link href="/privacy">Privacy</Nav.Link>
+              <Nav.Link href="/privacy">Privacy</Nav.Link> {/* This should now link to your Privacy component */}
             </Nav>
           </Col>
         </Row>
