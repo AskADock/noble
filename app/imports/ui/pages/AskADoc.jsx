@@ -1,84 +1,93 @@
-import React, { useState } from 'react';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
-// import { FiPlusCircle } from 'react-icons/fi';
+import React, { useRef } from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
+import { AutoForm, ErrorsField, LongTextField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import swal from 'sweetalert';
+import SimpleSchema from 'simpl-schema';
+import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
+import { useTracker } from 'meteor/react-meteor-data';
+import { Questions } from '../../api/question/QuestionCollection';
+import { Categories } from '../../api/category/CategoryCollection';
+import { defineMethod } from '../../api/base/BaseCollection.methods';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 export const AskADoc = () => {
-  // Use state to handle form data
-  const [question, setQuestion] = useState('');
-  const [category, setCategory] = useState('');
+  const formRef = useRef(null);
+
+  // Fetch categories with useTracker
+  const { ready, categories } = useTracker(() => {
+    const subscription = Categories.subscribeCategoryAll();
+    const rdy = subscription.ready();
+    const categoryItems = Categories.find().fetch();
+    return {
+      categories: categoryItems,
+      ready: rdy,
+    };
+  }, []);
+
+  // Dynamically create schema after categories are fetched
+  const formSchema = ready
+    ? new SimpleSchema({
+      category: {
+        type: String,
+      },
+      passcode: {
+        type: String,
+        allowedValues: ['Always-Ready-Always-There'],
+      },
+      question: {
+        type: String,
+      },
+    })
+    : null;
+
+  const bridge = ready ? new SimpleSchema2Bridge(formSchema) : null;
 
   // Handle form submission
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log('Submitted Question:', question);
-    console.log('Submitted Category:', category);
-    // Clear form fields after submission
-    setQuestion('');
-    setCategory('');
+  const submit = (data) => {
+    const { question, category } = data;
+    const collectionName = Questions.getCollectionName();
+    const definitionData = { question, category };
+
+    defineMethod.callPromise({ collectionName, definitionData })
+      .then(() => {
+        swal('Success', 'Your question has been submitted!', 'success');
+        formRef.current.reset(); // Reset form after success
+      })
+      .catch((error) => swal('Error', error.message, 'error'));
   };
 
-  return (
+  return ready && bridge ? (
     <Container fluid className="color1">
       <Row className="py-4 justify-content-center">
-        <Col className="col-11 align-content-center">
+        <Col className="col-10 align-content-center">
           <Row className="py-5 color1 justify-content-center">
             <Col xs={12} md={8} lg={6} className="text-center text-white">
               <h1>Ask A Doc</h1>
-              <p> Anonymously ask a Doctor any question. Your answer will appear in the FAQ page soon.</p>
+              <p>Anonymously ask a Doctor any question. Your answer will appear in the FAQ page soon.</p>
             </Col>
           </Row>
           <Row className="justify-content-center" style={{ width: '100%', marginBottom: '20px' }}>
             <Col xs={12} md={10} lg={8} className="text-center">
-              <Form>
-                <Form.Group className="mb-4">
-                  <Row>
-                    <Col xs={12} md={6}>
-                      <Form.Select
-                        value={category}
-                        onChange={(e) => setCategory(e.target.value)}
-                        required
-                        style={{ padding: '15px', fontSize: '1.1rem', marginBottom: '20px', width: '100%' }}
-                      >
-                        <option value="" disabled>Select a category</option>
-                        <option value="General Health">General Health</option>
-                        <option value="Mental Health">Mental Health</option>
-                        <option value="Vision">Vision</option>
-                      </Form.Select>
-                    </Col>
-                    <Col xs={12} md={6}>
-                      <Form.Control
-                        as="textarea"
-                        placeholder="Passcode"
-                        rows={1}
-                        required
-                        style={{ resize: 'none', padding: '15px', fontSize: '1.1rem', marginBottom: '20px' }}
-                      />
-                    </Col>
-                  </Row>
-                </Form.Group>
-
-                <Form.Group className="mb-4">
-                  <Form.Control
-                    as="textarea"
-                    rows={6}
-                    placeholder="type your question here...."
-                    value={question}
-                    onChange={(e) => setQuestion(e.target.value)}
-                    required
-                    style={{ resize: 'none', padding: '20px', fontSize: '1.1rem', lineHeight: '1.5', width: '100%' }}
-                  />
-                </Form.Group>
-              </Form>
+              <AutoForm ref={formRef} schema={bridge} onSubmit={submit}>
+                <Row>
+                  <Col xs={12} md={6}>
+                    <SelectField name="category" placeholder="Select a category" />
+                  </Col>
+                  <Col xs={12} md={6}>
+                    <TextField name="passcode" placeholder="Passcode" />
+                  </Col>
+                </Row>
+                <LongTextField name="question" placeholder="Type your question here...." style={{ height: '200px', resize: 'none' }} />
+                <SubmitField value="Submit" />
+                <ErrorsField />
+              </AutoForm>
             </Col>
           </Row>
-          <div className="pb-5 text-center">
-            <Button className="" variant="primary" type="submit" onClick={handleSubmit}>
-              Submit
-            </Button>
-          </div>
         </Col>
       </Row>
     </Container>
+  ) : (
+    <LoadingSpinner message="Loading Categories" />
   );
 };
 
