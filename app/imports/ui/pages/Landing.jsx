@@ -12,30 +12,30 @@ const Landing = () => (
       </Col>
     </Row>
     <Row className="mt-2 mb-5 py-5 g-3 justify-content-center text-shadow">
-      <Col xs="auto">
-        <Button className="rounded-3" variant="outline-light" size="lg" href="/">
+      <Col xs={12} sm="auto" className="text-center">
+        <Button className="rounded-3" variant="outline-light" size="lg" href="/faq">
           FAQ
         </Button>
       </Col>
-      <Col xs="auto">
+      <Col xs={12} sm="auto" className="text-center">
         <Button className="rounded-3" variant="outline-light" size="lg" href="/">
           Question Compass
         </Button>
       </Col>
-      <Col xs="auto">
+      <Col xs={12} sm="auto" className="text-center">
         <Button className="rounded-3" variant="outline-light" size="lg" href="/">
           Ask A Doc
         </Button>
       </Col>
     </Row>
     <Container fluid className="color3 p-4 d-flex justify-content-center align-items-center">
-      <Col className="col-10">
+      <Col xs={12} sm={11} md={10}>
         <Card className="rounded-3 p-5 m-5">
           <Row className="text-center">
-            <Col className="col-6">
-              <h1>IMAGE</h1>
+            <Col xs={12} md={6}>
+              <img src="/images/FAQ.png" alt="Logo" width="200" height="200" />
             </Col>
-            <Col className="col-6">
+            <Col xs={12} md={6}>
               <h2>Ask health-related questions anonymously</h2>
               <p>Whether it&apos;s a minor query or a more complex issue, you&apos;ll find the guidance you need.</p>
             </Col>
@@ -44,28 +44,28 @@ const Landing = () => (
       </Col>
     </Container>
     <Container fluid className="color2 p-4 d-flex justify-content-center align-items-center">
-      <Col className="col-10">
+      <Col xs={12} sm={11} md={10}>
         <Card className="rounded-3 p-5 m-5">
           <Row className="text-center">
-            <Col className="col-6">
+            <Col xs={12} md={6}>
               <h2>Question Compass</h2>
               <p>Find the right path to your health answers</p>
             </Col>
-            <Col className="col-6">
-              <h1>IMAGE</h1>
+            <Col xs={12} md={6}>
+              <img src="/images/Compass.png" alt="Logo" width="200" height="200" />
             </Col>
           </Row>
         </Card>
       </Col>
     </Container>
     <Container fluid className="color1 p-4 d-flex justify-content-center align-items-center">
-      <Col className="col-10">
+      <Col xs={12} sm={11} md={10}>
         <Card className="rounded-3 p-5 m-5">
           <Row className="text-center">
-            <Col className="col-6">
-              <h1>IMAGE</h1>
+            <Col xs={12} md={6}>
+              <img src="/images/AskADoc.png" alt="Logo" width="200" height="200" />
             </Col>
-            <Col className="col-6">
+            <Col xs={12} md={6}>
               <h2>Ask A Doc</h2>
               <p>Can&apos;t find an answer? Ask a medical professional directly!</p>
             </Col>
@@ -74,10 +74,10 @@ const Landing = () => (
       </Col>
     </Container>
     <Container fluid className="color4 p-4 d-flex justify-content-center align-items-center">
-      <Col className="col-10">
+      <Col xs={12} sm={11} md={10}>
         <Card className="rounded-3 p-5 my-5">
           <Row className="align-middle text-center my-5">
-            <Col className="">
+            <Col xs={12}>
               <h2>Our Mission</h2>
               <br />
               <p>

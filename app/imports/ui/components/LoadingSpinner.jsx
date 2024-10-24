@@ -3,7 +3,7 @@ import { Container, Row, Spinner } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 const LoadingSpinner = ({ message }) => (
-  <Container>
+  <Container className="p-5">
     <Row className="justify-content-md-center"><Spinner animation="border" />{message}</Row>
   </Container>
 );
