@@ -31,17 +31,30 @@ export const AskADoc = () => {
             <Col xs={12} md={10} lg={8} className="text-center">
               <Form>
                 <Form.Group className="mb-4">
-                  <Form.Select
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
-                    required
-                    style={{ padding: '15px', fontSize: '1.1rem', marginBottom: '20px', width: '100%' }}
-                  >
-                    <option value="" disabled>Select a category</option>
-                    <option value="General Health">General Health</option>
-                    <option value="Mental Health">Mental Health</option>
-                    <option value="Vision">Vision</option>
-                  </Form.Select>
+                  <Row>
+                    <Col xs={12} md={6}>
+                      <Form.Select
+                        value={category}
+                        onChange={(e) => setCategory(e.target.value)}
+                        required
+                        style={{ padding: '15px', fontSize: '1.1rem', marginBottom: '20px', width: '100%' }}
+                      >
+                        <option value="" disabled>Select a category</option>
+                        <option value="General Health">General Health</option>
+                        <option value="Mental Health">Mental Health</option>
+                        <option value="Vision">Vision</option>
+                      </Form.Select>
+                    </Col>
+                    <Col xs={12} md={6}>
+                      <Form.Control
+                        as="textarea"
+                        placeholder="Passcode"
+                        rows={1}
+                        required
+                        style={{ resize: 'none', padding: '15px', fontSize: '1.1rem', marginBottom: '20px' }}
+                      />
+                    </Col>
+                  </Row>
                 </Form.Group>
 
                 <Form.Group className="mb-4">
