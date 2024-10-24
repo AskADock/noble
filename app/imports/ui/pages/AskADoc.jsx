@@ -1,66 +1,85 @@
-import React from 'react';
-import { Card, Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, ErrorsField, NumField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
-import swal from 'sweetalert';
-import { Meteor } from 'meteor/meteor';
-import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import SimpleSchema from 'simpl-schema';
-import { Stuffs } from '../../api/stuff/StuffCollection';
-import { defineMethod } from '../../api/base/BaseCollection.methods';
-import { PAGE_IDS } from '../utilities/PageIDs';
+import React, { useState } from 'react';
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+// import { FiPlusCircle } from 'react-icons/fi';
 
-// Create a schema to specify the structure of the data to appear in the form.
-const formSchema = new SimpleSchema({
-  name: String,
-  quantity: Number,
-  condition: {
-    type: String,
-    allowedValues: ['excellent', 'good', 'fair', 'poor'],
-    defaultValue: 'good',
-  },
-});
+export const AskADoc = () => {
+  // Use state to handle form data
+  const [question, setQuestion] = useState('');
+  const [category, setCategory] = useState('');
 
-const bridge = new SimpleSchema2Bridge(formSchema);
-
-/* Renders the AddStuff page for adding a document. */
-const AddStuff = () => {
-
-  // On submit, insert the data.
-  const submit = (data, formRef) => {
-    const { name, quantity, condition } = data;
-    const owner = Meteor.user().username;
-    const collectionName = Stuffs.getCollectionName();
-    const definitionData = { name, quantity, condition, owner };
-    defineMethod.callPromise({ collectionName, definitionData })
-      .catch(error => swal('Error', error.message, 'error'))
-      .then(() => {
-        swal('Success', 'Item added successfully', 'success');
-        formRef.reset();
-      });
+  // Handle form submission
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log('Submitted Question:', question);
+    console.log('Submitted Category:', category);
+    // Clear form fields after submission
+    setQuestion('');
+    setCategory('');
   };
 
-  // Render the form. Use Uniforms: https://github.com/vazco/uniforms
-  let fRef = null;
   return (
-    <Container id={PAGE_IDS.ADD_STUFF} className="py-3">
-      <Row className="justify-content-center">
-        <Col xs={5}>
-          <Col className="text-center"><h2>Add Stuff</h2></Col>
-          <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
-            <Card>
-              <Card.Body>
-                <TextField name="name" />
-                <NumField name="quantity" decimal={null} />
-                <SelectField name="condition" />
-                <SubmitField value="Submit" />
-                <ErrorsField />
-              </Card.Body>
-            </Card>
-          </AutoForm>
+    <Container fluid className="color1">
+      <Row className="py-4 justify-content-center">
+        <Col className="col-11 align-content-center">
+          <Row className="py-5 color1 justify-content-center">
+            <Col xs={12} md={8} lg={6} className="text-center text-white">
+              <h1>Ask A Doc</h1>
+              <p> Anonymously ask a Doctor any question. Your answer will appear in the FAQ page soon.</p>
+            </Col>
+          </Row>
+          <Row className="justify-content-center" style={{ width: '100%', marginBottom: '20px' }}>
+            <Col xs={12} md={10} lg={8} className="text-center">
+              <Form>
+                <Form.Group className="mb-4">
+                  <Row>
+                    <Col xs={12} md={6}>
+                      <Form.Select
+                        value={category}
+                        onChange={(e) => setCategory(e.target.value)}
+                        required
+                        style={{ padding: '15px', fontSize: '1.1rem', marginBottom: '20px', width: '100%' }}
+                      >
+                        <option value="" disabled>Select a category</option>
+                        <option value="General Health">General Health</option>
+                        <option value="Mental Health">Mental Health</option>
+                        <option value="Vision">Vision</option>
+                      </Form.Select>
+                    </Col>
+                    <Col xs={12} md={6}>
+                      <Form.Control
+                        as="textarea"
+                        placeholder="Passcode"
+                        rows={1}
+                        required
+                        style={{ resize: 'none', padding: '15px', fontSize: '1.1rem', marginBottom: '20px' }}
+                      />
+                    </Col>
+                  </Row>
+                </Form.Group>
+
+                <Form.Group className="mb-4">
+                  <Form.Control
+                    as="textarea"
+                    rows={6}
+                    placeholder="type your question here...."
+                    value={question}
+                    onChange={(e) => setQuestion(e.target.value)}
+                    required
+                    style={{ resize: 'none', padding: '20px', fontSize: '1.1rem', lineHeight: '1.5', width: '100%' }}
+                  />
+                </Form.Group>
+              </Form>
+            </Col>
+          </Row>
+          <div className="pb-5 text-center">
+            <Button className="" variant="primary" type="submit" onClick={handleSubmit}>
+              Submit
+            </Button>
+          </div>
         </Col>
       </Row>
     </Container>
   );
 };
 
-export default AddStuff;
+export default AskADoc;
