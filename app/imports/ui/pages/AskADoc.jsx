@@ -1,62 +1,52 @@
-import React, { useRef } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import { AutoForm, ErrorsField, LongTextField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import React, { useState } from 'react';
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import swal from 'sweetalert';
-import SimpleSchema from 'simpl-schema';
-import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Questions } from '../../api/question/QuestionCollection';
 import { Categories } from '../../api/category/CategoryCollection';
-import { defineMethod } from '../../api/base/BaseCollection.methods';
+import { defineMethodAskADoc } from '../../api/base/BaseCollection.methods';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 export const AskADoc = () => {
-  const formRef = useRef(null);
-
   // Fetch categories with useTracker
   const { ready, categories } = useTracker(() => {
     const subscription = Categories.subscribeCategoryAll();
     const rdy = subscription.ready();
     const categoryItems = Categories.find().fetch();
+    // console.log(categoryItems);
     return {
       categories: categoryItems,
       ready: rdy,
     };
   }, []);
 
-  // Dynamically create schema after categories are fetched
-  const formSchema = ready
-    ? new SimpleSchema({
-      category: {
-        type: String,
-      },
-      passcode: {
-        type: String,
-        allowedValues: ['Always-Ready-Always-There'],
-      },
-      question: {
-        type: String,
-      },
-    })
-    : null;
-
-  const bridge = ready ? new SimpleSchema2Bridge(formSchema) : null;
+  // Form field state
+  const [category, setCategory] = useState('');
+  const [passcode, setPasscode] = useState('');
+  const [question, setQuestion] = useState('');
 
   // Handle form submission
-  const submit = (data) => {
-    const { question, category } = data;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (passcode !== 'AlwaysReadyAlwaysThere') {
+      swal('Error', 'Incorrect passcode', 'error');
+      return;
+    }
     const collectionName = Questions.getCollectionName();
     const definitionData = { question, category };
 
-    defineMethod.callPromise({ collectionName, definitionData })
+    defineMethodAskADoc.callPromise({ collectionName, definitionData })
       .then(() => {
         swal('Success', 'Your question has been submitted!', 'success');
-        formRef.current.reset(); // Reset form after success
+        // Reset form after success
+        setCategory('');
+        setPasscode('');
+        setQuestion('');
       })
       .catch((error) => swal('Error', error.message, 'error'));
   };
 
-  return ready && bridge ? (
+  return ready ? (
     <Container fluid className="color1">
       <Row className="py-4 justify-content-center">
         <Col className="col-10 align-content-center">
@@ -68,19 +58,51 @@ export const AskADoc = () => {
           </Row>
           <Row className="justify-content-center" style={{ width: '100%', marginBottom: '20px' }}>
             <Col xs={12} md={10} lg={8} className="text-center">
-              <AutoForm ref={formRef} schema={bridge} onSubmit={submit}>
-                <Row>
-                  <Col xs={12} md={6}>
-                    <SelectField name="category" placeholder="Select a category" />
-                  </Col>
-                  <Col xs={12} md={6}>
-                    <TextField name="passcode" placeholder="Passcode" />
-                  </Col>
-                </Row>
-                <LongTextField name="question" placeholder="Type your question here...." style={{ height: '200px', resize: 'none' }} />
-                <SubmitField value="Submit" />
-                <ErrorsField />
-              </AutoForm>
+              <Form onSubmit={handleSubmit}>
+                <Form.Group className="mb-4">
+                  <Row>
+                    <Col xs={12} md={6}>
+                      <Form.Select
+                        value={category}
+                        onChange={(e) => setCategory(e.target.value)}
+                        required
+                        style={{ padding: '15px', fontSize: '1.1rem', marginBottom: '20px', width: '100%' }}
+                      >
+                        <option value="" disabled>Select a category</option>
+                        {categories.map((cat) => (
+                          <option key={cat._id} value={cat.category}>{cat.category}</option>
+                        ))}
+                      </Form.Select>
+                    </Col>
+                    <Col xs={12} md={6}>
+                      <Form.Control
+                        type="password"
+                        placeholder="Passcode"
+                        value={passcode}
+                        onChange={(e) => setPasscode(e.target.value)}
+                        required
+                        style={{ padding: '15px', fontSize: '1.1rem', marginBottom: '20px' }}
+                      />
+                    </Col>
+                  </Row>
+                </Form.Group>
+
+                <Form.Group className="mb-4">
+                  <Form.Control
+                    as="textarea"
+                    rows={6}
+                    placeholder="Type your question here..."
+                    value={question}
+                    onChange={(e) => setQuestion(e.target.value)}
+                    required
+                    style={{ resize: 'none', padding: '20px', fontSize: '1.1rem', lineHeight: '1.5', width: '100%' }}
+                  />
+                </Form.Group>
+
+                <Button variant="primary" type="submit">
+                  Submit
+                </Button>
+              </Form>
             </Col>
           </Row>
         </Col>
