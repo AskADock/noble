@@ -52,7 +52,7 @@ const Landing = () => (
               <p>Find the right path to your health answers</p>
             </Col>
             <Col className="col-6">
-              <img src="/images/askadoc.png" alt="Logo" width="100" height="100" />
+              <img src="/images/compasss.png" alt="Logo" width="100" height="100" />
             </Col>
           </Row>
         </Card>
