@@ -50,6 +50,7 @@ const App = () => {
           <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
           <Route path="/admin" element={<AdminProtectedRoute ready={ready} isAdmin={isAdmin}><ListStuffAdmin /></AdminProtectedRoute>} />
           <Route path="/manage-database" element={<AdminProtectedRoute ready={ready} isAdmin={isAdmin}><ManageDatabase /></AdminProtectedRoute>} />
+          <Route path="/manage-faq" element={<AdminProtectedRoute ready={ready} isAdmin={isAdmin}><FAQManagement /></AdminProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -1,11 +1,10 @@
 import React from 'react';
-import { FAQ } from '../../api/faq/FAQCollection';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Col, Container, Row, Table, Button, Form } from 'react-bootstrap';
+import swal from 'sweetalert';
+import { FAQ } from '../../api/faq/FAQCollection';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PAGE_IDS } from '../utilities/PageIDs';
-import swal from 'sweetalert';
-
 
 /* Renders a table containing all of the FAQ documents. Allows admins to manage them. */
 const FAQManagement = () => {
@@ -29,16 +28,16 @@ const FAQManagement = () => {
 
   const deleteFAQ = (faqId) => {
     swal({
-      title: "Are you sure?",
-      text: "Once deleted, you will not be able to recover this FAQ entry!",
-      icon: "warning",
+      title: 'Are you sure?',
+      text: 'Once deleted, you will not be able to recover this FAQ entry!',
+      icon: 'warning',
       buttons: true,
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
         FAQ.remove(faqId);
-        swal("FAQ entry has been deleted!", {
-          icon: "success",
+        swal('FAQ entry has been deleted!', {
+          icon: 'success',
         });
       }
     });
@@ -61,8 +60,8 @@ const FAQManagement = () => {
       },
     });
     setEditingFAQ(null); // Exit edit mode
-    swal("FAQ entry has been updated!", {
-      icon: "success",
+    swal('FAQ entry has been updated!', {
+      icon: 'success',
     });
   };
 
@@ -77,58 +76,58 @@ const FAQManagement = () => {
           <Col className="text-center"><h2>FAQ Management (Admin)</h2></Col>
           <Table striped bordered hover>
             <thead>
-            <tr>
-              <th>Question</th>
-              <th>Answer</th>
-              <th>Category</th>
-              <th>Actions</th>
-            </tr>
+              <tr>
+                <th>Question</th>
+                <th>Answer</th>
+                <th>Category</th>
+                <th>Actions</th>
+              </tr>
             </thead>
             <tbody>
-            {faqs.map((faq) => (
-              <tr key={faq._id}>
-                {editingFAQ === faq._id ? (
-                  <>
-                    <td>
-                      <Form.Control
-                        type="text"
-                        value={editedQuestion}
-                        onChange={(e) => setEditedQuestion(e.target.value)}
-                      />
-                    </td>
-                    <td>
-                      <Form.Control
-                        as="textarea"
-                        rows={2}
-                        value={editedAnswer}
-                        onChange={(e) => setEditedAnswer(e.target.value)}
-                      />
-                    </td>
-                    <td>
-                      <Form.Control
-                        type="text"
-                        value={editedCategory}
-                        onChange={(e) => setEditedCategory(e.target.value)}
-                      />
-                    </td>
-                    <td>
-                      <Button variant="success" onClick={() => saveEditFAQ(faq._id)}>Save</Button>{' '}
-                      <Button variant="secondary" onClick={cancelEdit}>Cancel</Button>
-                    </td>
-                  </>
-                ) : (
-                  <>
-                    <td>{faq.question}</td>
-                    <td>{faq.answer}</td>
-                    <td>{faq.category}</td>
-                    <td>
-                      <Button variant="warning" onClick={() => startEditFAQ(faq)}>Edit</Button>{' '}
-                      <Button variant="danger" onClick={() => deleteFAQ(faq._id)}>Delete</Button>
-                    </td>
-                  </>
-                )}
-              </tr>
-            ))}
+              {faqs.map((faq) => (
+                <tr key={faq._id}>
+                  {editingFAQ === faq._id ? (
+                    <>
+                      <td>
+                        <Form.Control
+                          type="text"
+                          value={editedQuestion}
+                          onChange={(e) => setEditedQuestion(e.target.value)}
+                        />
+                      </td>
+                      <td>
+                        <Form.Control
+                          as="textarea"
+                          rows={2}
+                          value={editedAnswer}
+                          onChange={(e) => setEditedAnswer(e.target.value)}
+                        />
+                      </td>
+                      <td>
+                        <Form.Control
+                          type="text"
+                          value={editedCategory}
+                          onChange={(e) => setEditedCategory(e.target.value)}
+                        />
+                      </td>
+                      <td>
+                        <Button variant="success" onClick={() => saveEditFAQ(faq._id)}>Save</Button>{' '}
+                        <Button variant="secondary" onClick={cancelEdit}>Cancel</Button>
+                      </td>
+                    </>
+                  ) : (
+                    <>
+                      <td>{faq.question}</td>
+                      <td>{faq.answer}</td>
+                      <td>{faq.category}</td>
+                      <td>
+                        <Button variant="warning" onClick={() => startEditFAQ(faq)}>Edit</Button>{' '}
+                        <Button variant="danger" onClick={() => deleteFAQ(faq._id)}>Delete</Button>
+                      </td>
+                    </>
+                  )}
+                </tr>
+              ))}
             </tbody>
           </Table>
         </Col>
