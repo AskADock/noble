@@ -16,7 +16,6 @@ const Footer = () => {
             <Nav className="justify-content-center">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/faq">FAQ</Nav.Link>
-              <Nav.Link href="/question-compass">Question Compass</Nav.Link>
               <Nav.Link href="/ask-a-doc">Ask A Doc</Nav.Link>
             </Nav>
             <Nav className="justify-content-center">

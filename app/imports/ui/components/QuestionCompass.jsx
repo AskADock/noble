@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
 
 const QuestionCompass = () => {
   useEffect(() => {
@@ -21,6 +20,8 @@ const QuestionCompass = () => {
         },
         url: 'https://general-runtime.voiceflow.com', // Optional, defaults to Voiceflow runtime endpoint
       });
+
+      window.voiceflow.chat.open(); // Open the chat widget
     };
 
     // Create the script element to load the Voiceflow widget
@@ -40,19 +41,7 @@ const QuestionCompass = () => {
   }, []);
 
   return (
-    <Container>
-      <Row className="justify-content-center">
-        <Col xs={12} md={10} lg={8} className="text-center">
-          <h2>Question Compass</h2>
-          <p>Ask your questions and get instant answers!</p>
-        </Col>
-      </Row>
-      <Row className="justify-content-center">
-        <Col xs={12} md={10} lg={8}>
-          <div id="voiceflow-chat" style={{ height: '600px' }} />
-        </Col>
-      </Row>
-    </Container>
+    <div id="voiceflow-chat" />
   );
 };
 
