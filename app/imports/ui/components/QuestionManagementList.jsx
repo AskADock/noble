@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Row, Col, Container, Pagination, Badge, Tabs, Tab, Card, ButtonGroup, Button } from 'react-bootstrap';
+import { Form, Row, Col, Container, Pagination, Badge, Tabs, Tab, Card, ButtonGroup, Button, Modal } from 'react-bootstrap';
 import Fuse from 'fuse.js';
 
 const QuestionManagementList = ({ questions, unansweredQuestions }) => {
@@ -9,6 +9,17 @@ const QuestionManagementList = ({ questions, unansweredQuestions }) => {
   const [searchPerformed, setSearchPerformed] = useState(false);
   const [activeTab, setActiveTab] = useState('all');
   const questionsPerPage = 10;
+
+  const [show, setShow] = useState(false);
+  const [action, setAction] = useState(null);
+  const [selectedQuestion, setSelectedQuestion] = useState(null);
+
+  const handleClose = () => setShow(false);
+  const handleShow = (actionType, question) => {
+    setAction(actionType);
+    setSelectedQuestion(question);
+    setShow(true);
+  };
 
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
@@ -36,9 +47,7 @@ const QuestionManagementList = ({ questions, unansweredQuestions }) => {
 
   // Filter questions based on the active tab
   const filteredQuestions = displayedQuestions.filter(
-    (item) => (activeTab === 'all'
-      ? item.answer // Only show answered questions in "Questions" tab
-      : activeTab === 'unanswered' && !item.answer), // Only show unanswered questions in "Unanswered Questions" tab
+    (item) => (activeTab === 'all' ? item.answer : activeTab === 'unanswered' && !item.answer)
   );
 
   const indexOfLastQuestion = currentPage * questionsPerPage;
@@ -50,6 +59,12 @@ const QuestionManagementList = ({ questions, unansweredQuestions }) => {
     if (pageNumber > 0 && pageNumber <= totalPages) {
       setCurrentPage(pageNumber);
     }
+  };
+
+  const handleSaveChanges = () => {
+    // Implement save or delete logic based on action
+    
+    handleClose();
   };
 
   return (
@@ -91,8 +106,8 @@ const QuestionManagementList = ({ questions, unansweredQuestions }) => {
                     <Row className="justify-content-end">
                       <Col className="col-4 text-end">
                         <ButtonGroup>
-                          <Button variant="success">Edit</Button>
-                          <Button variant="danger">Delete</Button>
+                          <Button variant="success" onClick={() => handleShow('edit', item)}>Edit</Button>
+                          <Button variant="danger" onClick={() => handleShow('delete', item)}>Delete</Button>
                         </ButtonGroup>
                       </Col>
                     </Row>
@@ -109,8 +124,8 @@ const QuestionManagementList = ({ questions, unansweredQuestions }) => {
                     <Row className="justify-content-end">
                       <Col className="col-lg-4 col-xs-6 text-end">
                         <ButtonGroup>
-                          <Button variant="success">Reply</Button>
-                          <Button variant="danger">Delete</Button>
+                          <Button variant="success" onClick={() => handleShow('edit', item)}>Reply</Button>
+                          <Button variant="danger" onClick={() => handleShow('delete', item)}>Delete</Button>
                         </ButtonGroup>
                       </Col>
                     </Row>
@@ -142,6 +157,35 @@ const QuestionManagementList = ({ questions, unansweredQuestions }) => {
           </Pagination>
         </Container>
       )}
+
+      {/* Modal for edit/delete actions */}
+      <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
+        <Modal.Header closeButton>
+          <Modal.Title>{action === 'delete' ? 'Delete Question' : 'Edit Question'}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {action === 'delete' ? (
+            <p>Are you sure you want to delete this question?</p>
+          ) : (
+            <Form>
+              <Form.Group>
+                <Form.Label>Question</Form.Label>
+                <Form.Control type="text" defaultValue={selectedQuestion?.question} />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Answer</Form.Label>
+                <Form.Control type="text" defaultValue={selectedQuestion?.answer} />
+              </Form.Group>
+            </Form>
+          )}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>Close</Button>
+          <Button variant="primary" onClick={handleSaveChanges}>
+            {action === 'delete' ? 'Delete' : 'Save Changes'}
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </Container>
   );
 };
