@@ -1,15 +1,8 @@
 import { Meteor } from 'meteor/meteor';
-import { Stuffs } from '../../api/stuff/StuffCollection';
 import { Categories } from '../../api/category/CategoryCollection';
 import { Questions } from '../../api/question/QuestionCollection';
 import { FAQ } from '../../api/faq/FAQCollection';
 /* eslint-disable no-console */
-
-// Initialize the database with a default data document.
-function addData(data) {
-  console.log(`  Adding: ${data.name} (${data.owner})`);
-  Stuffs.define(data);
-}
 
 // Initialize the database with a default category document.
 function addCategory(data) {
@@ -27,14 +20,6 @@ function addQuestion(data) {
 function addFAQ(data) {
   console.log(`  Adding: ${data.question}`);
   FAQ.define(data);
-}
-
-// Initialize the StuffsCollection if empty.
-if (Stuffs.count() === 0) {
-  if (Meteor.settings.defaultData) {
-    console.log('Creating default data.');
-    Meteor.settings.defaultData.forEach(data => addData(data));
-  }
 }
 
 // Initialize the CategoriesCollection if empty

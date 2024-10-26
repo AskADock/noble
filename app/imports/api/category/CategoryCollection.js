@@ -3,9 +3,8 @@ import SimpleSchema from 'simpl-schema';
 import { check } from 'meteor/check';
 import BaseCollection from '../base/BaseCollection';
 
-export const categories = ['Physical Health', 'Mental Health', 'Medical Readiness',
-  'Womens Health', 'Mens Health', 'Injury & Illness Management', 'Substance Use & Addiction',
-  'Self-Care & Resilience', 'Medical Resources'];
+export const categories = ['Readiness', 'Line of Duty', 'Profiles/Waivers', 'Medical Clearance', 'FLYERS', 'NON-FLYERS',
+  'Deployment', 'Occupational Health', 'Other'];
 export const categoryPublications = {
   categoryAll: 'categoryAll',
 };
@@ -75,7 +74,7 @@ class CategoryCollection extends BaseCollection {
   }
 
   /**
-   * Subscription method for categoies.
+   * Subscription method for categories.
    */
   subscribeCategoryAll() {
     if (Meteor.isClient) {
