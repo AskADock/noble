@@ -45,7 +45,7 @@ const MedHome = () => {
                     <h3>FAQ Management</h3>
                   </Card.Title>
                   <Card.Body>
-                    <Button href="">
+                    <Button href="/faq-management">
                       FAQs
                     </Button>
                   </Card.Body>
@@ -57,7 +57,9 @@ const MedHome = () => {
                     <h3>Question Management</h3>
                   </Card.Title>
                   <Card.Body>
-                    <Button>Questions</Button>
+                    <Button href="/question-management">
+                      Questions
+                    </Button>
                   </Card.Body>
                 </Card>
               </Col>
