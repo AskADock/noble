@@ -72,3 +72,9 @@ body {
   background-size: cover;
   min-height: 70vh;
 }
+
+.med-staff-home-background {
+  background-color: var(--color3);
+  background-size: cover;
+  min-height: 70vh;
+}

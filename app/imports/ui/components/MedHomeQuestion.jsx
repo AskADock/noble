@@ -3,7 +3,7 @@ import { Card, Row, Table, Button, ButtonGroup } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 const MedHomeQuestion = ({ questions }) => (
-  <Row className="my-2">
+  <Row className="my-2 align-content-center justify-content-center">
     <Card className="rounded-4 p-1">
       <Card.Title>
         <h2 className="text-center mt-2">Recent Questions</h2>
@@ -18,7 +18,7 @@ const MedHomeQuestion = ({ questions }) => (
             </tr>
           </thead>
           <tbody>
-            {questions.map((question) => (
+            {questions.slice(-10).map((question) => (
               <tr key={question._id}>
                 <td colSpan={1}>{question.category}</td>
                 <td colSpan={9}>{question.question}</td>
@@ -36,6 +36,9 @@ const MedHomeQuestion = ({ questions }) => (
             ))}
           </tbody>
         </Table>
+        <Button>
+          View More
+        </Button>
       </Card.Body>
     </Card>
   </Row>

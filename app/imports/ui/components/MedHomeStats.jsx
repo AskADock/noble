@@ -6,7 +6,7 @@ const MedHomeStats = ({ allQuestions, questionsNotAnswer, faq }) => {
   const textStyle = questionsNotAnswer.length > 0 ? { color: 'red' } : { color: 'green' };
 
   return (
-    <Row className="my-2">
+    <Row className="my-2 align-content-center justify-content-center">
       <Card className="rounded-4">
         <Card.Body>
           <Row>

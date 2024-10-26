@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Container, Card } from 'react-bootstrap';
+import { Row, Col, Container, Card, Button } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Questions } from '../../api/question/QuestionCollection';
 import { FAQ } from '../../api/faq/FAQCollection';
@@ -32,18 +32,33 @@ const MedHome = () => {
           <h1 className="text-white">Medical Home</h1>
         </Row>
       </Container>
-      <Container>
-        <Row className="justify-content-center mb-5">
-          <Col className="col-11">
-            <Row>
+      <Container fluid className="med-staff-home-background">
+        <Row className="align-content-center justify-content-center my-4">
+          <Col xs={11} md={9}>
+            <Row className="mb-3">
               <MedHomeStats allQuestions={questions} questionsNotAnswer={questionsNotAnswer} faq={faq} />
             </Row>
-            <Row>
-              <Col>
-                <Card>
+            <Row className="align-content-center justify-content-center mb-3">
+              <Col xs={6} md={4} className="align-content-center justify-content-center">
+                <Card className="p-1 text-center rounded-4">
                   <Card.Title>
                     <h3>FAQ Management</h3>
                   </Card.Title>
+                  <Card.Body>
+                    <Button href="">
+                      FAQs
+                    </Button>
+                  </Card.Body>
+                </Card>
+              </Col>
+              <Col xs={6} md={4} className="align-content-center justify-content-center">
+                <Card className="p-1 text-center rounded-4">
+                  <Card.Title>
+                    <h3>Question Management</h3>
+                  </Card.Title>
+                  <Card.Body>
+                    <Button>Questions</Button>
+                  </Card.Body>
                 </Card>
               </Col>
             </Row>
