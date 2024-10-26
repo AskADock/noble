@@ -21,11 +21,11 @@ const QuestionManagementFilter = ({ unansweredQuestions, answeredQuestions, cate
 
   // Filter questions based on selected categories
   const questions = selectedCategories.length > 0
-    ? answeredQuestions.filter((question) => selectedCategories.every((selectedCategory) => question.category === selectedCategory))
+    ? answeredQuestions.filter((question) => selectedCategories.includes(question.category))
     : answeredQuestions;
 
   const unAnsweredQuestions = selectedCategories.length > 0
-    ? unansweredQuestions.filter((question) => selectedCategories.every((selectedCategory) => question.category === selectedCategory))
+    ? unansweredQuestions.filter((question) => selectedCategories.includes(question.category))
     : unansweredQuestions;
 
   return (

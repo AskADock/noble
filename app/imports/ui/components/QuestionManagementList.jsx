@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Row, Col, Container, Pagination, Badge, Tabs, Tab, Table } from 'react-bootstrap';
+import { Form, Row, Col, Container, Pagination, Badge, Tabs, Tab, Card, ButtonGroup, Button } from 'react-bootstrap';
 import Fuse from 'fuse.js';
 
 const QuestionManagementList = ({ questions, unansweredQuestions }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [searchPerformed, setSearchPerformed] = useState(false);
-  const questionsPerPage = 9;
+  const [activeTab, setActiveTab] = useState('all');
+  const questionsPerPage = 10;
 
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
@@ -15,9 +16,12 @@ const QuestionManagementList = ({ questions, unansweredQuestions }) => {
     setSearchPerformed(!!event.target.value);
   };
 
-  let displayedQuestions = questions; // Default to all questions
+  // Combine both answered and unanswered questions for the search
+  const allQuestions = [...questions, ...unansweredQuestions];
+  let displayedQuestions = allQuestions;
 
-  if (searchPerformed && questions.length > 0) {
+  // Perform search if search query is not empty
+  if (searchPerformed && allQuestions.length > 0) {
     const fuseOptions = {
       isCaseSensitive: false,
       shouldSort: true,
@@ -25,15 +29,22 @@ const QuestionManagementList = ({ questions, unansweredQuestions }) => {
       keys: ['question', 'answer', 'category'],
     };
 
-    const fuse = new Fuse(questions, fuseOptions);
+    const fuse = new Fuse(allQuestions, fuseOptions);
     const result = fuse.search(searchQuery);
     displayedQuestions = result.map((item) => item.item);
   }
 
+  // Filter questions based on the active tab
+  const filteredQuestions = displayedQuestions.filter(
+    (item) => (activeTab === 'all'
+      ? item.answer // Only show answered questions in "Questions" tab
+      : activeTab === 'unanswered' && !item.answer), // Only show unanswered questions in "Unanswered Questions" tab
+  );
+
   const indexOfLastQuestion = currentPage * questionsPerPage;
   const indexOfFirstQuestion = indexOfLastQuestion - questionsPerPage;
-  const currentQuestions = displayedQuestions.slice(indexOfFirstQuestion, indexOfLastQuestion);
-  const totalPages = Math.ceil(displayedQuestions.length / questionsPerPage);
+  const currentQuestions = filteredQuestions.slice(indexOfFirstQuestion, indexOfLastQuestion);
+  const totalPages = Math.ceil(filteredQuestions.length / questionsPerPage);
 
   const paginate = (pageNumber) => {
     if (pageNumber > 0 && pageNumber <= totalPages) {
@@ -47,9 +58,9 @@ const QuestionManagementList = ({ questions, unansweredQuestions }) => {
         <Form.Group>
           <Form.Control
             type="text"
-            placeholder="Search FAQs..."
+            placeholder="Search Questions..."
             className="p-2"
-            style={{ minWidth: '45vw', maxWidth: '50vw' }}
+            style={{ minWidth: '35vw', maxWidth: '45vw' }}
             value={searchQuery}
             onChange={handleSearchChange}
           />
@@ -57,51 +68,55 @@ const QuestionManagementList = ({ questions, unansweredQuestions }) => {
       </Container>
 
       <Row className="text-start mt-2 py-1 text-color">
-        <h4>{searchPerformed ? `Total Results: ${displayedQuestions.length}` : 'Latest FAQ'}</h4>
+        <h4>{searchPerformed ? `Total Results: ${filteredQuestions.length}` : 'Latest Questions'}</h4>
       </Row>
 
       <Row>
         <Col>
-          <Tabs defaultActiveKey="all" id="faq-tabs" className="mb-3">
+          <Tabs
+            activeKey={activeTab}
+            onSelect={(tab) => {
+              setActiveTab(tab);
+              setCurrentPage(1); // Reset to the first page on tab change
+            }}
+            id="faq-tabs"
+            className="mb-3"
+          >
             <Tab eventKey="all" title="Questions">
               {currentQuestions.length > 0 ? currentQuestions.map((item) => (
-                <Table striped bordered hover key={item._id}>
-                  <thead>
-                  <tr>
-                    <th>Question</th>
-                    <th>Answer</th>
-                    <th>Category</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td>{item.question}</td>
-                    <td>{item.answer || 'No answer available'}</td>
-                    <td><Badge bg="primary">{item.category || 'Uncategorized'}</Badge></td>
-                  </tr>
-                  </tbody>
-                </Table>
+                <Card key={item._id} className="mb-3 rounded-4">
+                  <Card.Body>
+                    <Badge bg="primary">{item.category || 'Uncategorized'}</Badge>
+                    <Card.Title>{item.question}</Card.Title>
+                    <Row className="justify-content-end">
+                      <Col className="col-4 text-end">
+                        <ButtonGroup>
+                          <Button variant="success">Edit</Button>
+                          <Button variant="danger">Delete</Button>
+                        </ButtonGroup>
+                      </Col>
+                    </Row>
+                  </Card.Body>
+                </Card>
               )) : <p>No results found</p>}
             </Tab>
             <Tab eventKey="unanswered" title="Unanswered Questions">
-              {unansweredQuestions.map((item) => (
-                <Table striped bordered hover key={item._id}>
-                  <thead>
-                  <tr>
-                    <th>Question</th>
-                    <th>Answer</th>
-                    <th>Category</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td>{item.question}</td>
-                    <td>{item.answer || 'No answer available'}</td>
-                    <td><Badge bg="primary">{item.category || 'Uncategorized'}</Badge></td>
-                  </tr>
-                  </tbody>
-                </Table>
-              ))}
+              {currentQuestions.length > 0 ? currentQuestions.map((item) => (
+                <Card key={item._id} className="mb-3 rounded-4">
+                  <Card.Body>
+                    <Badge bg="primary">{item.category || 'Uncategorized'}</Badge>
+                    <Card.Title>{item.question}</Card.Title>
+                    <Row className="justify-content-end">
+                      <Col className="col-lg-4 col-xs-6 text-end">
+                        <ButtonGroup>
+                          <Button variant="success">Reply</Button>
+                          <Button variant="danger">Delete</Button>
+                        </ButtonGroup>
+                      </Col>
+                    </Row>
+                  </Card.Body>
+                </Card>
+              )) : <p>No results found</p>}
             </Tab>
           </Tabs>
         </Col>

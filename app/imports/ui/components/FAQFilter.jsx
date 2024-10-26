@@ -26,7 +26,7 @@ const FAQFilter = ({ faq, categories }) => {
   const isCategoryChecked = (category) => selectedCategories.includes(category);
 
   const filteredFAQ = selectedCategories.length > 0
-    ? faq.filter((theFAQ) => selectedCategories.every((selectedCategory) => theFAQ.category === selectedCategory))
+    ? faq.filter((question) => selectedCategories.includes(question.category))
     : faq;
 
   return (
