@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import swal from 'sweetalert';
 import PropTypes from 'prop-types';
 import { Form, Row, Col, Container, Pagination, Badge, Tabs, Tab, Card, ButtonGroup, Button, Modal } from 'react-bootstrap';
 import Fuse from 'fuse.js';
+import { Questions } from '../../api/question/QuestionCollection';
+import { removeItMethod, updateMethod } from '../../api/base/BaseCollection.methods';
 
 const QuestionManagementList = ({ questions, unansweredQuestions }) => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -9,17 +12,6 @@ const QuestionManagementList = ({ questions, unansweredQuestions }) => {
   const [searchPerformed, setSearchPerformed] = useState(false);
   const [activeTab, setActiveTab] = useState('all');
   const questionsPerPage = 10;
-
-  const [show, setShow] = useState(false);
-  const [action, setAction] = useState(null);
-  const [selectedQuestion, setSelectedQuestion] = useState(null);
-
-  const handleClose = () => setShow(false);
-  const handleShow = (actionType, question) => {
-    setAction(actionType);
-    setSelectedQuestion(question);
-    setShow(true);
-  };
 
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
@@ -47,7 +39,7 @@ const QuestionManagementList = ({ questions, unansweredQuestions }) => {
 
   // Filter questions based on the active tab
   const filteredQuestions = displayedQuestions.filter(
-    (item) => (activeTab === 'all' ? item.answer : activeTab === 'unanswered' && !item.answer)
+    (item) => (activeTab === 'all' ? item.answer : activeTab === 'unanswered' && !item.answer),
   );
 
   const indexOfLastQuestion = currentPage * questionsPerPage;
@@ -61,9 +53,36 @@ const QuestionManagementList = ({ questions, unansweredQuestions }) => {
     }
   };
 
+  // Modal handling
+  const [show, setShow] = useState(false);
+  const [action, setAction] = useState(null);
+  const [selectedQuestion, setSelectedQuestion] = useState(null);
+
+  const handleClose = () => setShow(false);
+  const handleShow = (actionType, question) => {
+    setAction(actionType);
+    setSelectedQuestion(question);
+    setShow(true);
+  };
+
   const handleSaveChanges = () => {
-    // Implement save or delete logic based on action
-    
+    // Implement save, delete, or reply logic based on action
+    const collectionName = Questions.getCollectionName();
+    if (action === 'delete') {
+      removeItMethod.callPromise({ collectionName, instance: selectedQuestion._id })
+        .catch((error) => swal('Error', error.message, 'error'))
+        .then(() => swal('Success', 'Question deleted successfully', 'success'));
+    } else if (action === 'edit' || action === 'reply') {
+      const updatedQuestion = {
+        id: selectedQuestion._id,
+        question: selectedQuestion.question,
+        answer: selectedQuestion.answer,
+        answered: true,
+      };
+      updateMethod.callPromise({ collectionName, updateData: updatedQuestion })
+        .catch((error) => swal('Error', error.message, 'error'))
+        .then(() => swal('Success', `Question ${action === 'edit' ? 'updated' : 'replied to'} successfully`, 'success'));
+    }
     handleClose();
   };
 
@@ -103,8 +122,9 @@ const QuestionManagementList = ({ questions, unansweredQuestions }) => {
                   <Card.Body>
                     <Badge bg="primary">{item.category || 'Uncategorized'}</Badge>
                     <Card.Title>{item.question}</Card.Title>
+                    <Card.Text>{item.answer}</Card.Text>
                     <Row className="justify-content-end">
-                      <Col className="col-4 text-end">
+                      <Col className="col-lg-4 col-xs-6 text-end">
                         <ButtonGroup>
                           <Button variant="success" onClick={() => handleShow('edit', item)}>Edit</Button>
                           <Button variant="danger" onClick={() => handleShow('delete', item)}>Delete</Button>
@@ -165,16 +185,27 @@ const QuestionManagementList = ({ questions, unansweredQuestions }) => {
         </Modal.Header>
         <Modal.Body>
           {action === 'delete' ? (
-            <p>Are you sure you want to delete this question?</p>
+            <>
+              <h5>Are you sure you want to delete this question?</h5>
+              <p>{selectedQuestion.question}</p>
+            </>
           ) : (
             <Form>
               <Form.Group>
                 <Form.Label>Question</Form.Label>
-                <Form.Control type="text" defaultValue={selectedQuestion?.question} />
+                <Form.Control
+                  type="text"
+                  defaultValue={selectedQuestion?.question}
+                  onChange={(e) => setSelectedQuestion({ ...selectedQuestion, question: e.target.value })}
+                />
               </Form.Group>
               <Form.Group>
                 <Form.Label>Answer</Form.Label>
-                <Form.Control type="text" defaultValue={selectedQuestion?.answer} />
+                <Form.Control
+                  type="text"
+                  defaultValue={selectedQuestion?.answer}
+                  onChange={(e) => setSelectedQuestion({ ...selectedQuestion, answer: e.target.value })}
+                />
               </Form.Group>
             </Form>
           )}
@@ -196,12 +227,14 @@ QuestionManagementList.propTypes = {
     question: PropTypes.string,
     answer: PropTypes.string,
     category: PropTypes.string,
+    answered: PropTypes.bool,
   })).isRequired,
   unansweredQuestions: PropTypes.arrayOf(PropTypes.shape({
     _id: PropTypes.string,
     question: PropTypes.string,
     answer: PropTypes.string,
     category: PropTypes.string,
+    answered: PropTypes.bool,
   })).isRequired,
 };
 
