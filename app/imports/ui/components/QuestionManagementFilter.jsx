@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Accordion, Form, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import { Container, Row, Col, Accordion, Form, Button } from 'react-bootstrap';
 import QuestionManagementList from './QuestionManagementList';
 
 const QuestionManagementFilter = ({ unansweredQuestions, answeredQuestions, categories }) => {
