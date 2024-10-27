@@ -4,34 +4,46 @@ import PropTypes from 'prop-types';
 import swal from 'sweetalert';
 import { removeItMethod, updateMethod } from '../../api/base/BaseCollection.methods';
 import { Questions } from '../../api/question/QuestionCollection';
+import { FAQ } from '../../api/faq/FAQCollection';
 
-const QuestionModal = ({ show, action, question, onClose }) => {
+const QuestionModal = ({ show, collection, action = 'edit', question, onClose, category }) => {
   const [updatedQuestion, setUpdatedQuestion] = useState(question);
 
   useEffect(() => {
-    setUpdatedQuestion(question); // Update the modal content when the selected question changes
+    setUpdatedQuestion(question); // Update modal content when the selected question changes
   }, [question]);
 
   const handleSaveChanges = () => {
-    const collectionName = Questions.getCollectionName();
+    let collectionName;
+    if (collection === 'FAQ') {
+      collectionName = FAQ.getCollectionName();
+    } else if (collection === 'Questions') {
+      collectionName = Questions.getCollectionName();
+    }
 
     if (action === 'delete') {
       removeItMethod.callPromise({ collectionName, instance: question._id })
-        .catch((error) => swal('Error', error.message, 'error'))
-        .then(() => swal('Success', 'Question deleted successfully', 'success'));
+        .then(() => {
+          swal('Success', `${action === 'FAQ' ? 'FAQ entry' : 'Question'} deleted successfully`, 'success');
+          onClose();
+        })
+        .catch((error) => swal('Error', error.message, 'error'));
     } else if (action === 'edit' || action === 'reply') {
       const questionData = {
         id: question._id,
         question: updatedQuestion.question,
         answer: updatedQuestion.answer,
+        category: updatedQuestion.category,
         answered: true,
       };
 
       updateMethod.callPromise({ collectionName, updateData: questionData })
-        .catch((error) => swal('Error', error.message, 'error'))
-        .then(() => swal('Success', `Question ${action === 'edit' ? 'updated' : 'replied to'} successfully`, 'success'));
+        .then(() => {
+          swal('Success', `${action === 'edit' ? 'updated' : 'replied to'} successfully`, 'success');
+          onClose();
+        })
+        .catch((error) => swal('Error', error.message, 'error'));
     }
-    onClose();
   };
 
   return (
@@ -48,18 +60,33 @@ const QuestionModal = ({ show, action, question, onClose }) => {
         ) : (
           <Form>
             <Form.Group>
+              <Form.Label>Category</Form.Label>
+              <Form.Select
+                value={updatedQuestion?.category || ''}
+                onChange={(e) => setUpdatedQuestion({ ...updatedQuestion, category: e.target.value })}
+              >
+                {category.map((cat) => (
+                  <option key={cat._id} value={cat.category}>
+                    {cat.category}
+                  </option>
+                ))}
+              </Form.Select>
+            </Form.Group>
+            <Form.Group>
               <Form.Label>Question</Form.Label>
               <Form.Control
-                type="text"
-                defaultValue={question?.question}
+                as="textarea"
+                rows={3}
+                value={updatedQuestion?.question || ''}
                 onChange={(e) => setUpdatedQuestion({ ...updatedQuestion, question: e.target.value })}
               />
             </Form.Group>
             <Form.Group>
               <Form.Label>Answer</Form.Label>
               <Form.Control
-                type="text"
-                defaultValue={question?.answer}
+                as="textarea"
+                rows={5}
+                value={updatedQuestion?.answer || ''}
                 onChange={(e) => setUpdatedQuestion({ ...updatedQuestion, answer: e.target.value })}
               />
             </Form.Group>
@@ -78,6 +105,7 @@ const QuestionModal = ({ show, action, question, onClose }) => {
 
 QuestionModal.propTypes = {
   show: PropTypes.bool.isRequired,
+  collection: PropTypes.string,
   action: PropTypes.string,
   question: PropTypes.shape({
     _id: PropTypes.string,
@@ -87,6 +115,9 @@ QuestionModal.propTypes = {
     answered: PropTypes.bool,
   }),
   onClose: PropTypes.func.isRequired,
+  category: PropTypes.arrayOf(PropTypes.shape({
+    category: PropTypes.string,
+  })),
 };
 
 export default QuestionModal;
