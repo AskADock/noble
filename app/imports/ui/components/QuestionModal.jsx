@@ -120,4 +120,11 @@ QuestionModal.propTypes = {
   })),
 };
 
+QuestionModal.defaultProps = {
+  collection: '',
+  action: '',
+  question: {},
+  category: [],
+};
+
 export default QuestionModal;
