@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col, Container, Form, Pagination, Badge, Tabs, Tab, Card, ButtonGroup, Button } from 'react-bootstrap';
+import { Row, Col, Container, Form, Pagination, Badge, Card, ButtonGroup, Button } from 'react-bootstrap';
 import Fuse from 'fuse.js';
 import QuestionModal from './QuestionModal';
 
-const QuestionManagementList = ({ questions, unansweredQuestions, category }) => {
+const FAQManagementList = ({ faqs, category }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [searchPerformed, setSearchPerformed] = useState(false);
-  const [activeTab, setActiveTab] = useState('all');
   const [showModal, setShowModal] = useState(false);
   const [action, setAction] = useState(null);
   const [selectedQuestion, setSelectedQuestion] = useState(null);
@@ -26,7 +25,7 @@ const QuestionManagementList = ({ questions, unansweredQuestions, category }) =>
     setShowModal(true);
   };
 
-  const allQuestions = [...questions, ...unansweredQuestions];
+  const allQuestions = [...faqs];
   let displayedQuestions = allQuestions;
 
   if (searchPerformed && allQuestions.length > 0) {
@@ -42,7 +41,7 @@ const QuestionManagementList = ({ questions, unansweredQuestions, category }) =>
   }
 
   const filteredQuestions = displayedQuestions.filter(
-    (item) => (activeTab === 'all' ? item.answer : activeTab === 'unanswered' && !item.answer),
+    (item) => item.answer,
   );
 
   const indexOfLastQuestion = currentPage * questionsPerPage;
@@ -76,53 +75,23 @@ const QuestionManagementList = ({ questions, unansweredQuestions, category }) =>
       </Row>
       <Row>
         <Col>
-          <Tabs
-            activeKey={activeTab}
-            onSelect={(tab) => {
-              setActiveTab(tab);
-              setCurrentPage(1); // Reset to the first page on tab change
-            }}
-            id="faq-tabs"
-            className="mb-3"
-          >
-            <Tab eventKey="all" title="Questions">
-              {currentQuestions.length > 0 ? currentQuestions.map((item) => (
-                <Card key={item._id} className="mb-3 rounded-4">
-                  <Card.Body>
-                    <Badge bg="primary">{item.category || 'Uncategorized'}</Badge>
-                    <Card.Title>{item.question}</Card.Title>
-                    <Card.Text>{item.answer}</Card.Text>
-                    <Row className="justify-content-end">
-                      <Col className="col-lg-4 col-xs-6 text-end">
-                        <ButtonGroup>
-                          <Button variant="success" onClick={() => handleShowModal('edit', item)}>Edit</Button>
-                          <Button variant="danger" onClick={() => handleShowModal('delete', item)}>Delete</Button>
-                        </ButtonGroup>
-                      </Col>
-                    </Row>
-                  </Card.Body>
-                </Card>
-              )) : <p>No results found</p>}
-            </Tab>
-            <Tab eventKey="unanswered" title="Unanswered Questions">
-              {currentQuestions.length > 0 ? currentQuestions.map((item) => (
-                <Card key={item._id} className="mb-3 rounded-4">
-                  <Card.Body>
-                    <Badge bg="primary">{item.category || 'Uncategorized'}</Badge>
-                    <Card.Title>{item.question}</Card.Title>
-                    <Row className="justify-content-end">
-                      <Col className="col-lg-4 col-xs-6 text-end">
-                        <ButtonGroup>
-                          <Button variant="success" onClick={() => handleShowModal('edit', item)}>Reply</Button>
-                          <Button variant="danger" onClick={() => handleShowModal('delete', item)}>Delete</Button>
-                        </ButtonGroup>
-                      </Col>
-                    </Row>
-                  </Card.Body>
-                </Card>
-              )) : <p>No results found</p>}
-            </Tab>
-          </Tabs>
+          {currentQuestions.length > 0 ? currentQuestions.map((item) => (
+            <Card key={item._id} className="mb-3 rounded-4">
+              <Card.Body>
+                <Badge bg="primary">{item.category || 'Uncategorized'}</Badge>
+                <Card.Title>{item.question}</Card.Title>
+                <Card.Text>{item.answer}</Card.Text>
+                <Row className="justify-content-end">
+                  <Col className="col-lg-4 col-xs-6 text-end">
+                    <ButtonGroup>
+                      <Button variant="success" onClick={() => handleShowModal('edit', item)}>Edit</Button>
+                      <Button variant="danger" onClick={() => handleShowModal('delete', item)}>Delete</Button>
+                    </ButtonGroup>
+                  </Col>
+                </Row>
+              </Card.Body>
+            </Card>
+          )) : <p>No results found</p>}
         </Col>
       </Row>
 
@@ -150,7 +119,7 @@ const QuestionManagementList = ({ questions, unansweredQuestions, category }) =>
       {/* Question Modal */}
       <QuestionModal
         show={showModal}
-        collection="Question"
+        collection="FAQ"
         action={action}
         question={selectedQuestion}
         category={category}
@@ -160,24 +129,16 @@ const QuestionManagementList = ({ questions, unansweredQuestions, category }) =>
   );
 };
 
-QuestionManagementList.propTypes = {
-  questions: PropTypes.arrayOf(PropTypes.shape({
-    _id: PropTypes.string,
-    question: PropTypes.string,
+FAQManagementList.propTypes = {
+  faqs: PropTypes.arrayOf(PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    question: PropTypes.string.isRequired,
     answer: PropTypes.string,
     category: PropTypes.string,
-    answered: PropTypes.bool,
-  })).isRequired,
-  unansweredQuestions: PropTypes.arrayOf(PropTypes.shape({
-    _id: PropTypes.string,
-    question: PropTypes.string,
-    answer: PropTypes.string,
-    category: PropTypes.string,
-    answered: PropTypes.bool,
   })).isRequired,
   category: PropTypes.arrayOf(PropTypes.shape({
     category: PropTypes.string,
   })).isRequired,
 };
 
-export default QuestionManagementList;
+export default FAQManagementList;

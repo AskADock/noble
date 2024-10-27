@@ -3,24 +3,28 @@ import { Row, Col, Container, Card, Button } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Questions } from '../../api/question/QuestionCollection';
 import { FAQ } from '../../api/faq/FAQCollection';
+import { Categories } from '../../api/category/CategoryCollection';
 import MedHomeQuestion from '../components/MedHomeQuestion';
 import MedHomeStats from '../components/MedHomeStats';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 const MedHome = () => {
   // subscribe to the questions collection
-  const { ready, questionsNotAnswer, questions, faq } = useTracker(() => {
+  const { ready, questionsNotAnswer, questions, faq, categories } = useTracker(() => {
     const subscription = Questions.subscribeQuestionNotAnswer();
     const subscription2 = Questions.subscribeQuestionAll();
     const subscription3 = FAQ.subscribeFAQ();
-    const rdy = subscription.ready() && subscription2.ready() && subscription3.ready();
+    const subcription4 = Categories.subscribeCategoryAll();
+    const rdy = subscription.ready() && subscription2.ready() && subscription3.ready() && subcription4.ready();
     const questionsNotAnswerItems = Questions.find({ answered: false }).fetch();
     const questionsItems = Questions.find().fetch();
     const faqItems = FAQ.find().fetch();
+    const categoriesItems = Categories.find().fetch();
     return {
       questionsNotAnswer: questionsNotAnswerItems,
       questions: questionsItems,
       faq: faqItems,
+      categories: categoriesItems,
       ready: rdy,
     };
   }, []);
@@ -65,7 +69,7 @@ const MedHome = () => {
               </Col>
             </Row>
             <Row>
-              <MedHomeQuestion questions={questionsNotAnswer} />
+              <MedHomeQuestion questions={questionsNotAnswer} categories={categories} />
             </Row>
           </Col>
         </Row>

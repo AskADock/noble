@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Container, Row, Col, Accordion, Form, Button } from 'react-bootstrap';
-import QuestionManagementList from './QuestionManagementList';
+import FAQManagementList from './FAQManagementList';
 
-const QuestionManagementFilter = ({ unansweredQuestions, answeredQuestions, categories }) => {
+const FAQManagementFilter = ({ faqs, categories }) => {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const resetFilter = () => {
     setSelectedCategories([]);
@@ -19,14 +19,10 @@ const QuestionManagementFilter = ({ unansweredQuestions, answeredQuestions, cate
   };
   const isCategoryChecked = (category) => selectedCategories.includes(category);
 
-  // Filter questions based on selected categories
+  // Filter FAQS based on selected categories
   const questions = selectedCategories.length > 0
-    ? answeredQuestions.filter((question) => selectedCategories.includes(question.category))
-    : answeredQuestions;
-
-  const unAnsweredQuestions = selectedCategories.length > 0
-    ? unansweredQuestions.filter((question) => selectedCategories.includes(question.category))
-    : unansweredQuestions;
+    ? faqs.filter((faq) => selectedCategories.includes(faq.category))
+    : faqs;
 
   return (
     <Container>
@@ -60,32 +56,25 @@ const QuestionManagementFilter = ({ unansweredQuestions, answeredQuestions, cate
           </Accordion>
         </Col>
 
-        {/* Question List Section */}
+        {/* FAQ List Section */}
         <Col md={12} lg={9}>
-          <QuestionManagementList questions={questions} unansweredQuestions={unAnsweredQuestions} category={categories} />
+          <FAQManagementList faqs={questions} category={categories} />
         </Col>
       </Row>
     </Container>
   );
 };
 
-QuestionManagementFilter.propTypes = {
+FAQManagementFilter.propTypes = {
+  faqs: PropTypes.arrayOf(PropTypes.shape({
+    _id: PropTypes.string,
+    question: PropTypes.string,
+    answer: PropTypes.string,
+    category: PropTypes.string,
+  })).isRequired,
   categories: PropTypes.arrayOf(PropTypes.shape({
-    _id: PropTypes.string,
     category: PropTypes.string,
-  })).isRequired,
-  unansweredQuestions: PropTypes.arrayOf(PropTypes.shape({
-    _id: PropTypes.string,
-    question: PropTypes.string,
-    category: PropTypes.string,
-    answered: PropTypes.bool,
-  })).isRequired,
-  answeredQuestions: PropTypes.arrayOf(PropTypes.shape({
-    _id: PropTypes.string,
-    question: PropTypes.string,
-    category: PropTypes.string,
-    answered: PropTypes.bool,
   })).isRequired,
 };
 
-export default QuestionManagementFilter;
+export default FAQManagementFilter;
