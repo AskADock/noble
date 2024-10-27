@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Categories } from '../../api/category/CategoryCollection';
 import { Questions } from '../../api/question/QuestionCollection';
 import { FAQ } from '../../api/faq/FAQCollection';
+import { Passcodes } from '../../api/passcode/Passcode';
 /* eslint-disable no-console */
 
 // Initialize the database with a default category document.
@@ -20,6 +21,12 @@ function addQuestion(data) {
 function addFAQ(data) {
   console.log(`  Adding: ${data.question}`);
   FAQ.define(data);
+}
+
+// Initialize the PasscodeCollection with a default passcode document.
+function addPasscode(data) {
+  console.log(`  Adding: ${data.code}`);
+  Passcodes.define(data);
 }
 
 // Initialize the CategoriesCollection if empty
@@ -43,5 +50,13 @@ if (FAQ.count() === 0) {
   if (Meteor.settings.defaultFAQ) {
     console.log('Creating default FAQs.');
     Meteor.settings.defaultFAQ.forEach(data => addFAQ(data));
+  }
+}
+
+// Initialize the PasscodeCollection if empty.
+if (Passcodes.count() === 0) {
+  if (Meteor.settings.defaultPasscodes) {
+    console.log('Creating default passcodes.');
+    Meteor.settings.defaultPasscodes.forEach(data => addPasscode(data));
   }
 }
