@@ -35,7 +35,8 @@ const NavBar = () => {
             {Roles.userIsInRole(Meteor.userId(), [ROLE.USER]) ? (
               [<Nav.Link id={COMPONENT_IDS.NAVBAR_MED_HOME} as={NavLink} to="/home">Med Home</Nav.Link>,
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_FAQ_MANAGEMENT} as={NavLink} to="/faq-management">FAQ Management</Nav.Link>,
-                <Nav.Link id={COMPONENT_IDS.NAVBAR_QUESTION_MANAGEMENT} as={NavLink} to="/question-management">Question Management</Nav.Link>]
+                <Nav.Link id={COMPONENT_IDS.NAVBAR_QUESTION_MANAGEMENT} as={NavLink} to="/question-management">Question Management</Nav.Link>,
+                <Nav.Link id={COMPONENT_IDS.NAVBAR_PASSCODE_MANAGEMENT} as={NavLink} to="/passcode-management">Passcode Management</Nav.Link>]
             ) : ''}
 
             {/* Show admin links */}

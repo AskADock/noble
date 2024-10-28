@@ -13,7 +13,7 @@ export const passcodePublications = {
 class PasscodeCollection extends BaseCollection {
   constructor() {
     super('Passcodes', new SimpleSchema({
-      code: Number,
+      code: String,
       createdAt: {
         type: Date,
         optional: true,
@@ -37,7 +37,7 @@ class PasscodeCollection extends BaseCollection {
    * @expired whether the passcode has been expired.
    * @return {String} the docID of the new document.
    */
-  define({ code, createdAt, expiredAt, expired }) {
+  define({ code, createdAt = new Date(), expiredAt, expired }) {
     const docID = this._collection.insert({
       code,
       createdAt,
@@ -66,7 +66,7 @@ class PasscodeCollection extends BaseCollection {
       updateData.expiredAt = expiredAt;
     }
     if (expired) {
-      updateData.used = expired;
+      updateData.expired = expired;
     }
 
     this._collection.update(docID, { $set: updateData });
@@ -88,15 +88,17 @@ class PasscodeCollection extends BaseCollection {
    */
   publish() {
     if (Meteor.isServer) {
-      Meteor.publish(passcodePublications.passcodeAdmin, function () {
-        if (this.userId && Roles.userIsInRole(this.userId, [ROLE.USER])) {
-          return this._collection.find();
+      const instance = this;
+
+      Meteor.publish(passcodePublications.passcodeAdmin, function publish() {
+        if (this.userId && Roles.userIsInRole(this.userId, ROLE.USER)) {
+          return instance._collection.find();
         }
         return this.ready();
       });
 
-      Meteor.publish(passcodePublications.passcodeQuestion, function () {
-        return this._collection.find({ used: true });
+      Meteor.publish(passcodePublications.passcodeQuestion, function publish() {
+        return instance._collection.find({ expired: false });
       });
     }
   }
@@ -138,7 +140,7 @@ class PasscodeCollection extends BaseCollection {
     const code = doc.code;
     const createdAt = doc.createdAt;
     const expiredAt = doc.expiredAt;
-    const expired = doc.used;
+    const expired = doc.expired;
     return { code, createdAt, expiredAt, expired };
   }
 }
