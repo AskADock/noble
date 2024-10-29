@@ -89,12 +89,11 @@ class PasscodeCollection extends BaseCollection {
    * @returns {boolean}
    */
   checkPasscode(passcode) {
-    // get the current passcodes
-    const currentPasscodes = this.find({ expired: false });
-    // check if the passcode is valid
-    const isValid = currentPasscodes.some((p) => p.code === passcode);
-    if (!isValid) {
-      throw new Meteor.Error('invalid-passcode', 'The passcode is invalid.');
+    check(passcode, String);
+    const doc = this._collection.findOne({ code: passcode });
+    if (!doc || doc.expired) {
+      console.error('Passcode not found or has expired');
+      throw new Meteor.Error('Passcode not found or has expired');
     }
     return true;
   }

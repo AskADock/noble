@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Categories } from '../../api/category/CategoryCollection';
 import { Questions } from '../../api/question/QuestionCollection';
 import { FAQ } from '../../api/faq/FAQCollection';
-import { Passcodes } from '../../api/passcode/Passcode';
+import { Passcodes } from '../../api/passcode/PasscodeCollection';
 /* eslint-disable no-console */
 
 // Initialize the database with a default category document.

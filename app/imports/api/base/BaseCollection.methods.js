@@ -6,6 +6,7 @@ import _ from 'lodash';
 import { MATPCollections } from '../matp/MATPCollections';
 import { ROLE } from '../role/Role';
 import { loadCollectionNewDataOnly } from '../utilities/load-fixtures';
+import { Passcodes } from '../passcode/PasscodeCollection';
 
 /**
  * Meteor method used to define new instances of the given collection name.
@@ -43,6 +44,26 @@ export const defineMethodAskADoc = new ValidatedMethod({
       // console.log(collectionName, this.userId, definitionData);
       const collection = MATPCollections.getCollection(collectionName);
       return collection.define(definitionData);
+    }
+    return '';
+  },
+});
+
+/**
+ * Meteor method used to check inputted passcode in the Ask A Doc page.
+ * @param collectionName the name of the collection.
+ * @param definitionDate the object used in the collection.define method.
+ * @memberOf api/base
+ */
+export const checkPasscodeMethod = new ValidatedMethod({
+  name: 'BaseCollection.checkPasscode',
+  mixins: [CallPromiseMixin],
+  validate: null,
+  run({ collectionName, definitionData }) {
+    if (Meteor.isServer) {
+      // console.log(collectionName, this.userId, definitionData);
+      const collection = MATPCollections.getCollection(collectionName);
+      return collection.checkPasscode(definitionData);
     }
     return '';
   },

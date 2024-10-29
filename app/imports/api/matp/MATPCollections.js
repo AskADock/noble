@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Questions } from '../question/QuestionCollection';
 import { Categories } from '../category/CategoryCollection';
 import { FAQ } from '../faq/FAQCollection';
-import { Passcodes } from '../passcode/Passcode';
+import { Passcodes } from '../passcode/PasscodeCollection';
 import { AdminProfiles } from '../user/AdminProfileCollection';
 import { UserProfiles } from '../user/UserProfileCollection';
 

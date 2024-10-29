@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Passcodes } from '../../api/passcode/Passcode';
+import { Passcodes } from '../../api/passcode/PasscodeCollection';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 const PasscodeManagement = () => {
