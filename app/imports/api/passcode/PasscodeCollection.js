@@ -84,6 +84,22 @@ class PasscodeCollection extends BaseCollection {
   }
 
   /**
+   * Checks if the passcode is valid with the current passcode. Throws an error if it is not.
+   * @param passcode
+   * @returns {boolean}
+   */
+  checkPasscode(passcode) {
+    // get the current passcodes
+    const currentPasscodes = this.find({ expired: false });
+    // check if the passcode is valid
+    const isValid = currentPasscodes.some((p) => p.code === passcode);
+    if (!isValid) {
+      throw new Meteor.Error('invalid-passcode', 'The passcode is invalid.');
+    }
+    return true;
+  }
+
+  /**
    * Default publication method for Passcodes.
    */
   publish() {
