@@ -150,7 +150,7 @@ const QuestionManagementList = ({ questions, unansweredQuestions, category }) =>
       {/* Question Modal */}
       <QuestionModal
         show={showModal}
-        collection="Question"
+        collection="Questions"
         action={action}
         question={selectedQuestion}
         category={category}
