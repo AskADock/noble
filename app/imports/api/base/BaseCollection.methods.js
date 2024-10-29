@@ -6,7 +6,6 @@ import _ from 'lodash';
 import { MATPCollections } from '../matp/MATPCollections';
 import { ROLE } from '../role/Role';
 import { loadCollectionNewDataOnly } from '../utilities/load-fixtures';
-import { Passcodes } from '../passcode/PasscodeCollection';
 
 /**
  * Meteor method used to define new instances of the given collection name.

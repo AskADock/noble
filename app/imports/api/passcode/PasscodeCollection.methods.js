@@ -51,6 +51,19 @@ Meteor.methods({
   'Passcodes.checkPasscode': function (code) {
     check(code, String);
     const doc = Passcodes._collection.findOne({ code });
+    // Check if the passcode exists
+    if (!doc) {
+      console.error('Passcode not found');
+      throw new Meteor.Error('Passcode not found');
+    }
+
+    // Check if passcode expired. If expired, set expired to true
+    if (doc.expiredAt && doc.expiredAt < new Date()) {
+      Passcodes._collection.update(doc._id, { $set: { expired: true } });
+      console.error('Passcode has expired');
+      throw new Meteor.Error('Passcode has expired');
+    }
+
     if (!doc || doc.expired) {
       console.error('Passcode not found or has expired');
       throw new Meteor.Error('Passcode not found or has expired');
