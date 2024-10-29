@@ -1,15 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Row, Col, Container, Form, Card, Accordion } from 'react-bootstrap';
-import FAQList from './FAQList';
+import { Container, Row, Col, Accordion, Form, Button } from 'react-bootstrap';
+import QuestionManagementList from './QuestionManagementList';
 
-/**
- * Renders the FAQ filter component. This component is responsible for filtering the FAQ questions by category.
- * Passes the filtered FAQ questions to the FAQList component.
- * @param faq
- * @param categories
- */
-const FAQFilter = ({ faq, categories }) => {
+const QuestionManagementFilter = ({ unansweredQuestions, answeredQuestions, categories }) => {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const resetFilter = () => {
     setSelectedCategories([]);
@@ -25,9 +19,14 @@ const FAQFilter = ({ faq, categories }) => {
   };
   const isCategoryChecked = (category) => selectedCategories.includes(category);
 
-  const filteredFAQ = selectedCategories.length > 0
-    ? faq.filter((question) => selectedCategories.includes(question.category))
-    : faq;
+  // Filter questions based on selected categories
+  const questions = selectedCategories.length > 0
+    ? answeredQuestions.filter((question) => selectedCategories.includes(question.category))
+    : answeredQuestions;
+
+  const unAnsweredQuestions = selectedCategories.length > 0
+    ? unansweredQuestions.filter((question) => selectedCategories.includes(question.category))
+    : unansweredQuestions;
 
   return (
     <Container>
@@ -59,48 +58,34 @@ const FAQFilter = ({ faq, categories }) => {
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
-
-          {/* Ask A Doc Button (Only for large screens) */}
-          <div className="d-none d-lg-block mt-4">
-            <Card className="rounded-3 p-3 text-center color3">
-              <h4>Can&apos;t find an answer?</h4>
-              <Button href="/askadoc" className="rounded-3">
-                Ask A Doc
-              </Button>
-            </Card>
-          </div>
         </Col>
 
-        {/* FAQ List Section */}
+        {/* Question List Section */}
         <Col md={12} lg={9}>
-          <FAQList theFAQs={filteredFAQ} />
-
-          {/* Ask A Doc Button (Only for mobile screens) */}
-          <div className="d-lg-none mt-4">
-            <Card className="rounded-3 p-3 text-center">
-              <h4>Can&apos;t find an answer?</h4>
-              <Button href="/askadoc" className="rounded-3">
-                Ask A Doc
-              </Button>
-            </Card>
-          </div>
+          <QuestionManagementList questions={questions} unansweredQuestions={unAnsweredQuestions} category={categories} />
         </Col>
       </Row>
     </Container>
   );
 };
 
-FAQFilter.propTypes = {
-  faq: PropTypes.arrayOf(PropTypes.shape({
-    _id: PropTypes.string,
-    question: PropTypes.string,
-    answer: PropTypes.string,
-    category: PropTypes.string,
-  })).isRequired,
+QuestionManagementFilter.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.shape({
     _id: PropTypes.string,
     category: PropTypes.string,
   })).isRequired,
+  unansweredQuestions: PropTypes.arrayOf(PropTypes.shape({
+    _id: PropTypes.string,
+    question: PropTypes.string,
+    category: PropTypes.string,
+    answered: PropTypes.bool,
+  })).isRequired,
+  answeredQuestions: PropTypes.arrayOf(PropTypes.shape({
+    _id: PropTypes.string,
+    question: PropTypes.string,
+    category: PropTypes.string,
+    answered: PropTypes.bool,
+  })).isRequired,
 };
 
-export default FAQFilter;
+export default QuestionManagementFilter;

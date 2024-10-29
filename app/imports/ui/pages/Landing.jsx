@@ -31,7 +31,7 @@ const Landing = () => (
     </Row>
     <Container fluid className="color3 p-4 d-flex justify-content-center align-items-center">
       <Col xs={12} sm={11} md={10}>
-        <Card className="rounded-3 p-5 m-5">
+        <Card className="rounded-4 p-5 m-5">
           <Row className="text-center">
             <Col xs={12} md={6}>
               <img src="/images/FAQ.png" alt="Logo" width="200" height="200" />
@@ -46,7 +46,7 @@ const Landing = () => (
     </Container>
     <Container fluid className="color2 p-4 d-flex justify-content-center align-items-center">
       <Col xs={12} sm={11} md={10}>
-        <Card className="rounded-3 p-5 m-5">
+        <Card className="rounded-4 p-5 m-5">
           <Row className="text-center">
             <Col xs={12} md={6}>
               <h2>Question Compass</h2>
@@ -61,7 +61,7 @@ const Landing = () => (
     </Container>
     <Container fluid className="color1 p-4 d-flex justify-content-center align-items-center">
       <Col xs={12} sm={11} md={10}>
-        <Card className="rounded-3 p-5 m-5">
+        <Card className="rounded-4 p-5 m-5">
           <Row className="text-center">
             <Col xs={12} md={6}>
               <img src="/images/P.png" alt="Logo" width="200" height="200" />
@@ -76,7 +76,7 @@ const Landing = () => (
     </Container>
     <Container fluid className="color4 p-4 d-flex justify-content-center align-items-center">
       <Col xs={12} sm={11} md={10}>
-        <Card className="rounded-3 p-5 my-5">
+        <Card className="rounded-4 p-5 my-5">
           <Row className="align-middle text-center my-5">
             <Col xs={12}>
               <h2>Our Mission</h2>
