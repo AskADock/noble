@@ -13,6 +13,7 @@ import Privacy from '../pages/Privacy';
 import MedHome from '../pages/MedHome';
 import QuestionManagement from '../pages/QuestionManagement';
 import FAQManagement from '../pages/FAQManagement';
+import PasscodeManagement from '../pages/PasscodeManagement';
 import ListStuff from '../pages/ListStuff';
 // import ListStuffAdmin from '../pages/ListStuffAdmin';
 import AddStuff from '../pages/AddStuff';
@@ -55,6 +56,7 @@ const App = () => {
           <Route path="/home" element={<ProtectedRoute><MedHome /></ProtectedRoute>} />
           <Route path="/question-management" element={<ProtectedRoute><QuestionManagement /></ProtectedRoute>} />
           <Route path="/faq-management" element={<ProtectedRoute><FAQManagement /></ProtectedRoute>} />
+          <Route path="/passcode-management" element={<ProtectedRoute><PasscodeManagement /></ProtectedRoute>} />
           <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
           <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />

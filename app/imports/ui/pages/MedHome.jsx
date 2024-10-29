@@ -67,6 +67,18 @@ const MedHome = () => {
                   </Card.Body>
                 </Card>
               </Col>
+              <Col xs={12} md={4} className="align-content-center justify-content-center">
+                <Card className="p-1 text-center rounded-4">
+                  <Card.Title>
+                    <h3>Passcode Management</h3>
+                  </Card.Title>
+                  <Card.Body>
+                    <Button href="/passcode-management">
+                      Passcodes
+                    </Button>
+                  </Card.Body>
+                </Card>
+              </Col>
             </Row>
             <Row>
               <MedHomeQuestion questions={questionsNotAnswer} categories={categories} />

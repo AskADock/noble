@@ -4,7 +4,8 @@ import swal from 'sweetalert';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Questions } from '../../api/question/QuestionCollection';
 import { Categories } from '../../api/category/CategoryCollection';
-import { defineMethodAskADoc } from '../../api/base/BaseCollection.methods';
+import { Passcodes } from '../../api/passcode/PasscodeCollection';
+import { checkPasscodeMethod, defineMethodAskADoc } from '../../api/base/BaseCollection.methods';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 export const AskADoc = () => {
@@ -25,17 +26,26 @@ export const AskADoc = () => {
   const [passcode, setPasscode] = useState('');
   const [question, setQuestion] = useState('');
 
-  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (passcode !== 'AlwaysReadyAlwaysThere') {
-      swal('Error', 'Incorrect passcode', 'error');
-      return;
-    }
-    const collectionName = Questions.getCollectionName();
-    const definitionData = { question, category };
 
-    defineMethodAskADoc.callPromise({ collectionName, definitionData })
+    const collectionNamePasscode = Passcodes.getCollectionName();
+    // Check if the passcode is valid
+    checkPasscodeMethod.callPromise({
+      collectionName: collectionNamePasscode,
+      definitionData: passcode,
+    })
+      .then((isValid) => {
+        if (!isValid) {
+          throw new Error('Invalid passcode. Please try again.');
+        }
+        // If valid, define the question
+        const collectionNameQuestion = Questions.getCollectionName();
+        return defineMethodAskADoc.callPromise({
+          collectionName: collectionNameQuestion,
+          definitionData: { category, question, answered: false },
+        });
+      })
       .then(() => {
         swal('Success', 'Your question has been submitted!', 'success');
         // Reset form after success
@@ -43,7 +53,9 @@ export const AskADoc = () => {
         setPasscode('');
         setQuestion('');
       })
-      .catch((error) => swal('Error', error.message, 'error'));
+      .catch((error) => {
+        swal('Error', error.message, 'error'); // Handle both passcode and submission errors here
+      });
   };
 
   return ready ? (
