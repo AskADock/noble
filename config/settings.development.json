@@ -1,8 +1,8 @@
 {
   "defaultAccounts": [
-    { "email": "admin@foo.com", "password": "changeme", "role": "ADMIN", "firstName": "Admin", "lastName": "MATRP"
+    { "email": "admin@foo.com", "password": "Always-There-50", "role": "ADMIN", "firstName": "Admin", "lastName": "Admin"
     },
-    { "email": "john@foo.com", "password": "changeme", "role": "USER" , "firstName": "John", "lastName": "Doe" }
+    { "email": "medgroup@foo.com", "password": "Always-Ready-75", "role": "USER" , "firstName": "Med", "lastName": "Staff" }
   ],
 
   "defaultCategories": [
@@ -96,7 +96,7 @@
   "defaultPasscodes": [
     {
       "code": "1234",
-      "createdAt": "2022-01-01T00:00:00Z",
+      "createdAt": "2024-05-01T00:00:00Z",
       "expiredAt": "2024-12-31T23:59:59Z",
       "expired": false
     }
