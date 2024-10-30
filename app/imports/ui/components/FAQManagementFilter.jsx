@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Container, Row, Col, Accordion, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col, Accordion, Form, Button, Card } from 'react-bootstrap';
 import FAQManagementList from './FAQManagementList';
+import CreateFAQModal from './CreateFAQModal';
 
 const FAQManagementFilter = ({ faqs, categories }) => {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleShowModal = () => {
+    setShowModal(true);
+  };
+
   const [selectedCategories, setSelectedCategories] = useState([]);
   const resetFilter = () => {
     setSelectedCategories([]);
@@ -54,6 +61,13 @@ const FAQManagementFilter = ({ faqs, categories }) => {
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
+
+          <Card className="rounded-4 mt-3 text-center p-3">
+            <Card.Title>Create a FAQ</Card.Title>
+            <Card.Body>
+              <Button variant="primary" onClick={() => handleShowModal()}>Add FAQ</Button>
+            </Card.Body>
+          </Card>
         </Col>
 
         {/* FAQ List Section */}
@@ -61,6 +75,11 @@ const FAQManagementFilter = ({ faqs, categories }) => {
           <FAQManagementList faqs={questions} category={categories} />
         </Col>
       </Row>
+      <CreateFAQModal
+        show={showModal}
+        categories={categories}
+        onClose={() => setShowModal(false)}
+      />
     </Container>
   );
 };
