@@ -20,7 +20,14 @@ const FAQList = ({ faq, questions }) => {
   // Apply search if there is a query
   let displayedQuestions = dataToDisplay;
   if (searchQuery) {
-    const fuse = new Fuse(dataToDisplay, {
+    const sanitizedData = dataToDisplay.map(item => ({
+      ...item,
+      question: item.question.replace(/['"]/g, ''),
+      answer: item.answer.replace(/['"]/g, ''),
+      category: item.category.replace(/['"]/g, ''),
+    }));
+
+    const fuse = new Fuse(sanitizedData, {
       isCaseSensitive: false,
       shouldSort: true,
       threshold: 0.3,
