@@ -61,7 +61,8 @@ const FAQManagementFilter = ({ faqs, categories }) => {
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
-          <Card className="rounded-4 mt-3">
+
+          <Card className="rounded-4 mt-3 text-center p-3">
             <Card.Title>Create a FAQ</Card.Title>
             <Card.Body>
               <Button variant="primary" onClick={() => handleShowModal()}>Add FAQ</Button>
