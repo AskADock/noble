@@ -38,6 +38,12 @@ class PasscodeCollection extends BaseCollection {
    * @return {String} the docID of the new document.
    */
   define({ code, createdAt = new Date(), expiredAt, expired }) {
+    // Check if the passcode already exists
+    const existingPasscode = this._collection.findOne({ code });
+    if (existingPasscode) {
+      throw new Meteor.Error('duplicate-passcode', 'The passcode already exists.');
+    }
+
     const docID = this._collection.insert({
       code,
       createdAt,
@@ -56,6 +62,15 @@ class PasscodeCollection extends BaseCollection {
    */
   update(docID, { code, createdAt, expiredAt, expired }) {
     const updateData = {};
+    // Checks that expiredAt date is after createdAt date
+    const initDate = new Date(createdAt);
+    const expiredDate = new Date(expiredAt);
+    console.log('test', expiredDate, initDate);
+    if (expiredDate < initDate) {
+      console.error('expiredAt must be after createdAt');
+      throw new Meteor.Error('invalid-date', 'expiredAt must be after createdAt');
+    }
+
     if (code) {
       updateData.code = code;
     }
@@ -65,7 +80,7 @@ class PasscodeCollection extends BaseCollection {
     if (expiredAt) {
       updateData.expiredAt = expiredAt;
     }
-    if (expired) {
+    if (expired !== undefined) {
       updateData.expired = expired;
     }
 
@@ -91,10 +106,17 @@ class PasscodeCollection extends BaseCollection {
   checkPasscode(passcode) {
     check(passcode, String);
     const doc = this._collection.findOne({ code: passcode });
-    if (!doc || doc.expired) {
-      console.error('Passcode not found or has expired');
-      throw new Meteor.Error('Passcode not found or has expired');
+    // Check if the passcode exists
+    if (!doc) {
+      throw new Meteor.Error('invalid-passcode', 'The passcode is invalid.');
     }
+    // Check if the passcode is expired. If so, set expired to true
+    const now = new Date();
+    if (doc.expired || (doc.expiredAt && doc.expiredAt < now)) {
+      this.update(doc._id, { expired: true });
+      throw new Meteor.Error('expired-passcode', 'The passcode has expired.');
+    }
+
     return true;
   }
 
