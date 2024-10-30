@@ -24,7 +24,7 @@ const NavBar = () => {
         <Navbar.Collapse id={COMPONENT_IDS.NAVBAR_COLLAPSE}>
           <Nav className="me-auto">
             {/* Show links for users not logged in */}
-            {!Roles.userIsInRole(Meteor.userId(), [ROLE.USER]) ? (
+            {(!Roles.userIsInRole(Meteor.userId(), [ROLE.USER])) && (!Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN])) ? (
               [<Nav.Link id={COMPONENT_IDS.NAVBAR_HOME} as={NavLink} to="/">Home</Nav.Link>,
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_FAQ} as={NavLink} to="/faq">FAQ</Nav.Link>,
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_QUESTION_COMPASS} as={NavLink} to="/question-compass">Question Compass</Nav.Link>,
@@ -41,13 +41,14 @@ const NavBar = () => {
 
             {/* Show admin links */}
             {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? (
-              [<Nav.Link id={COMPONENT_IDS.NAVBAR_LIST_STUFF_ADMIN} as={NavLink} to="/admin" key="admin">Admin</Nav.Link>,
+              [<Nav.Link id={COMPONENT_IDS.NAVBAR_MED_HOME} as={NavLink} to="/home">Med Home</Nav.Link>,
+                <Nav.Link id={COMPONENT_IDS.NAVBAR_FAQ_MANAGEMENT} as={NavLink} to="/faq-management">FAQ Management</Nav.Link>,
+                <Nav.Link id={COMPONENT_IDS.NAVBAR_QUESTION_MANAGEMENT} as={NavLink} to="/question-management">Question Management</Nav.Link>,
+                <Nav.Link id={COMPONENT_IDS.NAVBAR_PASSCODE_MANAGEMENT} as={NavLink} to="/passcode-management">Passcode Management</Nav.Link>,
+                <Nav.Link id={COMPONENT_IDS.NAVBAR_LIST_STUFF_ADMIN} as={NavLink} to="/admin" key="admin">Admin</Nav.Link>,
                 <NavDropdown id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN} title="Manage" key="manage-dropdown">
                   <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN_DATABASE} key="manage-database" as={NavLink} to="/manage-database">
                     <CloudDownload /> Database
-                  </NavDropdown.Item>
-                  <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN_FAQ_MANAGEMENT} key="manage-faq" as={NavLink} to="/faq-management">
-                    FAQ Management
                   </NavDropdown.Item>
                 </NavDropdown>]
             ) : ''}
