@@ -128,7 +128,7 @@ class PasscodeCollection extends BaseCollection {
       const instance = this;
 
       Meteor.publish(passcodePublications.passcodeAdmin, function publish() {
-        if (this.userId && Roles.userIsInRole(this.userId, ROLE.USER)) {
+        if (this.userId && (Roles.userIsInRole(this.userId, ROLE.USER) || Roles.userIsInRole(this.userId, ROLE.ADMIN))) {
           return instance._collection.find();
         }
         return this.ready();
