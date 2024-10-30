@@ -4,7 +4,7 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { NavLink } from 'react-router-dom';
 import { Roles } from 'meteor/alanning:roles';
 import { Container, Navbar, Nav, NavDropdown, Image } from 'react-bootstrap';
-import { BoxArrowRight, CloudDownload, PersonFill, PersonPlusFill } from 'react-bootstrap-icons';
+import { BoxArrowRight, CloudDownload, PersonFill } from 'react-bootstrap-icons';
 import { ROLE } from '../../api/role/Role';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
@@ -58,9 +58,9 @@ const NavBar = () => {
                 <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN_SIGN_IN} as={NavLink} to="/signin">
                   <PersonFill /> Sign in
                 </NavDropdown.Item>
-                <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN_SIGN_UP} as={NavLink} to="/signup">
-                  <PersonPlusFill /> Sign up
-                </NavDropdown.Item>
+                {/* <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN_SIGN_UP} as={NavLink} to="/signup"> */}
+                {/*  <PersonPlusFill /> Sign up */}
+                {/* </NavDropdown.Item> */}
               </NavDropdown>
             ) : (
               <NavDropdown id={COMPONENT_IDS.NAVBAR_CURRENT_USER} title={currentUser}>
