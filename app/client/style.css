@@ -53,7 +53,8 @@ body {
 }
 
 .landing-background {
-  background: url('/images/landing/us.jpg') fixed;
+  background: url('/images/landing/blue-sky-with-clouds.jpg') fixed;
+  /* background: url('/images/landing/us.jpg') fixed; */
   background-size: cover;
   background-position: 20% center;
   color: white;

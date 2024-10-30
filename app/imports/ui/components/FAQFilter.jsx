@@ -68,7 +68,7 @@ const FAQFilter = ({ faq, questions, categories }) => {
           <div className="d-none d-lg-block mt-4">
             <Card className="rounded-4 p-3 text-center color3">
               <h4>Can&apos;t find an answer?</h4>
-              <Button href="/askadoc" className="rounded-3">
+              <Button href="/ask-a-doc" className="rounded-3">
                 Ask A Doc
               </Button>
             </Card>
@@ -83,7 +83,7 @@ const FAQFilter = ({ faq, questions, categories }) => {
           <div className="d-lg-none mt-4">
             <Card className="rounded-4 p-3 text-center">
               <h4>Can&apos;t find an answer?</h4>
-              <Button href="/askadoc" className="rounded-3">
+              <Button href="/ask-a-doc" className="rounded-3">
                 Ask A Doc
               </Button>
             </Card>
