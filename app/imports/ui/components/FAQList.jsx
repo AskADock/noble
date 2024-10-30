@@ -1,37 +1,31 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Row, Col, Container, Card, Pagination, Accordion, Badge } from 'react-bootstrap';
+import { Row, Col, Container, Form, Pagination, Badge, Tabs, Tab, Card, Accordion } from 'react-bootstrap';
 import Fuse from 'fuse.js';
-/*
- * renders the searchBar, the faq questions passed in, as well as the pagination for the page.
- * @param theFAQs the faq question that needs to be rendered.
- */
-const FAQList = ({ theFAQs }) => {
+
+const FAQList = ({ faq, questions }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchPerformed, setSearchPerformed] = useState(false);
-  const questionsPerPage = 9;
+  const [activeTab, setActiveTab] = useState('faq');
+  const questionsPerPage = 10;
 
-  const handleSearchChange = (faq) => {
-    setSearchQuery(faq.target.value);
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
     setCurrentPage(1);
-    setSearchPerformed(!!faq.target.value); // Set searchPerformed to true if search query is not empty
   };
 
-  let displayedQuestions = theFAQs; // Default to all faqs
+  // Select the array to display based on the active tab
+  const dataToDisplay = activeTab === 'faq' ? faq : questions;
 
-  if (searchPerformed && theFAQs.length > 0) {
-    const fuseOptions = {
+  // Apply search if there is a query
+  let displayedQuestions = dataToDisplay;
+  if (searchQuery) {
+    const fuse = new Fuse(dataToDisplay, {
       isCaseSensitive: false,
       shouldSort: true,
-      includeMatches: true,
-      findAllMatches: true,
-      useExtendedSearch: false,
-      threshold: 0.2,
+      threshold: 0.3,
       keys: ['question', 'answer', 'category'],
-    };
-
-    const fuse = new Fuse(theFAQs, fuseOptions);
+    });
     const result = fuse.search(searchQuery);
     displayedQuestions = result.map((item) => item.item);
   }
@@ -39,7 +33,6 @@ const FAQList = ({ theFAQs }) => {
   const indexOfLastQuestion = currentPage * questionsPerPage;
   const indexOfFirstQuestion = indexOfLastQuestion - questionsPerPage;
   const currentQuestions = displayedQuestions.slice(indexOfFirstQuestion, indexOfLastQuestion);
-
   const totalPages = Math.ceil(displayedQuestions.length / questionsPerPage);
 
   const paginate = (pageNumber) => {
@@ -54,49 +47,69 @@ const FAQList = ({ theFAQs }) => {
         <Form.Group>
           <Form.Control
             type="text"
-            placeholder="I want to know..."
+            placeholder="Search Questions..."
             className="p-2"
-            style={{ minWidth: '45vw', maxWidth: '50vw' }}
+            style={{ minWidth: '40vw', maxWidth: '45vw' }}
             value={searchQuery}
             onChange={handleSearchChange}
           />
         </Form.Group>
       </Container>
 
-      {searchPerformed ? (
-        <Row className="text-start mt-2 py-1 text-color">
-          <h4>Total Results: {displayedQuestions.length}</h4>
-        </Row>
-      ) : (
-        <Row className="text-start mt-2 py-1 text-color">
-          <h4>Latest FAQ</h4>
-        </Row>
-      )}
-
+      <Row className="text-start mt-2 py-1 text-color">
+        <h4>{searchQuery ? `Total Results: ${displayedQuestions.length}` : 'Latest Questions'}</h4>
+      </Row>
       <Row>
         <Col>
-          {currentQuestions.map((item) => (
-            <Card className="my-2" key={item._id}>
-              <Accordion>
-                <Accordion.Item eventKey={item._id} className="p-2">
-                  <Badge bg="primary" className="ms-auto">{item.category}</Badge>
-                  <Accordion.Header>
-                    <h5>{item.question}</h5>
-                  </Accordion.Header>
-                  <Accordion.Body>{item.answer}</Accordion.Body>
-                </Accordion.Item>
-              </Accordion>
-            </Card>
-          ))}
+          <Tabs
+            activeKey={activeTab}
+            onSelect={(tab) => {
+              setActiveTab(tab);
+              setCurrentPage(1); // Reset to the first page on tab change
+            }}
+            id="faq-tabs"
+            className="mb-3"
+          >
+            <Tab eventKey="faq" title={`FAQ (${faq.length})`}>
+              {currentQuestions.length > 0 ? currentQuestions.map((item) => (
+                <Card className="my-2" key={item._id}>
+                  <Accordion>
+                    <Accordion.Item eventKey={item._id} className="p-2">
+                      <Badge bg="primary" className="ms-auto">{item.category}</Badge>
+                      <Accordion.Header>
+                        <h5>{item.question}</h5>
+                      </Accordion.Header>
+                      <Accordion.Body>{item.answer}</Accordion.Body>
+                    </Accordion.Item>
+                  </Accordion>
+                </Card>
+              )) : <p>No results found</p>}
+            </Tab>
+            <Tab eventKey="answered" title={`Questions (${questions.length})`}>
+              {currentQuestions.length > 0 ? currentQuestions.map((item) => (
+                <Card className="my-2" key={item._id}>
+                  <Accordion>
+                    <Accordion.Item eventKey={item._id} className="p-2">
+                      <Badge bg="primary" className="ms-auto">{item.category}</Badge>
+                      <Accordion.Header>
+                        <h5>{item.question}</h5>
+                      </Accordion.Header>
+                      <Accordion.Body>{item.answer}</Accordion.Body>
+                    </Accordion.Item>
+                  </Accordion>
+                </Card>
+              )) : <p>No results found</p>}
+            </Tab>
+          </Tabs>
         </Col>
       </Row>
 
       {/* Pagination buttons */}
-      {totalPages > 0 && (
+      {totalPages > 1 && (
         <Container className="d-flex justify-content-center">
           <Pagination>
-            <Pagination.First onClick={() => paginate(1)} />
-            <Pagination.Prev onClick={() => paginate(currentPage - 1)} />
+            <Pagination.First onClick={() => paginate(1)} disabled={currentPage === 1} />
+            <Pagination.Prev onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1} />
             {Array.from({ length: totalPages }, (_, index) => (
               <Pagination.Item
                 key={index + 1}
@@ -106,8 +119,8 @@ const FAQList = ({ theFAQs }) => {
                 {index + 1}
               </Pagination.Item>
             ))}
-            <Pagination.Next onClick={() => paginate(currentPage + 1)} />
-            <Pagination.Last onClick={() => paginate(totalPages)} />
+            <Pagination.Next onClick={() => paginate(currentPage + 1)} disabled={currentPage === totalPages} />
+            <Pagination.Last onClick={() => paginate(totalPages)} disabled={currentPage === totalPages} />
           </Pagination>
         </Container>
       )}
@@ -116,7 +129,13 @@ const FAQList = ({ theFAQs }) => {
 };
 
 FAQList.propTypes = {
-  theFAQs: PropTypes.arrayOf(PropTypes.shape({
+  faq: PropTypes.arrayOf(PropTypes.shape({
+    _id: PropTypes.string,
+    question: PropTypes.string,
+    answer: PropTypes.string,
+    category: PropTypes.string,
+  })).isRequired,
+  questions: PropTypes.arrayOf(PropTypes.shape({
     _id: PropTypes.string,
     question: PropTypes.string,
     answer: PropTypes.string,

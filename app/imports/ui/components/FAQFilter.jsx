@@ -9,7 +9,7 @@ import FAQList from './FAQList';
  * @param faq
  * @param categories
  */
-const FAQFilter = ({ faq, categories }) => {
+const FAQFilter = ({ faq, questions, categories }) => {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const resetFilter = () => {
     setSelectedCategories([]);
@@ -28,6 +28,10 @@ const FAQFilter = ({ faq, categories }) => {
   const filteredFAQ = selectedCategories.length > 0
     ? faq.filter((question) => selectedCategories.includes(question.category))
     : faq;
+
+  const filteredQuestions = selectedCategories.length > 0
+    ? questions.filter((question) => selectedCategories.includes(question.category))
+    : questions;
 
   return (
     <Container>
@@ -62,7 +66,7 @@ const FAQFilter = ({ faq, categories }) => {
 
           {/* Ask A Doc Button (Only for large screens) */}
           <div className="d-none d-lg-block mt-4">
-            <Card className="rounded-3 p-3 text-center color3">
+            <Card className="rounded-4 p-3 text-center color3">
               <h4>Can&apos;t find an answer?</h4>
               <Button href="/askadoc" className="rounded-3">
                 Ask A Doc
@@ -73,11 +77,11 @@ const FAQFilter = ({ faq, categories }) => {
 
         {/* FAQ List Section */}
         <Col md={12} lg={9}>
-          <FAQList theFAQs={filteredFAQ} />
+          <FAQList faq={filteredFAQ} questions={filteredQuestions} />
 
           {/* Ask A Doc Button (Only for mobile screens) */}
           <div className="d-lg-none mt-4">
-            <Card className="rounded-3 p-3 text-center">
+            <Card className="rounded-4 p-3 text-center">
               <h4>Can&apos;t find an answer?</h4>
               <Button href="/askadoc" className="rounded-3">
                 Ask A Doc
@@ -96,6 +100,13 @@ FAQFilter.propTypes = {
     question: PropTypes.string,
     answer: PropTypes.string,
     category: PropTypes.string,
+  })).isRequired,
+  questions: PropTypes.arrayOf(PropTypes.shape({
+    _id: PropTypes.string,
+    question: PropTypes.string,
+    answer: PropTypes.string,
+    category: PropTypes.string,
+    answered: PropTypes.bool,
   })).isRequired,
   categories: PropTypes.arrayOf(PropTypes.shape({
     _id: PropTypes.string,
