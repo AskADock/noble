@@ -26,6 +26,7 @@ const PasscodeManagementModal = ({ show, action, passcode, onClose }) => {
       const passcodeData = {
         id: passcode._id,
         code: updatedPasscode.code,
+        createdAt: updatedPasscode.createdAt,
         expiredAt: updatedPasscode.expiredAt,
         expired: updatedPasscode.expired,
       };
@@ -58,6 +59,14 @@ const PasscodeManagementModal = ({ show, action, passcode, onClose }) => {
                 type="text"
                 value={updatedPasscode.code}
                 onChange={(e) => setUpdatedPasscode({ ...updatedPasscode, code: e.target.value })}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Created At</Form.Label>
+              <Form.Control
+                type="text"
+                value={updatedPasscode.createdAt ? new Date(updatedPasscode.createdAt).toLocaleString() : ''}
+                readOnly
               />
             </Form.Group>
             <Form.Group controlId="formExpiredAt">

@@ -29,6 +29,7 @@ Meteor.methods({
       console.error('Passcode not found');
       throw new Meteor.Error('Passcode not found');
     }
+
     try {
       Passcodes._collection.update(data._id, { $set: data });
     } catch (error) {
