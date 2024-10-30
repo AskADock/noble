@@ -20,7 +20,7 @@ const PasscodeManagement = () => {
   }, []);
 
   const [showModal, setShowModal] = useState(false);
-  const [showModalGnerate, setShowModalGenerate] = useState(false);
+  const [showModalGenerate, setShowModalGenerate] = useState(false);
   const [action, setAction] = React.useState(null);
   const [selectedPasscode, setSelectedPasscode] = useState({});
 
@@ -105,7 +105,7 @@ const PasscodeManagement = () => {
         passcode={selectedPasscode}
       />
       <PasscodeGenerateModal
-        show={showModalGnerate}
+        show={showModalGenerate}
         onClose={() => setShowModalGenerate(false)}
       />
     </>
