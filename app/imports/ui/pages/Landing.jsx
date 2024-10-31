@@ -1,6 +1,5 @@
 import React from 'react';
 import { Row, Col, Container, Button, Card } from 'react-bootstrap';
-import QuestionCompass from '../components/QuestionCompass';
 import { PAGE_IDS } from '../utilities/PageIDs';
 
 /* A simple static component to render some text for the landing page. */
@@ -91,7 +90,6 @@ const Landing = () => (
         </Card>
       </Col>
     </Container>
-    <QuestionCompass />
   </Container>
 );
 
