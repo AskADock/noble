@@ -10,9 +10,12 @@ import FrequentlyAskedQuestions from '../pages/FAQ';
 // import QuestionCompass from '../pages/QuestionCompass';
 import AskADocPage from '../pages/AskADoc';
 import Privacy from '../pages/Privacy';
+import MedHome from '../pages/MedHome';
+import QuestionManagement from '../pages/QuestionManagement';
 import FAQManagement from '../pages/FAQManagement';
+import PasscodeManagement from '../pages/PasscodeManagement';
 import ListStuff from '../pages/ListStuff';
-import ListStuffAdmin from '../pages/ListStuffAdmin';
+// import ListStuffAdmin from '../pages/ListStuffAdmin';
 import AddStuff from '../pages/AddStuff';
 import EditStuff from '../pages/EditStuff';
 import NotFound from '../pages/NotFound';
@@ -47,15 +50,16 @@ const App = () => {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signout" element={<SignOut />} />
           <Route path="/faq" element={<FrequentlyAskedQuestions />} />
-          { /* <Route path="/question-compass" element={<QuestionCompass />} /> */ }
+          {/* <Route path="/question-compass" element={<QuestionCompass />} /> */}
           <Route path="/ask-a-doc" element={<AskADocPage />} />
           <Route path="/privacy" element={<Privacy />} />
-          <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
+          <Route path="/home" element={<ProtectedRoute><MedHome /></ProtectedRoute>} />
+          <Route path="/question-management" element={<ProtectedRoute><QuestionManagement /></ProtectedRoute>} />
+          <Route path="/faq-management" element={<ProtectedRoute><FAQManagement /></ProtectedRoute>} />
+          <Route path="/passcode-management" element={<ProtectedRoute><PasscodeManagement /></ProtectedRoute>} />
           <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
           <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
-          <Route path="/admin" element={<AdminProtectedRoute ready={ready} isAdmin={isAdmin}><ListStuffAdmin /></AdminProtectedRoute>} />
-          <Route path="/faq-management" element={<AdminProtectedRoute ready={ready} isAdmin={isAdmin}><FAQManagement /></AdminProtectedRoute>} />
           <Route path="/manage-database" element={<AdminProtectedRoute ready={ready} isAdmin={isAdmin}><ManageDatabase /></AdminProtectedRoute>} />
           <Route path="/manage-faq" element={<AdminProtectedRoute ready={ready} isAdmin={isAdmin}><FAQManagement /></AdminProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />

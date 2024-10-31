@@ -53,7 +53,8 @@ body {
 }
 
 .landing-background {
-  background: url('/images/landing/us.jpg') fixed;
+  background: url('/images/landing/blue-sky-with-clouds.jpg') fixed;
+  /* background: url('/images/landing/us.jpg') fixed; */
   background-size: cover;
   background-position: 20% center;
   color: white;
@@ -69,6 +70,12 @@ body {
 
 .faq-background {
   background-color: var(--color2);
+  background-size: cover;
+  min-height: 70vh;
+}
+
+.med-staff-home-background {
+  background-color: var(--color3);
   background-size: cover;
   min-height: 70vh;
 }
