@@ -33,6 +33,7 @@ const FrequentlyAskedQuestions = () => {
       <Container fluid className="color1">
         <Row className="py-4 text-center color1">
           <h1 className="text-white">Frequently Asked Questions</h1>
+          <h3 className="text-white">First Stop for Quick Answers</h3>
         </Row>
       </Container>
       <Container fluid className="faq-background">

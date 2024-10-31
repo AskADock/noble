@@ -63,9 +63,9 @@ export const AskADoc = () => {
       <Row className="py-4 justify-content-center">
         <Col className="col-10 align-content-center">
           <Row className="py-5 color1 justify-content-center">
-            <Col xs={12} md={8} lg={6} className="text-center text-white">
+            <Col xs={12} md={8} lg={7} className="text-center text-white">
               <h1>Ask A Doc</h1>
-              <p>Anonymously ask a Doctor any question. Your answer will appear in the FAQ page soon.</p>
+              <h5>Anonymously ask a Doctor any question. Your answer will appear in the FAQ page soon.</h5>
             </Col>
           </Row>
           <Row className="justify-content-center py-5">
