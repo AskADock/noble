@@ -33,7 +33,8 @@ const Landing = () => (
       <Col xs={12} sm={11} md={9}>
         <Card className="rounded-4 p-3 my-4 text-center">
           <h2>Your Private Health Resource</h2>
-          <p>Whether it&apos;s a minor query or a more complex issue, you&apos;ll find the guidance you need.</p>
+          <hr />
+          <h6>Whether it&apos;s a minor query or a more complex issue, you&apos;ll find the guidance you need.</h6>
         </Card>
       </Col>
     </Container>
@@ -85,27 +86,27 @@ const Landing = () => (
               <Row>
                 <Col>
                   <LockFill size="7vw" />
-                  <p>
+                  <h5>
                     We don&apos;t collect any personal information.
-                  </p>
+                  </h5>
                 </Col>
                 <Col>
                   <ShieldFill size="7vw" />
-                  <p>
+                  <h5>
                     No tracking - your usage stays anonymous.
-                  </p>
+                  </h5>
                 </Col>
                 <Col>
                   <PersonCheckFill size="7vw" />
-                  <p>
+                  <h5>
                     Completely anonymous interactions.
-                  </p>
+                  </h5>
                 </Col>
               </Row>
-              <br />
-              <p>
+              <hr />
+              <h4>
                 Noble is designed with privacy in mind. No login required, no personal information collected.
-              </p>
+              </h4>
             </Card.Body>
           </Card>
         </Col>
