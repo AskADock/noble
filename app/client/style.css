@@ -68,6 +68,11 @@ body {
   object-fit: contain;
 }
 
+.landing-info-card {
+  width: 60%;
+  minHeight: 25vh;
+}
+
 .faq-background {
   background-color: var(--color2);
   background-size: cover;
