@@ -10,8 +10,6 @@ const Footer = () => {
       <Container style={divStyle}>
         <Row className="text-center">
           <Col md={4}>
-            <img src="/images/Noble_Logo.png" alt="Logo" width="120" height="120" style={logoStyle} />
-            <img src="/images/Noble-Logo.png" alt="Logo" width="100" height="100" />
             <img src="/images/154_Logo.png" alt="Logo" width="120" height="120" style={logoStyle} />
           </Col>
           <Col md={4}>
