@@ -42,7 +42,7 @@
       "answer": "If you were hurt during drill/AT orders get seen at Tripler ED on the day you were hurt. If you were hurt during AGR/MPA orders get seen at schedule an appointment with 15th MDG or go to Tripler ED for emergencies. Email 154MDG.GCC@us.af.mil for an LOD form only if you require follow-up care/surgery for an injury after your orders end date."
     },
     {
-      "category": "Profile/Waivers",
+      "category": "Profiles/Waivers",
       "question": "How do I get a profile for duty/fitness restrictions?",
       "answer": "DSG: Please have your provider fill out a Request Medical Information (RMI) and submit to 154th MDG. (attach general RMI form) AGR/MPA: Schedule an appointment with your PCM at the 15th MDG."
     },
@@ -92,7 +92,7 @@
       "answer": "You still need to complete your MHA (with QTC), once MHA is completed our providers will sign off during drill weekends. Email 154mdg.gcc@us.af.mil if needed for promotion/tour/deployment."
     },
     {
-      "category": "Deployments",
+      "category": "Deployment",
       "question": "I’ve recently been tasked to deploy. How can I schedule an appointment to complete my medical requirements?",
       "answer": "Contact your UDM to coordinate an appointment with the Medical group."
     },
