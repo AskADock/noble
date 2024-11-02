@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 
 const QuestionCompass = () => (
-  <>
+  <Container fluid className="question-compass-background p-0">
     <Container fluid className="color1">
       <Row className="py-4 text-center">
         <Col>
@@ -28,7 +28,7 @@ const QuestionCompass = () => (
         </Col>
       </Row>
     </Container>
-  </>
+  </Container>
 );
 
 export default QuestionCompass;
