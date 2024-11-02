@@ -28,6 +28,46 @@ export const defineMethod = new ValidatedMethod({
   },
 });
 
+/**
+ * Meteor method used to define new instances of the given collection name without needing to log in.
+ * @param collectionName the name of the collection.
+ * @param definitionDate the object used in the collection.define method.
+ * @memberOf api/base
+ */
+export const defineMethodAskADoc = new ValidatedMethod({
+  name: 'BaseCollection.defineQuestion',
+  mixins: [CallPromiseMixin],
+  validate: null,
+  run({ collectionName, definitionData }) {
+    if (Meteor.isServer) {
+      // console.log(collectionName, this.userId, definitionData);
+      const collection = MATPCollections.getCollection(collectionName);
+      return collection.define(definitionData);
+    }
+    return '';
+  },
+});
+
+/**
+ * Meteor method used to check inputted passcode in the Ask A Doc page.
+ * @param collectionName the name of the collection.
+ * @param definitionDate the object used in the collection.define method.
+ * @memberOf api/base
+ */
+export const checkPasscodeMethod = new ValidatedMethod({
+  name: 'BaseCollection.checkPasscode',
+  mixins: [CallPromiseMixin],
+  validate: null,
+  run({ collectionName, definitionData }) {
+    if (Meteor.isServer) {
+      // console.log(collectionName, this.userId, definitionData);
+      const collection = MATPCollections.getCollection(collectionName);
+      return collection.checkPasscode(definitionData);
+    }
+    return '';
+  },
+});
+
 export const updateMethod = new ValidatedMethod({
   name: 'BaseCollection.update',
   mixins: [CallPromiseMixin],

@@ -1,8 +1,8 @@
 import { Meteor } from 'meteor/meteor';
-// import { Stuffs } from '../stuff/StuffCollection';
 import { Questions } from '../question/QuestionCollection';
 import { Categories } from '../category/CategoryCollection';
 import { FAQ } from '../faq/FAQCollection';
+import { Passcodes } from '../passcode/PasscodeCollection';
 import { AdminProfiles } from '../user/AdminProfileCollection';
 import { UserProfiles } from '../user/UserProfileCollection';
 
@@ -17,10 +17,10 @@ class MATPClass {
     // list of all the MATPCollections collections
     this.collections = [
       AdminProfiles,
-      // Stuffs,
       Questions,
       Categories,
       FAQ,
+      Passcodes,
       UserProfiles,
     ];
     /*
@@ -29,10 +29,10 @@ class MATPClass {
     this.collectionLoadSequence = [
       AdminProfiles,
       UserProfiles,
-      // Stuffs,
       Categories,
       Questions,
       FAQ,
+      Passcodes,
     ];
 
     /*

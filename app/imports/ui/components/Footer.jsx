@@ -12,6 +12,7 @@ const Footer = () => {
           <Col md={4}>
             <img src="/images/Noble_Logo.png" alt="Logo" width="120" height="120" style={logoStyle} />
             <img src="/images/Noble-Logo.png" alt="Logo" width="100" height="100" />
+            <img src="/images/154_Logo.png" alt="Logo" width="120" height="120" style={logoStyle} />
           </Col>
           <Col md={4}>
             <Nav className="justify-content-center">
@@ -31,7 +32,7 @@ const Footer = () => {
           <Col md={4}>
             <Nav className="justify-content-center">
               <Nav.Link href="/terms">Terms</Nav.Link>
-              <Nav.Link href="/privacy">Privacy</Nav.Link>
+              <Nav.Link href="/privacy">Privacy</Nav.Link> {/* This should now link to your Privacy component */}
             </Nav>
           </Col>
         </Row>
