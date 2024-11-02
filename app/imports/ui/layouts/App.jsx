@@ -9,11 +9,13 @@ import Landing from '../pages/Landing';
 import FrequentlyAskedQuestions from '../pages/FAQ';
 import QuestionCompass from '../pages/QuestionCompass';
 import AskADocPage from '../pages/AskADoc';
+import FeedbackPage from '../pages/FeedbackPage';
 import Privacy from '../pages/Privacy';
 import MedHome from '../pages/MedHome';
 import QuestionManagement from '../pages/QuestionManagement';
 import FAQManagement from '../pages/FAQManagement';
 import PasscodeManagement from '../pages/PasscodeManagement';
+import FeedbackManagement from '../pages/FeedbackManagement';
 import ListStuff from '../pages/ListStuff';
 import NotFound from '../pages/NotFound';
 import SignUp from '../pages/SignUp';
@@ -49,11 +51,13 @@ const App = () => {
           <Route path="/faq" element={<FrequentlyAskedQuestions />} />
           <Route path="/question-compass" element={<QuestionCompass />} />
           <Route path="/ask-a-doc" element={<AskADocPage />} />
+          <Route path="/feedback" element={<FeedbackPage />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/home" element={<ProtectedRoute><MedHome /></ProtectedRoute>} />
           <Route path="/question-management" element={<ProtectedRoute><QuestionManagement /></ProtectedRoute>} />
           <Route path="/faq-management" element={<ProtectedRoute><FAQManagement /></ProtectedRoute>} />
           <Route path="/passcode-management" element={<ProtectedRoute><PasscodeManagement /></ProtectedRoute>} />
+          <Route path="/feedback-management" element={<ProtectedRoute><FeedbackManagement /></ProtectedRoute>} />
           <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
           <Route path="/manage-database" element={<AdminProtectedRoute ready={ready} isAdmin={isAdmin}><ManageDatabase /></AdminProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
