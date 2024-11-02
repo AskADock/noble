@@ -52,7 +52,7 @@ const MedHomeQuestion = ({ questions, categories }) => {
 
       <QuestionModal
         show={showModal}
-        collection="Question"
+        collection="Questions"
         action={action}
         question={selectedQuestion}
         category={categories}
