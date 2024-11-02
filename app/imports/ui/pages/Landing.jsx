@@ -18,7 +18,7 @@ const Landing = () => (
         </Button>
       </Col>
       <Col xs={12} sm="auto" className="text-center">
-        <Button className="rounded-3" variant="outline-light" size="lg" href="/">
+        <Button className="rounded-3" variant="outline-light" size="lg" href="/question-compass">
           Question Compass
         </Button>
       </Col>
