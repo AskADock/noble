@@ -11,6 +11,7 @@ const Footer = () => {
         <Row className="text-center">
           <Col md={4}>
             <img src="/images/Noble_Logo.png" alt="Logo" width="120" height="120" style={logoStyle} />
+            <img src="/images/Noble-Logo.png" alt="Logo" width="100" height="100" />
           </Col>
           <Col md={4}>
             <Nav className="justify-content-center">

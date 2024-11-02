@@ -5,40 +5,92 @@
     { "email": "john@foo.com", "password": "changeme", "role": "USER" , "firstName": "John", "lastName": "Doe" }
   ],
 
-  "defaultData": [
-    { "name": "Basket", "quantity": 3, "owner": "john@foo.com", "condition": "excellent" },
-    { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
-    { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
-    { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
-  ],
-
   "defaultCategories": [
-    { "category": "Physical Health"},
-    { "category": "Mental Health"},
-    { "category": "Medical Readiness"},
-    { "category": "Mens Health"},
-    { "category": "Womens Health"},
-    { "category": "Injury & Illness Management"},
-    { "category": "Substance Use & Addiction"},
-    { "category": "Self-Care & Resilience"},
-    { "category": "Medical Resources"}
+    { "category": "Readiness" },
+    { "category": "Line of Duty" },
+    { "category": "Profiles/Waivers" },
+    { "category": "Medical Clearance" },
+    { "category": "FLYERS" },
+    { "category": "NON-FLYERS" },
+    { "category": "Deployment" },
+    { "category": "Occupational Health" },
+    { "category": "Other" }
   ],
 
   "defaultQuestions": [
-    { "category": "Physical Health", "question": "How can I reduce my blood pressure?", "answer": "", "answered": false },
-    { "category": "Mental Health", "question": "I'm feeling hopeless. What should I do?", "answer": "", "answered": false },
-    { "category": "Medical Readiness", "question": "Will I automatically be put on the No Fly List if I don't make retention?", "answer": "", "answered": false },
-    { "category": "Mens Health", "question": "Why do my balls have a weird lump on them?", "answer": "", "answered": false },
-    { "category": "Womens Health", "question": "Why does my chest hurt?", "answer": "", "answered": false },
-    { "category": "Injury & Illness Management", "question": "I've been taking antibiotics for days now. When should the infection get better?", "answer": "Antibiotics take about 24-48 hrs to see results. Please see a doctor if symptoms have not improved.", "answered": true },
-    { "category": "Substance Use & Addiction", "question": "I'm concerned about a friend who takes advil to get high. How can I help?", "answered": false },
-    { "category": "Self-Care & Resilience", "question": "What kind of training should I do to help with bone density", "answer": "Strength training, such as lifting weights, can help in the long run.", "answered": true },
-    { "category": "Medical Resources", "question": "Where can I learn more about medical readiness?", "answer": "", "answered": false }
+    {
+      "category": "Readiness",
+      "question": "Where do I find readiness information?",
+      "answered": false
+    },
+    {
+      "category": "Medical Clearance",
+      "question": "What do I need for medical clearance?",
+      "answered": false
+    }
   ],
 
   "defaultFAQ": [
-    { "category": "Physical Health", "question": "How can I reduce my blood pressure?", "answer": "You can reduce your blood pressure by eating a healthy diet, exercising regularly, and avoiding tobacco and alcohol." },
-    { "category": "Mental Health", "question": "I'm feeling hopeless. What should I do?", "answer": "If you're feeling hopeless, it's important to talk to someone you trust." }
+    {
+      "category": "Readiness",
+      "question": "How do I check my medical requirements?",
+      "answer": "Access your IMR from the Air Force portal. https://asimsimr.health.mil/imr/myimr.aspx"
+    },
+    {
+      "category": "Line of Duty",
+      "question": "I’ve been hurt while on orders, what is the next step?",
+      "answer": "If you were hurt during drill/AT orders get seen at Tripler ED on the day you were hurt. If you were hurt during AGR/MPA orders get seen at schedule an appointment with 15th MDG or go to Tripler ED for emergencies. Email 154MDG.GCC@us.af.mil for an LOD form only if you require follow-up care/surgery for an injury after your orders end date."
+    },
+    {
+      "category": "Profile/Waivers",
+      "question": "How do I get a profile for duty/fitness restrictions?",
+      "answer": "DSG: Please have your provider fill out a Request Medical Information (RMI) and submit to 154th MDG. (attach general RMI form) AGR/MPA: Schedule an appointment with your PCM at the 15th MDG."
+    },
+    {
+      "category": "Medical Clearance",
+      "question": "I’ve been selected for an AGR/MPA tour, how do I get medical clearance?",
+      "answer": "Please ensure your IMR is GREEN. Send your AGR/MPA checklist to 154MDG.GCC@us.af.mil. Your unit should provide you with a checklist, medical does not provide a checklist. Medical clearance is an AF422 that we will create for you if you do not have one dated within 12 months."
+    },
+    {
+      "category": "FLYERS",
+      "question": "I am due for my FLY physical; how do I schedule an appointment?",
+      "answer": "Complete your PHAQ on your MyIMR and then contact your Unit Health Monitor to schedule your appointment or you may call 808-789-0184 or email 154MDG.GCC@us.af.mil to schedule."
+    },
+    {
+      "category": "FLYERS",
+      "question": "How do I get a copy of my DD2992?",
+      "answer": "Email 154MDG.GCC@us.af.mil for a copy."
+    },
+    {
+      "category": "FLYERS",
+      "question": "How often do I need to do my FLY physical?",
+      "answer": "Every 12 months."
+    },
+    {
+      "category": "FLYERS",
+      "question": "How often do I need to do my dental?",
+      "answer": "DSG: Every 12 months with your civilian dental and submit your DD Form 2813 to 154mdg.gcc@us.af.mil. AGR/MPA: Every 12 months with 15th Dental Clinic."
+    },
+    {
+      "category": "NON-FLYERS",
+      "question": "How do I schedule an appointment for something on my action list?",
+      "answer": "Notify your Unit Health Monitor or email our org box 154mdg.gcc@us.af.mil."
+    },
+    {
+      "category": "NON-FLYERS",
+      "question": "How do I know what I am medically due for?",
+      "answer": "Login to your MyIMR https://asimsimr.health.mil/imr/myimr.aspx."
+    },
+    {
+      "category": "NON-FLYERS",
+      "question": "How do I start my PHAQ?",
+      "answer": "Login to your MyIMR https://asimsimr.health.mil/imr/myimr.aspx."
+    },
+    {
+      "category": "NON-FLYERS",
+      "question": "Why am I still showing due for PHA/MHA?",
+      "answer": "You still need to complete your MHA (with QTC), once MHA is completed our providers will sign off during drill weekends. Email 154mdg.gcc@us.af.mil if needed for promotion/tour/deployment."
+    }
   ],
 
   "public": {
