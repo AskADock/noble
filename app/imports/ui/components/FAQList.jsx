@@ -56,7 +56,7 @@ const FAQList = ({ faq, questions }) => {
             type="text"
             placeholder="Search Questions..."
             className="p-2"
-            style={{ minWidth: '40vw', maxWidth: '45vw' }}
+            style={{ minWidth: '35vw', maxWidth: '45vw' }}
             value={searchQuery}
             onChange={handleSearchChange}
           />
