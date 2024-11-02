@@ -71,7 +71,7 @@ class FeedbackCollection extends BaseCollection {
   /**
  * Subscription method for feedback.
  */
-  subscribeFeedback() {
+  subscribeFeedbackAdmin() {
     if (Meteor.isClient) {
       return Meteor.subscribe(feedbackPublitcations.feedbackAdmin);
     }

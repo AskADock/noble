@@ -55,7 +55,7 @@ export const defineMethodAskADoc = new ValidatedMethod({
  * @memberOf api/base
  */
 export const defineMethodFeedback = new ValidatedMethod({
-  name: 'BaseCollection.defineQuestion',
+  name: 'BaseCollection.defineFeedback',
   mixins: [CallPromiseMixin],
   validate: null,
   run({ collectionName, definitionData }) {
