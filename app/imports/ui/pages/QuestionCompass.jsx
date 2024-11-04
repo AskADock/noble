@@ -7,6 +7,7 @@ const QuestionCompass = () => (
       <Row className="py-4 text-center">
         <Col>
           <h1 className="text-white">Question Compass</h1>
+          <p className="text-white">Ask a question and find the right path to your health questions</p>
         </Col>
       </Row>
     </Container>

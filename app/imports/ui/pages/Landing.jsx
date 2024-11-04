@@ -41,7 +41,7 @@ const Landing = () => (
     <Container fluid className="color2 p-4 d-flex justify-content-center align-items-center">
       <Row className="justify-content-end align-content-end">
         <Col xs={12} lg={4} className="d-flex justify-content-center">
-          <Card className="landing-info-card rounded-4 p-2 m-2">
+          <Card className="landing-info-card rounded-4 p-1 m-2">
             <Card.Img src="/images/FAQ.png" alt="Logo" variant="top" className="rounded-4" />
             <Card.Body>
               <Row className="mt-3 text-center">
@@ -52,7 +52,7 @@ const Landing = () => (
           </Card>
         </Col>
         <Col xs={12} lg={4} className="d-flex justify-content-center">
-          <Card className="landing-info-card rounded-4 p-2 m-2">
+          <Card className="landing-info-card rounded-4 p-1 m-2">
             <Card.Img src="/images/Compass.png" alt="Logo" variant="top" className="rounded-4" />
             <Card.Body>
               <Row className="mt-3 text-center">
@@ -63,7 +63,7 @@ const Landing = () => (
           </Card>
         </Col>
         <Col xs={12} lg={4} className="d-flex justify-content-center">
-          <Card className="landing-info-card rounded-4 p-2 m-2">
+          <Card className="landing-info-card rounded-4 p-1 m-2">
             <Card.Img src="/images/P.png" alt="Logo" variant="top" className="rounded-4" />
             <Card.Body>
               <Row className="mt-3 text-center">
@@ -85,19 +85,19 @@ const Landing = () => (
             <Card.Body>
               <Row>
                 <Col>
-                  <LockFill size="7vw" />
+                  <LockFill size="7vw" className="landing-info-card-icon" />
                   <h5>
                     We don&apos;t collect any personal information.
                   </h5>
                 </Col>
                 <Col>
-                  <ShieldFill size="7vw" />
+                  <ShieldFill size="7vw" className="landing-info-card-icon" />
                   <h5>
                     No tracking - your usage stays anonymous.
                   </h5>
                 </Col>
                 <Col>
-                  <PersonCheckFill size="7vw" />
+                  <PersonCheckFill size="7vw" className="landing-info-card-icon" />
                   <h5>
                     Completely anonymous interactions.
                   </h5>

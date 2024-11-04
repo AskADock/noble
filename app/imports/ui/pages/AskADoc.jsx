@@ -61,7 +61,7 @@ export const AskADoc = () => {
   return ready ? (
     <Container fluid className="ask-a-doc-background p-0">
       <Container>
-        <Row className="py-5 text-center text-white">
+        <Row className="pt-5 text-center text-white">
           <h1>Ask A Doc</h1>
           <p>Anonymously ask a Doctor any question. Your answer will appear in the FAQ page soon.</p>
         </Row>

@@ -9,10 +9,10 @@ const Footer = () => {
     <footer className="mt-auto bg-light">
       <Container style={divStyle}>
         <Row className="text-center">
-          <Col md={4}>
+          <Col md={3}>
             <img src="/images/154_Logo.png" alt="Logo" width="120" height="120" style={logoStyle} />
           </Col>
-          <Col md={5}>
+          <Col md={6}>
             <Nav className="justify-content-center">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/faq">FAQ</Nav.Link>
@@ -30,8 +30,7 @@ const Footer = () => {
           </Col>
           <Col md={3}>
             <Nav className="justify-content-center">
-              <Nav.Link href="/terms">Terms</Nav.Link>
-              <Nav.Link href="/privacy">Privacy</Nav.Link> {/* This should now link to your Privacy component */}
+              <Nav.Link href="/privacy">Privacy</Nav.Link>
             </Nav>
           </Col>
         </Row>

@@ -69,8 +69,14 @@ body {
 }
 
 .landing-info-card {
-  width: 60%;
-  minHeight: 25vh;
+  width: 45%;
+  min-Height: 23vh;
+  max-Height: 45vh;
+}
+
+.landing-info-card-icon {
+  min-width: 5vh;
+  max-width: 7vh;
 }
 
 .faq-background {
