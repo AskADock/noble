@@ -85,7 +85,7 @@ const MedHome = () => {
                 <h3>Create A Flyer</h3>
               </Card.Title>
               <Card.Body>
-                <Button href="/category-management">
+                <Button href="/flyer-management">
                   Flyer Generator
                 </Button>
               </Card.Body>
