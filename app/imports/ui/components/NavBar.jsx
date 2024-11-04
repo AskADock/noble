@@ -18,7 +18,7 @@ const NavBar = () => {
     <Navbar bg="light" expand="lg">
       <Container className="text-start"> {/* Aligns everything to the start (left) */}
         <Navbar.Brand id={COMPONENT_IDS.NAVBAR_LANDING_PAGE}>
-          <Image src="/images/Noble-Logo.png" alt="Home Image" style={{ maxWidth: '6vh' }} />
+          <Image src="/images/154_Logo.png" alt="Home Image" style={{ maxWidth: '6vh' }} />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls={COMPONENT_IDS.NAVBAR_COLLAPSE} />
         <Navbar.Collapse id={COMPONENT_IDS.NAVBAR_COLLAPSE}>
@@ -28,7 +28,8 @@ const NavBar = () => {
               [<Nav.Link id={COMPONENT_IDS.NAVBAR_HOME} as={NavLink} to="/">Home</Nav.Link>,
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_FAQ} as={NavLink} to="/faq">FAQ</Nav.Link>,
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_QUESTION_COMPASS} as={NavLink} to="/question-compass">Question Compass</Nav.Link>,
-                <Nav.Link id={COMPONENT_IDS.NAVBAR_ASK_A_DOC} as={NavLink} to="/ask-a-doc">Ask A Doc</Nav.Link>]
+                <Nav.Link id={COMPONENT_IDS.NAVBAR_ASK_A_DOC} as={NavLink} to="/ask-a-doc">Ask A Doc</Nav.Link>,
+                <Nav.Link id={COMPONENT_IDS.NAVBAR_FEEDBACK} as={NavLink} to="/feedback">Feedback</Nav.Link>]
             ) : ''}
 
             {/* Show links for users logged in */}
@@ -36,7 +37,8 @@ const NavBar = () => {
               [<Nav.Link id={COMPONENT_IDS.NAVBAR_MED_HOME} as={NavLink} to="/home">Med Home</Nav.Link>,
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_FAQ_MANAGEMENT} as={NavLink} to="/faq-management">FAQ Management</Nav.Link>,
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_QUESTION_MANAGEMENT} as={NavLink} to="/question-management">Question Management</Nav.Link>,
-                <Nav.Link id={COMPONENT_IDS.NAVBAR_PASSCODE_MANAGEMENT} as={NavLink} to="/passcode-management">Passcode Management</Nav.Link>]
+                <Nav.Link id={COMPONENT_IDS.NAVBAR_PASSCODE_MANAGEMENT} as={NavLink} to="/passcode-management">Passcode Management</Nav.Link>,
+                <Nav.Link id={COMPONENT_IDS.NAVBAR_FEEDBACK_MANAGEMENT} as={NavLink} to="/feedback-management">Feedback Management</Nav.Link>]
             ) : ''}
 
             {/* Show admin links */}

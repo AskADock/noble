@@ -76,11 +76,23 @@ body {
 .faq-background {
   background-color: var(--color2);
   background-size: cover;
-  min-height: 70vh;
+  min-height: 80vh;
+}
+
+.question-compass-background {
+  background-color: var(--color3);
+  background-size: cover;
+  min-height: 80vh;
+}
+
+.ask-a-doc-background {
+  background-color: var(--color1);
+  background-size: cover;
+  min-height: 80vh;
 }
 
 .med-staff-home-background {
   background-color: var(--color3);
   background-size: cover;
-  min-height: 70vh;
+  min-height: 80vh;
 }

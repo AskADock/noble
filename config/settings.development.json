@@ -42,7 +42,7 @@
       "answer": "If you were hurt during drill/AT orders get seen at Tripler ED on the day you were hurt. If you were hurt during AGR/MPA orders get seen at schedule an appointment with 15th MDG or go to Tripler ED for emergencies. Email 154MDG.GCC@us.af.mil for an LOD form only if you require follow-up care/surgery for an injury after your orders end date."
     },
     {
-      "category": "Profile/Waivers",
+      "category": "Profiles/Waivers",
       "question": "How do I get a profile for duty/fitness restrictions?",
       "answer": "DSG: Please have your provider fill out a Request Medical Information (RMI) and submit to 154th MDG. (attach general RMI form) AGR/MPA: Schedule an appointment with your PCM at the 15th MDG."
     },
@@ -90,6 +90,41 @@
       "category": "NON-FLYERS",
       "question": "Why am I still showing due for PHA/MHA?",
       "answer": "You still need to complete your MHA (with QTC), once MHA is completed our providers will sign off during drill weekends. Email 154mdg.gcc@us.af.mil if needed for promotion/tour/deployment."
+    },
+    {
+      "category": "Deployment",
+      "question": "I’ve recently been tasked to deploy. How can I schedule an appointment to complete my medical requirements?",
+      "answer": "Contact your UDM to coordinate an appointment with the Medical group."
+    },
+    {
+      "category": "Occupational Health",
+      "question": "How often do I update my shop roster as a supervisor?",
+      "answer": "Quarterly (every 3 months)."
+    },
+    {
+      "category": "Occupational Health",
+      "question": "How often do I need to complete an audiogram?",
+      "answer": "Annually."
+    },
+    {
+      "category": "Occupational Health",
+      "question": "Who do I contact if my audiogram is not updated in ASIMS?",
+      "answer": "154th Public Health."
+    },
+    {
+      "category": "Occupational Health",
+      "question": "What happens if I fail my annual audiogram?",
+      "answer": "You are required to complete a 14-hour noise free follow-up 1 audiogram the next day."
+    },
+    {
+      "category": "Occupational Health",
+      "question": "What happens if I fail My 14-hour noise free follow up 1 audiogram?",
+      "answer": "You are required to complete a same day follow up 2 audiogram."
+    },
+    {
+      "category": "Occupational Health",
+      "question": "What happens when I Fail my same day follow-up 2 audiogram?",
+      "answer": "You are required to complete a DD1753 form and a face-to-face ear exam with a provider to determine if you need an audiologist referral or re-established baseline."
     }
   ],
 

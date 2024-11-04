@@ -3,6 +3,7 @@ import { Questions } from '../question/QuestionCollection';
 import { Categories } from '../category/CategoryCollection';
 import { FAQ } from '../faq/FAQCollection';
 import { Passcodes } from '../passcode/PasscodeCollection';
+import { Feedback } from '../feedback/FeedbackCollection';
 import { AdminProfiles } from '../user/AdminProfileCollection';
 import { UserProfiles } from '../user/UserProfileCollection';
 
@@ -20,6 +21,7 @@ class MATPClass {
       Questions,
       Categories,
       FAQ,
+      Feedback,
       Passcodes,
       UserProfiles,
     ];
@@ -32,6 +34,7 @@ class MATPClass {
       Categories,
       Questions,
       FAQ,
+      Feedback,
       Passcodes,
     ];
 

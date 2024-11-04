@@ -10,14 +10,15 @@ const Footer = () => {
       <Container style={divStyle}>
         <Row className="text-center">
           <Col md={4}>
-            <img src="/images/Noble_Logo.png" alt="Logo" width="120" height="120" style={logoStyle} />
+            <img src="/images/154_Logo.png" alt="Logo" width="120" height="120" style={logoStyle} />
           </Col>
-          <Col md={4}>
+          <Col md={5}>
             <Nav className="justify-content-center">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/faq">FAQ</Nav.Link>
               <Nav.Link href="/question-compass">Question Compass</Nav.Link>
               <Nav.Link href="/ask-a-doc">Ask A Doc</Nav.Link>
+              <Nav.Link href="/feedback">Feedback</Nav.Link>
             </Nav>
             <Nav className="justify-content-center">
               <Row className="text-center mt-3">
@@ -27,7 +28,7 @@ const Footer = () => {
               </Row>
             </Nav>
           </Col>
-          <Col md={4}>
+          <Col md={3}>
             <Nav className="justify-content-center">
               <Nav.Link href="/terms">Terms</Nav.Link>
               <Nav.Link href="/privacy">Privacy</Nav.Link> {/* This should now link to your Privacy component */}
