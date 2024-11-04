@@ -43,7 +43,7 @@ const MedHomeQuestion = ({ questions, categories }) => {
                 )) : <p>No Questions!</p>}
               </Col>
             </Row>
-            <Button>
+            <Button href="/question-management">
               View More
             </Button>
           </Card.Body>
