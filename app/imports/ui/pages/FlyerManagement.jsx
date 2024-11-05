@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Container, Row, Col, Image, Button, Form, Card } from 'react-bootstrap';
+import swal from 'sweetalert';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Passcodes } from '../../api/passcode/PasscodeCollection';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -26,6 +27,10 @@ const FlyerManagement = () => {
   };
 
   const handlePrint = () => {
+    if (!selectedPasscode) {
+      swal('Error', 'Please select a passcode to print a flyer.', 'error');
+      return;
+    }
     const printContents = printRef.current.innerHTML;
     const originalContents = document.body.innerHTML;
     document.body.innerHTML = printContents;
@@ -45,7 +50,7 @@ const FlyerManagement = () => {
       <Container className="py-4">
         <Card className="rounded-4 p-3">
           <Row>
-            <Col sm={12} className="text-center">
+            <Col sm={12} md={6} className="text-center">
               <Form.Group controlId="passcodeSelect">
                 <Form.Label>Select a Passcode</Form.Label>
                 <Form.Control as="select" value={selectedPasscode} onChange={handlePasscodeChange}>
@@ -58,7 +63,7 @@ const FlyerManagement = () => {
                 </Form.Control>
               </Form.Group>
             </Col>
-            <Col sm={12} className="text-center justify-content-center py-2">
+            <Col sm={12} md={6} className="text-center justify-content-center py-2">
               <Button variant="primary" onClick={handlePrint}>Print Flyer</Button>
             </Col>
           </Row>
