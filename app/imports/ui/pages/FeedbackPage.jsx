@@ -31,7 +31,7 @@ export const Feedbacks = () => {
       <Container>
         <Row className="py-5 text-center text-white">
           <h1>Feedback</h1>
-          <p>Leave your feedback here. Any feedback will help imporve the site.</p>
+          <p>Leave your feedback here. Any feedback will help improve the site.</p>
         </Row>
         <Row className="justify-content-center py-5">
           <Col xs={12} md={10} lg={8} className="text-center">
@@ -40,7 +40,7 @@ export const Feedbacks = () => {
                 <Form.Control
                   as="textarea"
                   rows={6}
-                  placeholder="Type your feedabck here..."
+                  placeholder="Type your feedback here..."
                   value={feedback}
                   onChange={(e) => setFeedback(e.target.value)}
                   required
