@@ -33,7 +33,7 @@ const Landing = () => (
         <Card className="rounded-4 p-5 m-5">
           <Row className="text-center">
             <Col xs={12} md={6}>
-              <img src="/images/FAQ.png" alt="Logo" width="200" height="200" />
+              <img src="/images/landing/FAQ.png" alt="Logo" width="200" height="200" />
             </Col>
             <Col xs={12} md={6}>
               <h2>Ask health-related questions anonymously</h2>
@@ -52,7 +52,7 @@ const Landing = () => (
               <p>Find the right path to your health answers</p>
             </Col>
             <Col xs={12} md={6}>
-              <img src="/images/N.png" alt="Logo" width="200" height="200" />
+              <img src="/images/landing/question-compass.png" alt="Logo" width="200" height="200" />
             </Col>
           </Row>
         </Card>
@@ -63,7 +63,7 @@ const Landing = () => (
         <Card className="rounded-4 p-5 m-5">
           <Row className="text-center">
             <Col xs={12} md={6}>
-              <img src="/images/P.png" alt="Logo" width="200" height="200" />
+              <img src="/images/landing/ask-a-doc.png" alt="Logo" width="200" height="200" />
             </Col>
             <Col xs={12} md={6}>
               <h2>Ask A Doc</h2>
