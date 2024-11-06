@@ -43,21 +43,21 @@ const PasscodeManagement = () => {
       </Container>
       <Container>
         <Row className="pt-4 justify-content-center">
-          <Col className="col-3">
+          <Col sm={12} md={4}>
+            <Card className="rounded-4 p-3 text-center">
+              <Card.Title>Password Count</Card.Title>
+              <Card.Body>
+                <h5>{passcodes.length}</h5>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col sm={12} md={4}>
             <Card className="rounded-4 p-3 text-center">
               <Card.Title>Generate New Passcode</Card.Title>
               <Card.Body>
                 <Button variant="primary" onClick={() => handleShowGenerateModal()}>
                   Generate Passcode
                 </Button>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col className="col-3">
-            <Card className="rounded-4 p-3 text-center">
-              <Card.Title>Password Count</Card.Title>
-              <Card.Body>
-                <h5>{passcodes.length}</h5>
               </Card.Body>
             </Card>
           </Col>
