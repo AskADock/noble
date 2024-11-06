@@ -69,6 +69,7 @@ const FlyerManagement = () => {
           </Row>
         </Card>
       </Container>
+      {/* Printable Area */}
       <Container className="my-4">
         <div ref={printRef} className="printable">
           <Row className="py-4">
@@ -78,8 +79,8 @@ const FlyerManagement = () => {
                 Prepared for Tomorrow
               </p>
               <hr />
-              <Image src="/images/noble-qrcode.png" alt="Logo" width="50%" />
-              <p className="py-3" style={{ fontSize: '25px' }}>
+              <Image src="/images/noble-qrcode.png" alt="Noble QRcode" width="50%" style={{ maxWidth: '450px' }} />
+              <p className="py-2" style={{ fontSize: '25px' }}>
                 Ask A Doc Passcode: <strong>{selectedPasscode || 'ERROR: No Passcode'}</strong>
               </p>
               <hr />
@@ -89,6 +90,7 @@ const FlyerManagement = () => {
               <h2>
                 No Login Required
               </h2>
+              <Image src="/images/154_Logo.png" alt="Noble Logo" width="50%" style={{ maxWidth: '250px' }} />
             </Col>
           </Row>
         </div>
