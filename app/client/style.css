@@ -86,6 +86,12 @@ body {
   min-height: 80vh;
 }
 
+.privacy-policy-background {
+  background-color: var(--color1);
+  background-size: cover;
+  min-height: 80vh;
+}
+
 .med-staff-home-background {
   background-color: var(--color3);
   background-size: cover;
