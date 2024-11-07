@@ -15,6 +15,7 @@ import MedHome from '../pages/MedHome';
 import QuestionManagement from '../pages/QuestionManagement';
 import FAQManagement from '../pages/FAQManagement';
 import PasscodeManagement from '../pages/PasscodeManagement';
+import FlyerManagement from '../pages/FlyerManagement';
 import FeedbackManagement from '../pages/FeedbackManagement';
 import ListStuff from '../pages/ListStuff';
 import NotFound from '../pages/NotFound';
@@ -57,6 +58,7 @@ const App = () => {
           <Route path="/question-management" element={<ProtectedRoute><QuestionManagement /></ProtectedRoute>} />
           <Route path="/faq-management" element={<ProtectedRoute><FAQManagement /></ProtectedRoute>} />
           <Route path="/passcode-management" element={<ProtectedRoute><PasscodeManagement /></ProtectedRoute>} />
+          <Route path="/flyer-management" element={<ProtectedRoute><FlyerManagement /></ProtectedRoute>} />
           <Route path="/feedback-management" element={<ProtectedRoute><FeedbackManagement /></ProtectedRoute>} />
           <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
           <Route path="/manage-database" element={<AdminProtectedRoute ready={ready} isAdmin={isAdmin}><ManageDatabase /></AdminProtectedRoute>} />
