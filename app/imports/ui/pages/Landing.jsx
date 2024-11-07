@@ -8,10 +8,10 @@ const Landing = () => (
 
         {/* Hero Section */}
         <Row className="hero-section align-items-center text-center mt-5 mb-3">
-            <Col xs={12} className="justify-content-center">
+            <Col xs={12}   className="justify-content-center">
                 <h1 className="hero-title">Noble</h1>
                 <h3 className="hero-subtitle">
-                    Confidential Care, Collective Strength – Your Health, Your Voice, Anytime
+                    Prepared for Tomorrow
                 </h3>
             </Col>
         </Row>
@@ -26,7 +26,7 @@ const Landing = () => (
 
             <Row className="feature-cards justify-content-around">
                 {/* First Feature Card */}
-                <Col xs={12} sm={6} md={4} className="mb-4">
+                <Col xs={14} sm={8} md={4} className="mb-4">
                     <Card className="feature-card p-3 shadow-sm">
                         <Card.Img variant="top" src="/images/FAQ.png" className="feature-image"/>
                         <Card.Body className="text-center">
@@ -41,7 +41,7 @@ const Landing = () => (
                 </Col>
 
                 {/* Second Feature Card */}
-                <Col xs={12} sm={6} md={4} className="mb-4">
+                <Col xs={14} sm={8} md={4} className="mb-4">
                     <Card className="feature-card p-3 shadow-sm">
                         <Card.Img variant="top" src="/images/N.png" className="feature-image"/>
                         <Card.Body className="text-center">
@@ -49,13 +49,13 @@ const Landing = () => (
                             <p className="feature-text">
                                 Using our custom AI assistant, you can find relevant information to your medical
                                 questions approved by medical staff </p>
-                            <Button variant="primary" href="/question-compass">Explore</Button>
+                            <Button variant="primary" href="/question-compass">Question Compass</Button>
                         </Card.Body>
                     </Card>
                 </Col>
 
                 {/* Third Feature Card */}
-                <Col xs={12} sm={6} md={4} className="mb-4">
+                <Col xs={14} sm={8} md={4} className="mb-4">
                     <Card className="feature-card p-3 shadow-sm">
                         <Card.Img variant="top" src="/images/P.png" className="feature-image"/>
                         <Card.Body className="text-center">
@@ -73,6 +73,7 @@ const Landing = () => (
         </Container>
 
         <div className="medgroup" style={{width: 1676, height: 988, position: 'relative'}}>
+
             <div
                 className="rectangle"
                 style={{
@@ -84,6 +85,7 @@ const Landing = () => (
                     borderRadius: 70,
                 }}
             />
+
             <div
                 className="stay-proactive"
                 style={{
@@ -91,8 +93,11 @@ const Landing = () => (
                     height: 'auto',
                     left: 930,
                     top: 54,
-                    position: 'absolute',
+                    //position: 'absolute',
                     textAlign: 'center',
+                    position: 'relative',
+                    padding: '40px',
+                    maxWidth: '100%',
                 }}
             >
                 <h2 style={{color: 'rgba(15.81, 18.83, 106.57, 0.98)', fontSize: 40, fontWeight: 700}}>
@@ -132,13 +137,13 @@ const Landing = () => (
                 className="medgrp"
                 style={{width: 686, height: 405, left: 83, top: 89, position: 'absolute'}}
                 src="images/landing/MedGrp.jpg"
-                alt="Medical Placeholder"
+                alt="Medical pic"
             />
             <img
                 className="medgrp"
                 style={{width: 689, height: 426, left: 866, top: 526, position: 'absolute'}}
                 src="images/landing/supply-drop.jpg"
-                alt="Medical Placeholder"
+                alt="Medical pic"
             />
         </div>
 </Container>
