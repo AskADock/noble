@@ -179,7 +179,7 @@ body {
 /* Individual feature card styling */
 .feature-card {
   width: 400px; /* Smaller width for more compact cards */
-  height: 400px; /* Shorter height */
+  min-height: 600px; /* Shorter height */
   border-radius: 10px;
   position: relative;
   overflow: hidden;
@@ -200,7 +200,7 @@ body {
 
 /* Title styling for feature cards */
 .features-title {
-  font-size: 16px; /* Smaller font size */
+  font-size: 18px; /* Smaller font size */
   color: #333; /* Darker text for readability */
   font-weight: 700;
   margin: 8px 0;
@@ -209,7 +209,7 @@ body {
 
 /* Text styling for feature descriptions */
 .feature-text {
-  font-size: 12px; /* Smaller font size */
+  font-size: 14px; /* Smaller font size */
   color: #666; /* Softer text color */
   margin: 5px 0;
   text-align: center; /* Center text */

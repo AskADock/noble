@@ -77,9 +77,9 @@ const Landing = () => (
       <Container className="my-4">
         <Card className="rounded-4 p-2 text-center">
           <Card.Body>
-            <Row className="my-3">
+            <Row className="my-4">
               <Col sm={12} md={6}>
-                <Image src="images/landing/MedGrp.jpg" alt="Medical pic" width="75%" className="rounded-4" />
+                <Image src="images/landing/MedGrp.jpg" alt="Medical pic" width="85%" className="rounded-4" />
               </Col>
               <Col sm={12} md={6}>
                 <h2 style={{ color: 'rgba(15.81, 18.83, 106.57, 0.98)', fontSize: 40, fontWeight: 700 }}>
@@ -94,7 +94,7 @@ const Landing = () => (
                 </p>
               </Col>
             </Row>
-            <Row className="my-3">
+            <Row className="my-4">
               <Col sm={12} md={6}>
                 <h2 style={{ color: 'rgba(15.81, 18.83, 106.57, 0.98)', fontSize: 36, fontWeight: 700 }}>
                   Stay Private
@@ -108,7 +108,7 @@ const Landing = () => (
                 </p>
               </Col>
               <Col sm={12} md={6}>
-                <Image src="images/landing/supply-drop.jpg" alt="Medical pic" width="75%" className="rounded-4" />
+                <Image src="images/landing/supply-drop.jpg" alt="Medical pic" width="85%" className="rounded-4" />
               </Col>
             </Row>
           </Card.Body>
