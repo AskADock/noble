@@ -118,6 +118,34 @@ const FAQFilter = ({ faq, questions, categories }) => {
                 Ask A Doc
               </Button>
             </Card>
+            <Card className="rounded-4 p-3 mt-4 text-center color3">
+              <h4>Resources</h4>
+              <Col className="text-start">
+                <a href="mailto:154mdg.gcc@us.af.mil" className="text-decoration-none">
+                  <strong>154 MDG Org Box</strong>
+                </a>
+                <br />
+                <em>*Send any questions or documents to our org box</em><br />
+                <br />
+                <a href="https://usaf.dps.mil/sites/HIANG/154WG/154MDG" target="_blank" className="text-decoration-none" rel="noreferrer">
+                  <strong>154 MDG SharePoint</strong>
+                </a>
+                <br />
+                <em>*MDG resources (CAC required)</em><br />
+                <br />
+                <a href="https://asimsimr.health.mil/imr/myimr.aspx" target="_blank" className="text-decoration-none" rel="noreferrer">
+                  <strong>MyIMR Link</strong>
+                </a>
+                <br />
+                <em>*ASIMS website to check for medical requirements/status (CAC required)</em><br />
+                <br />
+                <a href="https://asimsimr.health.mil/imr/Login_Unit.aspx" target="_blank" className="text-decoration-none" rel="noreferrer">
+                  <strong>Unit POC’s ASIMS Login</strong>
+                </a>
+                <br />
+                <em>*ASIMS website for Unit Health/Deployment Monitors (CAC required)</em><br />
+              </Col>
+            </Card>
           </div>
         </Col>
       </Row>
