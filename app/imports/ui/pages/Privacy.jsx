@@ -4,12 +4,12 @@ import { Container, Row, Col, Card } from 'react-bootstrap';
 const Privacy = () => (
   <Container fluid className="privacy-policy-background">
     <Container className="justify-content-center align-items-center">
-      <Row className="py-4 align-content-center justify-content-center">
+      <Row className="py-4">
         <Col>
           <Card className="rounded-4 p-3 text-center">
             <Card.Title>
               <h1>Privacy Policy</h1>
-              <hr/>
+              <hr />
             </Card.Title>
             <Card.Body>
               <Row className="text-start">
