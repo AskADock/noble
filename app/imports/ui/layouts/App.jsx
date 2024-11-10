@@ -17,7 +17,6 @@ import FAQManagement from '../pages/FAQManagement';
 import PasscodeManagement from '../pages/PasscodeManagement';
 import FlyerManagement from '../pages/FlyerManagement';
 import FeedbackManagement from '../pages/FeedbackManagement';
-import ListStuff from '../pages/ListStuff';
 import NotFound from '../pages/NotFound';
 import SignUp from '../pages/SignUp';
 import SignOut from '../pages/SignOut';
@@ -60,7 +59,6 @@ const App = () => {
           <Route path="/passcode-management" element={<ProtectedRoute><PasscodeManagement /></ProtectedRoute>} />
           <Route path="/flyer-management" element={<ProtectedRoute><FlyerManagement /></ProtectedRoute>} />
           <Route path="/feedback-management" element={<ProtectedRoute><FeedbackManagement /></ProtectedRoute>} />
-          <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
           <Route path="/manage-database" element={<AdminProtectedRoute ready={ready} isAdmin={isAdmin}><ManageDatabase /></AdminProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
           <Route path="*" element={<NotFound />} />
