@@ -1,10 +1,9 @@
 import { Selector, t } from 'testcafe';
 import { PAGE_IDS } from '../imports/ui/utilities/PageIDs';
 
-/** Create an instance of a SimplePage when all you need to do is verify that the page was displayed. */
-class SimplePage {
-  constructor(id) {
-    this.pageId = `#${id}`;
+class AskADocPage {
+  constructor() {
+    this.pageId = `#${PAGE_IDS.ASK_A_DOC}`;
     this.pageSelector = Selector(this.pageId);
   }
 
@@ -14,10 +13,11 @@ class SimplePage {
     // Note that this file imports t (the test controller) from the testcafe module. You don’t need to pass t to helper functions because TestCafe can resolve the current test context and provide the correct test controller instance.
     await t.expect(this.pageSelector.exists).ok();
   }
+
+  /** Asserts that the Ask A Doc button works. */
+  async askADocButton() {
+    await t.click(`#${PAGE_IDS.ASK_A_DOC}`);
+  }
 }
 
-export const questionCompassPage = new SimplePage(PAGE_IDS.QUESTION_COMPASS);
-export const privacyPolicyPage = new SimplePage(PAGE_IDS.PRIVACY_POLICY);
-export const listStuffAdminPage = new SimplePage(PAGE_IDS.LIST_STUFF_ADMIN);
-export const manageDatabasePage = new SimplePage(PAGE_IDS.MANAGE_DATABASE);
-export const signOutPage = new SimplePage(PAGE_IDS.SIGN_OUT);
+export const askADocPage = new AskADocPage();

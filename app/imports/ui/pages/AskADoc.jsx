@@ -7,6 +7,7 @@ import { Categories } from '../../api/category/CategoryCollection';
 import { Passcodes } from '../../api/passcode/PasscodeCollection';
 import { checkPasscodeMethod, defineMethodAskADoc } from '../../api/base/BaseCollection.methods';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 export const AskADoc = () => {
   // Fetch categories with useTracker
@@ -59,7 +60,7 @@ export const AskADoc = () => {
   };
 
   return ready ? (
-    <Container fluid className="ask-a-doc-background p-0">
+    <Container fluid className="ask-a-doc-background p-0" id={PAGE_IDS.ASK_A_DOC}>
       <Container>
         <Row className="py-5 text-center text-white">
           <h1>Ask A Doc</h1>

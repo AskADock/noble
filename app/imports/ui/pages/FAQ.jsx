@@ -6,6 +6,7 @@ import { Questions } from '../../api/question/QuestionCollection';
 import { Categories } from '../../api/category/CategoryCollection';
 import FAQFilter from '../components/FAQFilter';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 const FrequentlyAskedQuestions = () => {
   // Subscribe to the FAQ collection.
@@ -29,7 +30,7 @@ const FrequentlyAskedQuestions = () => {
   });
 
   return (ready ? (
-    <Container fluid className="faq-background p-0">
+    <Container fluid id={PAGE_IDS.FAQ} className="faq-background p-0">
       <Container fluid className="color1">
         <Row className="py-4 text-center color1">
           <h1 className="text-white">Frequently Asked Questions</h1>

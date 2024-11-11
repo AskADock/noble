@@ -1,8 +1,9 @@
 import React from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 const Privacy = () => (
-  <Container fluid className="privacy-policy-background">
+  <Container fluid className="privacy-policy-background" id={PAGE_IDS.PRIVACY_POLICY}>
     <Container className="justify-content-center align-items-center">
       <Row className="py-4">
         <Col>
