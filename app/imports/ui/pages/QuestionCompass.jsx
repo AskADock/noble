@@ -12,10 +12,8 @@ const QuestionCompass = () => {
     setMessages([...messages, { role: 'user', text: input }]);
 
     try {
-      // Make a request to your Flask backend
       const response = await axios.post('http://localhost:5000/api/get-answer', { question: input });
-      const botResponse = response.data.answer; // The answer from your backend
-
+      const botResponse = response.data.answer;
       setMessages((prevMessages) => [...prevMessages, { role: 'bot', text: botResponse }]);
       setInput('');
     } catch (error) {
@@ -61,7 +59,7 @@ const QuestionCompass = () => {
               </div>
               <InputGroup className="my-3">
                 <FormControl
-                    placeholder="Type your message..."
+                    placeholder="Type your question here..."
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
