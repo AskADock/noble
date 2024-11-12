@@ -59,4 +59,10 @@ export const COMPONENT_IDS = {
   FAQ_LIST_ANSWER: 'faq-list-answer',
   FAQ_LIST_PAGINATION: 'faq-list-pagination',
 
+  // Ask A Doc public page
+  ASK_A_DOC_FORM_CATEGORY: 'ask-a-doc-form-category',
+  ASK_A_DOC_FORM_PASSCODE: 'ask-a-doc-form-passcode',
+  ASK_A_DOC_FORM_QUESTION: 'ask-a-doc-form-question',
+  ASK_A_DOC_FORM_SUBMIT: 'ask-a-doc-form-submit',
+  ASK_A_DOC_FORM_CONFIRM: 'ask-a-doc-form-confirm',
 };

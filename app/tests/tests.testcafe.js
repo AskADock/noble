@@ -20,7 +20,7 @@ const credentials = { username: 'medgroup@foo.com', password: 'Always-Ready-75' 
 // const newCredentials = { username: 'medgrouptest@foo.com', password: 'Always-Ready-75' };
 
 /** Question and replys */
-const askADocQuestion = { category: 'Readiness', question: 'This is a test(Cafe)?' };
+const askADocQuestion = { category: 'Readiness', passcode: '1234', question: 'This is a test(Cafe)?' };
 
 fixture('meteor-application-template-production localhost test with default db')
   .page('http://localhost:3000');
@@ -46,6 +46,7 @@ test('Test that FAQ filter and search works', async () => {
   await faqPage.isDisplayed();
   await faqFilter.filterDropdown();
   await faqList.search();
+  await faqList.questionAnswerCard();
 });
 
 test('Test that FAQ Ask A Doc button works', async () => {
@@ -67,8 +68,9 @@ test('Test that Ask A Doc page shows up', async () => {
   await askADocPage.isDisplayed();
 });
 
-test('Test question submission', async () => {
-  await askADocPage.questionSubmission(askADocQuestion.category, askADocQuestion.question);
+test.only('Test question submission', async () => {
+  await navBar.gotoAskADocPage();
+  await askADocPage.submitQuestion(askADocQuestion.category, askADocQuestion.passcode, askADocQuestion.question);
 });
 
 // Feedback

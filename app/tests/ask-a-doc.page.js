@@ -1,5 +1,6 @@
 import { Selector, t } from 'testcafe';
 import { PAGE_IDS } from '../imports/ui/utilities/PageIDs';
+import { COMPONENT_IDS } from '../imports/ui/utilities/ComponentIDs';
 
 class AskADocPage {
   constructor() {
@@ -14,9 +15,13 @@ class AskADocPage {
     await t.expect(this.pageSelector.exists).ok();
   }
 
-  /** Asserts that the Ask A Doc button works. */
-  async askADocButton() {
-    await t.click(`#${PAGE_IDS.ASK_A_DOC}`);
+  /** Asserts that the question submission works. */
+  async submitQuestion(category, passcode, question) {
+    await t.typeText(`#${COMPONENT_IDS.ASK_A_DOC_FORM_CATEGORY}`, category);
+    await t.typeText(`#${COMPONENT_IDS.ASK_A_DOC_FORM_PASSCODE}`, passcode);
+    await t.typeText(`#${COMPONENT_IDS.ASK_A_DOC_FORM_QUESTION}`, question);
+    await t.click(`#${COMPONENT_IDS.ASK_A_DOC_FORM_SUBMIT}`);
+    await t.click(`#${COMPONENT_IDS.ASK_A_DOC_FORM_CONFIRM}`);
   }
 }
 
