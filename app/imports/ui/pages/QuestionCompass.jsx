@@ -1,9 +1,11 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
+import DisclaimerModal from '../components/DisclaimerModal';
 import { PAGE_IDS } from '../utilities/PageIDs';
 
 const QuestionCompass = () => (
   <Container fluid className="question-compass-background p-0" id={PAGE_IDS.QUESTION_COMPASS}>
+    <DisclaimerModal />
     <Container fluid className="color1">
       <Row className="py-4 text-center">
         <Col>

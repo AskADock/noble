@@ -6,6 +6,7 @@ import { Questions } from '../../api/question/QuestionCollection';
 import { Categories } from '../../api/category/CategoryCollection';
 import { Passcodes } from '../../api/passcode/PasscodeCollection';
 import { checkPasscodeMethod, defineMethodAskADoc } from '../../api/base/BaseCollection.methods';
+import DisclaimerModal from '../components/DisclaimerModal';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
@@ -62,6 +63,7 @@ export const AskADoc = () => {
 
   return ready ? (
     <Container fluid className="ask-a-doc-background p-0" id={PAGE_IDS.ASK_A_DOC}>
+      <DisclaimerModal />
       <Container>
         <Row className="py-5 text-center text-white">
           <h1>Ask A Doc</h1>
