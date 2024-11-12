@@ -1,10 +1,9 @@
 import { Selector, t } from 'testcafe';
 import { PAGE_IDS } from '../imports/ui/utilities/PageIDs';
 
-/** Create an instance of a SimplePage when all you need to do is verify that the page was displayed. */
-class SimplePage {
-  constructor(id) {
-    this.pageId = `#${id}`;
+class FeedbackPage {
+  constructor() {
+    this.pageId = `#${PAGE_IDS.FEEDBACK}`;
     this.pageSelector = Selector(this.pageId);
   }
 
@@ -16,8 +15,4 @@ class SimplePage {
   }
 }
 
-export const questionCompassPage = new SimplePage(PAGE_IDS.QUESTION_COMPASS);
-export const privacyPolicyPage = new SimplePage(PAGE_IDS.PRIVACY_POLICY);
-export const listStuffAdminPage = new SimplePage(PAGE_IDS.LIST_STUFF_ADMIN);
-export const manageDatabasePage = new SimplePage(PAGE_IDS.MANAGE_DATABASE);
-export const signOutPage = new SimplePage(PAGE_IDS.SIGN_OUT);
+export const feedbackPage = new FeedbackPage();

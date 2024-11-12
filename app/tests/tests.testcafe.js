@@ -1,9 +1,15 @@
 // import { Selector, t } from 'testcafe';
-import { /* addStuffPage, listStuffAdminPage, listStuffPage, editStuffPage, manageDatabasePage, */ signOutPage } from './simple.page';
+import { questionCompassPage, privacyPolicyPage, signOutPage } from './simple.page';
 import { landingPage } from './landing.page';
+import { faqPage } from './faq.page';
+import { faqFilter } from './faq-filter.component';
+import { faqList } from './faq-list.component';
+import { askADocPage } from './ask-a-doc.page';
+import { feedbackPage } from './feedback.page';
 import { signInPage } from './signin.page';
 // import { signUpPage } from './signup.page';
 import { navBar } from './navbar.component';
+import { footer } from './footer.component';
 // import { COMPONENT_IDS } from '../imports/ui/utilities/ComponentIDs';
 
 /* global fixture:false, test:false */
@@ -13,6 +19,9 @@ const credentials = { username: 'medgroup@foo.com', password: 'Always-Ready-75' 
 // const adminCredentials = { username: 'admin@foo.com', password: 'changeme' };
 // const newCredentials = { username: 'medgrouptest@foo.com', password: 'Always-Ready-75' };
 
+/** Question and replys */
+const askADocQuestion = { category: 'Readiness', passcode: '1234', question: 'This is a test(Cafe)?' };
+
 fixture('meteor-application-template-production localhost test with default db')
   .page('http://localhost:3000');
 
@@ -20,6 +29,79 @@ test('Test that landing page shows up', async () => {
   await landingPage.isDisplayed();
 });
 
+// FAQ page tests
+test('Test that FAQ page shows up', async () => {
+  await navBar.gotoFAQPage();
+  await faqPage.isDisplayed();
+});
+
+test('Test that FAQ questions and answers show up', async () => {
+  await navBar.gotoFAQPage();
+  await faqPage.isDisplayed();
+  await faqList.questionAnswerCard();
+});
+
+test('Test that FAQ filter and search works', async () => {
+  await navBar.gotoFAQPage();
+  await faqPage.isDisplayed();
+  await faqFilter.filterDropdown();
+  await faqList.search();
+  await faqList.questionAnswerCard();
+});
+
+test('Test that FAQ Ask A Doc button works', async () => {
+  await navBar.gotoFAQPage();
+  await faqPage.isDisplayed();
+  await faqFilter.askADocButton();
+  await askADocPage.isDisplayed();
+});
+
+// Question Compass
+test('Test that Question Compass page shows up', async () => {
+  await navBar.gotoQuestionCompassPage();
+  await questionCompassPage.isDisplayed();
+});
+
+// Ask A Doc
+test('Test that Ask A Doc page shows up', async () => {
+  await navBar.gotoAskADocPage();
+  await askADocPage.isDisplayed();
+});
+
+test('Test question submission', async () => {
+  await navBar.gotoAskADocPage();
+  await askADocPage.submitQuestion(askADocQuestion.category, askADocQuestion.passcode, askADocQuestion.question);
+});
+
+// Feedback
+test('Test that Feedback page shows up', async () => {
+  await navBar.gotoFeedbackPage();
+  await feedbackPage.isDisplayed();
+});
+
+// Privacy Policy
+test('Test that Privacy Policy page shows up', async () => {
+  await footer.gotoPrivacyPolicyPage();
+  await privacyPolicyPage.isDisplayed();
+});
+
+// Footer tests
+test('Test that footer links work', async () => {
+  await footer.gotoHomePage();
+  await landingPage.isDisplayed();
+  await footer.gotoFAQPage();
+  await faqPage.isDisplayed();
+  await footer.gotoQuestionCompassPage();
+  await questionCompassPage.isDisplayed();
+  await footer.gotoAskADocPage();
+  await askADocPage.isDisplayed();
+  await footer.gotoFeedbackPage();
+  await feedbackPage.isDisplayed();
+  await footer.gotoPrivacyPolicyPage();
+  await privacyPolicyPage.isDisplayed();
+});
+
+// Sign in and sign out tests
 test('Test that signin and signout work', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(credentials.username, credentials.password);

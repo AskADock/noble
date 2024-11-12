@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Col, Row, Nav } from 'react-bootstrap';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 /** The Footer appears at the bottom of every page. Rendered by the App Layout component. */
 const Footer = () => {
@@ -12,12 +13,12 @@ const Footer = () => {
           <Col md={4} className="text-start offset-md-1">
             <div>
               <Nav className="flex-column">
-                <Nav.Link href="/">Home</Nav.Link>
-                <Nav.Link href="/faq">FAQ</Nav.Link>
-                <Nav.Link href="/question-compass">Question Compass</Nav.Link>
-                <Nav.Link href="/ask-a-doc">Ask A Doc</Nav.Link>
-                <Nav.Link href="/feedback">Feedback</Nav.Link>
-                <Nav.Link href="/privacy">Privacy</Nav.Link>
+                <Nav.Link href="/" id={COMPONENT_IDS.FOOTER_HOME}>Home</Nav.Link>
+                <Nav.Link href="/faq" id={COMPONENT_IDS.FOOTER_FAQ}>FAQ</Nav.Link>
+                <Nav.Link href="/question-compass" id={COMPONENT_IDS.FOOTER_QUESTION_COMPASS}>Question Compass</Nav.Link>
+                <Nav.Link href="/ask-a-doc" id={COMPONENT_IDS.FOOTER_ASK_A_DOC}>Ask A Doc</Nav.Link>
+                <Nav.Link href="/feedback" id={COMPONENT_IDS.FOOTER_FEEDBACK}>Feedback</Nav.Link>
+                <Nav.Link href="/privacy" id={COMPONENT_IDS.FOOTER_PRIVACY_POLICY}>Privacy</Nav.Link>
               </Nav>
             </div>
           </Col>

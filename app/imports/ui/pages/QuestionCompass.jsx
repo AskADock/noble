@@ -1,8 +1,9 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 const QuestionCompass = () => (
-  <Container fluid className="question-compass-background p-0">
+  <Container fluid className="question-compass-background p-0" id={PAGE_IDS.QUESTION_COMPASS}>
     <Container fluid className="color1">
       <Row className="py-4 text-center">
         <Col>

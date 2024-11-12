@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Row, Col, Container, Form, Card, Accordion } from 'react-bootstrap';
 import FAQList from './FAQList';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 /**
  * Renders the FAQ filter component. This component is responsible for filtering the FAQ questions by category.
@@ -34,11 +35,11 @@ const FAQFilter = ({ faq, questions, categories }) => {
     : questions;
 
   return (
-    <Container>
+    <Container id={COMPONENT_IDS.FAQ_FILTER}>
       <Row className="my-4">
         {/* Filter Section */}
         <Col md={12} lg={3} className="pb-3 text-start">
-          <Accordion>
+          <Accordion id={COMPONENT_IDS.FAQ_FILTER_DROPDOWN}>
             <Accordion.Item eventKey={0}>
               <Accordion.Header>
                 <h4>Filter by Category</h4>
@@ -52,6 +53,7 @@ const FAQFilter = ({ faq, questions, categories }) => {
                         value={theCategory.category}
                         onChange={handleCheckboxChange}
                         checked={isCategoryChecked(theCategory.category)}
+                        id={COMPONENT_IDS.FAQ_FILTER_DROPDOWN_SELECT}
                       />
                       <div className="ms-1">
                         <h5>{theCategory.category}</h5>
@@ -99,7 +101,7 @@ const FAQFilter = ({ faq, questions, categories }) => {
           <div className="d-none d-lg-block mt-4">
             <Card className="rounded-4 p-3 text-center color3">
               <h4>Can&apos;t find an answer?</h4>
-              <Button href="/ask-a-doc" className="rounded-3">
+              <Button href="/ask-a-doc" className="rounded-3" id={COMPONENT_IDS.FAQ_FILTER_ASK_A_DOC_BUTTON}>
                 Ask A Doc
               </Button>
             </Card>
@@ -114,7 +116,7 @@ const FAQFilter = ({ faq, questions, categories }) => {
           <div className="d-lg-none mt-4">
             <Card className="rounded-4 p-3 text-center">
               <h4>Can&apos;t find an answer?</h4>
-              <Button href="/ask-a-doc" className="rounded-3">
+              <Button href="/ask-a-doc" className="rounded-3" id={COMPONENT_IDS.FAQ_FILTER_ASK_A_DOC_BUTTON_SMALL}>
                 Ask A Doc
               </Button>
             </Card>
