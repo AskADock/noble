@@ -28,7 +28,7 @@ class FAQFilter {
   async filterDropdown() {
     const dropdown = Selector(`#${COMPONENT_IDS.FAQ_FILTER_DROPDOWN}`);
     await t.click(dropdown);
-    const checkbox = dropdown.find('input[type="checkbox"]').withAttribute('value', 'Readiness');
+    const checkbox = dropdown.find('input[type="checkbox"]').withAttribute('value', 'FLYERS');
     await t.click(checkbox);
   }
 }

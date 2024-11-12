@@ -52,7 +52,7 @@ export const COMPONENT_IDS = {
   FAQ_FILTER_ASK_A_DOC_BUTTON_SMALL: 'faq-filter-ask-a-doc-button-small',
   FAQ_FILTER_RESOURCE_CARD: 'faq-filter-resource-card',
   FAQ_LIST: 'faq-list',
-  FAQ_LIST_SEARCH_BAR: 'faq-list-search',
+  FAQ_LIST_SEARCH_BAR: 'faq-list-search-bar',
   FAQ_LIST_CARD: 'faq-list-card',
   FAQ_LIST_CARD_ACCORDION: 'faq-list-card-accordion',
   FAQ_LIST_QUESTION: 'faq-list-question',

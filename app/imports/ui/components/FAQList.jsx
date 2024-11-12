@@ -60,6 +60,7 @@ const FAQList = ({ faq, questions }) => {
             style={{ minWidth: '35vw', maxWidth: '45vw' }}
             value={searchQuery}
             onChange={handleSearchChange}
+            id={COMPONENT_IDS.FAQ_LIST_SEARCH_BAR}
           />
         </Form.Group>
       </Container>
