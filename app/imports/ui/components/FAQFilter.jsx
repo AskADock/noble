@@ -39,7 +39,7 @@ const FAQFilter = ({ faq, questions, categories }) => {
       <Row className="my-4">
         {/* Filter Section */}
         <Col md={12} lg={3} className="pb-3 text-start">
-          <Accordion id={COMPONENT_IDS.FAQ_FILTER_FILTER_DROPDOWN}>
+          <Accordion id={COMPONENT_IDS.FAQ_FILTER_DROPDOWN}>
             <Accordion.Item eventKey={0}>
               <Accordion.Header>
                 <h4>Filter by Category</h4>
@@ -116,7 +116,7 @@ const FAQFilter = ({ faq, questions, categories }) => {
           <div className="d-lg-none mt-4">
             <Card className="rounded-4 p-3 text-center">
               <h4>Can&apos;t find an answer?</h4>
-              <Button href="/ask-a-doc" className="rounded-3">
+              <Button href="/ask-a-doc" className="rounded-3" id={COMPONENT_IDS.FAQ_FILTER_ASK_A_DOC_BUTTON_SMALL}>
                 Ask A Doc
               </Button>
             </Card>

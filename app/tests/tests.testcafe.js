@@ -32,27 +32,24 @@ test('Test that FAQ page shows up', async () => {
   await faqPage.isDisplayed();
 });
 
-// test.only('Test that FAQ questions and answers show up', async () => {
-//   await navBar.gotoFAQPage();
-//   await faqPage.isDisplayed();
-//   await faqList.questionAnswerCard();
-// });
-//
-// test('Test that FAQ filter and search works', async () => {
-//   await faqPage.isDisplayed();
-//   await faqFilter.filterDropdown();
-// });
-//
-// test('Test that FAQ Ask A Doc button works', async () => {
-//   await faqPage.isDisplayed();
-//   await faqPage.askADocButton();
-//   await askADocPage.isDisplayed();
-// });
-//
-// test('Test that Ask A Doc page shows up', async () => {
-//   await navBar.gotoAskADocPage();
-//   await askADocPage.isDisplayed();
-// });
+test('Test that FAQ questions and answers show up', async () => {
+  await navBar.gotoFAQPage();
+  await faqPage.isDisplayed();
+  await faqList.questionAnswerCard();
+});
+
+test.only('Test that FAQ filter and search works', async () => {
+  await navBar.gotoFAQPage();
+  await faqPage.isDisplayed();
+  await faqFilter.filterDropdown();
+});
+
+test('Test that FAQ Ask A Doc button works', async () => {
+  await navBar.gotoFAQPage();
+  await faqPage.isDisplayed();
+  await faqFilter.askADocButton();
+  await askADocPage.isDisplayed();
+});
 
 // Question Compass
 test('Test that Question Compass page shows up', async () => {

@@ -14,10 +14,9 @@ class FAQList {
 
   /** Asserts that the FAQ question and answer appears. */
   async questionAnswerCard() {
-    await t.expect(Selector(COMPONENT_IDS.FAQ_LIST_CARD).exists).ok();
-    await t.click(COMPONENT_IDS.FAQ_LIST_CARD_ACCORDION);
-    await t.expect(Selector(COMPONENT_IDS.FAQ_LIST_QUESTION).exists).ok();
-    await t.expect(Selector(COMPONENT_IDS.FAQ_LIST_ANSWER).exists).ok();
+    await t.click(`#${COMPONENT_IDS.FAQ_LIST_CARD_ACCORDION}`);
+    await t.expect(Selector(`#${COMPONENT_IDS.FAQ_LIST_QUESTION}`).exists).ok();
+    await t.expect(Selector(`#${COMPONENT_IDS.FAQ_LIST_ANSWER}`).exists).ok();
   }
 }
 
