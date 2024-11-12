@@ -21,7 +21,7 @@ class AskADocPage {
     await t.typeText(`#${COMPONENT_IDS.ASK_A_DOC_FORM_PASSCODE}`, passcode);
     await t.typeText(`#${COMPONENT_IDS.ASK_A_DOC_FORM_QUESTION}`, question);
     await t.click(`#${COMPONENT_IDS.ASK_A_DOC_FORM_SUBMIT}`);
-    await t.click(`#${COMPONENT_IDS.ASK_A_DOC_FORM_CONFIRM}`);
+    await t.click('.swal-button--confirm');
   }
 }
 

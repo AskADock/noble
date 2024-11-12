@@ -68,7 +68,7 @@ test('Test that Ask A Doc page shows up', async () => {
   await askADocPage.isDisplayed();
 });
 
-test.only('Test question submission', async () => {
+test('Test question submission', async () => {
   await navBar.gotoAskADocPage();
   await askADocPage.submitQuestion(askADocQuestion.category, askADocQuestion.passcode, askADocQuestion.question);
 });
