@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Modal } from 'react-bootstrap';
+import { Container, Row, Col, Button, Modal } from 'react-bootstrap';
 
 const DisclaimerModal = () => {
   const [show, setShow] = useState(true);
@@ -15,8 +15,10 @@ const DisclaimerModal = () => {
       keyboard={false}
       centered
     >
-      <Modal.Header closeButton>
-        <Modal.Title>Disclaimer</Modal.Title>
+      <Modal.Header closeButton className="color1">
+        <Modal.Title>
+          <h2 className="text-white"><strong>Disclaimer</strong></h2>
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Container>
@@ -38,6 +40,11 @@ const DisclaimerModal = () => {
           </Row>
         </Container>
       </Modal.Body>
+      <Modal.Footer>
+        <Button onClick={handleClose} variant="primary">
+          Roger
+        </Button>
+      </Modal.Footer>
     </Modal>
   );
 };
