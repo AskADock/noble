@@ -1,6 +1,7 @@
 // import { Selector, t } from 'testcafe';
 import { questionCompassPage, privacyPolicyPage, signOutPage } from './simple.page';
 import { landingPage } from './landing.page';
+import { disclaimerModal } from './disclaimer-modal.component';
 import { faqPage } from './faq.page';
 import { faqFilter } from './faq-filter.component';
 import { faqList } from './faq-list.component';
@@ -32,17 +33,20 @@ test('Test that landing page shows up', async () => {
 // FAQ page tests
 test('Test that FAQ page shows up', async () => {
   await navBar.gotoFAQPage();
+  await disclaimerModal.closeDisclaimerModal();
   await faqPage.isDisplayed();
 });
 
 test('Test that FAQ questions and answers show up', async () => {
   await navBar.gotoFAQPage();
+  await disclaimerModal.closeDisclaimerModal();
   await faqPage.isDisplayed();
   await faqList.questionAnswerCard();
 });
 
 test('Test that FAQ filter and search works', async () => {
   await navBar.gotoFAQPage();
+  await disclaimerModal.closeDisclaimerModal();
   await faqPage.isDisplayed();
   await faqFilter.filterDropdown();
   await faqList.search();
@@ -51,6 +55,7 @@ test('Test that FAQ filter and search works', async () => {
 
 test('Test that FAQ Ask A Doc button works', async () => {
   await navBar.gotoFAQPage();
+  await disclaimerModal.closeDisclaimerModal();
   await faqPage.isDisplayed();
   await faqFilter.askADocButton();
   await askADocPage.isDisplayed();
@@ -59,17 +64,20 @@ test('Test that FAQ Ask A Doc button works', async () => {
 // Question Compass
 test('Test that Question Compass page shows up', async () => {
   await navBar.gotoQuestionCompassPage();
+  await disclaimerModal.closeDisclaimerModal();
   await questionCompassPage.isDisplayed();
 });
 
 // Ask A Doc
 test('Test that Ask A Doc page shows up', async () => {
   await navBar.gotoAskADocPage();
+  await disclaimerModal.closeDisclaimerModal();
   await askADocPage.isDisplayed();
 });
 
 test('Test question submission', async () => {
   await navBar.gotoAskADocPage();
+  await disclaimerModal.closeDisclaimerModal();
   await askADocPage.submitQuestion(askADocQuestion.category, askADocQuestion.passcode, askADocQuestion.question);
 });
 
@@ -90,10 +98,13 @@ test('Test that footer links work', async () => {
   await footer.gotoHomePage();
   await landingPage.isDisplayed();
   await footer.gotoFAQPage();
+  await disclaimerModal.closeDisclaimerModal();
   await faqPage.isDisplayed();
   await footer.gotoQuestionCompassPage();
+  await disclaimerModal.closeDisclaimerModal();
   await questionCompassPage.isDisplayed();
   await footer.gotoAskADocPage();
+  await disclaimerModal.closeDisclaimerModal();
   await askADocPage.isDisplayed();
   await footer.gotoFeedbackPage();
   await feedbackPage.isDisplayed();

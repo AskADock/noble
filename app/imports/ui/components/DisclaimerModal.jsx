@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Button, Modal } from 'react-bootstrap';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 const DisclaimerModal = () => {
   const [show, setShow] = useState(true);
@@ -14,6 +15,7 @@ const DisclaimerModal = () => {
       backdrop="static"
       keyboard={false}
       centered
+      id={COMPONENT_IDS.DISCLAIMER_MODAL}
     >
       <Modal.Header closeButton className="color1">
         <Modal.Title>
@@ -41,7 +43,7 @@ const DisclaimerModal = () => {
         </Container>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={handleClose} variant="primary">
+        <Button onClick={handleClose} variant="primary" id={COMPONENT_IDS.DISCLAIMER_MODAL_CLOSE}>
           Roger
         </Button>
       </Modal.Footer>
