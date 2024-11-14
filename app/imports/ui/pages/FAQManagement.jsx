@@ -5,6 +5,7 @@ import { FAQ } from '../../api/faq/FAQCollection';
 import { Categories } from '../../api/category/CategoryCollection';
 import FAQManagementFilter from '../components/FAQManagementFilter';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 /* Renders a table containing all of the FAQ documents. Allows admins to manage them. */
 const FAQManagement = () => {
@@ -23,7 +24,7 @@ const FAQManagement = () => {
   }, []);
 
   return (ready ? (
-    <Container fluid className="p-0 med-staff-home-background">
+    <Container fluid className="p-0 med-staff-home-background" id={PAGE_IDS.FAQ_MANAGEMENT}>
       <Container fluid className="color1">
         <Row className="py-4 text-center">
           <Col>

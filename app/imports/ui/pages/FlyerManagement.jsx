@@ -4,6 +4,7 @@ import swal from 'sweetalert';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Passcodes } from '../../api/passcode/PasscodeCollection';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 const FlyerManagement = () => {
   const printRef = useRef();
@@ -39,7 +40,7 @@ const FlyerManagement = () => {
   };
 
   return (ready ? (
-    <Container fluid className="p-0 med-staff-home-background">
+    <Container fluid className="p-0 med-staff-home-background" id={PAGE_IDS.FLYER_MANAGEMENT}>
       <Container fluid className="color1">
         <Row className="py-4 text-center">
           <Col>
