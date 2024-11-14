@@ -7,96 +7,88 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 const Landing = () => (
   <Container fluid id={PAGE_IDS.LANDING} className="landing-background p-0">
     {/* Hero Section */}
-    <Row className="hero-section align-items-center text-center my-5 py-5">
-      <Col xs={12} className="justify-content-center">
-        <h1 className="hero-title">Noble</h1>
-        <h3 className="hero-subtitle">
-          Prepared for Tomorrow
-        </h3>
-        <Row className="py-5 g-3 justify-content-center text-shadow">
-          <Col xs={12} sm="auto" className="text-center">
-            <Button className="rounded-3" variant="outline-light" size="lg" href="/faq">
-              FAQ
-            </Button>
-          </Col>
-          <Col xs={12} sm="auto" className="text-center">
-            <Button className="rounded-3" variant="outline-light" size="lg" href="/question-compass">
-              Question Compass
-            </Button>
-          </Col>
-          <Col xs={12} sm="auto" className="text-center">
-            <Button className="rounded-3" variant="outline-light" size="lg" href="/ask-a-doc">
-              Ask A Doc
-            </Button>
-          </Col>
-        </Row>
-      </Col>
-    </Row>
-
-    {/* Features Section */}
-    <Container fluid className="features-section p-4 d-flex flex-column justify-content-center align-items-center">
-      {/* Centered Headings for Features */}
-      <h2 className="text-center mb-3 text-dark-blue">Features</h2> {/* White text for heading */}
-      <h3 className="text-center mb-4 text-dark-blue">
-        Applications made for you to access medical information whenever, wherever.
-      </h3>
-
-      <Row className="feature-cards justify-content-around">
-        {/* First Feature Card */}
-        <Col xs={12} sm={8} md={4} className="mb-4">
-          <Card className="feature-card p-3 shadow-sm">
-            <Card.Img variant="top" src="/images/FAQ.png" className="feature-image" />
-            <Card.Body className="text-center">
-              <h2 className="features-title">Find health-related questions </h2>
-              <p className="feature-text">
-                Whether it&apos;s a minor query or a more complex issue, you can get the guidance you need
-                through our platform. Search through medical questions written by people like you.
-              </p>
-              <Button variant="primary" href="/faq">FAQ</Button>
-            </Card.Body>
-          </Card>
-        </Col>
-
-        {/* Second Feature Card */}
-        <Col xs={12} sm={8} md={4} className="mb-4">
-          <Card className="feature-card p-3 shadow-sm">
-            <Card.Img variant="top" src="/images/N.png" className="feature-image" />
-            <Card.Body className="text-center">
-              <h2 className="features-title">Question Compass</h2>
-              <p className="feature-text">
-                Using our custom AI assistant, you can find relevant information to your medical
-                questions approved by medical staff
-              </p>
-              <Button variant="primary" href="/question-compass">Question Compass</Button>
-            </Card.Body>
-          </Card>
-        </Col>
-
-        {/* Third Feature Card */}
-        <Col xs={12} sm={8} md={4} className="mb-4">
-          <Card className="feature-card p-3 shadow-sm">
-            <Card.Img variant="top" src="/images/P.png" className="feature-image" />
-            <Card.Body className="text-center">
-              <h2 className="features-title">Ask A Doc</h2>
-              <p className="feature-text">
-                Can’t find an answer? Worried about your privacy? Use our Ask A Doc feature to ask real
-                medical professionals anonymous questions that get answered periodically on the FAQ
-                page.
-              </p>
-              <Button variant="primary" href="/ask-a-doc">Ask a Doc</Button>
-            </Card.Body>
-          </Card>
+    <Container className="p-0">
+      <Row className="hero-section align-items-center text-center my-5 py-5">
+        <Col xs={12} className="justify-content-center">
+          <h1 className="hero-title">Noble</h1>
+          <h3 className="hero-subtitle">
+            Prepared for Tomorrow
+          </h3>
+          <Row className="py-5 g-3 justify-content-center text-shadow">
+            <Col xs={12} sm="auto" className="text-center">
+              <Button className="rounded-3" variant="outline-light" size="lg" href="/faq">
+                FAQ
+              </Button>
+            </Col>
+            <Col xs={12} sm="auto" className="text-center">
+              <Button className="rounded-3" variant="outline-light" size="lg" href="/question-compass">
+                Question Compass
+              </Button>
+            </Col>
+            <Col xs={12} sm="auto" className="text-center">
+              <Button className="rounded-3" variant="outline-light" size="lg" href="/ask-a-doc">
+                Ask A Doc
+              </Button>
+            </Col>
+          </Row>
         </Col>
       </Row>
-      {/* <Container fluid className="color3 p-4 d-flex justify-content-center align-items-center"> */}
-      {/*  <Col xs={12} sm={11} md={9}> */}
-      {/*    <Card className="rounded-4 p-3 my-4 text-center"> */}
-      {/*      <h2>Your Private Health Resource</h2> */}
-      {/*      <hr /> */}
-      {/*      <h6>Whether it&apos;s a minor query or a more complex issue, you&apos;ll find the guidance you need.</h6> */}
-      {/*    </Card> */}
-      {/*  </Col> */}
-      {/* </Container> */}
+    </Container>
+
+    {/* Features Section */}
+    <Container fluid className="features-section p-0 justify-content-center align-items-center">
+      <Container>
+        <Row className="text-center py-3 text-dark-blue">
+          <h1 className="mb-3 text-dark-blue">Your Private Health Resource</h1>
+          <h3 className="mb-3">Whether it&apos;s a minor query or a complex issue, you&apos;ll find the guidance you need.</h3>
+        </Row>
+        <Row className="justify-content-center">
+          {/* First Feature Card */}
+          <Col xs={12} md={4} className="mb-4">
+            <Card className="feature-card p-3 shadow-sm">
+              <Card.Img variant="top" src="/images/landing/FAQ.png" className="feature-image" />
+              <Card.Body className="text-center">
+                <h2 className="features-title">Find health-related questions </h2>
+                <p className="feature-text">
+                  Search through medical questions written by people like you.
+                </p>
+                <Button variant="primary" href="/faq">FAQ</Button>
+              </Card.Body>
+            </Card>
+          </Col>
+
+          {/* Second Feature Card */}
+          <Col xs={12} md={4} className="mb-4">
+            <Card className="feature-card p-3 shadow-sm">
+              <Card.Img variant="top" src="/images/landing/question-compass.png" className="feature-image" />
+              <Card.Body className="text-center">
+                <h2 className="features-title">Question Compass</h2>
+                <p className="feature-text">
+                  Using our custom AI assistant, you can find relevant information to your medical
+                  questions approved by medical staff
+                </p>
+                <Button variant="primary" href="/question-compass">Question Compass</Button>
+              </Card.Body>
+            </Card>
+          </Col>
+
+          {/* Third Feature Card */}
+          <Col xs={12} md={4} className="mb-4">
+            <Card className="feature-card p-3 shadow-sm">
+              <Card.Img variant="top" src="/images/landing/ask-a-doc.png" className="feature-image" />
+              <Card.Body className="text-center">
+                <h2 className="features-title">Ask A Doc</h2>
+                <p className="feature-text">
+                  Can’t find an answer? Worried about your privacy? Use our Ask A Doc feature to ask real
+                  medical professionals anonymous questions that get answered periodically on the FAQ
+                  page.
+                </p>
+                <Button variant="primary" href="/ask-a-doc">Ask a Doc</Button>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
 
       <Container fluid className="color3">
         <Container className="my-4">

@@ -61,7 +61,7 @@ body {
   background: url("images/landing/sm-child.jpg") fixed;
   border-radius: 30px;
   background-size: cover;
-  background-position: 20% center;
+  background-position: center;
   color: white;
   min-height: 250vh;
   width: 100%;
@@ -75,6 +75,22 @@ body {
   position: relative;
 }
 
+.hero-section {
+  min-height: 80vh; /* Full viewport height */
+}
+
+.hero-title {
+  font-size: 8vh;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.hero-subtitle {
+  font-size: 4vh;
+  font-weight: 400;
+  color: #ffffff;
+}
+
 .landing-info-card {
   width: 45%;
   min-Height: 23vh;
@@ -86,86 +102,6 @@ body {
   max-width: 7vh;
 }
 
-.faq-background {
-  background-color: var(--color2);
-  background-size: cover;
-  min-height: 80vh;
-}
-
-.question-compass-background {
-  background-color: var(--color3);
-  background-size: cover;
-  min-height: 80vh;
-}
-
-.ask-a-doc-background {
-  background-color: var(--color1);
-  background-size: cover;
-  min-height: 80vh;
-}
-
-.privacy-policy-background {
-  background-color: var(--color1);
-  background-size: cover;
-  min-height: 80vh;
-}
-
-.med-staff-home-background {
-  background-color: var(--offWhite);
-  background-size: cover;
-  min-height: 80vh;
-}
-.landing-page {
-  background-color: #f5f5f5;
-  font-family: 'Segoe UI', sans-serif;
-  text-align: center;
-  padding-bottom: 129px;
-}
-
-.header {
-  background-color: #fff;
-  border-radius: 59px;
-  padding: 40px 70px;
-  margin-bottom: 36px;
-}
-
-.navigation {
-  display: flex;
-  justify-content: center;
-}
-
-.nav-list {
-  display: flex;
-  list-style-type: none;
-  gap: 31px;
-  padding: 0;
-  margin: 0;
-}
-
-.nav-item {
-  color: rgba(16, 19, 107, 0.98);
-  font-size: 24px;
-  font-weight: 600;
-  text-decoration: none;
-}
-/*{Hero image}*/
-.hero-section {
-  min-height: 80vh; /* Full viewport height */
-}
-
-.hero-title {
-  font-size: 5vw;
-  font-weight: 700;
-  color: #ffffff;
-}
-
-.hero-subtitle {
-  font-size: 2vw;
-  font-weight: 400;
-  color: #ffffff;
-}
-
-
 /*Features section */
 .features-section {
   background-color: #fff; /* White background */
@@ -173,20 +109,12 @@ body {
   margin-top: 10px; /* Add vertical margin for spacing */
   width: 100%; /* Full width */
   max-width: 100%; /* Ensure it spans the full container */
-
-}
-
-/* Layout for feature cards */
-.feature-cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
 }
 
 /* Individual feature card styling */
 .feature-card {
-  width: 400px; /* Smaller width for more compact cards */
-  min-height: 600px; /* Shorter height */
+  max-width: 95vw; /* Smaller width for more compact cards */
+  min-height: 65vh; /* Shorter height */
   border-radius: 10px;
   position: relative;
   overflow: hidden;
@@ -238,6 +166,34 @@ body {
 .feature-button:hover {
   background-color: #566b99; /* Darken button on hover */
 }
+
+.header {
+  background-color: #fff;
+  border-radius: 59px;
+  padding: 40px 70px;
+  margin-bottom: 36px;
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-list {
+  display: flex;
+  list-style-type: none;
+  gap: 31px;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  color: rgba(16, 19, 107, 0.98);
+  font-size: 24px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
 .text-dark-blue {
   color: #10136B; /* Replace with your preferred dark blue hex code */
 }
@@ -330,4 +286,33 @@ body {
     top: 89px;
   }
 
+.faq-background {
+  background-color: var(--color2);
+  background-size: cover;
+  min-height: 80vh;
+}
+
+.question-compass-background {
+  background-color: var(--color3);
+  background-size: cover;
+  min-height: 80vh;
+}
+
+.ask-a-doc-background {
+  background-color: var(--color1);
+  background-size: cover;
+  min-height: 80vh;
+}
+
+.privacy-policy-background {
+  background-color: var(--color1);
+  background-size: cover;
+  min-height: 80vh;
+}
+
+.med-staff-home-background {
+  background-color: var(--offWhite);
+  background-size: cover;
+  min-height: 80vh;
+}
 
