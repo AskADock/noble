@@ -44,43 +44,46 @@ const Landing = () => (
         </Row>
         <Row className="justify-content-center">
           {/* First Feature Card */}
-          <Col xs={12} md={4} className="mb-4">
-            <Card className="feature-card p-3 shadow-sm">
+          <Col xs={12} sm={6} lg={4} className="mb-4">
+            <Card className="feature-card rounded-4 p-3 shadow-sm">
               <Card.Img variant="top" src="/images/landing/FAQ.png" className="feature-image" />
               <Card.Body className="text-center">
                 <h2 className="features-title">Find health-related questions </h2>
                 <p className="feature-text">
                   Search through medical questions written by people like you.
                 </p>
-                <Button variant="primary" href="/faq">FAQ</Button>
+                <Button variant="primary" href="/faq" className="feature-button">
+                  FAQ
+                </Button>
               </Card.Body>
             </Card>
           </Col>
 
           {/* Second Feature Card */}
-          <Col xs={12} md={4} className="mb-4">
-            <Card className="feature-card p-3 shadow-sm">
+          <Col xs={12} sm={6} lg={4} className="mb-4">
+            <Card className="feature-card rounded-4 p-3 shadow-sm">
               <Card.Img variant="top" src="/images/landing/question-compass.png" className="feature-image" />
               <Card.Body className="text-center">
                 <h2 className="features-title">Question Compass</h2>
                 <p className="feature-text">
-                  Using our custom AI assistant, you can find relevant information to your medical
-                  questions approved by medical staff
+                  Chat with our AI assistant and find relevant information to your medical
+                  questions.
                 </p>
-                <Button variant="primary" href="/question-compass">Question Compass</Button>
+                <Button variant="primary" href="/question-compass" className="feature-button">
+                  Question Compass
+                </Button>
               </Card.Body>
             </Card>
           </Col>
 
           {/* Third Feature Card */}
-          <Col xs={12} md={4} className="mb-4">
-            <Card className="feature-card p-3 shadow-sm">
+          <Col xs={12} sm={6} lg={4} className="mb-4">
+            <Card className="feature-card rounded-4 p-3 shadow-sm">
               <Card.Img variant="top" src="/images/landing/ask-a-doc.png" className="feature-image" />
               <Card.Body className="text-center">
                 <h2 className="features-title">Ask A Doc</h2>
                 <p className="feature-text">
-                  Can’t find an answer? Worried about your privacy? Use our Ask A Doc feature to ask real
-                  medical professionals anonymous questions that get answered periodically on the FAQ
+                  Can’t find an answer? Anonymously Ask A Doc questions. Answeres can be found in the FAQ
                   page.
                 </p>
                 <Button variant="primary" href="/ask-a-doc">Ask a Doc</Button>

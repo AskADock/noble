@@ -59,17 +59,14 @@ body {
 
 .landing-background {
   background: url("images/landing/sm-child.jpg") fixed;
-  border-radius: 30px;
   background-size: cover;
   background-position: center;
   color: white;
   min-height: 250vh;
   width: 100%;
-  background-blend-mode: darken;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
   object-fit: contain;
   position: relative;
@@ -108,17 +105,15 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
   margin-top: 10px; /* Add vertical margin for spacing */
   width: 100%; /* Full width */
-  max-width: 100%; /* Ensure it spans the full container */
+  border-radius: 50px;
+  /*max-width: 100%; !* Ensure it spans the full container *!*/
 }
 
 /* Individual feature card styling */
 .feature-card {
   max-width: 95vw; /* Smaller width for more compact cards */
-  min-height: 65vh; /* Shorter height */
-  border-radius: 10px;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  min-height: 63vh; /* Shorter height */
+  max-height: 400px;
   transition: transform 0.2s;
 }
 
@@ -130,12 +125,12 @@ body {
 .feature-image {
   width: 100%;
   object-fit: cover;
-  border-radius: 10px 10px 0 0; /* Rounded corners for the top */
+  border-radius: 25px 25px 0 0; /* Rounded corners for the top */
 }
 
 /* Title styling for feature cards */
 .features-title {
-  font-size: 18px; /* Smaller font size */
+  font-size: 2.5vh; /* Smaller font size */
   color: #333; /* Darker text for readability */
   font-weight: 700;
   margin: 8px 0;
@@ -144,20 +139,16 @@ body {
 
 /* Text styling for feature descriptions */
 .feature-text {
-  font-size: 14px; /* Smaller font size */
-  color: #666; /* Softer text color */
+  font-size: 1.5vh; /* Smaller font size */
+  color: #51515f; /* Softer text color */
   margin: 5px 0;
+  min-height: 5vh;
   text-align: center; /* Center text */
 }
 
 /* Button styling for feature interactions */
 .feature-button {
-  background-color: #687DAC; /* Theme color */
-  color: #fff;
-  border: none;
-  border-radius: 15px;
   padding: 8px 16px; /* Smaller padding */
-  font-size: 12px; /* Smaller font size */
   font-weight: 600;
   margin-top: 5px;
   transition: background-color 0.3s;
