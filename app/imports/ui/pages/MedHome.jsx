@@ -40,45 +40,7 @@ const MedHome = () => {
         <Row className="mb-3 justify-content-center">
           <MedHomeStats allQuestions={questions} questionsNotAnswer={questionsNotAnswer} faq={faq} />
         </Row>
-        <Row className="justify-content-center mb-3">
-          <Col xs={12} md={4} className="align-content-center justify-content-center">
-            <Card className="p-1 text-center rounded-4">
-              <Card.Title>
-                <h3>FAQ Management</h3>
-              </Card.Title>
-              <Card.Body>
-                <Button href="/faq-management">
-                  FAQs
-                </Button>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col xs={12} md={4} className="align-content-center justify-content-center">
-            <Card className="p-1 text-center rounded-4">
-              <Card.Title>
-                <h3>Question Management</h3>
-              </Card.Title>
-              <Card.Body>
-                <Button href="/question-management">
-                  Questions
-                </Button>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
         <Row className="align-content-center justify-content-center mb-3">
-          <Col xs={12} md={4} className="align-content-center justify-content-center">
-            <Card className="p-1 text-center rounded-4">
-              <Card.Title>
-                <h3>Passcode Management</h3>
-              </Card.Title>
-              <Card.Body>
-                <Button href="/passcode-management">
-                  Passcodes
-                </Button>
-              </Card.Body>
-            </Card>
-          </Col>
           <Col xs={12} md={4} className="align-content-center justify-content-center">
             <Card className="p-1 text-center rounded-4">
               <Card.Title>
@@ -87,6 +49,18 @@ const MedHome = () => {
               <Card.Body>
                 <Button href="/flyer-management">
                   Flyer Generator
+                </Button>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col xs={12} md={4} className="align-content-center justify-content-center">
+            <Card className="p-1 text-center rounded-4">
+              <Card.Title>
+                <h3>Feedback</h3>
+              </Card.Title>
+              <Card.Body>
+                <Button href="/feedback-management">
+                  Feedback
                 </Button>
               </Card.Body>
             </Card>

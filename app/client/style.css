@@ -8,6 +8,7 @@
   --color1: #687DAC;
   --color2: #D2E0EE;
   --color3: #F2E3D2;
+  --offWhite: #f4f4f4;
 }
 
 /* Change bootstrap variable values.
@@ -38,6 +39,10 @@ body {
 .color4
 {
   background-color: gray;
+}
+
+.off-white {
+  background-color: var(--offWhite);
 }
 
 .text-shadow {
@@ -95,7 +100,7 @@ body {
 }
 
 .med-staff-home-background {
-  background-color: var(--color3);
+  background-color: var(--offWhite);
   background-size: cover;
   min-height: 80vh;
 }
