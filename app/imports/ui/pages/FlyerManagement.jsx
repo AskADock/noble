@@ -39,7 +39,7 @@ const FlyerManagement = () => {
   };
 
   return (ready ? (
-    <>
+    <Container fluid className="p-0 med-staff-home-background">
       <Container fluid className="color1">
         <Row className="py-4 text-center">
           <Col>
@@ -47,55 +47,61 @@ const FlyerManagement = () => {
           </Col>
         </Row>
       </Container>
-      <Container className="py-4">
-        <Card className="rounded-4 p-3">
-          <Row>
-            <Col sm={12} md={6} className="text-center">
-              <Form.Group controlId="passcodeSelect">
-                <Form.Label>Select a Passcode</Form.Label>
-                <Form.Control as="select" value={selectedPasscode} onChange={handlePasscodeChange}>
-                  <option value="" disabled>Select a passcode</option>
-                  {passcodes.map((passcode) => (
-                    <option key={passcode._id} value={passcode.code}>
-                      {passcode.code}
-                    </option>
-                  ))}
-                </Form.Control>
-              </Form.Group>
-            </Col>
-            <Col sm={12} md={6} className="text-center justify-content-center py-2">
-              <Button variant="primary" onClick={handlePrint}>Print Flyer</Button>
-            </Col>
-          </Row>
-        </Card>
+      <Container className="py-4 mt-3 mb-2">
+        <Row>
+          <Col sm={12} md={4} className="py-2">
+            <Card className="rounded-4 p-4">
+              <Row>
+                <Col sm={12} className="text-center py-2">
+                  <Form.Group controlId="passcodeSelect">
+                    <Form.Label><h5>Select a Passcode</h5></Form.Label>
+                    <Form.Control as="select" value={selectedPasscode} onChange={handlePasscodeChange}>
+                      <option value="" disabled>Select a passcode</option>
+                      {passcodes.map((passcode) => (
+                        <option key={passcode._id} value={passcode.code}>
+                          {passcode.code}
+                        </option>
+                      ))}
+                    </Form.Control>
+                  </Form.Group>
+                </Col>
+                <Col sm={12} className="text-center justify-content-center py-2">
+                  <Button variant="primary" onClick={handlePrint} className="text-center"><h5>Print Flyer</h5></Button>
+                </Col>
+              </Row>
+            </Card>
+          </Col>
+          <Col sm={12} md={8} className="py-2">
+            {/* Printable Area */}
+            <Card className="rounded-4 p-2">
+              <div ref={printRef} className="printable">
+                <Row className="py-4">
+                  <Col className="justify-content-center text-center">
+                    <h1>Noble</h1>
+                    <p style={{ fontSize: '20px' }}>
+                      Prepared for Tomorrow
+                    </p>
+                    <hr />
+                    <Image src="/images/noble-qrcode.png" alt="Noble QRcode" width="50%" style={{ maxWidth: '450px' }} />
+                    <p className="py-2" style={{ fontSize: '25px' }}>
+                      Ask A Doc Passcode: <strong>{selectedPasscode || 'ERROR: No Passcode'}</strong>
+                    </p>
+                    <hr />
+                    <h3>
+                      Ask health-related questions anonymously
+                    </h3>
+                    <h2>
+                      No Login Required
+                    </h2>
+                    <Image src="/images/154_Logo.png" alt="Noble Logo" width="50%" style={{ maxWidth: '250px' }} />
+                  </Col>
+                </Row>
+              </div>
+            </Card>
+          </Col>
+        </Row>
       </Container>
-      {/* Printable Area */}
-      <Container className="my-4">
-        <div ref={printRef} className="printable">
-          <Row className="py-4">
-            <Col className="justify-content-center text-center">
-              <h1>Noble</h1>
-              <p style={{ fontSize: '20px' }}>
-                Prepared for Tomorrow
-              </p>
-              <hr />
-              <Image src="/images/noble-qrcode.png" alt="Noble QRcode" width="50%" style={{ maxWidth: '450px' }} />
-              <p className="py-2" style={{ fontSize: '25px' }}>
-                Ask A Doc Passcode: <strong>{selectedPasscode || 'ERROR: No Passcode'}</strong>
-              </p>
-              <hr />
-              <h3>
-                Ask health-related questions anonymously
-              </h3>
-              <h2>
-                No Login Required
-              </h2>
-              <Image src="/images/154_Logo.png" alt="Noble Logo" width="50%" style={{ maxWidth: '250px' }} />
-            </Col>
-          </Row>
-        </div>
-      </Container>
-    </>
+    </Container>
   ) :
     (
       <LoadingSpinner message="Loading Passcodes" />

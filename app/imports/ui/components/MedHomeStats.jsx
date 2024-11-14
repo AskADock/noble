@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Row, Col } from 'react-bootstrap';
+import { Card, Row, Col, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 const MedHomeStats = ({ allQuestions, questionsNotAnswer, faq }) => {
@@ -10,17 +10,34 @@ const MedHomeStats = ({ allQuestions, questionsNotAnswer, faq }) => {
       <Card className="rounded-4">
         <Card.Body>
           <Row>
-            <Col className="text-center">
-              <h4>FAQ Total</h4>
-              <h5>{faq.length}</h5>
+            <Col md={3} className="text-center">
+              <h3>FAQ Total</h3>
+              <h4>{faq.length}</h4>
             </Col>
-            <Col className="text-center">
-              <h4>Total Questions</h4>
-              <h5>{allQuestions.length}</h5>
+            <Col md={3} className="text-center">
+              <h3>Total Questions</h3>
+              <h4>{allQuestions.length}</h4>
             </Col>
-            <Col className="text-center">
-              <h4>Unanswered Questions</h4>
-              <h5 style={textStyle}>{questionsNotAnswer.length}</h5>
+            <Col md={3} className="text-center">
+              <h3>Unanswered</h3>
+              <h4 style={textStyle}>{questionsNotAnswer.length}</h4>
+            </Col>
+            <Col sm={12} md={3} className="text-center">
+              <Row className="mb-2">
+                <Button href="/faq-management" className="text-center">
+                  <h5>FAQ Management</h5>
+                </Button>
+              </Row>
+              <Row className="mb-2">
+                <Button href="/question-management" className="text-center">
+                  <h5>Question Management</h5>
+                </Button>
+              </Row>
+              <Row>
+                <Button href="/passcode-management" className="text-center">
+                  <h5>Passcode Management</h5>
+                </Button>
+              </Row>
             </Col>
           </Row>
         </Card.Body>
