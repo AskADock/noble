@@ -148,40 +148,7 @@ body {
 
 /* Button styling for feature interactions */
 .feature-button {
-  font-weight: 600;
   margin-top: 5px;
-  transition: background-color 0.3s;
-}
-
-.feature-button:hover {
-  background-color: #566b99; /* Darken button on hover */
-}
-
-.header {
-  background-color: #fff;
-  border-radius: 59px;
-  padding: 40px 70px;
-  margin-bottom: 36px;
-}
-
-.navigation {
-  display: flex;
-  justify-content: center;
-}
-
-.nav-list {
-  display: flex;
-  list-style-type: none;
-  gap: 31px;
-  padding: 0;
-  margin: 0;
-}
-
-.nav-item {
-  color: rgba(16, 19, 107, 0.98);
-  font-size: 24px;
-  font-weight: 600;
-  text-decoration: none;
 }
 
 .text-dark-blue {
