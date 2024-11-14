@@ -1,5 +1,5 @@
 // import { Selector, t } from 'testcafe';
-import { questionCompassPage, privacyPolicyPage, signOutPage } from './simple.page';
+import { questionCompassPage, privacyPolicyPage, signOutPage, medHomePage, FAQManagementPage, questionManagementPage, feedbackManagementPage, passcodeManagementPage, flyerManagementPage } from './simple.page';
 import { landingPage } from './landing.page';
 import { disclaimerModal } from './disclaimer-modal.component';
 import { faqPage } from './faq.page';
@@ -121,6 +121,57 @@ test('Test that signin and signout work', async () => {
   await signOutPage.isDisplayed();
 });
 
+// Med Pages
+
+// Med Home
+test('Test that Med Home page shows up', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(credentials.username, credentials.password);
+  await medHomePage.isDisplayed();
+  await navBar.gotoMedHomePage();
+  await medHomePage.isDisplayed();
+});
+
+// FAQ Management
+test('Test that FAQ Management page shows up', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(credentials.username, credentials.password);
+  await navBar.gotoFAQManagementPage();
+  await FAQManagementPage.isDisplayed();
+});
+
+// Question Management
+test('Test that Question Management page shows up', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(credentials.username, credentials.password);
+  await navBar.gotoQuestionManagementPage();
+  await questionManagementPage.isDisplayed();
+});
+
+// Feedback Management
+test('Test that Feedback Management page shows up', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(credentials.username, credentials.password);
+  await navBar.gotoFeedbackManagementPage();
+  await feedbackManagementPage.isDisplayed();
+});
+
+// Flyer Management
+test('Test that Flyer Management page shows up', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(credentials.username, credentials.password);
+  await navBar.gotoFlyerManagementPage();
+  await flyerManagementPage.isDisplayed();
+});
+
+// Passcode Management
+test('Test that Passcode Management page shows up', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(credentials.username, credentials.password);
+  await navBar.gotoPasscodeManagementPage();
+  await passcodeManagementPage.isDisplayed();
+});
+
 // test('Test that user pages show up', async () => {
 //   await navBar.gotoSignInPage();
 //   await signInPage.signin(credentials.username, credentials.password);
@@ -135,31 +186,4 @@ test('Test that signin and signout work', async () => {
 //   await editStuffPage.isDisplayed();
 //   await navBar.logout();
 //   await signOutPage.isDisplayed();
-// });
-
-// test('Test that sign up and sign out work', async () => {
-//   await navBar.gotoSignUpPage();
-//   await signUpPage.isDisplayed();
-//   await signUpPage.signupUser(newCredentials.username, newCredentials.password);
-//   await navBar.isLoggedIn(newCredentials.username);
-//   await navBar.logout();
-//   await signOutPage.isDisplayed();
-// });
-
-// test('Test that admin pages show up', async () => {
-//   await navBar.gotoSignInPage();
-//   await signInPage.signin(adminCredentials.username, adminCredentials.password);
-//   await navBar.isLoggedIn(adminCredentials.username);
-//   await navBar.gotoAddStuffPage();
-//   await addStuffPage.isDisplayed();
-//   await navBar.gotoListStuffPage();
-//   await listStuffPage.isDisplayed();
-//   // want to see if we can get to the editStuffPage
-//   const editLinks = await Selector(`.${COMPONENT_IDS.LIST_STUFF_EDIT}`);
-//   await t.click(editLinks.nth(0));
-//   await editStuffPage.isDisplayed();
-//   await navBar.gotoListStuffAdminPage();
-//   await listStuffAdminPage.isDisplayed();
-//   // await navBar.gotoManageDatabasePage();
-//   // await manageDatabasePage.isDisplayed();
 // });

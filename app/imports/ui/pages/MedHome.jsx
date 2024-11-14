@@ -7,6 +7,7 @@ import { Categories } from '../../api/category/CategoryCollection';
 import MedHomeQuestion from '../components/MedHomeQuestion';
 import MedHomeStats from '../components/MedHomeStats';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 const MedHome = () => {
   // subscribe to the questions collection
@@ -30,7 +31,7 @@ const MedHome = () => {
   }, []);
 
   return (ready ? (
-    <Container fluid className="med-staff-home-background p-0">
+    <Container fluid className="med-staff-home-background p-0" id={PAGE_IDS.MED_HOME}>
       <Container fluid className="color1">
         <Row className="py-4 text-center">
           <h1 className="text-white">Medical Home</h1>

@@ -5,6 +5,7 @@ import { Questions } from '../../api/question/QuestionCollection';
 import { Categories } from '../../api/category/CategoryCollection';
 import QuestionManagementFilter from '../components/QuestionManagementFilter';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 const QuestionManagement = () => {
   // Subscribe to the question collection.
@@ -25,7 +26,7 @@ const QuestionManagement = () => {
   }, []);
 
   return (ready ? (
-    <Container fluid className="p-0 med-staff-home-background">
+    <Container fluid className="p-0 med-staff-home-background" id={PAGE_IDS.QUESTION_MANAGEMENT}>
       <Container fluid className="color1">
         <Row className="py-4 text-center">
           <Col>
