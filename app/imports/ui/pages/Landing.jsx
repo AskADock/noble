@@ -53,7 +53,7 @@ const Landing = () => (
                   Search through medical questions written by people like you.
                 </p>
               </Card.Body>
-              <Button variant="primary" href="/faq" className="feature-button">
+              <Button variant="dark" href="/faq" className="feature-button">
                 <strong>FAQ</strong>
               </Button>
             </Card>
@@ -70,7 +70,7 @@ const Landing = () => (
                   questions.
                 </p>
               </Card.Body>
-              <Button variant="outline-dark" href="/question-compass" className="feature-button">
+              <Button variant="dark" href="/question-compass" className="feature-button">
                 <strong>Question Compass</strong>
               </Button>
             </Card>
