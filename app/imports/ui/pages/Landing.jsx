@@ -6,14 +6,30 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 /* A simple static component to render some text for the landing page. */
 const Landing = () => (
   <Container fluid id={PAGE_IDS.LANDING} className="landing-background p-0">
-
     {/* Hero Section */}
-    <Row className="hero-section align-items-center text-center mt-5 mb-3">
+    <Row className="hero-section align-items-center text-center my-5 py-5">
       <Col xs={12} className="justify-content-center">
         <h1 className="hero-title">Noble</h1>
         <h3 className="hero-subtitle">
           Prepared for Tomorrow
         </h3>
+        <Row className="py-5 g-3 justify-content-center text-shadow">
+          <Col xs={12} sm="auto" className="text-center">
+            <Button className="rounded-3" variant="outline-light" size="lg" href="/faq">
+              FAQ
+            </Button>
+          </Col>
+          <Col xs={12} sm="auto" className="text-center">
+            <Button className="rounded-3" variant="outline-light" size="lg" href="/question-compass">
+              Question Compass
+            </Button>
+          </Col>
+          <Col xs={12} sm="auto" className="text-center">
+            <Button className="rounded-3" variant="outline-light" size="lg" href="/ask-a-doc">
+              Ask A Doc
+            </Button>
+          </Col>
+        </Row>
       </Col>
     </Row>
 
@@ -27,7 +43,7 @@ const Landing = () => (
 
       <Row className="feature-cards justify-content-around">
         {/* First Feature Card */}
-        <Col xs={14} sm={8} md={4} className="mb-4">
+        <Col xs={12} sm={8} md={4} className="mb-4">
           <Card className="feature-card p-3 shadow-sm">
             <Card.Img variant="top" src="/images/FAQ.png" className="feature-image" />
             <Card.Body className="text-center">
@@ -42,7 +58,7 @@ const Landing = () => (
         </Col>
 
         {/* Second Feature Card */}
-        <Col xs={14} sm={8} md={4} className="mb-4">
+        <Col xs={12} sm={8} md={4} className="mb-4">
           <Card className="feature-card p-3 shadow-sm">
             <Card.Img variant="top" src="/images/N.png" className="feature-image" />
             <Card.Body className="text-center">
@@ -57,7 +73,7 @@ const Landing = () => (
         </Col>
 
         {/* Third Feature Card */}
-        <Col xs={14} sm={8} md={4} className="mb-4">
+        <Col xs={12} sm={8} md={4} className="mb-4">
           <Card className="feature-card p-3 shadow-sm">
             <Card.Img variant="top" src="/images/P.png" className="feature-image" />
             <Card.Body className="text-center">
@@ -70,23 +86,6 @@ const Landing = () => (
               <Button variant="primary" href="/ask-a-doc">Ask a Doc</Button>
             </Card.Body>
           </Card>
-        </Col>
-      </Row>
-      <Row className="mt-2 mb-5 py-5 g-3 justify-content-center text-shadow">
-        <Col xs={12} sm="auto" className="text-center">
-          <Button className="rounded-3" variant="outline-light" size="lg" href="/faq">
-            FAQ
-          </Button>
-        </Col>
-        <Col xs={12} sm="auto" className="text-center">
-          <Button className="rounded-3" variant="outline-light" size="lg" href="/question-compass">
-            Question Compass
-          </Button>
-        </Col>
-        <Col xs={12} sm="auto" className="text-center">
-          <Button className="rounded-3" variant="outline-light" size="lg" href="/ask-a-doc">
-            Ask A Doc
-          </Button>
         </Col>
       </Row>
       {/* <Container fluid className="color3 p-4 d-flex justify-content-center align-items-center"> */}
