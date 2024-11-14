@@ -39,7 +39,7 @@ const FlyerManagement = () => {
   };
 
   return (ready ? (
-    <>
+    <Container fluid className="p-0 med-staff-home-background">
       <Container fluid className="color1">
         <Row className="py-4 text-center">
           <Col>
@@ -95,7 +95,7 @@ const FlyerManagement = () => {
           </Row>
         </div>
       </Container>
-    </>
+    </Container>
   ) :
     (
       <LoadingSpinner message="Loading Passcodes" />

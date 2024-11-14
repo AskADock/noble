@@ -37,36 +37,36 @@ const MedHome = () => {
         </Row>
       </Container>
       <Container>
-        <Row className="mb-3 justify-content-center">
+        <Row className="mt-3 justify-content-center">
           <MedHomeStats allQuestions={questions} questionsNotAnswer={questionsNotAnswer} faq={faq} />
         </Row>
-        <Row className="align-content-center justify-content-center mb-3">
+        <Row className="align-content-center justify-content-center mt-2">
           <Col xs={12} md={4} className="align-content-center justify-content-center">
-            <Card className="p-1 text-center rounded-4">
+            <Card className="p-2 text-center rounded-4">
               <Card.Title>
                 <h3>Create A Flyer</h3>
               </Card.Title>
               <Card.Body>
-                <Button href="/flyer-management">
-                  Flyer Generator
+                <Button href="/flyer-management" className="text-center">
+                  <h5>Flyer Generator</h5>
                 </Button>
               </Card.Body>
             </Card>
           </Col>
           <Col xs={12} md={4} className="align-content-center justify-content-center">
-            <Card className="p-1 text-center rounded-4">
+            <Card className="p-2 text-center rounded-4">
               <Card.Title>
                 <h3>Feedback</h3>
               </Card.Title>
               <Card.Body>
-                <Button href="/feedback-management">
-                  Feedback
+                <Button href="/feedback-management" className="text-center">
+                  <h5>Feedback</h5>
                 </Button>
               </Card.Body>
             </Card>
           </Col>
         </Row>
-        <Row className="justify-content-center">
+        <Row className="justify-content-center mt-2 mb-3">
           <MedHomeQuestion questions={questionsNotAnswer} categories={categories} />
         </Row>
       </Container>

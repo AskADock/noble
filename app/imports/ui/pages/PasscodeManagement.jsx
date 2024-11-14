@@ -35,7 +35,7 @@ const PasscodeManagement = () => {
   };
 
   return (ready ? (
-    <>
+    <Container fluid className="p-0 med-staff-home-background">
       <Container fluid className="color1">
         <Row className="text-center py-4">
           <h1 className="text-white">Passcode Management</h1>
@@ -108,7 +108,7 @@ const PasscodeManagement = () => {
         show={showModalGenerate}
         onClose={() => setShowModalGenerate(false)}
       />
-    </>
+    </Container>
   ) : (
     <LoadingSpinner />
   ));

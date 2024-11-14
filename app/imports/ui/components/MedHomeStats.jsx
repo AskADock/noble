@@ -11,31 +11,31 @@ const MedHomeStats = ({ allQuestions, questionsNotAnswer, faq }) => {
         <Card.Body>
           <Row>
             <Col md={3} className="text-center">
-              <h4>FAQ Total</h4>
-              <h5>{faq.length}</h5>
+              <h3>FAQ Total</h3>
+              <h4>{faq.length}</h4>
             </Col>
             <Col md={3} className="text-center">
-              <h4>Total Questions</h4>
-              <h5>{allQuestions.length}</h5>
+              <h3>Total Questions</h3>
+              <h4>{allQuestions.length}</h4>
             </Col>
             <Col md={3} className="text-center">
-              <h4>Unanswered Questions</h4>
-              <h5 style={textStyle}>{questionsNotAnswer.length}</h5>
+              <h3>Unanswered</h3>
+              <h4 style={textStyle}>{questionsNotAnswer.length}</h4>
             </Col>
             <Col sm={12} md={3} className="text-center">
               <Row className="mb-2">
-                <Button href="/faq-management">
-                  FAQ Management
+                <Button href="/faq-management" className="text-center">
+                  <h5>FAQ Management</h5>
                 </Button>
               </Row>
               <Row className="mb-2">
-                <Button href="/question-management">
-                  Question Management
+                <Button href="/question-management" className="text-center">
+                  <h5>Question Management</h5>
                 </Button>
               </Row>
               <Row>
-                <Button href="/passcode-management">
-                  Passcode Management
+                <Button href="/passcode-management" className="text-center">
+                  <h5>Passcode Management</h5>
                 </Button>
               </Row>
             </Col>
