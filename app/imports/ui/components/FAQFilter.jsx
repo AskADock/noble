@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Row, Col, Container, Form, Card, Accordion } from 'react-bootstrap';
 import FAQList from './FAQList';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 /**
  * Renders the FAQ filter component. This component is responsible for filtering the FAQ questions by category.
@@ -34,11 +35,11 @@ const FAQFilter = ({ faq, questions, categories }) => {
     : questions;
 
   return (
-    <Container>
+    <Container id={COMPONENT_IDS.FAQ_FILTER}>
       <Row className="my-4">
         {/* Filter Section */}
         <Col md={12} lg={3} className="pb-3 text-start">
-          <Accordion>
+          <Accordion id={COMPONENT_IDS.FAQ_FILTER_DROPDOWN}>
             <Accordion.Item eventKey={0}>
               <Accordion.Header>
                 <h4>Filter by Category</h4>
@@ -52,6 +53,7 @@ const FAQFilter = ({ faq, questions, categories }) => {
                         value={theCategory.category}
                         onChange={handleCheckboxChange}
                         checked={isCategoryChecked(theCategory.category)}
+                        id={COMPONENT_IDS.FAQ_FILTER_DROPDOWN_SELECT}
                       />
                       <div className="ms-1">
                         <h5>{theCategory.category}</h5>
@@ -64,11 +66,42 @@ const FAQFilter = ({ faq, questions, categories }) => {
             </Accordion.Item>
           </Accordion>
 
+          <div className="d-none d-lg-block mt-4">
+            <Card className="rounded-4 p-3 text-center color3">
+              <h4>Resources</h4>
+              <Col className="text-start">
+                <a href="mailto:154mdg.gcc@us.af.mil" className="text-decoration-none">
+                  <strong>154 MDG Org Box</strong>
+                </a>
+                <br />
+                <em>*Send any questions or documents to our org box</em><br />
+                <br />
+                <a href="https://usaf.dps.mil/sites/HIANG/154WG/154MDG" target="_blank" className="text-decoration-none" rel="noreferrer">
+                  <strong>154 MDG SharePoint</strong>
+                </a>
+                <br />
+                <em>*MDG resources (CAC required)</em><br />
+                <br />
+                <a href="https://asimsimr.health.mil/imr/myimr.aspx" target="_blank" className="text-decoration-none" rel="noreferrer">
+                  <strong>MyIMR Link</strong>
+                </a>
+                <br />
+                <em>*ASIMS website to check for medical requirements/status (CAC required)</em><br />
+                <br />
+                <a href="https://asimsimr.health.mil/imr/Login_Unit.aspx" target="_blank" className="text-decoration-none" rel="noreferrer">
+                  <strong>Unit POC’s ASIMS Login</strong>
+                </a>
+                <br />
+                <em>*ASIMS website for Unit Health/Deployment Monitors (CAC required)</em><br />
+              </Col>
+            </Card>
+          </div>
+
           {/* Ask A Doc Button (Only for large screens) */}
           <div className="d-none d-lg-block mt-4">
             <Card className="rounded-4 p-3 text-center color3">
               <h4>Can&apos;t find an answer?</h4>
-              <Button href="/ask-a-doc" className="rounded-3">
+              <Button href="/ask-a-doc" className="rounded-3" id={COMPONENT_IDS.FAQ_FILTER_ASK_A_DOC_BUTTON}>
                 Ask A Doc
               </Button>
             </Card>
@@ -83,9 +116,37 @@ const FAQFilter = ({ faq, questions, categories }) => {
           <div className="d-lg-none mt-4">
             <Card className="rounded-4 p-3 text-center">
               <h4>Can&apos;t find an answer?</h4>
-              <Button href="/ask-a-doc" className="rounded-3">
+              <Button href="/ask-a-doc" className="rounded-3" id={COMPONENT_IDS.FAQ_FILTER_ASK_A_DOC_BUTTON_SMALL}>
                 Ask A Doc
               </Button>
+            </Card>
+            <Card className="rounded-4 p-3 mt-4 text-center color3">
+              <h4>Resources</h4>
+              <Col className="text-start">
+                <a href="mailto:154mdg.gcc@us.af.mil" className="text-decoration-none">
+                  <strong>154 MDG Org Box</strong>
+                </a>
+                <br />
+                <em>*Send any questions or documents to our org box</em><br />
+                <br />
+                <a href="https://usaf.dps.mil/sites/HIANG/154WG/154MDG" target="_blank" className="text-decoration-none" rel="noreferrer">
+                  <strong>154 MDG SharePoint</strong>
+                </a>
+                <br />
+                <em>*MDG resources (CAC required)</em><br />
+                <br />
+                <a href="https://asimsimr.health.mil/imr/myimr.aspx" target="_blank" className="text-decoration-none" rel="noreferrer">
+                  <strong>MyIMR Link</strong>
+                </a>
+                <br />
+                <em>*ASIMS website to check for medical requirements/status (CAC required)</em><br />
+                <br />
+                <a href="https://asimsimr.health.mil/imr/Login_Unit.aspx" target="_blank" className="text-decoration-none" rel="noreferrer">
+                  <strong>Unit POC’s ASIMS Login</strong>
+                </a>
+                <br />
+                <em>*ASIMS website for Unit Health/Deployment Monitors (CAC required)</em><br />
+              </Col>
             </Card>
           </div>
         </Col>

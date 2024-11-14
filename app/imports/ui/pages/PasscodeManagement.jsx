@@ -5,6 +5,7 @@ import { Passcodes } from '../../api/passcode/PasscodeCollection';
 import PasscodeManagementModal from '../components/PasscodeManagementModal';
 import PasscodeGenerateModal from '../components/PasscodeGenerateModal';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 const PasscodeManagement = () => {
   // Subscribe to the passcode collection
@@ -35,7 +36,7 @@ const PasscodeManagement = () => {
   };
 
   return (ready ? (
-    <>
+    <Container fluid className="p-0 med-staff-home-background" id={PAGE_IDS.PASSCODE_MANAGEMENT}>
       <Container fluid className="color1">
         <Row className="text-center py-4">
           <h1 className="text-white">Passcode Management</h1>
@@ -43,21 +44,21 @@ const PasscodeManagement = () => {
       </Container>
       <Container>
         <Row className="pt-4 justify-content-center">
-          <Col className="col-3">
+          <Col sm={12} md={4}>
+            <Card className="rounded-4 p-3 text-center">
+              <Card.Title>Password Count</Card.Title>
+              <Card.Body>
+                <h5>{passcodes.length}</h5>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col sm={12} md={4}>
             <Card className="rounded-4 p-3 text-center">
               <Card.Title>Generate New Passcode</Card.Title>
               <Card.Body>
                 <Button variant="primary" onClick={() => handleShowGenerateModal()}>
                   Generate Passcode
                 </Button>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col className="col-3">
-            <Card className="rounded-4 p-3 text-center">
-              <Card.Title>Password Count</Card.Title>
-              <Card.Body>
-                <h5>{passcodes.length}</h5>
               </Card.Body>
             </Card>
           </Col>
@@ -108,7 +109,7 @@ const PasscodeManagement = () => {
         show={showModalGenerate}
         onClose={() => setShowModalGenerate(false)}
       />
-    </>
+    </Container>
   ) : (
     <LoadingSpinner />
   ));

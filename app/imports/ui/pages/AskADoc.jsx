@@ -6,7 +6,10 @@ import { Questions } from '../../api/question/QuestionCollection';
 import { Categories } from '../../api/category/CategoryCollection';
 import { Passcodes } from '../../api/passcode/PasscodeCollection';
 import { checkPasscodeMethod, defineMethodAskADoc } from '../../api/base/BaseCollection.methods';
+import DisclaimerModal from '../components/DisclaimerModal';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { PAGE_IDS } from '../utilities/PageIDs';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 export const AskADoc = () => {
   // Fetch categories with useTracker
@@ -47,7 +50,7 @@ export const AskADoc = () => {
         });
       })
       .then(() => {
-        swal('Success', 'Your question has been submitted!', 'success');
+        swal('Success', 'Your question has been submitted!', 'success', { id: COMPONENT_IDS.ASK_A_DOC_FORM_CONFIRM });
         // Reset form after success
         setCategory('');
         setPasscode('');
@@ -59,7 +62,8 @@ export const AskADoc = () => {
   };
 
   return ready ? (
-    <Container fluid className="ask-a-doc-background p-0">
+    <Container fluid className="ask-a-doc-background p-0" id={PAGE_IDS.ASK_A_DOC}>
+      <DisclaimerModal />
       <Container>
         <Row className="pt-5 text-center text-white">
           <h1>Ask A Doc</h1>
@@ -75,6 +79,7 @@ export const AskADoc = () => {
                       value={category}
                       onChange={(e) => setCategory(e.target.value)}
                       required
+                      id={COMPONENT_IDS.ASK_A_DOC_FORM_CATEGORY}
                       style={{ padding: '15px', fontSize: '1.1rem', marginBottom: '20px', width: '100%' }}
                     >
                       <option value="" disabled>Select a category</option>
@@ -90,6 +95,7 @@ export const AskADoc = () => {
                       value={passcode}
                       onChange={(e) => setPasscode(e.target.value)}
                       required
+                      id={COMPONENT_IDS.ASK_A_DOC_FORM_PASSCODE}
                       style={{ padding: '15px', fontSize: '1.1rem', marginBottom: '20px' }}
                     />
                   </Col>
@@ -104,11 +110,12 @@ export const AskADoc = () => {
                   value={question}
                   onChange={(e) => setQuestion(e.target.value)}
                   required
+                  id={COMPONENT_IDS.ASK_A_DOC_FORM_QUESTION}
                   style={{ resize: 'none', padding: '20px', fontSize: '1.1rem', lineHeight: '1.5', width: '100%' }}
                 />
               </Form.Group>
 
-              <Button variant="primary" type="submit" style={{ padding: '1vh 2vw', fontSize: '1.2rem' }}>
+              <Button variant="primary" type="submit" id={COMPONENT_IDS.ASK_A_DOC_FORM_SUBMIT} style={{ padding: '1vh 2vw', fontSize: '1.2rem' }}>
                 Submit
               </Button>
             </Form>

@@ -18,7 +18,7 @@ const MedHomeQuestion = ({ questions, categories }) => {
   return (
     <>
       <Row className="my-2 align-content-center justify-content-center align-content-center">
-        <Card className="rounded-4 p-1">
+        <Card className="rounded-4 p-1 pt-3">
           <Card.Title>
             <h2 className="text-center mt-2">Recent Questions</h2>
           </Card.Title>
@@ -43,7 +43,7 @@ const MedHomeQuestion = ({ questions, categories }) => {
                 )) : <p>No Questions!</p>}
               </Col>
             </Row>
-            <Button>
+            <Button href="/question-management">
               View More
             </Button>
           </Card.Body>

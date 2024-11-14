@@ -1,25 +1,34 @@
 import React from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 const Privacy = () => (
-  <Container fluid className="color1 justify-content-center align-items-center">
-    <Row className="py-4 my-5 align-content-center justify-content-center">
-      <Col className="col-9">
-        <Card className="rounded-4 p-4 text-center">
-          <h1 className="mb-4">Privacy Policy</h1>
-          <Row className="text-start px-5">
-            <p>
-              At Noble, your privacy is our top priority. We are committed to ensuring that any information you provide remains completely anonymous. No personally identifiable information is collected unless you explicitly choose to share it
-              for communication purposes. Your questions are submitted securely, and we take extensive measures to ensure that your data is encrypted and stored safely.
-            </p>
-            <p>
-              We understand the importance of confidentiality in healthcare, which is why we never track or associate questions with user profiles. This approach allows you to seek the medical information you need without any concerns about
-              privacy. Trust is at the heart of our mission, and we are dedicated to maintaining it by keeping your identity protected at all times.
-            </p>
-          </Row>
-        </Card>
-      </Col>
-    </Row>
+  <Container fluid className="privacy-policy-background" id={PAGE_IDS.PRIVACY_POLICY}>
+    <Container className="justify-content-center align-items-center">
+      <Row className="py-4">
+        <Col>
+          <Card className="rounded-4 p-3 text-center">
+            <Card.Title>
+              <h1>Privacy Policy</h1>
+              <hr />
+            </Card.Title>
+            <Card.Body>
+              <Row className="text-start">
+                <p>
+                  Your privacy is our top priority. All interactions—whether through chat or survey questions—are completely anonymous and not linked to any personal profile.
+                </p>
+                <p>
+                  Please avoid including personally identifiable information in your chat. Noble is designed to provide you with a secure, private space to access health information without tracking or identification.
+                </p>
+                <p>
+                  Trust is at the heart of our mission, and we are dedicated to maintaining it by keeping your identity protected at all times.
+                </p>
+              </Row>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   </Container>
 );
 
