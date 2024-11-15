@@ -15,7 +15,7 @@ const NavBar = () => {
   }), []);
 
   return (
-    <Navbar bg="light" expand="lg" sticky="top">
+    <Navbar bg="light" expand="lg" sticky="top" className="Navbar">
       <Container className="text-center">
         <Navbar.Brand id={COMPONENT_IDS.NAVBAR_LANDING_BRAND}>
           <Image src="/images/154_Logo.png" alt="Home Image" to="/" style={{ maxWidth: '6vh' }} />

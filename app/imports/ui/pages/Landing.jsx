@@ -21,8 +21,101 @@ const Landing = () => (
     {/* About Section */}
     <Container fluid className="about-section p-0">
       <Container>
-
+        <Row className="text-center text-black py-3 mt-3 mb-4">
+          <h2 className="text-dark-blue py-3">
+            <strong>It takes courage to address health concerns, especially when privacy is a priority</strong>
+          </h2>
+          <hr />
+          <h3>
+            Noble provides reliable, anonymous health information and support, empowering individuals to make informed decisions with confidence.
+          </h3>
+        </Row>
       </Container>
+    </Container>
+
+    {/* Stay Proactive Section */}
+    <Container fluid className="stay-proactive-background">
+      <Row className="justify-content-end align-items-end">
+        <Col xs={12} sm={6} className="stay-proactive-text align-content-center p-5">
+          <h1 className="text-light-blue">
+            <strong>STAYING PROACTIVE</strong>
+          </h1>
+          <p className="text-start">
+            Regular health assessments and preventive care are essential for maintaining overall health, ensuring individuals are prepared for their responsibilities, and promoting long-term well-being.
+            Prioritizing preventive care supports wellness, aids recovery, and helps meet readiness standards for both personal and professional demands.
+          </p>
+        </Col>
+      </Row>
+    </Container>
+
+    {/* Our Promise Section */}
+    <Container fluid className="color1 p-4 d-flex justify-content-center align-items-center">
+      <Row className="justify-content-center align-content-center">
+        <Col sm={12} md={6} className="text-center align-content-center">
+          <Card className="rounded-4 p-3 my-4 text-center">
+            <Card.Title>
+              <h1 className="text-dark-blue">
+                <strong>Our Promise</strong>
+              </h1>
+            </Card.Title>
+            <Card.Body>
+              <Row>
+                <Col sm={12} md={4}>
+                  <LockFill size="50%" className="landing-info-card-icon" />
+                  <h4>
+                    We don&apos;t collect any personal information
+                  </h4>
+                </Col>
+                <Col sm={12} md={4}>
+                  <ShieldFill size="50%" className="landing-info-card-icon" />
+                  <h4>
+                    No tracking - your usage stays anonymous
+                  </h4>
+                </Col>
+                <Col sm={12} md={4}>
+                  <PersonCheckFill size="50%" className="landing-info-card-icon" />
+                  <h4>
+                    Completely anonymous interactions
+                  </h4>
+                </Col>
+              </Row>
+              <hr />
+              <h3>
+                Noble is designed with privacy in mind
+              </h3>
+              <h3>
+                <strong>No login required, no personal information collected</strong>
+              </h3>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col sm={12} md={6} className="text-center align-content-center">
+          <Image fluid src="/images/landing/pilot-shaka.jpg" alt="" className="rounded-4" />
+        </Col>
+      </Row>
+    </Container>
+
+    {/* Mission Section */}
+    <Container fluid className="color4 p-4 d-flex justify-content-center align-items-center">
+      <Col xs={12} sm={11} md={9}>
+        <Card className="rounded-4 p-3 my-4 text-center">
+          <Card.Title>
+            <h1>
+              <strong>Our Mission</strong>
+            </h1>
+          </Card.Title>
+          <Card.Body>
+            <p>
+              Our mission is to empower individuals to take control of their health by providing accessible,
+              accurate, and supportive medical resources. Through innovative tools and educational content,
+              we aim to promote well-being, self-care, and informed decision-making for a healthier and safer community.
+            </p>
+            <h3>
+              Together, we can be Prepared for Tomorrow
+            </h3>
+          </Card.Body>
+        </Card>
+      </Col>
     </Container>
 
     {/* Features Section */}
@@ -84,99 +177,6 @@ const Landing = () => (
           </Col>
         </Row>
       </Container>
-    </Container>
-
-    <Container fluid className="stay-proactive-background">
-      <Row className="justify-content-center align-items-center">
-        <Col className="p-0">
-          <p>test</p>
-        </Col>
-      </Row>
-    </Container>
-    {/* <Card.Body> */}
-    {/*  <Row className="my-4"> */}
-    {/*    <Col sm={12} md={6}> */}
-    {/*      <Image src="images/landing/MedGrp.jpg" alt="Medical pic" width="85%" className="rounded-4" /> */}
-    {/*    </Col> */}
-    {/*    <Col sm={12} md={6}> */}
-    {/*      <h2 style={{ color: 'rgba(15.81, 18.83, 106.57, 0.98)', fontSize: 40, fontWeight: 700 }}> */}
-    {/*        Stay Proactive */}
-    {/*      </h2> */}
-    {/*      <p style={{ color: 'black', fontSize: 20, fontWeight: 600, wordWrap: 'break-word' }}> */}
-    {/*        Regular health assessments and preventive care ensure that service members meet medical and */}
-    {/*        dental standards essential for fitness for duty and deployment readiness. The Military Health */}
-    {/*        System emphasizes that maintaining medical and dental preventive care fitness is vital for */}
-    {/*        sustaining health and wellness, facilitating restoration, and meeting medical readiness */}
-    {/*        standards. */}
-    {/*      </p> */}
-    {/*    </Col> */}
-    {/*  </Row> */}
-    {/*  <Row className="my-4"> */}
-    {/*    <Col sm={12} md={6}> */}
-    {/*      <h2 style={{ color: 'rgba(15.81, 18.83, 106.57, 0.98)', fontSize: 36, fontWeight: 700 }}> */}
-    {/*        Stay Private */}
-    {/*      </h2> */}
-    {/*      <p style={{ color: 'black', fontSize: 20, fontWeight: 600, wordWrap: 'break-word' }}> */}
-    {/*        Our mission is to empower individuals to take control of their health by providing accessible, */}
-    {/*        accurate, and supportive medical resources. Through innovative tools and educational content, */}
-    {/*        we aim to promote well-being, self-care, and informed decision-making for a healthier */}
-    {/*        community. Your information will never be shared, and your identity will always be hidden and */}
-    {/*        secure. */}
-    {/*      </p> */}
-    {/*    </Col> */}
-    {/*    <Col sm={12} md={6}> */}
-    {/*      <Image src="images/landing/supply-drop.jpg" alt="Medical pic" width="85%" className="rounded-4" /> */}
-    {/*    </Col> */}
-    {/*  </Row> */}
-    <Container fluid className="color1 p-4 d-flex justify-content-center align-items-center">
-      <Row className="justify-content-end align-content-end">
-        <Col>
-          <Card className="rounded-4 p-3 my-4 text-center">
-            <Card.Title>
-              <h2>Our Promise</h2>
-            </Card.Title>
-            <Card.Body>
-              <Row>
-                <Col>
-                  <LockFill size="7vw" className="landing-info-card-icon" />
-                  <h5>
-                    We don&apos;t collect any personal information.
-                  </h5>
-                </Col>
-                <Col>
-                  <ShieldFill size="7vw" className="landing-info-card-icon" />
-                  <h5>
-                    No tracking - your usage stays anonymous.
-                  </h5>
-                </Col>
-                <Col>
-                  <PersonCheckFill size="7vw" className="landing-info-card-icon" />
-                  <h5>
-                    Completely anonymous interactions.
-                  </h5>
-                </Col>
-              </Row>
-              <hr />
-              <h4>
-                Noble is designed with privacy in mind. No login required, no personal information collected.
-              </h4>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
-    <Container fluid className="color4 p-4 d-flex justify-content-center align-items-center">
-      <Col xs={12} sm={11} md={9}>
-        <Card className="rounded-4 p-3 my-4 text-center">
-          <h2>Our Mission</h2>
-          <br />
-          <p>
-            Our mission is to empower individuals to take control of their health by providing accessible,
-            accurate, and supportive medical resources. Through innovative tools and educational content,
-            we aim to promote well-being, self-care, and informed decision-making for a healthier and safer community.
-          </p>
-        </Card>
-      </Col>
     </Container>
   </Container>
 );
