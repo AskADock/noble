@@ -142,7 +142,7 @@ const Landing = () => (
             <Card className="feature-card rounded-4 p-3 shadow-sm">
               <Card.Img variant="top" src="/images/landing/FAQ.png" className="feature-image" />
               <Card.Body className="text-center">
-                <h2 className="features-title">Find health-related questions</h2>
+                <h2 className="features-title">FAQ</h2>
                 <p className="feature-text">
                   Search through medical questions written by people like you.
                 </p>
@@ -160,8 +160,7 @@ const Landing = () => (
               <Card.Body className="text-center">
                 <h2 className="features-title">Question Compass</h2>
                 <p className="feature-text">
-                  Chat with our AI assistant and find relevant information to your medical
-                  questions.
+                  Chat with our AI assistant and find relevant medical information.
                 </p>
               </Card.Body>
               <Button variant="dark" href="/question-compass" className="feature-button">
@@ -177,8 +176,7 @@ const Landing = () => (
               <Card.Body className="text-center">
                 <h2 className="features-title">Ask A Doc</h2>
                 <p className="feature-text">
-                  Can’t find an answer? Anonymously ask questions. Answers found in the FAQ
-                  page.
+                  Can’t find an answer? Anonymously ask questions. Answers found in FAQ.
                 </p>
               </Card.Body>
               <Button variant="dark" href="/ask-a-doc" className="feature-button">

@@ -115,7 +115,6 @@ body {
 
 .landing-info-card-icon {
   max-width: 25vh;
-  text-shadow: 2px 2px 5px rgba(255, 0, 0, 0.5);
   padding-bottom: 5%;
 }
 
@@ -224,17 +223,14 @@ body {
 
 /* Title styling for feature cards */
 .features-title {
-  font-size: 2.5vh; /* Smaller font size */
+  font-size: 1.9rem; /* Smaller font size */
   min-height: 25%;
   color: #333; /* Darker text for readability */
-  font-weight: 700;
-  margin: 8px 0;
-
 }
 
 /* Text styling for feature descriptions */
 .feature-text {
-  font-size: 1.6vh; /* Smaller font size */
+  font-size: 1.2rem; /* Smaller font size */
   color: #51515f; /* Softer text color */
   min-height: 50%;
   max-height: 10vw;
