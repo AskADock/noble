@@ -44,6 +44,10 @@ export const COMPONENT_IDS = {
   SIGN_UP_FORM_PASSWORD: 'sign-up-form-password',
   SIGN_UP_FORM_SUBMIT: 'sign-up-form-submit',
 
+  // Disclaimer modal
+  DISCLAIMER_MODAL: 'disclaimer-modal',
+  DISCLAIMER_MODAL_CLOSE: 'disclaimer-modal-close',
+
   // FAQ public page
   FAQ_FILTER: 'faq-filter',
   FAQ_FILTER_DROPDOWN: 'faq-filter-dropdown',

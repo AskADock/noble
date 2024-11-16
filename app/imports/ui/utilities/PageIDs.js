@@ -14,4 +14,11 @@ export const PAGE_IDS = {
   SIGN_IN: 'sign-in',
   SIGN_OUT: 'sign-out',
   SIGN_UP: 'sign-up',
+  // Med pages
+  MED_HOME: 'med-home',
+  FAQ_MANAGEMENT: 'faq-management',
+  QUESTION_MANAGEMENT: 'question-management',
+  FEEDBACK_MANAGEMENT: 'feedback-management',
+  PASSCODE_MANAGEMENT: 'passcode-management',
+  FLYER_MANAGEMENT: 'flyer-management',
 };

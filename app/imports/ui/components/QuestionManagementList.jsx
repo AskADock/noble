@@ -72,7 +72,7 @@ const QuestionManagementList = ({ questions, unansweredQuestions, category }) =>
       </Container>
 
       <Row className="text-start mt-2 py-1 text-color">
-        <h4>{searchPerformed ? `Total Results: ${filteredQuestions.length}` : 'Latest Questions'}</h4>
+        <h4>{searchPerformed ? `Total Results: ${filteredQuestions.length}` : `Latest Questions: ${currentQuestions.length}`}</h4>
       </Row>
       <Row>
         <Col>

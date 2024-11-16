@@ -7,10 +7,13 @@ const QuestionCompass = () => (
   <Container fluid className="question-compass-background p-0" id={PAGE_IDS.QUESTION_COMPASS}>
     <DisclaimerModal />
     <Container fluid className="color1">
-      <Row className="py-4 text-center">
-        <Col>
-          <h1 className="text-white">Question Compass</h1>
-        </Col>
+      <Row className="py-4 text-center text-white text-shadow">
+        <h1>
+          <strong>Question Compass</strong>
+        </h1>
+        <h4>
+          Chat with our AI assistant and find relevant medical information
+        </h4>
       </Row>
     </Container>
     <Container>
