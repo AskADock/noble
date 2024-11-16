@@ -10,9 +10,11 @@ const Landing = () => (
     <Container>
       <Row className="hero-section align-items-center text-center my-5 py-5">
         <Col className="justify-content-center text-shadow">
-          <h1 className="hero-title">Noble</h1>
+          <h1 className="hero-title">
+            <strong>Noble</strong>
+          </h1>
           <h3 className="hero-subtitle">
-            Prepared for Tomorrow
+            <strong>Prepared for Tomorrow</strong>
           </h3>
         </Col>
       </Row>

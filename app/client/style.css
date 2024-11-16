@@ -93,18 +93,15 @@ body {
 
 .hero-section {
   min-height: 80vh; /* Full viewport height */
+  color: white;
 }
 
 .hero-title {
-  font-size: 8vh;
-  font-weight: 700;
-  color: #ffffff;
+  font-size: 6rem;
 }
 
 .hero-subtitle {
-  font-size: 3.5vh;
-  font-weight: 400;
-  color: #ffffff;
+  font-size: 1.95rem;
 }
 
 .landing-info-card {
