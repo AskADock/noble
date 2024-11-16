@@ -34,7 +34,7 @@ const Landing = () => (
           <Row className="text-black">
             <Col sm={12} md={6} className="align-content-center">
               <h3>
-                Noble provides <strong>reliable, anonymous health information and support</strong>, empowering individuals to make informed decisions with confidence.
+                Noble provides <strong>anonymous</strong>, reliable health information and support, empowering individuals to make informed decisions with confidence.
               </h3>
             </Col>
             <Col sm={12} md={6} className="align-content-center">
@@ -64,7 +64,7 @@ const Landing = () => (
     <Container fluid className="color-white p-0">
       <Container>
         <Row className="text-center py-4 my-3 text-dark-blue">
-          <h1 className="text-dark-blue">
+          <h1 className="landing-header">
             <strong>OUR MISSION</strong>
           </h1>
         </Row>
@@ -89,7 +89,7 @@ const Landing = () => (
     <Container fluid className="color-white p-0">
       <Container>
         <Row className="text-center py-4 my-3 text-dark-blue">
-          <h1 className="text-dark-blue">
+          <h1 className="landing-header">
             <strong>OUR PROMISE</strong>
           </h1>
         </Row>

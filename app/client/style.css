@@ -50,7 +50,7 @@ body {
 }
 
 .text-shadow {
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.50);
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.60);
 }
 
 .text-dark-blue {
@@ -78,6 +78,11 @@ body {
 }
 
 /* landing page */
+.landing-header {
+  color: #10136B; /* White text */
+  font-size: 3rem; /* Larger font size */
+}
+
 .landing-background {
   background: url("images/landing/personnel-on-flightline.jpg") fixed;
   background-size: cover;
@@ -97,7 +102,7 @@ body {
 }
 
 .hero-title {
-  font-size: 6rem;
+  font-size: 6.5rem;
 }
 
 .hero-subtitle {
