@@ -34,9 +34,13 @@ const FrequentlyAskedQuestions = () => {
     <Container fluid id={PAGE_IDS.FAQ} className="faq-background p-0">
       <DisclaimerModal />
       <Container fluid className="color1">
-        <Row className="py-4 text-center color1">
-          <h1 className="text-white">Frequently Asked Questions</h1>
-          <p className="text-white">First Stop for Quick Answers</p>
+        <Row className="py-4 text-center text-white text-shadow">
+          <h1>
+            <strong>Frequently Asked Questions</strong>
+          </h1>
+          <h4>
+            First Stop for Quick Answers
+          </h4>
         </Row>
       </Container>
       <Container>

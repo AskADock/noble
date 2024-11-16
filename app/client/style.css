@@ -67,10 +67,11 @@ body {
 .Navbar .nav-link {
   font-weight: bold; /* Bold text */
   font-size: 1.4rem; /* Larger font size */
+  margin: 0 0.3rem 0 0.3rem;
 }
 
 .Navbar .nav-link:hover {
-  color: var(--color1);
+  color: #10136B;
 }
 
 .Navbar .nav-link:active {
