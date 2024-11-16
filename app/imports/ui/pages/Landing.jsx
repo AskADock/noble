@@ -19,9 +19,9 @@ const Landing = () => (
     </Container>
 
     {/* About Section */}
-    <Container fluid className="about-section p-0">
+    <Container fluid className="about-section align-content-center">
       <Container>
-        <Row className="text-center text-black py-3 mt-3 mb-4">
+        <Row className="py-3 mt-3 mb-4 justify-content-center text-center">
           <h1 className="text-dark-blue pt-3">
             <strong>It takes courage to address health concerns,</strong>
           </h1>
@@ -29,13 +29,13 @@ const Landing = () => (
             <strong>especially when privacy is a priority</strong>
           </h1>
           <hr />
-          <Row>
-            <Col sm={12} md={6} className="justify-content-center align-content-center">
+          <Row className="text-black">
+            <Col sm={12} md={6} className="align-content-center">
               <h3>
                 Noble provides <strong>reliable, anonymous health information and support</strong>, empowering individuals to make informed decisions with confidence.
               </h3>
             </Col>
-            <Col sm={12} md={6}>
+            <Col sm={12} md={6} className="align-content-center">
               <Image fluid src="/images/landing/MedGrp.jpg" alt="" className="rounded-4" style={{ maxWidth: '90%' }} />
             </Col>
           </Row>
@@ -84,49 +84,53 @@ const Landing = () => (
     </Container>
 
     {/* Our Promise Section */}
-    <Container fluid className="color4 p-4 d-flex justify-content-center align-items-center">
-      <Col sm={12} md={6} className="text-center justify-content-center align-content-center">
-        <Card className="rounded-4 p-3 my-4 text-center">
-          <Card.Title>
-            <h1 className="text-dark-blue">
-              <strong>Our Promise</strong>
-            </h1>
-          </Card.Title>
-          <Card.Body>
-            <Row>
-              <Col sm={12} md={4}>
-                <LockFill size="50%" className="landing-info-card-icon" />
-                <h4>
-                  We don&apos;t collect any personal information
-                </h4>
-              </Col>
-              <Col sm={12} md={4}>
-                <ShieldFill size="50%" className="landing-info-card-icon" />
-                <h4>
-                  No tracking - your usage stays anonymous
-                </h4>
-              </Col>
-              <Col sm={12} md={4}>
-                <PersonCheckFill size="50%" className="landing-info-card-icon" />
-                <h4>
-                  Completely anonymous interactions
-                </h4>
-              </Col>
+    <Container fluid className="color-white p-0">
+      <Container>
+        <Row className="text-center py-4 my-3 text-dark-blue">
+          <h1 className="text-dark-blue">
+            <strong>OUR PROMISE</strong>
+          </h1>
+        </Row>
+      </Container>
+    </Container>
+    <Container fluid className="our-promise-background align-content-center">
+      <Row className="justify-content-center p-2">
+        <Col sm={12} md={8} lg={6} className="our-promise-section align-content-center">
+          <Row className="text-center align-content-center justify-content-center p-3">
+            <Row className="mb-5">
+              <h1 className="text-light-blue our-promise-title">
+                <strong>Designed with Privacy</strong>
+              </h1>
+              <hr />
+              <h2>
+                <strong>No login required, nothing collected</strong>
+              </h2>
             </Row>
-            <hr />
-            <h3>
-              Noble is designed with privacy in mind
-            </h3>
-            <h3>
-              <strong>No login required, no personal information collected</strong>
-            </h3>
-          </Card.Body>
-        </Card>
-      </Col>
+            <Col sm={12} md={4} className="p-1">
+              <LockFill size="50%" className="landing-info-card-icon" />
+              <h4>
+                NO personal information collected
+              </h4>
+            </Col>
+            <Col sm={12} md={4} className="p-1">
+              <ShieldFill size="50%" className="landing-info-card-icon" />
+              <h4>
+                NO tracking
+              </h4>
+            </Col>
+            <Col sm={12} md={4} className="p-1">
+              <PersonCheckFill size="50%" className="landing-info-card-icon" />
+              <h4>
+                Completely anonymous interactions
+              </h4>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
     </Container>
 
     {/* Features Section */}
-    <Container fluid className="features-section p-0 justify-content-center align-items-center">
+    <Container fluid className="features-section justify-content-center align-items-center">
       <Container>
         <Row className="text-center py-3 mt-3 text-dark-blue">
           <h1 className="mb-3 text-dark-blue">Your Private Health Resource</h1>
