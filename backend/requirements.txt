@@ -1,7 +1,0 @@
-openai
-flask
-flask-cors
-numpy
-faiss-cpu  # Use faiss-cpu if you don’t have a GPU version installed
-PyPDF2
-python-dotenv
