@@ -61,6 +61,14 @@ test('Test that FAQ Ask A Doc button works', async () => {
   await askADocPage.isDisplayed();
 });
 
+test('Test that FAQ Question Compass button works', async () => {
+  await navBar.gotoFAQPage();
+  await disclaimerModal.closeDisclaimerModal();
+  await faqPage.isDisplayed();
+  await faqFilter.questionCompassButton();
+  await questionCompassPage.isDisplayed();
+});
+
 // Question Compass
 test('Test that Question Compass page shows up', async () => {
   await navBar.gotoQuestionCompassPage();

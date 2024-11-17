@@ -36,7 +36,7 @@ const PasscodeManagement = () => {
   };
 
   return (ready ? (
-    <Container fluid className="p-0 med-staff-home-background" id={PAGE_IDS.PASSCODE_MANAGEMENT}>
+    <Container fluid className="p-0 med-staff-background" id={PAGE_IDS.PASSCODE_MANAGEMENT}>
       <Container fluid className="color1">
         <Row className="text-center py-4">
           <h1 className="text-white">Passcode Management</h1>

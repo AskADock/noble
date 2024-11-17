@@ -31,7 +31,7 @@ const MedHome = () => {
   }, []);
 
   return (ready ? (
-    <Container fluid className="med-staff-home-background p-0" id={PAGE_IDS.MED_HOME}>
+    <Container fluid className="med-staff-background p-0" id={PAGE_IDS.MED_HOME}>
       <Container fluid className="color1">
         <Row className="py-4 text-center">
           <h1 className="text-white">Medical Home</h1>
