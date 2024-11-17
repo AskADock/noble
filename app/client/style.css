@@ -253,7 +253,7 @@ body {
 
 /* Question Compass page */
 .question-compass-background {
-  background-color: var(--color3);
+  background-color: var(--offWhite);
   background-size: cover;
   min-height: 80vh;
 }
