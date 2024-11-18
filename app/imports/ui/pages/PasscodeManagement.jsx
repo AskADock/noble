@@ -5,6 +5,7 @@ import { Passcodes } from '../../api/passcode/PasscodeCollection';
 import PasscodeManagementModal from '../components/PasscodeManagementModal';
 import PasscodeGenerateModal from '../components/PasscodeGenerateModal';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 const PasscodeManagement = () => {
   // Subscribe to the passcode collection
@@ -35,7 +36,7 @@ const PasscodeManagement = () => {
   };
 
   return (ready ? (
-    <>
+    <Container fluid className="p-0 med-staff-background" id={PAGE_IDS.PASSCODE_MANAGEMENT}>
       <Container fluid className="color1">
         <Row className="text-center py-4">
           <h1 className="text-white">Passcode Management</h1>
@@ -108,7 +109,7 @@ const PasscodeManagement = () => {
         show={showModalGenerate}
         onClose={() => setShowModalGenerate(false)}
       />
-    </>
+    </Container>
   ) : (
     <LoadingSpinner />
   ));

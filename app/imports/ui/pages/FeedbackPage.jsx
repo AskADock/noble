@@ -3,6 +3,7 @@ import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import swal from 'sweetalert';
 import { Feedback } from '../../api/feedback/FeedbackCollection';
 import { defineMethodFeedback } from '../../api/base/BaseCollection.methods';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 export const Feedbacks = () => {
   // Form field state
@@ -27,11 +28,15 @@ export const Feedbacks = () => {
   };
 
   return (
-    <Container fluid className="ask-a-doc-background p-0">
+    <Container fluid className="ask-a-doc-background p-0" id={PAGE_IDS.FEEDBACK}>
       <Container>
-        <Row className="py-5 text-center text-white">
-          <h1>Feedback</h1>
-          <p>Leave your feedback here. Any feedback will help improve the site.</p>
+        <Row className="py-5 text-center text-white text-shadow">
+          <h1>
+            <strong>Feedback</strong>
+          </h1>
+          <h4>
+            Leave your feedback here. Any feedback will help improve the site
+          </h4>
         </Row>
         <Row className="justify-content-center py-5">
           <Col xs={12} md={10} lg={8} className="text-center">

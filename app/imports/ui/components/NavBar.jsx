@@ -15,17 +15,17 @@ const NavBar = () => {
   }), []);
 
   return (
-    <Navbar bg="light" expand="lg">
-      <Container className="text-start"> {/* Aligns everything to the start (left) */}
-        <Navbar.Brand id={COMPONENT_IDS.NAVBAR_LANDING_PAGE}>
+    <Navbar bg="light" expand="lg" sticky="top" className="Navbar">
+      <Container className="text-center">
+        <Navbar.Brand id={COMPONENT_IDS.NAVBAR_LANDING_BRAND}>
           <Image src="/images/154_Logo.png" alt="Home Image" to="/" style={{ maxWidth: '6vh' }} />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls={COMPONENT_IDS.NAVBAR_COLLAPSE} />
         <Navbar.Collapse id={COMPONENT_IDS.NAVBAR_COLLAPSE}>
-          <Nav className="me-auto">
+          <Nav className="mx-auto">
             {/* Show links for users not logged in */}
             {(!Roles.userIsInRole(Meteor.userId(), [ROLE.USER])) && (!Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN])) ? (
-              [<Nav.Link id={COMPONENT_IDS.NAVBAR_HOME} as={NavLink} to="/">Home</Nav.Link>,
+              [<Nav.Link id={COMPONENT_IDS.NAVBAR_LANDING} as={NavLink} to="/">Home</Nav.Link>,
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_FAQ} as={NavLink} to="/faq">FAQ</Nav.Link>,
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_QUESTION_COMPASS} as={NavLink} to="/question-compass">Question Compass</Nav.Link>,
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_ASK_A_DOC} as={NavLink} to="/ask-a-doc">Ask A Doc</Nav.Link>,
@@ -50,7 +50,6 @@ const NavBar = () => {
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_PASSCODE_MANAGEMENT} as={NavLink} to="/passcode-management">Passcode Management</Nav.Link>,
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_FEEDBACK_MANAGEMENT} as={NavLink} to="/feedback-management">Feedback Management</Nav.Link>,
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_FLYER_MANAGEMENT} as={NavLink} to="/flyer-management">Flyer Management</Nav.Link>,
-                <Nav.Link id={COMPONENT_IDS.NAVBAR_LIST_STUFF_ADMIN} as={NavLink} to="/admin" key="admin">Admin</Nav.Link>,
                 <NavDropdown id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN} title="Manage" key="manage-dropdown">
                   <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN_DATABASE} key="manage-database" as={NavLink} to="/manage-database">
                     <CloudDownload /> Database

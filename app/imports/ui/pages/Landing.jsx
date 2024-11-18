@@ -1,118 +1,192 @@
 import React from 'react';
 import { Row, Col, Container, Button, Card, Image } from 'react-bootstrap';
+import { LockFill, ShieldFill, PersonCheckFill } from 'react-bootstrap-icons';
 import { PAGE_IDS } from '../utilities/PageIDs';
 
 /* A simple static component to render some text for the landing page. */
 const Landing = () => (
   <Container fluid id={PAGE_IDS.LANDING} className="landing-background p-0">
-
     {/* Hero Section */}
-    <Row className="hero-section align-items-center text-center mt-5 mb-3">
-      <Col xs={12} className="justify-content-center">
-        <h1 className="hero-title">Noble</h1>
-        <h3 className="hero-subtitle">
-          Prepared for Tomorrow
-        </h3>
-      </Col>
-    </Row>
-
-    {/* Features Section */}
-    <Container fluid className="features-section p-4 d-flex flex-column justify-content-center align-items-center">
-      {/* Centered Headings for Features */}
-      <h2 className="text-center mb-3 text-dark-blue">Features</h2> {/* White text for heading */}
-      <h3 className="text-center mb-4 text-dark-blue">
-        Applications made for you to access medical information whenever, wherever.
-      </h3>
-
-      <Row className="feature-cards justify-content-around">
-        {/* First Feature Card */}
-        <Col xs={14} sm={8} md={4} className="mb-4">
-          <Card className="feature-card p-3 shadow-sm">
-            <Card.Img variant="top" src="/images/FAQ.png" className="feature-image" />
-            <Card.Body className="text-center">
-              <h2 className="features-title">Find health-related questions </h2>
-              <p className="feature-text">
-                Whether it&apos;s a minor query or a more complex issue, you can get the guidance you need
-                through our platform. Search through medical questions written by people like you.
-              </p>
-              <Button variant="primary" href="/faq">FAQ</Button>
-            </Card.Body>
-          </Card>
-        </Col>
-
-        {/* Second Feature Card */}
-        <Col xs={14} sm={8} md={4} className="mb-4">
-          <Card className="feature-card p-3 shadow-sm">
-            <Card.Img variant="top" src="/images/N.png" className="feature-image" />
-            <Card.Body className="text-center">
-              <h2 className="features-title">Question Compass</h2>
-              <p className="feature-text">
-                Using our custom AI assistant, you can find relevant information to your medical
-                questions approved by medical staff
-              </p>
-              <Button variant="primary" href="/question-compass">Question Compass</Button>
-            </Card.Body>
-          </Card>
-        </Col>
-
-        {/* Third Feature Card */}
-        <Col xs={14} sm={8} md={4} className="mb-4">
-          <Card className="feature-card p-3 shadow-sm">
-            <Card.Img variant="top" src="/images/P.png" className="feature-image" />
-            <Card.Body className="text-center">
-              <h2 className="features-title">Ask A Doc</h2>
-              <p className="feature-text">
-                Can’t find an answer? Worried about your privacy? Use our Ask A Doc feature to ask real
-                medical professionals anonymous questions that get answered periodically on the FAQ
-                page.
-              </p>
-              <Button variant="primary" href="/ask-a-doc">Ask a Doc</Button>
-            </Card.Body>
-          </Card>
+    <Container>
+      <Row className="hero-section align-items-center text-center my-5 py-5">
+        <Col className="justify-content-center text-shadow">
+          <h1 className="hero-title">
+            <strong>Noble</strong>
+          </h1>
+          <h3 className="hero-subtitle">
+            <strong>Prepared for Tomorrow</strong>
+          </h3>
         </Col>
       </Row>
     </Container>
 
-    <Container fluid className="color3">
-      <Container className="my-4">
-        <Card className="rounded-4 p-2 text-center">
-          <Card.Body>
-            <Row className="my-4">
-              <Col sm={12} md={6}>
-                <Image src="images/landing/MedGrp.jpg" alt="Medical pic" width="85%" className="rounded-4" />
-              </Col>
-              <Col sm={12} md={6}>
-                <h2 style={{ color: 'rgba(15.81, 18.83, 106.57, 0.98)', fontSize: 40, fontWeight: 700 }}>
-                  Stay Proactive
-                </h2>
-                <p style={{ color: 'black', fontSize: 20, fontWeight: 600, wordWrap: 'break-word' }}>
-                  Regular health assessments and preventive care ensure that service members meet medical and
-                  dental standards essential for fitness for duty and deployment readiness. The Military Health
-                  System emphasizes that maintaining medical and dental preventive care fitness is vital for
-                  sustaining health and wellness, facilitating restoration, and meeting medical readiness
-                  standards.
-                </p>
-              </Col>
+    {/* About Section */}
+    <Container fluid className="about-section align-content-center">
+      <Container>
+        <Row className="py-3 mt-3 mb-4 justify-content-center text-center">
+          <h1 className="text-dark-blue pt-3">
+            <strong>It takes courage to address health concerns,</strong>
+          </h1>
+          <h1 className="text-dark-blue pb-3">
+            <strong>especially when privacy is a priority</strong>
+          </h1>
+          <hr />
+          <Row className="text-black">
+            <Col sm={12} md={6} className="align-content-center">
+              <h3>
+                Noble provides <strong>anonymous</strong>, reliable health information and support, empowering individuals to make informed decisions with confidence.
+              </h3>
+            </Col>
+            <Col sm={12} md={6} className="align-content-center">
+              <Image fluid src="/images/landing/MedGrp.jpg" alt="" className="rounded-4" style={{ maxWidth: '90%' }} />
+            </Col>
+          </Row>
+        </Row>
+      </Container>
+    </Container>
+
+    {/* Stay Proactive Section */}
+    <Container fluid className="stay-proactive-background">
+      <Row className="justify-content-end align-items-end">
+        <Col xs={12} sm={6} className="stay-proactive-section align-content-center p-lg-5 p-sm-4">
+          <h1 className="text-light-blue stay-proactive-title">
+            <strong>STAYING PROACTIVE</strong>
+          </h1>
+          <hr />
+          <p className="text-start">
+            Regular health checkups and preventive care are key to staying healthy, prepared, and ready to meet both personal and professional demands.
+          </p>
+        </Col>
+      </Row>
+    </Container>
+
+    {/* Mission Section */}
+    <Container fluid className="color-white p-0">
+      <Container>
+        <Row className="text-center py-4 my-3 text-dark-blue">
+          <h1 className="landing-header">
+            <strong>OUR MISSION</strong>
+          </h1>
+        </Row>
+      </Container>
+    </Container>
+    <Container fluid className="our-misison-background">
+      <Row className="justify-content-start align-content-start">
+        <Col sm={12} md={6} className="our-mission-section align-content-center p-lg-5 p-sm-4">
+          <h1 className="text-light-blue our-mission-tilte">
+            PREPARED FOR TOMORROW
+          </h1>
+          <hr />
+          <p className="text-start">
+            We empower individuals to take charge of their health with accessible and reliable resources.
+            Through innovative tools and education, we inspire well-being, self-care, and confident decision-making for a healthier, safer community.
+          </p>
+        </Col>
+      </Row>
+    </Container>
+
+    {/* Our Promise Section */}
+    <Container fluid className="color-white p-0">
+      <Container>
+        <Row className="text-center py-4 my-3 text-dark-blue">
+          <h1 className="landing-header">
+            <strong>OUR PROMISE</strong>
+          </h1>
+        </Row>
+      </Container>
+    </Container>
+    <Container fluid className="our-promise-background align-content-center">
+      <Row className="justify-content-center p-2">
+        <Col sm={12} md={8} lg={6} className="our-promise-section align-content-center">
+          <Row className="text-center align-content-center justify-content-center p-3">
+            <Row className="mb-5">
+              <h1 className="text-light-blue our-promise-title">
+                <strong>Designed with Privacy</strong>
+              </h1>
+              <hr />
+              <h2>
+                <strong>No login required, nothing collected</strong>
+              </h2>
             </Row>
-            <Row className="my-4">
-              <Col sm={12} md={6}>
-                <h2 style={{ color: 'rgba(15.81, 18.83, 106.57, 0.98)', fontSize: 36, fontWeight: 700 }}>
-                  Stay Private
-                </h2>
-                <p style={{ color: 'black', fontSize: 20, fontWeight: 600, wordWrap: 'break-word' }}>
-                  Our mission is to empower individuals to take control of their health by providing accessible,
-                  accurate, and supportive medical resources. Through innovative tools and educational content,
-                  we aim to promote well-being, self-care, and informed decision-making for a healthier
-                  community. Your information will never be shared, and your identity will always be hidden and
-                  secure.
+            <Col sm={12} md={4} className="p-1">
+              <LockFill size="50%" className="landing-info-card-icon" />
+              <h4>
+                NO personal information collected
+              </h4>
+            </Col>
+            <Col sm={12} md={4} className="p-1">
+              <ShieldFill size="50%" className="landing-info-card-icon" />
+              <h4>
+                NO tracking
+              </h4>
+            </Col>
+            <Col sm={12} md={4} className="p-1">
+              <PersonCheckFill size="50%" className="landing-info-card-icon" />
+              <h4>
+                Completely anonymous interactions
+              </h4>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
+    </Container>
+
+    {/* Features Section */}
+    <Container fluid className="features-section justify-content-center align-items-center">
+      <Container>
+        <Row className="text-center py-3 mt-3 text-dark-blue">
+          <h1 className="mb-3 text-dark-blue">Your Private Health Resource</h1>
+          <h3 className="mb-3">Whether it&apos;s a minor query or a complex issue, you&apos;ll find the guidance you need.</h3>
+        </Row>
+        <Row className="justify-content-center">
+          {/* First Feature Card */}
+          <Col xs={12} sm={6} lg={4} className="mb-4">
+            <Card className="feature-card rounded-4 p-3 shadow-sm">
+              <Card.Img variant="top" src="/images/landing/NewFAQ.png" className="feature-image" />
+              <Card.Body className="text-center">
+                <h2 className="features-title">FAQ</h2>
+                <p className="feature-text">
+                  Search through medical questions written by people like you.
                 </p>
-              </Col>
-              <Col sm={12} md={6}>
-                <Image src="images/landing/supply-drop.jpg" alt="Medical pic" width="85%" className="rounded-4" />
-              </Col>
-            </Row>
-          </Card.Body>
-        </Card>
+              </Card.Body>
+              <Button variant="dark" href="/faq" className="feature-button">
+                <strong>FAQ</strong>
+              </Button>
+            </Card>
+          </Col>
+
+          {/* Second Feature Card */}
+          <Col xs={12} sm={6} lg={4} className="mb-4">
+            <Card className="feature-card rounded-4 p-3 shadow-sm">
+              <Card.Img variant="top" src="/images/landing/question-compass.png" className="feature-image" />
+              <Card.Body className="text-center">
+                <h2 className="features-title">Question Compass</h2>
+                <p className="feature-text">
+                  Chat with our AI assistant and find relevant medical information.
+                </p>
+              </Card.Body>
+              <Button variant="dark" href="/question-compass" className="feature-button">
+                <strong>Question Compass</strong>
+              </Button>
+            </Card>
+          </Col>
+
+          {/* Third Feature Card */}
+          <Col xs={12} sm={6} lg={4} className="mb-4">
+            <Card className="feature-card rounded-4 p-3 shadow-sm">
+              <Card.Img variant="top" src="/images/landing/ask-a-doc.png" className="feature-image" />
+              <Card.Body className="text-center">
+                <h2 className="features-title">Ask A Doc</h2>
+                <p className="feature-text">
+                  Can’t find an answer? Anonymously ask questions. Answers found in FAQ.
+                </p>
+              </Card.Body>
+              <Button variant="dark" href="/ask-a-doc" className="feature-button">
+                <strong>Ask a Doc</strong>
+              </Button>
+            </Card>
+          </Col>
+        </Row>
       </Container>
     </Container>
   </Container>

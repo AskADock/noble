@@ -8,6 +8,7 @@
   --color1: #687DAC;
   --color2: #D2E0EE;
   --color3: #F2E3D2;
+  --offWhite: #f4f4f4;
 }
 
 /* Change bootstrap variable values.
@@ -40,48 +41,228 @@ body {
   background-color: gray;
 }
 
+.color-white {
+  background-color: white;
+}
+
+.off-white {
+  background-color: var(--offWhite);
+}
+
 .text-shadow {
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.50);
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.60);
+}
+
+.text-dark-blue {
+  color: #10136B; /* Replace with your preferred dark blue hex code */
+}
+
+.text-light-blue {
+  color: var(--color2);
 }
 
 /* Define custom styles */
-.gray-background {
-  background-color: var(--bs-gray-200);
-  color: var(--bs-dark);
-  padding-top: 10px;
-  padding-bottom: 20px;
+
+/* Navbar styling */
+.Navbar .nav-link {
+  font-weight: bold; /* Bold text */
+  font-size: 1.3rem; /* Larger font size */
+  margin: 0 0.3rem 0 0.3rem;
+}
+
+.Navbar .nav-link:hover {
+  color: #10136B;
+}
+
+.Navbar .nav-link:active {
+  color: #10136B;
+}
+
+/* landing page */
+.landing-header {
+  color: #10136B; /* White text */
+  font-size: 3rem; /* Larger font size */
 }
 
 .landing-background {
-  background: url("images/landing/sm-child.jpg") fixed;
-  border-radius: 30px;
+  background: url("images/landing/personnel-on-flightline.jpg") fixed;
   background-size: cover;
-  background-position: 20% center;
+  background-position: center;
   color: white;
-  min-height: 250vh;
+  min-height: 100%;
   width: 100%;
-  background-blend-mode: darken;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
-  object-fit: contain;
-  position: relative;
+  object-fit: cover;
 }
 
+.hero-section {
+  min-height: 80vh; /* Full viewport height */
+  color: white;
+}
+
+.hero-title {
+  font-size: 6.5rem;
+}
+
+.hero-subtitle {
+  font-size: 1.95rem;
+}
+
+.landing-info-card {
+  width: 45%;
+  min-Height: 23vh;
+  max-Height: 45vh;
+}
+
+.landing-info-card-icon {
+  max-width: 25vh;
+  padding-bottom: 5%;
+}
+
+/* About section */
+.about-section {
+  background-color: #ffffff; /* White background */
+  width: 100%; /* Full width */
+  border-radius: 50px 50px 0 0; /* Rounded corners for the top */
+}
+
+/* Stay Proactive and Stay Private sections */
+.stay-proactive-background {
+  background: url("images/landing/staying-proactive.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 75vh;
+  width: 100%;
+  color: white;
+  flex-direction: column;
+}
+
+.stay-proactive-title {
+  font-size: 4rem; /* Larger font size */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.50); /* Text shadow for readability */
+}
+
+.stay-proactive-section {
+  font-size: 1.5rem; /* Smaller font size */
+  background: rgba(0, 0, 0, 0.3); /* Dark overlay for text readability */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.50); /* Text shadow for readability */
+  min-height: 75vh;
+}
+
+/* Our Mission section */
+.our-misison-background {
+  background: url("images/landing/image-of-F22-pilot.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 75vh;
+  width: 100%;
+  color: white;
+  flex-direction: column;
+}
+
+.our-mission-tilte {
+  font-size: 3.5rem; /* Larger font size */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.50); /* Text shadow for readability */
+}
+
+.our-mission-section {
+  font-size: 1.5rem; /* Smaller font size */
+  background: rgba(0, 0, 0, 0.3); /* Dark overlay for text readability */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.50); /* Text shadow for readability */
+  min-height: 75vh;
+}
+
+/* Our Promise section */
+.our-promise-background {
+  background: url("images/landing/C130-day.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 75vh;
+  width: 100%;
+  color: white;
+  flex-direction: column;
+}
+
+.our-promise-title {
+  font-size: 4rem; /* Larger font size */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.50); /* Text shadow for readability */
+}
+
+.our-promise-section {
+  font-size: 1.5rem; /* Smaller font size */
+  background: rgba(0, 0, 0, 0.4); /* Dark overlay for text readability */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.50); /* Text shadow for readability */
+  min-height: 50vh;
+  border-radius: 50px;
+}
+
+/*Features Cards section */
+.features-section {
+  background-color: #fff; /* White background */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+  width: 100%; /* Full width */
+}
+
+.feature-card {
+  max-width: 95vw; /* Smaller width for more compact cards */
+  min-height: 550px; /* Shorter height */
+  transition: transform 0.2s;
+}
+
+.feature-card:hover {
+  transform: translateY(-3px); /* Slight lift on hover */
+}
+
+.feature-image {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 25px 25px 0 0; /* Rounded corners for the top */
+  min-height: 150px;
+}
+
+/* Title styling for feature cards */
+.features-title {
+  font-size: 1.9rem; /* Smaller font size */
+  min-height: 25%;
+  color: #333; /* Darker text for readability */
+}
+
+/* Text styling for feature descriptions */
+.feature-text {
+  font-size: 1.2rem; /* Smaller font size */
+  color: #51515f; /* Softer text color */
+  min-height: 50%;
+  max-height: 10vw;
+  text-align: center; /* Center text */
+}
+
+/* Button styling for feature interactions */
+.feature-button {
+  margin-top: 5px;
+}
+
+/* FAQ page */
 .faq-background {
   background-color: var(--color2);
   background-size: cover;
   min-height: 80vh;
 }
 
+/* Question Compass page */
 .question-compass-background {
-  background-color: var(--color3);
+  background-color: var(--offWhite);
   background-size: cover;
-  min-height: 80vh;
+  min-height: 85vh;
 }
 
+.question-compass-section {
+  border-radius: 10px;
+  minHeight: 80vh;
+}
+
+/* Ask a Doc page */
 .ask-a-doc-background {
   background-color: var(--color1);
   background-size: cover;
@@ -94,239 +275,8 @@ body {
   min-height: 80vh;
 }
 
-.med-staff-home-background {
-  background-color: var(--color3);
+.med-staff-background {
+  background-color: var(--offWhite);
   background-size: cover;
   min-height: 80vh;
 }
-.landing-page {
-  background-color: #f5f5f5;
-  font-family: 'Segoe UI', sans-serif;
-  text-align: center;
-  padding-bottom: 129px;
-}
-
-.header {
-  background-color: #fff;
-  border-radius: 59px;
-  padding: 40px 70px;
-  margin-bottom: 36px;
-}
-
-.navigation {
-  display: flex;
-  justify-content: center;
-}
-
-.nav-list {
-  display: flex;
-  list-style-type: none;
-  gap: 31px;
-  padding: 0;
-  margin: 0;
-}
-
-.nav-item {
-  color: rgba(16, 19, 107, 0.98);
-  font-size: 24px;
-  font-weight: 600;
-  text-decoration: none;
-}
-/*{Hero image}*/
-.hero-section {
-  height: 100vh; /* Full viewport height */
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* Align content to the top */
-  align-items: flex-start; /* Align items to the left */
-  margin: 0 auto;
-  max-width: 100%;
-  padding-left: 40px; /* Add some left padding for spacing */
-  padding-top: 50px; /* Add top padding to adjust the height */
-}
-
-.hero-title {
-  font-size: 72px;
-  font-weight: 700;
-  margin: 0;
-  color: #ffffff;
-  text-align: center; /* Center the text */
-  padding-top: 25vh;
-}
-
-.hero-subtitle {
-  font-size: 36px;
-  margin-top: 10px;
-  color: #ffffff;
-  width: 100%; /* Adjust width for better centering */
-  font-weight: 400;
-  text-align: center; /* Center the text */
-}
-
-
-/*Features section */
-.features-section {
-  background-color: #fff; /* White background */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
-  margin-top: 10px; /* Add vertical margin for spacing */
-  width: 100%; /* Full width */
-  max-width: 100%; /* Ensure it spans the full container */
-
-}
-
-/* Layout for feature cards */
-.feature-cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-/* Individual feature card styling */
-.feature-card {
-  width: 400px; /* Smaller width for more compact cards */
-  min-height: 600px; /* Shorter height */
-  border-radius: 10px;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
-}
-
-.feature-card:hover {
-  transform: translateY(-3px); /* Slight lift on hover */
-}
-
-/* Image styling within feature cards */
-.feature-image {
-  width: 100%;
-  object-fit: cover;
-  border-radius: 10px 10px 0 0; /* Rounded corners for the top */
-}
-
-/* Title styling for feature cards */
-.features-title {
-  font-size: 18px; /* Smaller font size */
-  color: #333; /* Darker text for readability */
-  font-weight: 700;
-  margin: 8px 0;
-
-}
-
-/* Text styling for feature descriptions */
-.feature-text {
-  font-size: 14px; /* Smaller font size */
-  color: #666; /* Softer text color */
-  margin: 5px 0;
-  text-align: center; /* Center text */
-}
-
-/* Button styling for feature interactions */
-.feature-button {
-  background-color: #687DAC; /* Theme color */
-  color: #fff;
-  border: none;
-  border-radius: 15px;
-  padding: 8px 16px; /* Smaller padding */
-  font-size: 12px; /* Smaller font size */
-  font-weight: 600;
-  margin-top: 5px;
-  transition: background-color 0.3s;
-}
-
-.feature-button:hover {
-  background-color: #566b99; /* Darken button on hover */
-}
-.text-dark-blue {
-  color: #10136B; /* Replace with your preferred dark blue hex code */
-}
-
-  @media (max-width: 768px) {
-    .medgrp {
-      display: none;
-    }
-.medgroup{
-  display: none;
-}
-    .stay-proactive,
-    .stay-private {
-      text-align: center;
-      padding: 10px; /* Adjust padding for smaller screens */
-      margin-bottom: 20px; /* Add space between the text sections */
-      max-width: 100%; /* Ensure text sections use full width */
-    }
-
-    .stay-proactive h2,
-    .stay-private h2 {
-      font-size: 24px; /* Smaller heading font size for readability on mobile */
-    }
-
-    .stay-proactive p,
-    .stay-private p {
-      font-size: 14px; /* Reduce font size for smaller screens */
-    }
-  }
-
-  /* Styling for the Mission Section */
-  .mission-section {
-    width: 1676px;
-    height: 988px;
-    position: relative;
-  }
-
-  .rectangle {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background: white;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 70px;
-  }
-
-  .stay-proactive,
-  .stay-private {
-    text-align: center;
-    padding-top: 10px;
-    margin-bottom: 20px;
-    max-width: 100%;
-
-    width: 500px; /* Reduced width */
-    height: auto; /* Adjust height automatically based on content */
-    position: absolute;
-    color: black;
-    font-size: 18px; /* Smaller font size */
-    font-family: 'Segoe UI', sans-serif;
-    font-weight: 400; /* Adjusted font weight for readability */
-    word-wrap: break-word;
-  }
-
-  .stay-proactive {
-    left: 930px;
-    top: 54px;
-  }
-
-  .stay-private {
-    left: 930px;
-    top: 463px;
-  }
-
-  .stay-proactive h2,
-  .stay-private h2 {
-    color: rgba(15.81, 18.83, 106.57, 0.98);
-    font-size: 40px;
-    font-family: 'Segoe UI', sans-serif;
-    font-weight: 700;
-    margin-bottom: 20px;
-  }
-
-  .medgrp {
-    width: 672px;
-    height: auto;
-    flex-shrink: 0;
-    margin-left: 30px;
-    position: absolute;
-    left: 83px;
-    top: 89px;
-  }
-
-

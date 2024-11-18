@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col, Container, Form, Pagination, Badge, Tabs, Tab, Card, Accordion } from 'react-bootstrap';
 import Fuse from 'fuse.js';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 const FAQList = ({ faq, questions }) => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -59,6 +60,7 @@ const FAQList = ({ faq, questions }) => {
             style={{ minWidth: '35vw', maxWidth: '45vw' }}
             value={searchQuery}
             onChange={handleSearchChange}
+            id={COMPONENT_IDS.FAQ_LIST_SEARCH_BAR}
           />
         </Form.Group>
       </Container>
@@ -77,16 +79,18 @@ const FAQList = ({ faq, questions }) => {
             id="faq-tabs"
             className="mb-3"
           >
-            <Tab eventKey="faq" title={`FAQ (${faq.length})`}>
+            <Tab eventKey="faq" title={`FAQ (${faq.length})`} className="">
               {currentQuestions.length > 0 ? currentQuestions.map((item) => (
-                <Card className="my-2" key={item._id}>
-                  <Accordion>
+                <Card className="my-2" key={item._id} id={COMPONENT_IDS.FAQ_LIST_CARD}>
+                  <Accordion id={COMPONENT_IDS.FAQ_LIST_CARD_ACCORDION}>
                     <Accordion.Item eventKey={item._id} className="p-2">
-                      <Badge bg="primary" className="ms-auto">{item.category}</Badge>
-                      <Accordion.Header>
+                      <Badge bg="primary" className="ms-auto" style={{ fontSize: '.9rem' }}>
+                        {item.category}
+                      </Badge>
+                      <Accordion.Header id={COMPONENT_IDS.FAQ_LIST_QUESTION}>
                         <h5>{item.question}</h5>
                       </Accordion.Header>
-                      <Accordion.Body>{item.answer}</Accordion.Body>
+                      <Accordion.Body id={COMPONENT_IDS.FAQ_LIST_ANSWER}>{item.answer}</Accordion.Body>
                     </Accordion.Item>
                   </Accordion>
                 </Card>

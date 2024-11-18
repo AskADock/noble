@@ -54,34 +54,109 @@ class NavBar {
     await t.click(`#${COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN_SIGN_UP}`);
   }
 
-  /* Go to the add stuff page. */
-  async gotoAddStuffPage() {
+  /* Go to the FAQ page */
+  async gotoFAQPage() {
     const visible = await Selector(`#${COMPONENT_IDS.NAVBAR_COLLAPSE}`).visible;
     if (!visible) {
       await t.click('button.navbar-toggler');
     }
-    await t.expect(Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).exists).ok();
-    await t.click(`#${COMPONENT_IDS.NAVBAR_ADD_STUFF}`);
+    await t.click(`#${COMPONENT_IDS.NAVBAR_FAQ}`);
   }
 
-  /* Go to the list stuff page. */
-  async gotoListStuffPage() {
+  /* Go to the Question Compass page. */
+  async gotoQuestionCompassPage() {
     const visible = await Selector(`#${COMPONENT_IDS.NAVBAR_COLLAPSE}`).visible;
     if (!visible) {
       await t.click('button.navbar-toggler');
     }
-    await t.expect(Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).exists).ok();
-    await t.click(`#${COMPONENT_IDS.NAVBAR_LIST_STUFF}`);
+    await t.click(`#${COMPONENT_IDS.NAVBAR_QUESTION_COMPASS}`);
   }
 
-  /* Go to the list stuff admin page. */
-  async gotoListStuffAdminPage() {
+  /* Go to the Ask A Doc page. */
+  async gotoAskADocPage() {
+    const visible = await Selector(`#${COMPONENT_IDS.NAVBAR_COLLAPSE}`).visible;
+    if (!visible) {
+      await t.click('button.navbar-toggler');
+    }
+    await t.click(`#${COMPONENT_IDS.NAVBAR_ASK_A_DOC}`);
+  }
+
+  /* Go to the Feedback page. */
+  async gotoFeedbackPage() {
+    const visible = await Selector(`#${COMPONENT_IDS.NAVBAR_COLLAPSE}`).visible;
+    if (!visible) {
+      await t.click('button.navbar-toggler');
+    }
+    await t.click(`#${COMPONENT_IDS.NAVBAR_FEEDBACK}`);
+  }
+
+  /* Go to the Privacy Policy page. */
+  async gotoPrivacyPolicyPage() {
+    const visible = await Selector(`#${COMPONENT_IDS.NAVBAR_COLLAPSE}`).visible;
+    if (!visible) {
+      await t.click('button.navbar-toggler');
+    }
+    await t.click(`#${COMPONENT_IDS.NAVBAR_PRIVACY_POLICY}`);
+  }
+
+  /* Go to the Med Home page. */
+  async gotoMedHomePage() {
     const visible = await Selector(`#${COMPONENT_IDS.NAVBAR_COLLAPSE}`).visible;
     if (!visible) {
       await t.click('button.navbar-toggler');
     }
     await t.expect(Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).exists).ok();
-    await t.click(`#${COMPONENT_IDS.NAVBAR_LIST_STUFF_ADMIN}`);
+    await t.click(`#${COMPONENT_IDS.NAVBAR_MED_HOME}`);
+  }
+
+  /* Go to the FAQ Management page. */
+  async gotoFAQManagementPage() {
+    const visible = await Selector(`#${COMPONENT_IDS.NAVBAR_COLLAPSE}`).visible;
+    if (!visible) {
+      await t.click('button.navbar-toggler');
+    }
+    await t.expect(Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).exists).ok();
+    await t.click(`#${COMPONENT_IDS.NAVBAR_FAQ_MANAGEMENT}`);
+  }
+
+  /* Go to the Question Management page. */
+  async gotoQuestionManagementPage() {
+    const visible = await Selector(`#${COMPONENT_IDS.NAVBAR_COLLAPSE}`).visible;
+    if (!visible) {
+      await t.click('button.navbar-toggler');
+    }
+    await t.expect(Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).exists).ok();
+    await t.click(`#${COMPONENT_IDS.NAVBAR_QUESTION_MANAGEMENT}`);
+  }
+
+  /* Go to the Feedback Management page. */
+  async gotoFeedbackManagementPage() {
+    const visible = await Selector(`#${COMPONENT_IDS.NAVBAR_COLLAPSE}`).visible;
+    if (!visible) {
+      await t.click('button.navbar-toggler');
+    }
+    await t.expect(Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).exists).ok();
+    await t.click(`#${COMPONENT_IDS.NAVBAR_FEEDBACK_MANAGEMENT}`);
+  }
+
+  /* Go to the Flyer Management page. */
+  async gotoFlyerManagementPage() {
+    const visible = await Selector(`#${COMPONENT_IDS.NAVBAR_COLLAPSE}`).visible;
+    if (!visible) {
+      await t.click('button.navbar-toggler');
+    }
+    await t.expect(Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).exists).ok();
+    await t.click(`#${COMPONENT_IDS.NAVBAR_FLYER_MANAGEMENT}`);
+  }
+
+  /* Go to the Passcode Management page. */
+  async gotoPasscodeManagementPage() {
+    const visible = await Selector(`#${COMPONENT_IDS.NAVBAR_COLLAPSE}`).visible;
+    if (!visible) {
+      await t.click('button.navbar-toggler');
+    }
+    await t.expect(Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).exists).ok();
+    await t.click(`#${COMPONENT_IDS.NAVBAR_PASSCODE_MANAGEMENT}`);
   }
 
   /* Go to the manage database page. Must be adimin. */
