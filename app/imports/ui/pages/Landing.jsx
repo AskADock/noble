@@ -142,7 +142,7 @@ const Landing = () => (
           {/* First Feature Card */}
           <Col xs={12} sm={6} lg={4} className="mb-4">
             <Card className="feature-card rounded-4 p-3 shadow-sm">
-              <Card.Img variant="top" src="/images/landing/FAQ.png" className="feature-image" />
+              <Card.Img variant="top" src="/images/landing/NewFAQ.png" className="feature-image" />
               <Card.Body className="text-center">
                 <h2 className="features-title">FAQ</h2>
                 <p className="feature-text">

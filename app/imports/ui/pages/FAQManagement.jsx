@@ -24,7 +24,7 @@ const FAQManagement = () => {
   }, []);
 
   return (ready ? (
-    <Container fluid className="p-0 med-staff-home-background" id={PAGE_IDS.FAQ_MANAGEMENT}>
+    <Container fluid className="p-0 med-staff-background" id={PAGE_IDS.FAQ_MANAGEMENT}>
       <Container fluid className="color1">
         <Row className="py-4 text-center">
           <Col>

@@ -104,6 +104,9 @@ const FAQFilter = ({ faq, questions, categories }) => {
               <Button href="/ask-a-doc" className="rounded-3" id={COMPONENT_IDS.FAQ_FILTER_ASK_A_DOC_BUTTON}>
                 Ask A Doc
               </Button>
+              <Button href="/question-compass" className="rounded-3 mt-2" id={COMPONENT_IDS.FAQ_FILTER_QUESTION_COMPASS_BUTTON}>
+                Question Compass
+              </Button>
             </Card>
           </div>
         </Col>
@@ -118,6 +121,9 @@ const FAQFilter = ({ faq, questions, categories }) => {
               <h4>Can&apos;t find an answer?</h4>
               <Button href="/ask-a-doc" className="rounded-3" id={COMPONENT_IDS.FAQ_FILTER_ASK_A_DOC_BUTTON_SMALL}>
                 Ask A Doc
+              </Button>
+              <Button href="/question-compass" className="rounded-3 mt-2" id={COMPONENT_IDS.FAQ_FILTER_QUESTION_COMPASS_BUTTON_SMALL}>
+                Question Compass
               </Button>
             </Card>
             <Card className="rounded-4 p-3 mt-4 text-center color3">

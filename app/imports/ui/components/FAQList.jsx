@@ -79,12 +79,14 @@ const FAQList = ({ faq, questions }) => {
             id="faq-tabs"
             className="mb-3"
           >
-            <Tab eventKey="faq" title={`FAQ (${faq.length})`}>
+            <Tab eventKey="faq" title={`FAQ (${faq.length})`} className="">
               {currentQuestions.length > 0 ? currentQuestions.map((item) => (
                 <Card className="my-2" key={item._id} id={COMPONENT_IDS.FAQ_LIST_CARD}>
                   <Accordion id={COMPONENT_IDS.FAQ_LIST_CARD_ACCORDION}>
                     <Accordion.Item eventKey={item._id} className="p-2">
-                      <Badge bg="primary" className="ms-auto">{item.category}</Badge>
+                      <Badge bg="primary" className="ms-auto" style={{ fontSize: '.9rem' }}>
+                        {item.category}
+                      </Badge>
                       <Accordion.Header id={COMPONENT_IDS.FAQ_LIST_QUESTION}>
                         <h5>{item.question}</h5>
                       </Accordion.Header>

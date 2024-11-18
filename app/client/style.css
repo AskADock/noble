@@ -66,7 +66,7 @@ body {
 /* Navbar styling */
 .Navbar .nav-link {
   font-weight: bold; /* Bold text */
-  font-size: 1.4rem; /* Larger font size */
+  font-size: 1.3rem; /* Larger font size */
   margin: 0 0.3rem 0 0.3rem;
 }
 
@@ -198,14 +198,13 @@ body {
   border-radius: 50px;
 }
 
-/*Features section */
+/*Features Cards section */
 .features-section {
   background-color: #fff; /* White background */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
   width: 100%; /* Full width */
 }
 
-/* Individual feature card styling */
 .feature-card {
   max-width: 95vw; /* Smaller width for more compact cards */
   min-height: 550px; /* Shorter height */
@@ -216,7 +215,6 @@ body {
   transform: translateY(-3px); /* Slight lift on hover */
 }
 
-/* Image styling within feature cards */
 .feature-image {
   width: 100%;
   object-fit: cover;
@@ -245,106 +243,26 @@ body {
   margin-top: 5px;
 }
 
-  @media (max-width: 768px) {
-    .medgrp {
-      display: none;
-    }
-.medgroup{
-  display: none;
-}
-    .stay-proactive,
-    .stay-private {
-      text-align: center;
-      padding: 10px; /* Adjust padding for smaller screens */
-      margin-bottom: 20px; /* Add space between the text sections */
-      max-width: 100%; /* Ensure text sections use full width */
-    }
-
-    .stay-proactive h2,
-    .stay-private h2 {
-      font-size: 24px; /* Smaller heading font size for readability on mobile */
-    }
-
-    .stay-proactive p,
-    .stay-private p {
-      font-size: 14px; /* Reduce font size for smaller screens */
-    }
-  }
-
-  /* Styling for the Mission Section */
-  .mission-section {
-    width: 1676px;
-    height: 988px;
-    position: relative;
-  }
-
-  .rectangle {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background: white;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 70px;
-  }
-
-  .stay-proactive,
-  .stay-private {
-    text-align: center;
-    padding-top: 10px;
-    margin-bottom: 20px;
-    max-width: 100%;
-
-    width: 500px; /* Reduced width */
-    height: auto; /* Adjust height automatically based on content */
-    position: absolute;
-    color: black;
-    font-size: 18px; /* Smaller font size */
-    font-family: 'Segoe UI', sans-serif;
-    font-weight: 400; /* Adjusted font weight for readability */
-    word-wrap: break-word;
-  }
-
-  .stay-proactive {
-    left: 930px;
-    top: 54px;
-  }
-
-  .stay-private {
-    left: 930px;
-    top: 463px;
-  }
-
-  .stay-proactive h2,
-  .stay-private h2 {
-    color: rgba(15.81, 18.83, 106.57, 0.98);
-    font-size: 40px;
-    font-family: 'Segoe UI', sans-serif;
-    font-weight: 700;
-    margin-bottom: 20px;
-  }
-
-  .medgrp {
-    width: 672px;
-    height: auto;
-    flex-shrink: 0;
-    margin-left: 30px;
-    position: absolute;
-    left: 83px;
-    top: 89px;
-  }
-
+/* FAQ page */
 .faq-background {
   background-color: var(--color2);
   background-size: cover;
   min-height: 80vh;
 }
 
+/* Question Compass page */
 .question-compass-background {
-  background-color: var(--color3);
+  background-color: var(--offWhite);
   background-size: cover;
-  min-height: 80vh;
+  min-height: 85vh;
 }
 
+.question-compass-section {
+  border-radius: 10px;
+  minHeight: 80vh;
+}
+
+/* Ask a Doc page */
 .ask-a-doc-background {
   background-color: var(--color1);
   background-size: cover;
@@ -357,9 +275,8 @@ body {
   min-height: 80vh;
 }
 
-.med-staff-home-background {
+.med-staff-background {
   background-color: var(--offWhite);
   background-size: cover;
   min-height: 80vh;
 }
-

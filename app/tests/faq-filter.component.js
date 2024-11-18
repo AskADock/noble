@@ -24,6 +24,18 @@ class FAQFilter {
     }
   }
 
+  /** Asserts that the Question Compass button works */
+  async questionCompassButton() {
+    const questionCompassButton = Selector(`#${COMPONENT_IDS.FAQ_FILTER_QUESTION_COMPASS_BUTTON}`);
+    const questionCompassButtonSmall = Selector(`#${COMPONENT_IDS.FAQ_FILTER_QUESTION_COMPASS_BUTTON_SMALL}`);
+
+    if (await questionCompassButton.visible) {
+      await t.click();
+    } else if (await questionCompassButtonSmall.visible) {
+      await t.click(questionCompassButtonSmall);
+    }
+  }
+
   /** Asserts that the FAQ filter dropdown works */
   async filterDropdown() {
     const dropdown = Selector(`#${COMPONENT_IDS.FAQ_FILTER_DROPDOWN}`);
