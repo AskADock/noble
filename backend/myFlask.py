@@ -20,7 +20,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
 # Directory containing PDF documents
-documents_directory = "C:\\Users\\clayt\\Documents\\GitHub\\nobleBackup\\app\\documents"
+documents_directory = os.path.join(os.path.dirname(__file__), "..", "app", "documents")
 
 
 def split_text_into_chunks(text, max_tokens=3000):
@@ -139,4 +139,4 @@ def get_answer():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
