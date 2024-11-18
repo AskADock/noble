@@ -33,7 +33,7 @@ const QuestionCompass = () => {
     setIsTyping(true);
 
     try {
-      const response = await axios.post('http://noble.wiki/api/get-answer', { question: input });
+      const response = await axios.post('https://noble.wiki/api/get-answer', { question: input });
       const botResponse = response.data.answer;
       // eslint-disable-next-line no-use-before-define
       typeMessage(botResponse);
