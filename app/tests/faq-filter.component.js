@@ -30,7 +30,7 @@ class FAQFilter {
     const questionCompassButtonSmall = Selector(`#${COMPONENT_IDS.FAQ_FILTER_QUESTION_COMPASS_BUTTON_SMALL}`);
 
     if (await questionCompassButton.visible) {
-      await t.click();
+      await t.click(questionCompassButton);
     } else if (await questionCompassButtonSmall.visible) {
       await t.click(questionCompassButtonSmall);
     }
