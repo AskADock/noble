@@ -1,24 +1,29 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { marked } from 'marked';
-import { Container, Row, Col, Button, InputGroup, FormControl, Image } from 'react-bootstrap';
+import { Container, Row, Col, Button, InputGroup, FormControl } from 'react-bootstrap';
+import { PAGE_IDS } from '../utilities/PageIDs';
+import DisclaimerModal from '../components/DisclaimerModal';
 
 const QuestionCompass = () => {
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState([]);
   const [isTyping, setIsTyping] = useState(false);
-  const chatEndRef = useRef(null);
+  const chatContainerRef = useRef(null); // Use this ref to target the scrollable chat container
 
-  // Function to scroll to the bottom of the chat
+  // Function to scroll to the bottom of the chat container
   const scrollToBottom = () => {
-    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    chatContainerRef.current?.scrollTo({
+      top: chatContainerRef.current.scrollHeight,
+      behavior: 'smooth',
+    });
   };
 
   useEffect(() => {
-    if (isTyping) {
-      scrollToBottom();
+    if (messages.length > 0) {
+      scrollToBottom(); // Scroll to the bottom when messages change
     }
-  }, [messages, isTyping]);
+  }, [messages]);
 
   const handleSendMessage = async () => {
     if (input.trim() === '') return;
@@ -30,6 +35,7 @@ const QuestionCompass = () => {
     try {
       const response = await axios.post('http://localhost:5000/api/get-answer', { question: input });
       const botResponse = response.data.answer;
+      // eslint-disable-next-line no-use-before-define
       typeMessage(botResponse);
     } catch (error) {
       console.error('Error sending message:', error);
@@ -67,70 +73,84 @@ const QuestionCompass = () => {
   };
 
   return (
-    <Container fluid className="d-flex flex-column min-vh-100 bg-light">
-      <Row className="text-black">
-        <Col className="text-center" style={{ padding: '20px' }}>
-          <h1>Question Compass</h1>
-        </Col>
-      </Row>
-      <Row className="noble-image justify-content-center">
-        <Image src="/images/154_Logo.png" alt="Home Image" style={{ maxWidth: '30vh' }} />
-      </Row>
-      <Row className="QQ align-items-center text-center mt-5 mb-3">
-        <Col xs={12} md={8} lg={6} className="mx-auto">
-          <h5 className="QQ message">
-            Welcome to Noble, your confidential virtual assistant for medical questions. Your privacy is our top priority—your
-            questions remain anonymous and are not linked to your identity or shared with medical staff. Remember, Noble is
-            here to provide guidance based on our available resources, but for any serious concerns, please reach out to a
-            healthcare professional.
-          </h5>
-        </Col>
-      </Row>
-      <Row className="flex-grow-1" style={{ padding: '20px' }}>
-        <Col xs={12} md={10} lg={9} className="d-flex flex-column mx-auto">
-          <div
-            className="p-3 chat-box"
-            style={{
-              backgroundColor: '#f8f9fa',
-              borderRadius: '10px',
-              boxShadow: '0 0 10px rgba(0,0,0,0.1)',
-            }}
-          >
-            {messages.map((msg, index) => (
-              <div
-                key={index}
-                className={`my-2 p-2 rounded ${
-                  msg.role === 'user' ? 'bg-primary text-white align-self-end' : 'bg-secondary text-white align-self-start'
-                }`}
-              >
-                <strong>{msg.role === 'user' ? 'User' : 'AI'}:</strong>{' '}
-                {msg.role === 'bot' ? (
-                  <div dangerouslySetInnerHTML={{ __html: marked(msg.text) }} />
-                ) : (
-                  msg.text
-                )}
-              </div>
-            ))}
-            {isTyping && <div className="text-muted">Noble is typing...</div>}
-            <div ref={chatEndRef} />
-          </div>
-          <InputGroup
-            className="border-top mt-3"
-            style={{ borderRadius: '10px', boxShadow: '0 0 10px rgba(0,0,0,0.1)' }}
-          >
-            <FormControl
-              placeholder="Type your question here..."
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
-              style={{ borderRadius: '10px 0 0 10px' }}
-            />
-            <Button variant="primary" onClick={handleSendMessage} style={{ borderRadius: '0 10px 10px 0' }}>
-              Send
-            </Button>
-          </InputGroup>
-        </Col>
-      </Row>
+    <Container fluid id={PAGE_IDS.QUESTION_COMPASS} className="question-compass-background p-0">
+      <DisclaimerModal />
+      <Container fluid className="color1">
+        <Row className="py-4 text-center text-white text-shadow">
+          <h1>
+            <strong>Question Compass</strong>
+          </h1>
+          <h4>
+            Chat with our AI assistant and find relevant medical information
+          </h4>
+        </Row>
+      </Container>
+      <Container>
+        <Row className="py-3 px-1 justify-content-center">
+          <Col sm={12} md={9} className="question-compass-section">
+            <div
+              ref={chatContainerRef} // Attach ref to the chat container
+              className="p-3"
+              style={{
+                backgroundColor: '#f8f9fa',
+                borderRadius: '10px',
+                boxShadow: '0 0 10px rgba(0,0,0,0.1)',
+                minHeight: '65vh',
+                maxHeight: '65vh',
+                overflowY: 'auto', // Ensure only this section scrolls
+              }}
+            >
+              {messages.length === 0 && (
+                <div className="text-center">
+                  <h4>Welcome to Noble!</h4>
+                  <p>
+                    <strong>Your confidential virtual assistant for medical questions.</strong>
+                  </p>
+                  <h5>Ask Health-related Question</h5>
+                  <p>
+                    Noble is here to provide guidance based on our available resources.
+                  </p>
+                  <h5>For any serious concerns, please reach out to a healthcare professional.</h5>
+                </div>
+              )}
+              {messages.map((msg, index) => (
+                <div
+                  key={index}
+                  className={`my-2 p-2 rounded ${
+                    msg.role === 'user'
+                      ? 'bg-primary text-white align-self-end'
+                      : 'bg-secondary text-white align-self-start'
+                  }`}
+                >
+                  <strong>{msg.role === 'user' ? 'User' : 'AI'}:</strong>{' '}
+                  {msg.role === 'bot' ? (
+                    <div dangerouslySetInnerHTML={{ __html: marked(msg.text) }} />
+                  ) : (
+                    msg.text
+                  )}
+                </div>
+              ))}
+              {isTyping && <div className="text-muted">Noble is typing...</div>}
+            </div>
+            <InputGroup
+              className="border-top mt-3"
+              style={{ borderRadius: '10px', boxShadow: '0 0 10px rgba(0,0,0,0.1)' }}
+            >
+              <FormControl
+                as="textarea"
+                placeholder="Type your question here..."
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
+                style={{ borderRadius: '10px 0 0 10px', resize: 'vertical' }}
+              />
+              <Button variant="primary" onClick={handleSendMessage} style={{ borderRadius: '0 10px 10px 0' }}>
+                Send
+              </Button>
+            </InputGroup>
+          </Col>
+        </Row>
+      </Container>
     </Container>
   );
 };

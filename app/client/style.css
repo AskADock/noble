@@ -243,7 +243,6 @@ body {
   margin-top: 5px;
 }
 
-
 /* FAQ page */
 .faq-background {
   background-color: var(--color2);
@@ -255,9 +254,15 @@ body {
 .question-compass-background {
   background-color: var(--offWhite);
   background-size: cover;
-  min-height: 80vh;
+  min-height: 85vh;
 }
 
+.question-compass-section {
+  border-radius: 10px;
+  minHeight: 80vh;
+}
+
+/* Ask a Doc page */
 .ask-a-doc-background {
   background-color: var(--color1);
   background-size: cover;
