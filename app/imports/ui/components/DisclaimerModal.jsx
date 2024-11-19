@@ -44,7 +44,7 @@ const DisclaimerModal = () => {
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={handleClose} variant="primary" id={COMPONENT_IDS.DISCLAIMER_MODAL_CLOSE}>
-          Roger
+          <strong>Roger</strong>
         </Button>
       </Modal.Footer>
     </Modal>
