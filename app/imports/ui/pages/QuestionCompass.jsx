@@ -101,8 +101,8 @@ const QuestionCompass = () => {
               }}
             >
               {messages.length === 0 && (
-                <div className="text-center">
-                  <h4>Welcome to Noble!</h4>
+                <div className="text-center pt-3">
+                  <h3>Welcome to Noble!</h3>
                   <p>
                     <strong>Your confidential virtual assistant for medical questions.</strong>
                   </p>
@@ -154,14 +154,20 @@ const QuestionCompass = () => {
       <Container>
         <Row className="justify-content-center text-center py-2">
           <Col sm={12} md={4}>
-            <Card className="rounded-4 p-2">
-              <Card.Title>
-                <h3>AI Not Responding?</h3>
+            <Card className="rounded-4 p-1">
+              <Card.Title className="pt-3">
+                <h4>AI Not Responding?</h4>
               </Card.Title>
               <Card.Body>
                 <Button href="https://chatgpt.com/g/g-1mXpsuNWq-noble" variant="primary">
                   <h6>Question Compass</h6>
                 </Button>
+                <h4 className="pt-3">
+                  <strong>Disclaimer</strong>
+                </h4>
+                <p>
+                  A ChatGPT account is required to chat with the AI assistant
+                </p>
               </Card.Body>
             </Card>
           </Col>
