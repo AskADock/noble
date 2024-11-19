@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { marked } from 'marked';
-import { Container, Row, Col, Button, InputGroup, FormControl } from 'react-bootstrap';
+import { Container, Row, Col, Button, InputGroup, FormControl, Card } from 'react-bootstrap';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import DisclaimerModal from '../components/DisclaimerModal';
 
@@ -148,6 +148,22 @@ const QuestionCompass = () => {
                 Send
               </Button>
             </InputGroup>
+          </Col>
+        </Row>
+      </Container>
+      <Container>
+        <Row className="justify-content-center text-center py-2">
+          <Col sm={12} md={4}>
+            <Card className="rounded-4 p-2">
+              <Card.Title>
+                <h3>AI Not Responding?</h3>
+              </Card.Title>
+              <Card.Body>
+                <Button href="https://chatgpt.com/g/g-1mXpsuNWq-noble" variant="primary">
+                  <h6>Question Compass</h6>
+                </Button>
+              </Card.Body>
+            </Card>
           </Col>
         </Row>
       </Container>
