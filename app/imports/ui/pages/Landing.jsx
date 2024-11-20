@@ -20,6 +20,52 @@ const Landing = () => (
       </Row>
     </Container>
 
+    {/* Our Promise Section */}
+    <Container fluid className="our-promise-header p-0">
+      <Container>
+        <Row className="text-center py-4 my-3 text-dark-blue">
+          <h1 className="landing-header">
+            <strong>OUR PROMISE</strong>
+          </h1>
+        </Row>
+      </Container>
+    </Container>
+    <Container fluid className="our-promise-background align-content-center">
+      <Row className="justify-content-center p-2">
+        <Col sm={12} md={8} lg={6} className="our-promise-section align-content-center">
+          <Row className="text-center align-content-center justify-content-center p-3">
+            <Row className="mb-5">
+              <h1 className="text-light-blue our-promise-title">
+                <strong>Designed with Privacy</strong>
+              </h1>
+              <hr />
+              <h2>
+                <strong>No login required, nothing collected</strong>
+              </h2>
+            </Row>
+            <Col sm={12} md={4} className="p-1">
+              <LockFill size="50%" className="landing-info-card-icon" />
+              <h4>
+                NO personal information collected
+              </h4>
+            </Col>
+            <Col sm={12} md={4} className="p-1">
+              <ShieldFill size="50%" className="landing-info-card-icon" />
+              <h4>
+                NO tracking
+              </h4>
+            </Col>
+            <Col sm={12} md={4} className="p-1">
+              <PersonCheckFill size="50%" className="landing-info-card-icon" />
+              <h4>
+                Completely anonymous interactions
+              </h4>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
+    </Container>
+
     {/* About Section */}
     <Container fluid className="about-section align-content-center">
       <Container>
@@ -85,51 +131,51 @@ const Landing = () => (
       </Row>
     </Container>
 
-    {/* Our Promise Section */}
-    <Container fluid className="color-white p-0">
-      <Container>
-        <Row className="text-center py-4 my-3 text-dark-blue">
-          <h1 className="landing-header">
-            <strong>OUR PROMISE</strong>
-          </h1>
-        </Row>
-      </Container>
-    </Container>
-    <Container fluid className="our-promise-background align-content-center">
-      <Row className="justify-content-center p-2">
-        <Col sm={12} md={8} lg={6} className="our-promise-section align-content-center">
-          <Row className="text-center align-content-center justify-content-center p-3">
-            <Row className="mb-5">
-              <h1 className="text-light-blue our-promise-title">
-                <strong>Designed with Privacy</strong>
-              </h1>
-              <hr />
-              <h2>
-                <strong>No login required, nothing collected</strong>
-              </h2>
-            </Row>
-            <Col sm={12} md={4} className="p-1">
-              <LockFill size="50%" className="landing-info-card-icon" />
-              <h4>
-                NO personal information collected
-              </h4>
-            </Col>
-            <Col sm={12} md={4} className="p-1">
-              <ShieldFill size="50%" className="landing-info-card-icon" />
-              <h4>
-                NO tracking
-              </h4>
-            </Col>
-            <Col sm={12} md={4} className="p-1">
-              <PersonCheckFill size="50%" className="landing-info-card-icon" />
-              <h4>
-                Completely anonymous interactions
-              </h4>
-            </Col>
-          </Row>
-        </Col>
-      </Row>
-    </Container>
+    {/* /!* Our Promise Section *!/ */}
+    {/* <Container fluid className="color-white p-0"> */}
+    {/*  <Container> */}
+    {/*    <Row className="text-center py-4 my-3 text-dark-blue"> */}
+    {/*      <h1 className="landing-header"> */}
+    {/*        <strong>OUR PROMISE</strong> */}
+    {/*      </h1> */}
+    {/*    </Row> */}
+    {/*  </Container> */}
+    {/* </Container> */}
+    {/* <Container fluid className="our-promise-background align-content-center"> */}
+    {/*  <Row className="justify-content-center p-2"> */}
+    {/*    <Col sm={12} md={8} lg={6} className="our-promise-section align-content-center"> */}
+    {/*      <Row className="text-center align-content-center justify-content-center p-3"> */}
+    {/*        <Row className="mb-5"> */}
+    {/*          <h1 className="text-light-blue our-promise-title"> */}
+    {/*            <strong>Designed with Privacy</strong> */}
+    {/*          </h1> */}
+    {/*          <hr /> */}
+    {/*          <h2> */}
+    {/*            <strong>No login required, nothing collected</strong> */}
+    {/*          </h2> */}
+    {/*        </Row> */}
+    {/*        <Col sm={12} md={4} className="p-1"> */}
+    {/*          <LockFill size="50%" className="landing-info-card-icon" /> */}
+    {/*          <h4> */}
+    {/*            NO personal information collected */}
+    {/*          </h4> */}
+    {/*        </Col> */}
+    {/*        <Col sm={12} md={4} className="p-1"> */}
+    {/*          <ShieldFill size="50%" className="landing-info-card-icon" /> */}
+    {/*          <h4> */}
+    {/*            NO tracking */}
+    {/*          </h4> */}
+    {/*        </Col> */}
+    {/*        <Col sm={12} md={4} className="p-1"> */}
+    {/*          <PersonCheckFill size="50%" className="landing-info-card-icon" /> */}
+    {/*          <h4> */}
+    {/*            Completely anonymous interactions */}
+    {/*          </h4> */}
+    {/*        </Col> */}
+    {/*      </Row> */}
+    {/*    </Col> */}
+    {/*  </Row> */}
+    {/* </Container> */}
 
     {/* Features Section */}
     <Container fluid className="features-section justify-content-center align-items-center">

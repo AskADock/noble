@@ -92,7 +92,7 @@ body {
   min-height: 100vh;
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: inherit;
 }
 
 .hero-section {
@@ -119,11 +119,40 @@ body {
   padding-bottom: 5%;
 }
 
+/* Our Promise section */
+.our-promise-background {
+  background: url("images/landing/C130-day.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 75vh;
+  width: 100%;
+  color: white;
+  flex-direction: column;
+}
+
+.our-promise-header {
+  background-color: #ffffff; /* White background */
+  width: 100%; /* Full width */
+  border-radius: 50px 50px 0 0; /* Rounded corners for the top */
+}
+
+.our-promise-title {
+  font-size: 4rem; /* Larger font size */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.50); /* Text shadow for readability */
+}
+
+.our-promise-section {
+  font-size: 1.5rem; /* Smaller font size */
+  background: rgba(0, 0, 0, 0.4); /* Dark overlay for text readability */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.50); /* Text shadow for readability */
+  min-height: 50vh;
+  border-radius: 50px;
+}
+
 /* About section */
 .about-section {
   background-color: #ffffff; /* White background */
   width: 100%; /* Full width */
-  border-radius: 50px 50px 0 0; /* Rounded corners for the top */
 }
 
 /* Stay Proactive and Stay Private sections */
@@ -170,30 +199,6 @@ body {
   background: rgba(0, 0, 0, 0.3); /* Dark overlay for text readability */
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.50); /* Text shadow for readability */
   min-height: 75vh;
-}
-
-/* Our Promise section */
-.our-promise-background {
-  background: url("images/landing/C130-day.jpg");
-  background-size: cover;
-  background-position: center;
-  min-height: 75vh;
-  width: 100%;
-  color: white;
-  flex-direction: column;
-}
-
-.our-promise-title {
-  font-size: 4rem; /* Larger font size */
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.50); /* Text shadow for readability */
-}
-
-.our-promise-section {
-  font-size: 1.5rem; /* Smaller font size */
-  background: rgba(0, 0, 0, 0.4); /* Dark overlay for text readability */
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.50); /* Text shadow for readability */
-  min-height: 50vh;
-  border-radius: 50px;
 }
 
 /*Features Cards section */
