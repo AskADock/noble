@@ -226,7 +226,7 @@ def get_answer():
 
 if __name__ == '__main__':
     try:
-        app.run(debug=True)
+        app.run(host='0.0.0.0', port=5000)
     except Exception as e:
         logger.error(f"Failed to start the server: {e}")
         raise
