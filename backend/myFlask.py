@@ -29,7 +29,7 @@ if not openai_api_key:
 openai.api_key = openai_api_key
 
 # Directory containing PDF documents
-documents_directory = os.path.join(os.path.dirname(__file__), "..", "app", "documents")
+documents_directory = os.path.join(os.path.dirname(__file__), "documents")
 if not os.path.exists(documents_directory):
     logger.error(f"Documents directory not found: {documents_directory}")
     raise FileNotFoundError(f"Documents directory not found: {documents_directory}")
