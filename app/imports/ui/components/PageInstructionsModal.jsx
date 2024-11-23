@@ -70,8 +70,27 @@ const PageInstructionsModal = ({ page }) => {
     pageTitle = 'Ask A Doc';
     instructions = (
       <div>
-        <h2>Contact Us</h2>
-        <p>Here is how you can contact us.</p>
+        <p>
+          <strong>Anonymously ask a Doctor health-related questions.</strong>
+        </p>
+        <h5>
+          Submitting a Question:
+        </h5>
+        <p>
+          Select a category, enter the passcode, and type your question. Click the submit button to submit your question.
+        </p>
+        <h5>
+          Passcode:
+        </h5>
+        <p>
+          Passcodes are provided by the medical team. If you do not have a passcode, please contact the medical team.
+        </p>
+        <h5>
+          Finding Answers:
+        </h5>
+        <p>
+          After a doctor responds to your question, the answer will appear in the <strong>FAQ</strong> page in the <strong>Questions Tab</strong>.
+        </p>
       </div>
     );
     break;

@@ -127,7 +127,7 @@ const QuestionCompass = () => {
                       : 'bg-secondary text-white align-self-start'
                   }`}
                 >
-                  <strong>{msg.role === 'user' ? 'User' : 'AI'}:</strong>{' '}
+                  <strong>{msg.role === 'user' ? 'User' : 'Noble'}:</strong>{' '}
                   {msg.role === 'bot' ? (
                     <div dangerouslySetInnerHTML={{ __html: marked(msg.text) }} />
                   ) : (
@@ -158,7 +158,7 @@ const QuestionCompass = () => {
       </Container>
       <Container>
         <Row className="justify-content-center text-center py-2">
-          <Col sm={12} md={4}>
+          <Col sm={12} md={5}>
             <Card className="rounded-4 p-1">
               <Card.Title className="pt-3">
                 <h4>AI Not Responding?</h4>
