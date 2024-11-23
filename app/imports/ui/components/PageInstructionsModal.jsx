@@ -156,6 +156,46 @@ const PageInstructionsModal = ({ page }) => {
       </div>
     );
     break;
+  case 'questionManagementPage':
+    pageTitle = 'Question Management';
+    instructions = (
+      <div>
+        <p>
+          <strong>Manage user submitted questions.</strong>
+        </p>
+        <h5>
+          Answering a Question:
+        </h5>
+        <p>
+          Click the <strong>Reply</strong> button to answer the question. Click the <strong>Delete</strong> button to delete the question.
+        </p>
+        <h5>
+          Filter/Search:
+        </h5>
+        <p>
+          Click on the filter dropdown to filter questions by category. Use the search bar to search for specific questions.
+        </p>
+        <h5>
+          Publish/Unpublish Questions:
+        </h5>
+        <p>
+          Answered questions are published in the <strong>FAQ</strong> page. Unanswered questions are <strong>not</strong> published.
+        </p>
+        <h5>
+          Questions Tab:
+        </h5>
+        <p>
+          Click the <strong>Questions</strong> tab to view <strong>answered</strong> submitted questions. These questions are published in the <strong>FAQ</strong> page.
+        </p>
+        <h5>
+          Unanswered Tab:
+        </h5>
+        <p>
+          Click the <strong>Unanswered</strong> tab to view <strong>unanswered</strong> submitted questions. These questions are <strong>not</strong> published.
+        </p>
+      </div>
+    );
+    break;
   default:
     pageTitle = 'Not Found';
     instructions = (
