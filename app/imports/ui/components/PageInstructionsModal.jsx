@@ -196,6 +196,75 @@ const PageInstructionsModal = ({ page }) => {
       </div>
     );
     break;
+  case 'passcodeManganementPage':
+    pageTitle = 'Passcode Management';
+    instructions = (
+      <div>
+        <p>
+          <strong>Manage the passcodes used to submit questions.</strong>
+        </p>
+        <p>
+          Passcodes are required to submit questions to the medical group. This is to ensure that only authorized users can submit questions.
+        </p>
+        <h5>
+          Generate New Passcode:
+        </h5>
+        <p>
+          Click the <strong>Generate Passcode</strong> button to create a new passcode.
+        </p>
+        <h5>
+          Editing a Passcode:
+        </h5>
+        <p>
+          Click the <strong>Edit</strong> button to edit the passcode. Click the <strong>Delete</strong> button to delete the passcode.
+        </p>
+        <h5>
+          Passcode Count:
+        </h5>
+        <p>
+          View the total number of passcodes generated.
+        </p>
+      </div>
+    );
+    break;
+  case 'flyerManagementPage':
+    pageTitle = 'Flyer Management';
+    instructions = (
+      <div>
+        <p>
+          <strong>Print Ask A Doc Flyers.</strong>
+        </p>
+        <h5>
+          Select a Passcode:
+        </h5>
+        <p>
+          Select a passcode from the dropdown list. Click the <strong>Print Flyer</strong> button to print the flyer.
+        </p>
+        <h5>
+          Printable Area:
+        </h5>
+        <p>
+          The printable area contains the flyer information. The flyer contains the Noble QR code and the passcode.
+        </p>
+      </div>
+    );
+    break;
+  case 'feedbackManagementPage':
+    pageTitle = 'Feedback Management';
+    instructions = (
+      <div>
+        <p>
+          <strong>Manage user feedback.</strong>
+        </p>
+        <h5>
+          Deleting Feedback:
+        </h5>
+        <p>
+          Click the <strong>Delete</strong> button to delete the feedback.
+        </p>
+      </div>
+    );
+    break;
   default:
     pageTitle = 'Not Found';
     instructions = (

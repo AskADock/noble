@@ -6,6 +6,7 @@ import PasscodeManagementModal from '../components/PasscodeManagementModal';
 import PasscodeGenerateModal from '../components/PasscodeGenerateModal';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PAGE_IDS } from '../utilities/PageIDs';
+import PageInstructionsModal from '../components/PageInstructionsModal';
 
 const PasscodeManagement = () => {
   // Subscribe to the passcode collection
@@ -38,8 +39,18 @@ const PasscodeManagement = () => {
   return (ready ? (
     <Container fluid className="p-0 med-staff-background" id={PAGE_IDS.PASSCODE_MANAGEMENT}>
       <Container fluid className="color1">
-        <Row className="text-center py-4">
-          <h1 className="text-white">Passcode Management</h1>
+        <Row className="py-4 text-center text-white text-shadow justify-content-center">
+          <Col xs="auto">
+            <h1>
+              <strong>Passcode Management</strong>
+            </h1>
+            <h4>
+              Generate, Edit, and Delete Passcodes
+            </h4>
+          </Col>
+          <Col xs="auto" className="align-content-center">
+            <PageInstructionsModal page="passcodeManganementPage" />
+          </Col>
         </Row>
       </Container>
       <Container>
@@ -79,8 +90,8 @@ const PasscodeManagement = () => {
                 {passcodes.map((item) => (
                   <tr key={item._id}>
                     <td>{item.code}</td>
-                    <td>{item.createdAt.toString()}</td>
-                    <td>{item.expiredAt ? item.expiredAt.toString() : 'N/A'}</td>
+                    <td>{item.createdAt.toLocaleString()}</td>
+                    <td>{item.expiredAt ? item.expiredAt.toLocaleString() : 'N/A'}</td>
                     <td>{item.expired ? 'Yes' : 'No'}</td>
                     <td>
                       <ButtonGroup>
