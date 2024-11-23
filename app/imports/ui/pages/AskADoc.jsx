@@ -10,6 +10,7 @@ import DisclaimerModal from '../components/DisclaimerModal';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
+import PageInstructionsModal from '../components/PageInstructionsModal';
 
 export const AskADoc = () => {
   // Fetch categories with useTracker
@@ -64,15 +65,22 @@ export const AskADoc = () => {
   return ready ? (
     <Container fluid className="ask-a-doc-background p-0" id={PAGE_IDS.ASK_A_DOC}>
       <DisclaimerModal />
-      <Container>
-        <Row className="pt-5 text-center text-white text-shadow">
-          <h1>
-            <strong>Ask A Doc</strong>
-          </h1>
-          <h4>
-            Anonymously ask a Doctor any question. Your answer will appear in the FAQ page soon
-          </h4>
+      <Container fluid className="color1">
+        <Row className="py-4 text-center text-white text-shadow justify-content-center">
+          <Col xs="auto">
+            <h1>
+              <strong>Ask A Doc</strong>
+            </h1>
+            <h4>
+              Anonymously ask a Doctor any question. Your answer will appear in the FAQ page soon
+            </h4>
+          </Col>
+          <Col xs="auto" className="align-content-center">
+            <PageInstructionsModal page="askADocPage" />
+          </Col>
         </Row>
+      </Container>
+      <Container>
         <Row className="justify-content-center py-5">
           <Col xs={12} md={10} lg={8} className="text-center">
             <Form onSubmit={handleSubmit}>

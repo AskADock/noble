@@ -5,6 +5,7 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { Passcodes } from '../../api/passcode/PasscodeCollection';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PAGE_IDS } from '../utilities/PageIDs';
+import PageInstructionsModal from '../components/PageInstructionsModal';
 
 const FlyerManagement = () => {
   const printRef = useRef();
@@ -42,9 +43,17 @@ const FlyerManagement = () => {
   return (ready ? (
     <Container fluid className="p-0 med-staff-background" id={PAGE_IDS.FLYER_MANAGEMENT}>
       <Container fluid className="color1">
-        <Row className="py-4 text-center">
-          <Col>
-            <h1 className="text-white">Flyer Management</h1>
+        <Row className="py-4 text-center text-white text-shadow justify-content-center">
+          <Col xs="auto">
+            <h1>
+              <strong>Flyer Management</strong>
+            </h1>
+            <h4>
+              Print Ask A Doc Flyers
+            </h4>
+          </Col>
+          <Col xs="auto" className="align-content-center">
+            <PageInstructionsModal page="flyerManagementPage" />
           </Col>
         </Row>
       </Container>

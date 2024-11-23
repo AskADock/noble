@@ -6,6 +6,7 @@ import { removeItMethod } from '../../api/base/BaseCollection.methods';
 import { Feedback } from '../../api/feedback/FeedbackCollection';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PAGE_IDS } from '../utilities/PageIDs';
+import PageInstructionsModal from '../components/PageInstructionsModal';
 
 const FeedbackManagement = () => {
   // Subscribe to the Feedback collection
@@ -38,9 +39,17 @@ const FeedbackManagement = () => {
   return (ready ? (
     <Container fluid className="p-0 med-staff-background" id={PAGE_IDS.FEEDBACK_MANAGEMENT}>
       <Container fluid className="color1">
-        <Row className="py-4 text-center">
-          <Col>
-            <h1 className="text-white">Feedback Management</h1>
+        <Row className="py-4 text-center text-white text-shadow justify-content-center">
+          <Col xs="auto">
+            <h1>
+              <strong>Feedback Management</strong>
+            </h1>
+            <h4>
+              Review Feedback
+            </h4>
+          </Col>
+          <Col xs="auto" className="align-content-center">
+            <PageInstructionsModal page="feedbackManagementPage" />
           </Col>
         </Row>
       </Container>

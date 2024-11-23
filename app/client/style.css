@@ -267,17 +267,26 @@ body {
 
 /* Ask a Doc page */
 .ask-a-doc-background {
-  background-color: var(--color1);
+  background-color: var(--offWhite);
   background-size: cover;
   min-height: 80vh;
 }
 
+/* Feedback page */
+.feedback-background {
+  background-color: var(--offWhite);
+  background-size: cover;
+  min-height: 80vh;
+}
+
+/* Privacy Policy page */
 .privacy-policy-background {
   background-color: var(--color1);
   background-size: cover;
   min-height: 80vh;
 }
 
+/* Medical Staff pages */
 .med-staff-background {
   background-color: var(--offWhite);
   background-size: cover;
