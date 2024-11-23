@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { marked } from 'marked';
-import { Container, Row, Col, Button, InputGroup, FormControl, Card } from 'react-bootstrap';
+import { Container, Row, Col, Button, InputGroup, FormControl, Card, Spinner } from 'react-bootstrap';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import DisclaimerModal from '../components/DisclaimerModal';
+import PageInstructionsModal from '../components/PageInstructionsModal';
 
 const QuestionCompass = () => {
   const [input, setInput] = useState('');
@@ -76,13 +77,18 @@ const QuestionCompass = () => {
     <Container fluid id={PAGE_IDS.QUESTION_COMPASS} className="question-compass-background p-0">
       <DisclaimerModal />
       <Container fluid className="color1">
-        <Row className="py-4 text-center text-white text-shadow">
-          <h1>
-            <strong>Question Compass</strong>
-          </h1>
-          <h4>
-            Chat with our AI assistant and find relevant medical information
-          </h4>
+        <Row className="py-4 text-center text-white text-shadow justify-content-center">
+          <Col xs="auto">
+            <h1>
+              <strong>Question Compass</strong>
+            </h1>
+            <h4>
+              Chat with our AI assistant and find relevant medical information
+            </h4>
+          </Col>
+          <Col xs="auto" className="align-content-center">
+            <PageInstructionsModal page="questionCompassPage" />
+          </Col>
         </Row>
       </Container>
       <Container>
@@ -102,15 +108,14 @@ const QuestionCompass = () => {
             >
               {messages.length === 0 && (
                 <div className="text-center pt-3">
-                  <h3>Welcome to Noble!</h3>
+                  <h2>Welcome to Noble!</h2>
                   <p>
                     <strong>Your confidential virtual assistant for medical questions.</strong>
                   </p>
-                  <h5>Ask Health-related Question</h5>
-                  <p>
-                    Noble is here to provide guidance based on our available resources.
-                  </p>
-                  <h5>For any serious concerns, please reach out to a healthcare professional.</h5>
+                  <hr />
+                  <h5>
+                    <strong>For any serious concerns, please reach out to a healthcare professional.</strong>
+                  </h5>
                 </div>
               )}
               {messages.map((msg, index) => (
@@ -130,7 +135,7 @@ const QuestionCompass = () => {
                   )}
                 </div>
               ))}
-              {isTyping && <div className="text-muted">Noble is typing...</div>}
+              {isTyping && <div className="text-muted">Noble is typing <Spinner animation="border" size="sm" /></div>}
             </div>
             <InputGroup
               className="border-top mt-3"
