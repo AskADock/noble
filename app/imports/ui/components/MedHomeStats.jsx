@@ -10,19 +10,19 @@ const MedHomeStats = ({ allQuestions, questionsNotAnswer, faq }) => {
       <Card className="rounded-4">
         <Card.Body>
           <Row>
-            <Col md={3} className="text-center">
+            <Col md={3} className="text-center align-content-center">
               <h3>FAQ Total</h3>
               <h4>{faq.length}</h4>
             </Col>
-            <Col md={3} className="text-center">
+            <Col md={3} className="text-center align-content-center">
               <h3>Total Questions</h3>
               <h4>{allQuestions.length}</h4>
             </Col>
-            <Col md={3} className="text-center">
+            <Col md={3} className="text-center align-content-center">
               <h3>Unanswered</h3>
               <h4 style={textStyle}>{questionsNotAnswer.length}</h4>
             </Col>
-            <Col sm={12} md={3} className="text-center">
+            <Col sm={12} md={3} className="text-center align-content-center">
               <Row className="mb-2">
                 <Button href="/faq-management" className="text-center">
                   <h5>FAQ Management</h5>

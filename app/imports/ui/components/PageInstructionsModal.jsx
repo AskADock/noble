@@ -94,6 +94,68 @@ const PageInstructionsModal = ({ page }) => {
       </div>
     );
     break;
+  case 'MedHome':
+    pageTitle = 'Medical Home';
+    instructions = (
+      <div>
+        <p>
+          <strong>Medical Home provides a summary of the medical team&apos;s activities.</strong>
+        </p>
+        <h5>
+          Stats:
+        </h5>
+        <p>
+          View the total number of questions, questions answered, and questions not answered.
+        </p>
+        <h5>
+          Flyer Generator:
+        </h5>
+        <p>
+          Click the <strong>Flyer Generator</strong> button to create a generic flyer with the current passcode.
+        </p>
+        <h5>
+          Feedback:
+        </h5>
+        <p>
+          Click the <strong>Feedback</strong> button to view feedback from users.
+        </p>
+        <h5>
+          Recent Questions:
+        </h5>
+        <p>
+          View the most recent questions submitted by users. Click the reply button to answer the question. Click the delete button to delete the question.
+        </p>
+      </div>
+    );
+    break;
+  case 'FAQManagementPage':
+    pageTitle = 'FAQ Management';
+    instructions = (
+      <div>
+        <p>
+          <strong>Manage the Frequently Asked Questions (FAQ) database.</strong>
+        </p>
+        <h5>
+          Adding a Question:
+        </h5>
+        <p>
+          Click the <strong>Add FAQ</strong> button to add a new question to the FAQ database.
+        </p>
+        <h5>
+          Editing a Question:
+        </h5>
+        <p>
+          Click the <strong>Edit</strong> button to edit the question. Click the <strong>Delete</strong> button to delete the question.
+        </p>
+        <h5>
+          Filter/Search:
+        </h5>
+        <p>
+          Click on the filter dropdown to filter questions by category. Use the search bar to search for specific questions.
+        </p>
+      </div>
+    );
+    break;
   default:
     pageTitle = 'Not Found';
     instructions = (
