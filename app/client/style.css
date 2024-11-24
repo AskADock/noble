@@ -267,7 +267,7 @@ body {
 
 /* Ask a Doc page */
 .ask-a-doc-background {
-  background-color: var(--offWhite);
+  background-color: var(--color1);
   background-size: cover;
   min-height: 80vh;
 }

@@ -30,7 +30,7 @@ export const Feedbacks = () => {
   return (
     <Container fluid className="feedback-background p-0" id={PAGE_IDS.FEEDBACK}>
       <Container fluid className="color1">
-        <Row className="py-4 text-center text-white text-shadow">
+        <Row className="py-5 text-center text-white text-shadow">
           <h1>
             <strong>Feedback</strong>
           </h1>

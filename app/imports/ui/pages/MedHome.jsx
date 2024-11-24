@@ -35,12 +35,15 @@ const MedHome = () => {
     <Container fluid className="med-staff-background p-0" id={PAGE_IDS.MED_HOME}>
       <Container fluid className="color1">
         <Row className="py-5 text-center text-white text-shadow justify-content-center">
-          <Col xs="auto">
+          <Col xs={12} md={{ span: 6, offset: 3 }} className="text-center">
             <h1>
               <strong>Medical Home</strong>
             </h1>
+            <h4>
+              Welcome to the Medical Home page
+            </h4>
           </Col>
-          <Col xs="auto" className="align-content-center">
+          <Col xs={12} md={{ span: 3, offset: 0 }} className="text-md-start text-center align-content-center">
             <PageInstructionsModal page="MedHome" />
           </Col>
         </Row>
