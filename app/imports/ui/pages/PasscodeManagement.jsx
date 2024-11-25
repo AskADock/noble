@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Table, ButtonGroup, Button, Card } from 'react-bootstrap';
+import { Container, Row, Col, ButtonGroup, Button, Card } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Passcodes } from '../../api/passcode/PasscodeCollection';
 import PasscodeManagementModal from '../components/PasscodeManagementModal';
@@ -54,46 +54,48 @@ const PasscodeManagement = () => {
         </Row>
       </Container>
       <Container>
-        <Row className="pt-4 justify-content-center">
-          <Col sm={12} md={4}>
-            <Card className="rounded-4 p-3 text-center">
-              <Card.Title>Password Count</Card.Title>
-              <Card.Body>
-                <h5>{passcodes.length}</h5>
-              </Card.Body>
-            </Card>
+        <Row className="py-4 justify-content-center">
+          <Col sm={12} md={3}>
+            <Row className="p-1">
+              <Col sm={12} className="p-1">
+                <Card className="rounded-4 p-3 text-center">
+                  <Card.Title>Password Count</Card.Title>
+                  <Card.Body>
+                    <h5>{passcodes.length}</h5>
+                  </Card.Body>
+                </Card>
+              </Col>
+              <Col sm={12} className="p-1">
+                <Card className="rounded-4 p-3 text-center">
+                  <Card.Title>Generate New Passcode</Card.Title>
+                  <Card.Body>
+                    <Button variant="primary" onClick={handleShowGenerateModal}>
+                      Generate Passcode
+                    </Button>
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
           </Col>
-          <Col sm={12} md={4}>
-            <Card className="rounded-4 p-3 text-center">
-              <Card.Title>Generate New Passcode</Card.Title>
-              <Card.Body>
-                <Button variant="primary" onClick={() => handleShowGenerateModal()}>
-                  Generate Passcode
-                </Button>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-        <Row className="py-4">
-          <Col>
-            <Table striped bordered hover>
-              <thead>
-                <tr>
-                  <th>Passcode</th>
-                  <th>Created At</th>
-                  <th>Expires At</th>
-                  <th>Expired</th>
-                  <th>Option</th>
-                </tr>
-              </thead>
-              <tbody>
+          <Col sm={12} md={9}>
+            <Row className="p-1">
+              <h2 className="text-dark-blue">
+                <strong>Current Passcodes</strong>
+              </h2>
+              <Col className="p-1">
                 {passcodes.map((item) => (
-                  <tr key={item._id}>
-                    <td>{item.code}</td>
-                    <td>{item.createdAt.toLocaleString()}</td>
-                    <td>{item.expiredAt ? item.expiredAt.toLocaleString() : 'N/A'}</td>
-                    <td>{item.expired ? 'Yes' : 'No'}</td>
-                    <td>
+                  <Card key={item._id} className="rounded-4 mb-3">
+                    <Card.Body>
+                      <Card.Title>
+                        <strong>Passcode:</strong> {item.code}
+                      </Card.Title>
+                      <Card.Text>
+                        <strong>Created At:</strong> {item.createdAt.toLocaleString()}<br />
+                        <strong>Expires At:</strong> {item.expiredAt ? item.expiredAt.toLocaleString() : 'N/A'}<br />
+                        <strong>Expired:</strong> {item.expired ? 'Yes' : 'No'}
+                      </Card.Text>
+                    </Card.Body>
+                    <Card.Footer className="text-end">
                       <ButtonGroup>
                         <Button variant="primary" onClick={() => handleShowModal('edit', item)}>
                           Edit
@@ -102,11 +104,11 @@ const PasscodeManagement = () => {
                           Delete
                         </Button>
                       </ButtonGroup>
-                    </td>
-                  </tr>
+                    </Card.Footer>
+                  </Card>
                 ))}
-              </tbody>
-            </Table>
+              </Col>
+            </Row>
           </Col>
         </Row>
       </Container>
