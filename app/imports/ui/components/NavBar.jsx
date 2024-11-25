@@ -38,8 +38,8 @@ const NavBar = () => {
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_FAQ_MANAGEMENT} as={NavLink} to="/faq-management">FAQ Management</Nav.Link>,
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_QUESTION_MANAGEMENT} as={NavLink} to="/question-management">Question Management</Nav.Link>,
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_PASSCODE_MANAGEMENT} as={NavLink} to="/passcode-management">Passcode Management</Nav.Link>,
-                <Nav.Link id={COMPONENT_IDS.NAVBAR_FEEDBACK_MANAGEMENT} as={NavLink} to="/feedback-management">Feedback Management</Nav.Link>,
-                <Nav.Link id={COMPONENT_IDS.NAVBAR_FLYER_MANAGEMENT} as={NavLink} to="/flyer-management">Flyer Management</Nav.Link>]
+                <Nav.Link id={COMPONENT_IDS.NAVBAR_FLYER_MANAGEMENT} as={NavLink} to="/flyer-management">Flyer Management</Nav.Link>,
+                <Nav.Link id={COMPONENT_IDS.NAVBAR_FEEDBACK_MANAGEMENT} as={NavLink} to="/feedback-management">Feedback Management</Nav.Link>]
             ) : ''}
 
             {/* Show admin links */}
@@ -48,8 +48,8 @@ const NavBar = () => {
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_FAQ_MANAGEMENT} as={NavLink} to="/faq-management">FAQ Management</Nav.Link>,
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_QUESTION_MANAGEMENT} as={NavLink} to="/question-management">Question Management</Nav.Link>,
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_PASSCODE_MANAGEMENT} as={NavLink} to="/passcode-management">Passcode Management</Nav.Link>,
-                <Nav.Link id={COMPONENT_IDS.NAVBAR_FEEDBACK_MANAGEMENT} as={NavLink} to="/feedback-management">Feedback Management</Nav.Link>,
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_FLYER_MANAGEMENT} as={NavLink} to="/flyer-management">Flyer Management</Nav.Link>,
+                <Nav.Link id={COMPONENT_IDS.NAVBAR_FEEDBACK_MANAGEMENT} as={NavLink} to="/feedback-management">Feedback Management</Nav.Link>,
                 <NavDropdown id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN} title="Manage" key="manage-dropdown">
                   <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN_DATABASE} key="manage-database" as={NavLink} to="/manage-database">
                     <CloudDownload /> Database

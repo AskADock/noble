@@ -4,6 +4,7 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { FAQ } from '../../api/faq/FAQCollection';
 import { Categories } from '../../api/category/CategoryCollection';
 import FAQManagementFilter from '../components/FAQManagementFilter';
+import PageInstructionsModal from '../components/PageInstructionsModal';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PAGE_IDS } from '../utilities/PageIDs';
 
@@ -26,9 +27,17 @@ const FAQManagement = () => {
   return (ready ? (
     <Container fluid className="p-0 med-staff-background" id={PAGE_IDS.FAQ_MANAGEMENT}>
       <Container fluid className="color1">
-        <Row className="py-4 text-center">
-          <Col>
-            <h1 className="text-white">FAQ Management</h1>
+        <Row className="py-5 text-center text-white text-shadow justify-content-center">
+          <Col xs={12} md={{ span: 6, offset: 3 }} className="text-center">
+            <h1>
+              <strong>FAQ Management</strong>
+            </h1>
+            <h4>
+              Add, Edit, and Delete FAQs
+            </h4>
+          </Col>
+          <Col xs={12} md={{ span: 3, offset: 0 }} className="text-md-start text-center align-content-center">
+            <PageInstructionsModal page="FAQManagementPage" />
           </Col>
         </Row>
       </Container>

@@ -6,6 +6,7 @@ import { removeItMethod } from '../../api/base/BaseCollection.methods';
 import { Feedback } from '../../api/feedback/FeedbackCollection';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PAGE_IDS } from '../utilities/PageIDs';
+import PageInstructionsModal from '../components/PageInstructionsModal';
 
 const FeedbackManagement = () => {
   // Subscribe to the Feedback collection
@@ -38,15 +39,33 @@ const FeedbackManagement = () => {
   return (ready ? (
     <Container fluid className="p-0 med-staff-background" id={PAGE_IDS.FEEDBACK_MANAGEMENT}>
       <Container fluid className="color1">
-        <Row className="py-4 text-center">
-          <Col>
-            <h1 className="text-white">Feedback Management</h1>
+        <Row className="py-5 text-center text-white text-shadow justify-content-center">
+          <Col xs={12} md={{ span: 6, offset: 3 }} className="text-center">
+            <h1>
+              <strong>Feedback Management</strong>
+            </h1>
+            <h4>
+              Review Feedback
+            </h4>
+          </Col>
+          <Col xs={12} md={{ span: 3, offset: 0 }} className="text-md-start text-center align-content-center">
+            <PageInstructionsModal page="feedbackManagementPage" />
           </Col>
         </Row>
       </Container>
       <Container>
         <Row className="py-4">
-          <Col>
+          <Col sm={12} md={4} className="p-2">
+            <Card className="p-2 text-center rounded-4">
+              <Card.Title>
+                <h3>Feedback Total</h3>
+              </Card.Title>
+              <Card.Body>
+                <h4>{feedback.length}</h4>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col sm={12} md={8} className="p-2">
             {feedback.map((f) => (
               <Card key={f._id} className="mb-3">
                 <Card.Body>

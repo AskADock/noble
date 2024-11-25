@@ -8,6 +8,7 @@ import FAQFilter from '../components/FAQFilter';
 import DisclaimerModal from '../components/DisclaimerModal';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PAGE_IDS } from '../utilities/PageIDs';
+import PageInstructionsModal from '../components/PageInstructionsModal';
 
 const FrequentlyAskedQuestions = () => {
   // Subscribe to the FAQ collection.
@@ -34,13 +35,18 @@ const FrequentlyAskedQuestions = () => {
     <Container fluid id={PAGE_IDS.FAQ} className="faq-background p-0">
       <DisclaimerModal />
       <Container fluid className="color1">
-        <Row className="py-4 text-center text-white text-shadow">
-          <h1>
-            <strong>Frequently Asked Questions</strong>
-          </h1>
-          <h4>
-            First Stop for Quick Answers
-          </h4>
+        <Row className="py-5 text-center text-white text-shadow justify-content-center">
+          <Col xs={12} md={{ span: 6, offset: 3 }} className="text-center">
+            <h1>
+              <strong>Frequently Asked Questions</strong>
+            </h1>
+            <h4>
+              First Stop for Quick Answers
+            </h4>
+          </Col>
+          <Col xs={12} md={{ span: 3, offset: 0 }} className="text-md-start text-center align-content-center">
+            <PageInstructionsModal page="FAQPage" />
+          </Col>
         </Row>
       </Container>
       <Container>

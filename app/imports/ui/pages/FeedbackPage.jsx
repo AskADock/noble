@@ -28,8 +28,8 @@ export const Feedbacks = () => {
   };
 
   return (
-    <Container fluid className="ask-a-doc-background p-0" id={PAGE_IDS.FEEDBACK}>
-      <Container>
+    <Container fluid className="feedback-background p-0" id={PAGE_IDS.FEEDBACK}>
+      <Container fluid className="color1">
         <Row className="py-5 text-center text-white text-shadow">
           <h1>
             <strong>Feedback</strong>
@@ -38,6 +38,8 @@ export const Feedbacks = () => {
             Leave your feedback here. Any feedback will help improve the site
           </h4>
         </Row>
+      </Container>
+      <Container>
         <Row className="justify-content-center py-5">
           <Col xs={12} md={10} lg={8} className="text-center">
             <Form onSubmit={handleSubmit}>
