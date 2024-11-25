@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Table, ButtonGroup, Button, Card } from 'react-bootstrap';
+import { Container, Row, Col, ButtonGroup, Button, Card } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Passcodes } from '../../api/passcode/PasscodeCollection';
 import PasscodeManagementModal from '../components/PasscodeManagementModal';
@@ -90,8 +90,8 @@ const PasscodeManagement = () => {
                         <strong>Passcode:</strong> {item.code}
                       </Card.Title>
                       <Card.Text>
-                        <strong>Created At:</strong> {item.createdAt.toLocaleString()}<br/>
-                        <strong>Expires At:</strong> {item.expiredAt ? item.expiredAt.toLocaleString() : 'N/A'}<br/>
+                        <strong>Created At:</strong> {item.createdAt.toLocaleString()}<br />
+                        <strong>Expires At:</strong> {item.expiredAt ? item.expiredAt.toLocaleString() : 'N/A'}<br />
                         <strong>Expired:</strong> {item.expired ? 'Yes' : 'No'}
                       </Card.Text>
                     </Card.Body>
