@@ -113,41 +113,6 @@ const PasscodeManagement = () => {
             </Row>
           </Col>
         </Row>
-        {/* <Row className="py-4"> */}
-        {/*  <Col> */}
-        {/*    <Table striped bordered hover> */}
-        {/*      <thead> */}
-        {/*        <tr> */}
-        {/*          <th>Passcode</th> */}
-        {/*          <th>Created At</th> */}
-        {/*          <th>Expires At</th> */}
-        {/*          <th>Expired</th> */}
-        {/*          <th>Option</th> */}
-        {/*        </tr> */}
-        {/*      </thead> */}
-        {/*      <tbody> */}
-        {/*        {passcodes.map((item) => ( */}
-        {/*          <tr key={item._id}> */}
-        {/*            <td>{item.code}</td> */}
-        {/*            <td>{item.createdAt.toLocaleString()}</td> */}
-        {/*            <td>{item.expiredAt ? item.expiredAt.toLocaleString() : 'N/A'}</td> */}
-        {/*            <td>{item.expired ? 'Yes' : 'No'}</td> */}
-        {/*            <td> */}
-        {/*              <ButtonGroup> */}
-        {/*                <Button variant="primary" onClick={() => handleShowModal('edit', item)}> */}
-        {/*                  Edit */}
-        {/*                </Button> */}
-        {/*                <Button variant="danger" onClick={() => handleShowModal('delete', item)}> */}
-        {/*                  Delete */}
-        {/*                </Button> */}
-        {/*              </ButtonGroup> */}
-        {/*            </td> */}
-        {/*          </tr> */}
-        {/*        ))} */}
-        {/*      </tbody> */}
-        {/*    </Table> */}
-        {/*  </Col> */}
-        {/* </Row> */}
       </Container>
       <PasscodeManagementModal
         show={showModal}
