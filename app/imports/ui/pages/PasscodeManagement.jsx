@@ -56,7 +56,7 @@ const PasscodeManagement = () => {
       <Container>
         <Row className="py-4 justify-content-center">
           <Col sm={12} md={3}>
-            <Row>
+            <Row className="p-1">
               <Col sm={12} className="p-1">
                 <Card className="rounded-4 p-3 text-center">
                   <Card.Title>Password Count</Card.Title>
@@ -78,12 +78,10 @@ const PasscodeManagement = () => {
             </Row>
           </Col>
           <Col sm={12} md={9}>
-            <Row>
+            <Row className="p-1">
               <h2 className="text-dark-blue">
                 <strong>Current Passcodes</strong>
               </h2>
-            </Row>
-            <Row>
               <Col className="p-1">
                 {passcodes.map((item) => (
                   <Card key={item._id} className="rounded-4 mb-3">
@@ -92,8 +90,8 @@ const PasscodeManagement = () => {
                         <strong>Passcode:</strong> {item.code}
                       </Card.Title>
                       <Card.Text>
-                        <strong>Created At:</strong> {item.createdAt.toLocaleString()}<br />
-                        <strong>Expires At:</strong> {item.expiredAt ? item.expiredAt.toLocaleString() : 'N/A'}<br />
+                        <strong>Created At:</strong> {item.createdAt.toLocaleString()}<br/>
+                        <strong>Expires At:</strong> {item.expiredAt ? item.expiredAt.toLocaleString() : 'N/A'}<br/>
                         <strong>Expired:</strong> {item.expired ? 'Yes' : 'No'}
                       </Card.Text>
                     </Card.Body>
