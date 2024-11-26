@@ -55,7 +55,17 @@ const FeedbackManagement = () => {
       </Container>
       <Container>
         <Row className="py-4">
-          <Col>
+          <Col sm={12} md={4} className="p-2">
+            <Card className="p-2 text-center rounded-4">
+              <Card.Title>
+                <h3>Feedback Total</h3>
+              </Card.Title>
+              <Card.Body>
+                <h4>{feedback.length}</h4>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col sm={12} md={8} className="p-2">
             {feedback.map((f) => (
               <Card key={f._id} className="mb-3">
                 <Card.Body>
