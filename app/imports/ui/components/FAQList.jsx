@@ -84,9 +84,14 @@ const FAQList = ({ faq, questions }) => {
                 <Card className="my-2" key={item._id} id={COMPONENT_IDS.FAQ_LIST_CARD}>
                   <Accordion id={COMPONENT_IDS.FAQ_LIST_CARD_ACCORDION}>
                     <Accordion.Item eventKey={item._id} className="p-2">
-                      <Badge bg="primary" className="ms-auto" style={{ fontSize: '.9rem' }}>
-                        {item.category}
-                      </Badge>
+                      <div className="d-flex justify-content-between align-items-center">
+                        <Badge bg="primary" style={{ fontSize: '.9rem' }}>
+                          {item.category}
+                        </Badge>
+                        <p className="text-muted mb-0 ms-2">
+                          Updated: {item.timestamp.toLocaleDateString()}
+                        </p>
+                      </div>
                       <Accordion.Header id={COMPONENT_IDS.FAQ_LIST_QUESTION}>
                         <h5>{item.question}</h5>
                       </Accordion.Header>
@@ -101,7 +106,14 @@ const FAQList = ({ faq, questions }) => {
                 <Card className="my-2" key={item._id}>
                   <Accordion>
                     <Accordion.Item eventKey={item._id} className="p-2">
-                      <Badge bg="primary" className="ms-auto">{item.category}</Badge>
+                      <div className="d-flex justify-content-between align-items-center">
+                        <Badge bg="primary" style={{ fontSize: '.9rem' }}>
+                          {item.category}
+                        </Badge>
+                        <p className="text-muted mb-0 ms-2">
+                          Updated: {item.timestamp.toLocaleDateString()}
+                        </p>
+                      </div>
                       <Accordion.Header>
                         <h5>{item.question}</h5>
                       </Accordion.Header>
@@ -145,12 +157,14 @@ FAQList.propTypes = {
     question: PropTypes.string,
     answer: PropTypes.string,
     category: PropTypes.string,
+    timestamp: PropTypes.instanceOf(Date),
   })).isRequired,
   questions: PropTypes.arrayOf(PropTypes.shape({
     _id: PropTypes.string,
     question: PropTypes.string,
     answer: PropTypes.string,
     category: PropTypes.string,
+    timestamp: PropTypes.instanceOf(Date),
   })).isRequired,
 };
 

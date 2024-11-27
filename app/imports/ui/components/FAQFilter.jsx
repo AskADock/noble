@@ -167,6 +167,7 @@ FAQFilter.propTypes = {
     question: PropTypes.string,
     answer: PropTypes.string,
     category: PropTypes.string,
+    timestamp: PropTypes.instanceOf(Date),
   })).isRequired,
   questions: PropTypes.arrayOf(PropTypes.shape({
     _id: PropTypes.string,
@@ -174,6 +175,7 @@ FAQFilter.propTypes = {
     answer: PropTypes.string,
     category: PropTypes.string,
     answered: PropTypes.bool,
+    timestamp: PropTypes.instanceOf(Date),
   })).isRequired,
   categories: PropTypes.arrayOf(PropTypes.shape({
     _id: PropTypes.string,
