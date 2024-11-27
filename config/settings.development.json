@@ -128,6 +128,12 @@
     }
   ],
 
+  "defaultFeedback": [
+    {
+      "feedback": "It's a great app!"
+    }
+  ],
+
   "defaultPasscodes": [
     {
       "code": "1234",

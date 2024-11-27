@@ -24,6 +24,7 @@ class QuestionCollection extends BaseCollection {
         type: Boolean,
         defaultValue: false,
       },
+      timestamp: Date,
     }));
   }
 
@@ -33,14 +34,16 @@ class QuestionCollection extends BaseCollection {
    * @param question the question.
    * @param answer the answer.
    * @param answered whether the question has been answered.
+   * @param timestamp the timestamp.
    * @return {String} the docID of the new document.
    */
-  define({ category, question, answer, answered }) {
+  define({ category, question, answer, answered, timestamp = new Date() }) {
     const docID = this._collection.insert({
       category,
       question,
       answer,
       answered,
+      timestamp,
     });
     return docID;
   }
@@ -51,9 +54,10 @@ class QuestionCollection extends BaseCollection {
    * @param category the new category (optional).
    * @param question the new question (optional).
    * @param answer the new answer (optional).
+   * @param timestamp the new timestamp.
    * @param answered the new answered status (optional).
    */
-  update(docID, { category, question, answer, answered }) {
+  update(docID, { category, question, answer, answered, timestamp = new Date() }) {
     const updateData = {};
     if (category) {
       updateData.category = category;
@@ -66,6 +70,9 @@ class QuestionCollection extends BaseCollection {
     }
     if (answered) {
       updateData.answered = answered;
+    }
+    if (timestamp) {
+      updateData.timestamp = timestamp;
     }
 
     this._collection.update(docID, { $set: updateData });
@@ -159,7 +166,8 @@ class QuestionCollection extends BaseCollection {
     const question = doc.question;
     const answer = doc.answer;
     const answered = doc.answered;
-    return { category, question, answer, answered };
+    const timestamp = doc.timestamp;
+    return { category, question, answer, answered, timestamp };
   }
 }
 
