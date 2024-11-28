@@ -79,12 +79,14 @@ QuestionManagementFilter.propTypes = {
     question: PropTypes.string,
     category: PropTypes.string,
     answered: PropTypes.bool,
+    timestamp: PropTypes.instanceOf(Date),
   })).isRequired,
   answeredQuestions: PropTypes.arrayOf(PropTypes.shape({
     _id: PropTypes.string,
     question: PropTypes.string,
     category: PropTypes.string,
     answered: PropTypes.bool,
+    timestamp: PropTypes.instanceOf(Date),
   })).isRequired,
 };
 

@@ -90,6 +90,7 @@ FAQManagementFilter.propTypes = {
     question: PropTypes.string,
     answer: PropTypes.string,
     category: PropTypes.string,
+    timestamp: PropTypes.instanceOf(Date),
   })).isRequired,
   categories: PropTypes.arrayOf(PropTypes.shape({
     category: PropTypes.string,

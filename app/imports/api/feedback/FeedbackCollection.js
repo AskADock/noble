@@ -12,6 +12,7 @@ class FeedbackCollection extends BaseCollection {
   constructor() {
     super('Feedback', new SimpleSchema({
       feedback: String,
+      timestamp: Date,
     }));
   }
 
@@ -20,9 +21,10 @@ class FeedbackCollection extends BaseCollection {
  * @param feedback the user feedback
  * @return {String} the dockID of the new document.
  */
-  define({ feedback }) {
+  define({ feedback, timestamp = new Date() }) {
     const docID = this._collection.insert({
       feedback,
+      timestamp,
     });
     return docID;
   }
@@ -32,10 +34,13 @@ class FeedbackCollection extends BaseCollection {
  * @param docID the id of the documnt to update
  * @param feedback the new feedback
  */
-  update(docID, { feedback }) {
+  update(docID, { feedback, timestamp = new Date() }) {
     const updateData = {};
     if (feedback) {
       updateData.feedback = feedback;
+    }
+    if (timestamp) {
+      updateData.timestamp = timestamp;
     }
 
     this._collection.update(docID, { $set: updateData });

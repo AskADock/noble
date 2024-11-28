@@ -15,6 +15,7 @@ class FAQCollection extends BaseCollection {
       category: String,
       question: String,
       answer: String,
+      timestamp: Date,
     }));
   }
 
@@ -23,13 +24,15 @@ class FAQCollection extends BaseCollection {
    * @param category the category of the question.
    * @param question the question.
    * @param answer the answer.
+   * @param timestamp the timestamp.
    * @return {String} the docID of the new document.
    */
-  define({ category, question, answer }) {
+  define({ category, question, answer, timestamp = new Date() }) {
     const docID = this._collection.insert({
       category,
       question,
       answer,
+      timestamp,
     });
     return docID;
   }
@@ -40,8 +43,9 @@ class FAQCollection extends BaseCollection {
    * @param category the new category (optional).
    * @param question the new question (optional).
    * @param answer the new answer (optional).
+   * @param timestamp the new timestamp (optional).
    */
-  update(docID, { category, question, answer }) {
+  update(docID, { category, question, answer, timestamp = new Date() }) {
     const updateData = {};
     if (category) {
       updateData.category = category;
@@ -51,6 +55,9 @@ class FAQCollection extends BaseCollection {
     }
     if (answer) {
       updateData.answer = answer;
+    }
+    if (timestamp) {
+      updateData.timestamp = timestamp;
     }
 
     this._collection.update(docID, { $set: updateData });
@@ -113,7 +120,8 @@ class FAQCollection extends BaseCollection {
     const category = doc.category;
     const question = doc.question;
     const answer = doc.answer;
-    return { category, question, answer };
+    const timestamp = doc.timestamp;
+    return { category, question, answer, timestamp };
   }
 }
 
