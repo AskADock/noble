@@ -28,7 +28,14 @@ const MedHomeQuestion = ({ questions, categories }) => {
                 {questions.length > 0 ? questions.map((item) => (
                   <Card key={item._id} className="mb-3 rounded-4">
                     <Card.Body>
-                      <Badge bg="primary">{item.category || 'Uncategorized'}</Badge>
+                      <div className="d-flex justify-content-between align-items-center">
+                        <Badge bg="primary" style={{ fontSize: '.9rem' }}>
+                          {item.category}
+                        </Badge>
+                        <p className="text-muted mb-0 ms-2">
+                          Updated: {item.timestamp.toLocaleDateString()}
+                        </p>
+                      </div>
                       <Card.Title>{item.question}</Card.Title>
                       <Row className="justify-content-end">
                         <Col className="col-lg-4 col-xs-6 text-end">
