@@ -29,7 +29,7 @@ if not openai_api_key:
 openai.api_key = openai_api_key
 
 # Directory containing PDF documents
-documents_directory = os.path.join(os.path.dirname(__file__), "documents")
+documents_directory = os.path.join(os.path.dirname(__file__), "..", "backend", "documents")
 if not os.path.exists(documents_directory):
     logger.error(f"Documents directory not found: {documents_directory}")
     raise FileNotFoundError(f"Documents directory not found: {documents_directory}")
@@ -170,7 +170,7 @@ def get_answer():
         # Generate an embedding for the user's question
         response = openai.Embedding.create(
             input=question,
-            model="text-embedding-ada-002",
+            model="text-embedding-3-small",
             timeout=30
         )
         question_embedding = response['data'][0]['embedding']
@@ -196,7 +196,7 @@ def get_answer():
         # Use GPT to generate an answer
         gpt_response = openai.ChatCompletion.create(
             model="gpt-4o-mini",
-            temperature=0.7,
+            temperature=0.5,
             messages=[
                 {"role": "system", "content": (
                     "You are a virtual medical assistant named Noble created to answer medical questions for "
@@ -204,6 +204,7 @@ def get_answer():
                     "files and should be answered with citations including page numbers, document titles, and the year "
                     "the document was created. Use markdown formatting to make the answer more readable. "
                     "Find information for both flyers and nonflyers. Specify information given to both flyers and nonflyers. "
+                    "if you can not find the information in the documents, let the user know that the information is not available. "
                     "If the user asks a question that is not related to the documents, politely respond that you are tuned "
                     "to only answer questions that are related to the documents. When receiving a question without a clear answer, "
                     "direct the user to contact a medical professional for more accurate information. Use very descriptive wording "
@@ -212,7 +213,7 @@ def get_answer():
                 {"role": "user", "content": f"Context: {context}"},
                 {"role": "user", "content": question}
             ],
-            timeout=60  # Set a timeout
+            timeout=60  
         )
 
         answer = gpt_response['choices'][0]['message']['content']
@@ -226,7 +227,7 @@ def get_answer():
 
 if __name__ == '__main__':
     try:
-        app.run(host='0.0.0.0', port=5000)
+        app.run(debug=True)
     except Exception as e:
         logger.error(f"Failed to start the server: {e}")
         raise

@@ -14,6 +14,7 @@ const FeedbackManagement = () => {
     const subscription = Feedback.subscribeFeedbackAdmin();
     const rdy = subscription.ready();
     const feedbackItems = Feedback.find().fetch();
+    // console.log(feedbackItems);
     return {
       feedback: feedbackItems,
       ready: rdy,
@@ -72,14 +73,17 @@ const FeedbackManagement = () => {
                   <Card.Text>{f.feedback}</Card.Text>
                 </Card.Body>
                 <Card.Footer>
-                  <Button
-                    variant="danger"
-                    onClick={() => {
-                      setSelectedFeedback(f);
-                      setShow(true);
-                    }}
-                  >Delete
-                  </Button>
+                  <div className="d-flex justify-content-between align-items-center">
+                    <Button
+                      variant="danger"
+                      onClick={() => {
+                        setSelectedFeedback(f);
+                        setShow(true);
+                      }}
+                    >Delete
+                    </Button>
+                    <p>Sent on: {f.timestamp.toLocaleDateString()}</p>
+                  </div>
                 </Card.Footer>
               </Card>
             ))}

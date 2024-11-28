@@ -78,7 +78,14 @@ const FAQManagementList = ({ faqs, category }) => {
           {currentQuestions.length > 0 ? currentQuestions.map((item) => (
             <Card key={item._id} className="mb-3 rounded-4">
               <Card.Body>
-                <Badge bg="primary">{item.category || 'Uncategorized'}</Badge>
+                <div className="d-flex justify-content-between align-items-center">
+                  <Badge bg="primary" style={{ fontSize: '.9rem' }}>
+                    {item.category}
+                  </Badge>
+                  <p className="text-muted mb-0 ms-2">
+                    Updated: {item.timestamp.toLocaleDateString()}
+                  </p>
+                </div>
                 <Card.Title>{item.question}</Card.Title>
                 <Card.Text>{item.answer}</Card.Text>
                 <Row className="justify-content-end">
@@ -135,6 +142,7 @@ FAQManagementList.propTypes = {
     question: PropTypes.string.isRequired,
     answer: PropTypes.string,
     category: PropTypes.string,
+    timestamp: PropTypes.instanceOf(Date),
   })).isRequired,
   category: PropTypes.arrayOf(PropTypes.shape({
     category: PropTypes.string,

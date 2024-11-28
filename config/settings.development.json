@@ -1,8 +1,8 @@
 {
   "defaultAccounts": [
-    { "email": "admin@foo.com", "password": "Always-There-50", "role": "ADMIN", "firstName": "Admin", "lastName": "Admin"
+    { "email": "admin@foo.com", "password": "changeme", "role": "ADMIN", "firstName": "Admin", "lastName": "Admin"
     },
-    { "email": "medgroup@foo.com", "password": "Always-Ready-75", "role": "USER" , "firstName": "Med", "lastName": "Staff" }
+    { "email": "medgroup@foo.com", "password": "changeme", "role": "USER" , "firstName": "Med", "lastName": "Staff" }
   ],
 
   "defaultCategories": [
@@ -125,6 +125,12 @@
       "category": "Occupational Health",
       "question": "What happens when I Fail my same day follow-up 2 audiogram?",
       "answer": "You are required to complete a DD1753 form and a face-to-face ear exam with a provider to determine if you need an audiologist referral or re-established baseline."
+    }
+  ],
+
+  "defaultFeedback": [
+    {
+      "feedback": "It's a great app!"
     }
   ],
 
