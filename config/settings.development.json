@@ -1,8 +1,8 @@
 {
   "defaultAccounts": [
-    { "email": "admin@foo.com", "password": "Always-There-50", "role": "ADMIN", "firstName": "Admin", "lastName": "Admin"
+    { "email": "admin@foo.com", "password": "changeme", "role": "ADMIN", "firstName": "Admin", "lastName": "Admin"
     },
-    { "email": "medgroup@foo.com", "password": "Always-Ready-75", "role": "USER" , "firstName": "Med", "lastName": "Staff" }
+    { "email": "medgroup@foo.com", "password": "changeme", "role": "USER" , "firstName": "Med", "lastName": "Staff" }
   ],
 
   "defaultCategories": [
