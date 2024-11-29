@@ -13,7 +13,7 @@ const LoadingSpinner = ({ message }) => (
     <Row className="justify-content-center py-5">
       <Col className="text-center">
         <p>Loading...</p>
-        <Spinner animation="border" role="status" variant="primary"/>
+        <Spinner animation="border" role="status" variant="primary" />
       </Col>
     </Row>
   </Container>
