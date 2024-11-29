@@ -43,7 +43,7 @@ const QuestionManagement = () => {
       </Container>
     </Container>
   ) : (
-    <LoadingSpinner />
+    <LoadingSpinner message="Question Management" />
   ));
 };
 

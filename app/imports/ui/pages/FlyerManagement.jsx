@@ -118,7 +118,7 @@ const FlyerManagement = () => {
     </Container>
   ) :
     (
-      <LoadingSpinner message="Loading Passcodes" />
+      <LoadingSpinner message="Flyer Management" />
     ));
 };
 

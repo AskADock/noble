@@ -96,7 +96,9 @@ const FeedbackManagement = () => {
         </Modal.Footer>
       </Modal>
     </Container>
-  ) : <LoadingSpinner />);
+  ) : (
+    <LoadingSpinner message="Feedback Management" />
+  ));
 };
 
 export default FeedbackManagement;

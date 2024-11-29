@@ -75,7 +75,7 @@ const MedHome = () => {
       </Container>
     </Container>
   ) : (
-    <LoadingSpinner message="Loading Med Home" />
+    <LoadingSpinner message="Medical Home" />
   ));
 };
 

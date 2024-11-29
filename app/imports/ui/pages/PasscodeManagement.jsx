@@ -115,7 +115,7 @@ const PasscodeManagement = () => {
       />
     </Container>
   ) : (
-    <LoadingSpinner />
+    <LoadingSpinner message="Passcode Management" />
   ));
 };
 
