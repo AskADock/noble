@@ -51,7 +51,7 @@ const FrequentlyAskedQuestions = () => {
       </Container>
     </Container>
   ) : (
-    <LoadingSpinner message="Loading FAQ" />
+    <LoadingSpinner message="FAQ" />
   ));
 };
 export default FrequentlyAskedQuestions;

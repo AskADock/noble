@@ -62,7 +62,7 @@ export const AskADoc = () => {
       });
   };
 
-  return ready ? (
+  return (ready ? (
     <Container fluid className="ask-a-doc-background p-0" id={PAGE_IDS.ASK_A_DOC}>
       <DisclaimerModal />
       <Header
@@ -127,8 +127,8 @@ export const AskADoc = () => {
       </Container>
     </Container>
   ) : (
-    <LoadingSpinner message="Loading Categories" />
-  );
+    <LoadingSpinner message="Ask A Doc" />
+  ));
 };
 
 export default AskADoc;

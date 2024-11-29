@@ -61,6 +61,21 @@ body {
   color: var(--color2);
 }
 
+/* Loading spinner text animation */
+.breathing-text {
+  animation: breathing 2s ease-in-out infinite;
+  color: #10136B;
+}
+
+@keyframes breathing {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
 /* Define custom styles */
 
 /* Navbar styling */
