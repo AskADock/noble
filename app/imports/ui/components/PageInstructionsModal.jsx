@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Container, Modal } from 'react-bootstrap';
 import { QuestionCircle } from 'react-bootstrap-icons';
 
+// This component displays a modal with instructions for a specific page.
 const PageInstructionsModal = ({ page }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -196,7 +197,7 @@ const PageInstructionsModal = ({ page }) => {
       </div>
     );
     break;
-  case 'passcodeManganementPage':
+  case 'passcodeManagementPage':
     pageTitle = 'Passcode Management';
     instructions = (
       <div>
