@@ -15,7 +15,7 @@ const Header = ({ title, subtitle, background, pageInstructions }) => (
           {subtitle}
         </h4>
       </Col>
-      <Col xs={12} md={{ span: 3, offset: 0 }} className="text-md-start text-center align-content-center">
+      <Col xs={12} md={{ span: 3, offset: 0 }} className="py-1 text-md-start text-center align-content-center">
         <PageInstructionsModal page={pageInstructions} />
       </Col>
     </Row>

@@ -95,7 +95,7 @@ const PageInstructionsModal = ({ page }) => {
       </div>
     );
     break;
-  case 'MedHome':
+  case 'medHome':
     pageTitle = 'Medical Home';
     instructions = (
       <div>
@@ -278,7 +278,7 @@ const PageInstructionsModal = ({ page }) => {
 
   return (
     <>
-      <QuestionCircle size="5vh" onClick={handleShow} style={{ cursor: 'pointer' }} />
+      <QuestionCircle size="6vh" onClick={handleShow} style={{ cursor: 'pointer' }} />
       <Modal
         show={show}
         onHide={handleClose}
