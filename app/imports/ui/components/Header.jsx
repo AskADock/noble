@@ -16,7 +16,9 @@ const Header = ({ title, subtitle, background, pageInstructions }) => (
         </h4>
       </Col>
       <Col xs={12} md={{ span: 3, offset: 0 }} className="py-1 text-md-start text-center align-content-center">
-        <PageInstructionsModal page={pageInstructions} />
+        {pageInstructions && (
+          <PageInstructionsModal page={pageInstructions} />
+        )}
       </Col>
     </Row>
   </Container>

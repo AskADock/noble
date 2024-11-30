@@ -49,7 +49,7 @@ const QuestionModal = ({ show, collection, action = 'edit', question, onClose, c
   return (
     <Modal show={show} onHide={onClose} backdrop="static" keyboard={false}>
       <Modal.Header closeButton>
-        <Modal.Title>{action === 'delete' ? 'Delete Question' : 'Edit Question'}</Modal.Title>
+        <Modal.Title>{action === 'delete' ? 'Delete' : 'Edit'} {collection === 'FAQ' ? 'FAQ' : 'Question'}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         {action === 'delete' ? (

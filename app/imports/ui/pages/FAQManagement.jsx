@@ -40,7 +40,9 @@ const FAQManagement = () => {
         </Row>
       </Container>
     </Container>
-  ) : <LoadingSpinner message="FAQ Management" />);
+  ) : (
+    <LoadingSpinner message="FAQ Management" />
+  ));
 };
 
 export default FAQManagement;

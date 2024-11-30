@@ -51,7 +51,7 @@ const FAQManagementFilter = ({ faqs, categories }) => {
                         onChange={handleCheckboxChange}
                         checked={isCategoryChecked(theCategory.category)}
                       />
-                      <div className="ms-1">
+                      <div className="ms-1" onClick={() => handleCheckboxChange({ target: { value: theCategory.category } })}>
                         <h5>{theCategory.category}</h5>
                       </div>
                     </div>
@@ -75,6 +75,7 @@ const FAQManagementFilter = ({ faqs, categories }) => {
           <FAQManagementList faqs={questions} category={categories} />
         </Col>
       </Row>
+
       <CreateFAQModal
         show={showModal}
         categories={categories}
