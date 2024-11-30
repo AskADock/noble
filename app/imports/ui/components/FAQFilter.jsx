@@ -55,7 +55,7 @@ const FAQFilter = ({ faq, questions, categories }) => {
                         checked={isCategoryChecked(theCategory.category)}
                         id={COMPONENT_IDS.FAQ_FILTER_DROPDOWN_SELECT}
                       />
-                      <div className="ms-1">
+                      <div className="ms-1" onClick={() => handleCheckboxChange({ target: { value: theCategory.category } })}>
                         <h5>{theCategory.category}</h5>
                       </div>
                     </div>

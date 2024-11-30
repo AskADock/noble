@@ -53,13 +53,12 @@ const FAQList = ({ faq, questions }) => {
   return (
     <Container>
       {/* Search bar */}
-      <Container className="d-flex justify-content-center">
+      <Container className="justify-content-center p-0">
         <Form.Group>
           <Form.Control
             type="text"
             placeholder="Search Questions..."
             className="p-2"
-            style={{ minWidth: '35vw', maxWidth: '45vw' }}
             value={searchQuery}
             onChange={handleSearchChange}
             id={COMPONENT_IDS.FAQ_LIST_SEARCH_BAR}
@@ -87,7 +86,7 @@ const FAQList = ({ faq, questions }) => {
                 <QuestionCard question={item} key={item._id} />
               )) : <p>No results found</p>}
             </Tab>
-            <Tab eventKey="answered" title={`Questions (${questions.length})`}>
+            <Tab eventKey="answered" title={`Ask A Doc (${questions.length})`}>
               {currentQuestions.length > 0 ? currentQuestions.map((item) => (
                 <QuestionCard question={item} key={item._id} />
               )) : <p>No results found</p>}
