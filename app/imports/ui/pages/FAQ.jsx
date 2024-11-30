@@ -20,9 +20,6 @@ const FrequentlyAskedQuestions = () => {
     const FAQItems = FAQ.find().fetch();
     const questionItems = Questions.find({ answered: true }).fetch();
     const categoryItems = Categories.find().fetch();
-    // console.log(FAQItems);
-    // console.log(questionItems);
-    // console.log(categoryItems);
     return {
       faq: FAQItems,
       question: questionItems,

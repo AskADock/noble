@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col, Container, Form, Pagination, Badge, Tabs, Tab, Card, Accordion } from 'react-bootstrap';
+import { Row, Col, Container, Form, Pagination, Tabs, Tab } from 'react-bootstrap';
 import Fuse from 'fuse.js';
+import QuestionCard from './QuestionCard';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 const FAQList = ({ faq, questions }) => {
@@ -51,6 +52,7 @@ const FAQList = ({ faq, questions }) => {
 
   return (
     <Container>
+      {/* Search bar */}
       <Container className="d-flex justify-content-center">
         <Form.Group>
           <Form.Control
@@ -69,7 +71,7 @@ const FAQList = ({ faq, questions }) => {
         <h4>{searchQuery ? `Total Results: ${displayedQuestions.length}` : 'Latest Questions'}</h4>
       </Row>
       <Row>
-        <Col>
+        <Col className="p-0">
           <Tabs
             activeKey={activeTab}
             onSelect={(tab) => {
@@ -77,50 +79,17 @@ const FAQList = ({ faq, questions }) => {
               setCurrentPage(1); // Reset to the first page on tab change
             }}
             id="faq-tabs"
-            className="mb-3"
+            className="mb-2"
+            justify
           >
             <Tab eventKey="faq" title={`FAQ (${faq.length})`} className="">
               {currentQuestions.length > 0 ? currentQuestions.map((item) => (
-                <Card className="my-2" key={item._id} id={COMPONENT_IDS.FAQ_LIST_CARD}>
-                  <Accordion id={COMPONENT_IDS.FAQ_LIST_CARD_ACCORDION}>
-                    <Accordion.Item eventKey={item._id} className="p-2">
-                      <div className="d-flex justify-content-between align-items-center">
-                        <Badge bg="primary" style={{ fontSize: '.9rem' }}>
-                          {item.category}
-                        </Badge>
-                        <p className="text-muted mb-0 ms-2">
-                          Updated: {item.timestamp.toLocaleDateString()}
-                        </p>
-                      </div>
-                      <Accordion.Header id={COMPONENT_IDS.FAQ_LIST_QUESTION}>
-                        <h5>{item.question}</h5>
-                      </Accordion.Header>
-                      <Accordion.Body id={COMPONENT_IDS.FAQ_LIST_ANSWER}>{item.answer}</Accordion.Body>
-                    </Accordion.Item>
-                  </Accordion>
-                </Card>
+                <QuestionCard question={item} key={item._id} />
               )) : <p>No results found</p>}
             </Tab>
             <Tab eventKey="answered" title={`Questions (${questions.length})`}>
               {currentQuestions.length > 0 ? currentQuestions.map((item) => (
-                <Card className="my-2" key={item._id}>
-                  <Accordion>
-                    <Accordion.Item eventKey={item._id} className="p-2">
-                      <div className="d-flex justify-content-between align-items-center">
-                        <Badge bg="primary" style={{ fontSize: '.9rem' }}>
-                          {item.category}
-                        </Badge>
-                        <p className="text-muted mb-0 ms-2">
-                          Updated: {item.timestamp.toLocaleDateString()}
-                        </p>
-                      </div>
-                      <Accordion.Header>
-                        <h5>{item.question}</h5>
-                      </Accordion.Header>
-                      <Accordion.Body>{item.answer}</Accordion.Body>
-                    </Accordion.Item>
-                  </Accordion>
-                </Card>
+                <QuestionCard question={item} key={item._id} />
               )) : <p>No results found</p>}
             </Tab>
           </Tabs>
