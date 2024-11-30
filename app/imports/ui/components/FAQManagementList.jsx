@@ -67,7 +67,12 @@ const FAQManagementList = ({ faqs, category }) => {
       <Row>
         <Col>
           {currentQuestions.length > 0 ? currentQuestions.map((item) => (
-            <QuestionCardManagement questions={item} categories={category} collection="FAQ" />
+            <QuestionCardManagement
+              key={item._id}
+              questions={item}
+              categories={category}
+              collection="FAQ"
+            />
           )) : <p>No results found</p>}
         </Col>
       </Row>

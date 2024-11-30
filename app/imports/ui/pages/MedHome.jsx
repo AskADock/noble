@@ -54,7 +54,7 @@ const MedHome = () => {
                 </Button>
               </Card.Body>
             </Card>
-            <Card className="text-center rounded-4">
+            <Card className="text-center rounded-4 mb-3">
               <Card.Body>
                 <h3>Feedback</h3>
                 <Button href="/feedback-management" className="text-center">
@@ -64,13 +64,13 @@ const MedHome = () => {
             </Card>
           </Col>
           {/* Recent Questions */}
-          <Col xs={12} md={9} className="align-content-center justify-content-center">
+          <Col xs={12} md={9} className="justify-content-center">
             <Card className="rounded-4 pt-3 text-center">
               <Card.Title>
                 <h2>Recent Questions</h2>
               </Card.Title>
               <Card.Body>
-                {questions.length > 0 ? (
+                {questionsNotAnswer.length > 0 ? (
                   <>
                     {questionsNotAnswer.slice(0, 5).map((item) => (
                       <QuestionCardManagement key={item._id} questions={item} categories={categories} collection="Questions" />

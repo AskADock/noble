@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Container, Row, Col, Accordion, Form, Button } from 'react-bootstrap';
 import QuestionManagementList from './QuestionManagementList';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 const QuestionManagementFilter = ({ unansweredQuestions, answeredQuestions, categories }) => {
   const [selectedCategories, setSelectedCategories] = useState([]);
@@ -47,13 +48,25 @@ const QuestionManagementFilter = ({ unansweredQuestions, answeredQuestions, cate
                         value={theCategory.category}
                         onChange={handleCheckboxChange}
                         checked={isCategoryChecked(theCategory.category)}
+                        id={COMPONENT_IDS.FAQ_FILTER_DROPDOWN_SELECT}
                       />
-                      <div className="ms-1">
+                      <button
+                        type="button"
+                        className="ms-1 btn btn-link p-0"
+                        style={{
+                          all: 'unset',
+                          cursor: 'pointer',
+                        }}
+                        onClick={() => handleCheckboxChange({ target: { value: theCategory.category } })}
+                        aria-label={`Toggle ${theCategory.category}`}
+                      >
                         <h5>{theCategory.category}</h5>
-                      </div>
+                      </button>
                     </div>
                   ))}
-                  <Button variant="primary" className="m-2" onClick={resetFilter}>reset</Button>
+                  <Button variant="primary" className="m-2" onClick={resetFilter}>
+                    Reset
+                  </Button>
                 </Form>
               </Accordion.Body>
             </Accordion.Item>
