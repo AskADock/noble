@@ -33,7 +33,7 @@ const FAQList = ({ faq, questions }) => {
       isCaseSensitive: false,
       shouldSort: true,
       threshold: 0.3,
-      keys: ['question', 'answer', 'category'],
+      keys: ['question', 'answer'],
     });
     const result = fuse.search(searchQuery);
     displayedQuestions = result.map((item) => item.item);
@@ -81,7 +81,7 @@ const FAQList = ({ faq, questions }) => {
             className="mb-2"
             justify
           >
-            <Tab eventKey="faq" title={`FAQ (${faq.length})`} className="">
+            <Tab eventKey="faq" title={`FAQ (${faq.length})`}>
               {currentQuestions.length > 0 ? currentQuestions.map((item) => (
                 <QuestionCard question={item} key={item._id} />
               )) : <p>No results found</p>}
