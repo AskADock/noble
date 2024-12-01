@@ -18,8 +18,6 @@ const QuestionManagement = () => {
     const questionsItems = Questions.find({ answered: true }).fetch();
     const questionsNotAnswerItems = Questions.find({ answered: false }).fetch();
     const categoriesItems = Categories.find().fetch();
-    console.log(questionsItems);
-    console.log(questionsNotAnswerItems);
     return {
       questionsAnswer: questionsItems,
       questionNotAnswer: questionsNotAnswerItems,

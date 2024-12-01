@@ -69,9 +69,10 @@ QuestionCardManagement.propTypes = {
     answered: PropTypes.bool,
     timestamp: PropTypes.instanceOf(Date),
   }).isRequired,
-  categories: PropTypes.shape({
+  categories: PropTypes.arrayOf(PropTypes.shape({
+    _id: PropTypes.string,
     category: PropTypes.string,
-  }).isRequired,
+  })).isRequired,
   collection: PropTypes.string.isRequired,
 };
 

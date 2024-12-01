@@ -36,8 +36,6 @@ const QuestionModal = ({ show, collection, action, question, onClose, category }
         category: updatedQuestion.category,
         answered: true,
       };
-      console.log('Collection Name:', collectionName);
-      console.log('Question Data:', questionData);
 
       updateMethod.callPromise({ collectionName, updateData: questionData })
         .then(() => {
