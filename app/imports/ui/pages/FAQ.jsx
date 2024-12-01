@@ -4,11 +4,11 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { FAQ } from '../../api/faq/FAQCollection';
 import { Questions } from '../../api/question/QuestionCollection';
 import { Categories } from '../../api/category/CategoryCollection';
+import Header from '../components/Header';
 import FAQFilter from '../components/FAQFilter';
 import DisclaimerModal from '../components/DisclaimerModal';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PAGE_IDS } from '../utilities/PageIDs';
-import PageInstructionsModal from '../components/PageInstructionsModal';
 
 const FrequentlyAskedQuestions = () => {
   // Subscribe to the FAQ collection.
@@ -20,9 +20,6 @@ const FrequentlyAskedQuestions = () => {
     const FAQItems = FAQ.find().fetch();
     const questionItems = Questions.find({ answered: true }).fetch();
     const categoryItems = Categories.find().fetch();
-    // console.log(FAQItems);
-    // console.log(questionItems);
-    // console.log(categoryItems);
     return {
       faq: FAQItems,
       question: questionItems,
@@ -34,21 +31,12 @@ const FrequentlyAskedQuestions = () => {
   return (ready ? (
     <Container fluid id={PAGE_IDS.FAQ} className="faq-background p-0">
       <DisclaimerModal />
-      <Container fluid className="color1">
-        <Row className="py-5 text-center text-white text-shadow justify-content-center">
-          <Col xs={12} md={{ span: 6, offset: 3 }} className="text-center">
-            <h1>
-              <strong>Frequently Asked Questions</strong>
-            </h1>
-            <h4>
-              First Stop for Quick Answers
-            </h4>
-          </Col>
-          <Col xs={12} md={{ span: 3, offset: 0 }} className="text-md-start text-center align-content-center">
-            <PageInstructionsModal page="FAQPage" />
-          </Col>
-        </Row>
-      </Container>
+      <Header
+        title="Frequently Asked Questions"
+        subtitle="First Stop for Quick Answers"
+        background="color1"
+        pageInstructions="FAQPage"
+      />
       <Container>
         <Row>
           <Col>
@@ -60,7 +48,7 @@ const FrequentlyAskedQuestions = () => {
       </Container>
     </Container>
   ) : (
-    <LoadingSpinner message="Loading FAQ" />
+    <LoadingSpinner message="Frequently Asked Questions" />
   ));
 };
 export default FrequentlyAskedQuestions;

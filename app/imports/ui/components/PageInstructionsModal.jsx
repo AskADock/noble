@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Container, Modal } from 'react-bootstrap';
 import { QuestionCircle } from 'react-bootstrap-icons';
 
+// This component displays a modal with instructions for a specific page.
 const PageInstructionsModal = ({ page }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -94,7 +95,7 @@ const PageInstructionsModal = ({ page }) => {
       </div>
     );
     break;
-  case 'MedHome':
+  case 'medHome':
     pageTitle = 'Medical Home';
     instructions = (
       <div>
@@ -196,7 +197,7 @@ const PageInstructionsModal = ({ page }) => {
       </div>
     );
     break;
-  case 'passcodeManganementPage':
+  case 'passcodeManagementPage':
     pageTitle = 'Passcode Management';
     instructions = (
       <div>
@@ -277,7 +278,7 @@ const PageInstructionsModal = ({ page }) => {
 
   return (
     <>
-      <QuestionCircle size="5vh" onClick={handleShow} style={{ cursor: 'pointer' }} />
+      <QuestionCircle size="6vh" onClick={handleShow} style={{ cursor: 'pointer' }} />
       <Modal
         show={show}
         onHide={handleClose}

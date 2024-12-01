@@ -3,10 +3,10 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Questions } from '../../api/question/QuestionCollection';
 import { Categories } from '../../api/category/CategoryCollection';
+import Header from '../components/Header';
 import QuestionManagementFilter from '../components/QuestionManagementFilter';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PAGE_IDS } from '../utilities/PageIDs';
-import PageInstructionsModal from '../components/PageInstructionsModal';
 
 const QuestionManagement = () => {
   // Subscribe to the question collection.
@@ -28,21 +28,12 @@ const QuestionManagement = () => {
 
   return (ready ? (
     <Container fluid className="p-0 med-staff-background" id={PAGE_IDS.QUESTION_MANAGEMENT}>
-      <Container fluid className="color1">
-        <Row className="py-5 text-center text-white text-shadow justify-content-center">
-          <Col xs={12} md={{ span: 6, offset: 3 }} className="text-center">
-            <h1>
-              <strong>Question Management</strong>
-            </h1>
-            <h4>
-              Answer, Edit, and Delete Questions
-            </h4>
-          </Col>
-          <Col xs={12} md={{ span: 3, offset: 0 }} className="text-md-start text-center align-content-center">
-            <PageInstructionsModal page="questionManagementPage" />
-          </Col>
-        </Row>
-      </Container>
+      <Header
+        title="Question Management"
+        subtitle="Answer, Edit, and Delete Questions"
+        background="color1"
+        pageInstructions="questionManagementPage"
+      />
       <Container>
         <Row>
           <Col>
@@ -52,7 +43,7 @@ const QuestionManagement = () => {
       </Container>
     </Container>
   ) : (
-    <LoadingSpinner />
+    <LoadingSpinner message="Question Management" />
   ));
 };
 

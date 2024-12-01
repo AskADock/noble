@@ -68,7 +68,7 @@ class QuestionCollection extends BaseCollection {
     if (answer) {
       updateData.answer = answer;
     }
-    if (answered) {
+    if (answered !== undefined) {
       updateData.answered = answered;
     }
     if (timestamp) {

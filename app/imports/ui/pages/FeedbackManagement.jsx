@@ -4,9 +4,9 @@ import { useTracker } from 'meteor/react-meteor-data';
 import swal from 'sweetalert';
 import { removeItMethod } from '../../api/base/BaseCollection.methods';
 import { Feedback } from '../../api/feedback/FeedbackCollection';
+import Header from '../components/Header';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PAGE_IDS } from '../utilities/PageIDs';
-import PageInstructionsModal from '../components/PageInstructionsModal';
 
 const FeedbackManagement = () => {
   // Subscribe to the Feedback collection
@@ -39,21 +39,12 @@ const FeedbackManagement = () => {
 
   return (ready ? (
     <Container fluid className="p-0 med-staff-background" id={PAGE_IDS.FEEDBACK_MANAGEMENT}>
-      <Container fluid className="color1">
-        <Row className="py-5 text-center text-white text-shadow justify-content-center">
-          <Col xs={12} md={{ span: 6, offset: 3 }} className="text-center">
-            <h1>
-              <strong>Feedback Management</strong>
-            </h1>
-            <h4>
-              Review Feedback
-            </h4>
-          </Col>
-          <Col xs={12} md={{ span: 3, offset: 0 }} className="text-md-start text-center align-content-center">
-            <PageInstructionsModal page="feedbackManagementPage" />
-          </Col>
-        </Row>
-      </Container>
+      <Header
+        title="Feedback Management"
+        subtitle="Review Feedback"
+        background="color1"
+        pageInstructions="feedbackManagementPage"
+      />
       <Container>
         <Row className="py-4">
           <Col sm={12} md={4} className="p-2">
@@ -105,7 +96,9 @@ const FeedbackManagement = () => {
         </Modal.Footer>
       </Modal>
     </Container>
-  ) : <LoadingSpinner />);
+  ) : (
+    <LoadingSpinner message="Feedback Management" />
+  ));
 };
 
 export default FeedbackManagement;

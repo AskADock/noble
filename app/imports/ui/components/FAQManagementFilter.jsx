@@ -44,20 +44,32 @@ const FAQManagementFilter = ({ faqs, categories }) => {
               <Accordion.Body>
                 <Form>
                   {categories.map((theCategory, index) => (
-                    <div className="d-flex m-1" key={index}>
+                    <div className="d-flex m-1 align-items-center" key={index}>
                       <Form.Check
                         type="checkbox"
                         value={theCategory.category}
                         onChange={handleCheckboxChange}
                         checked={isCategoryChecked(theCategory.category)}
                       />
-                      <div className="ms-1">
-                        <h5>{theCategory.category}</h5>
-                      </div>
+                      <button
+                        type="button"
+                        className="ms-1 btn btn-link p-0"
+                        style={{
+                          all: 'unset',
+                          cursor: 'pointer',
+                        }}
+                        onClick={() => handleCheckboxChange({ target: { value: theCategory.category } })}
+                        aria-label={`Toggle ${theCategory.category}`}
+                      >
+                        <h5 className="m-0">{theCategory.category}</h5>
+                      </button>
                     </div>
                   ))}
-                  <Button variant="primary" className="m-2" onClick={resetFilter}>reset</Button>
+                  <Button variant="primary" className="m-2" onClick={resetFilter}>
+                    Reset
+                  </Button>
                 </Form>
+
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
@@ -75,6 +87,7 @@ const FAQManagementFilter = ({ faqs, categories }) => {
           <FAQManagementList faqs={questions} category={categories} />
         </Col>
       </Row>
+
       <CreateFAQModal
         show={showModal}
         categories={categories}

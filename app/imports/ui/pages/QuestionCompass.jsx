@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { marked } from 'marked';
 import { Container, Row, Col, Button, InputGroup, FormControl, Card, Spinner } from 'react-bootstrap';
-import { PAGE_IDS } from '../utilities/PageIDs';
+import Header from '../components/Header';
 import DisclaimerModal from '../components/DisclaimerModal';
-import PageInstructionsModal from '../components/PageInstructionsModal';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 const QuestionCompass = () => {
   const [input, setInput] = useState('');
@@ -76,21 +76,12 @@ const QuestionCompass = () => {
   return (
     <Container fluid id={PAGE_IDS.QUESTION_COMPASS} className="question-compass-background p-0">
       <DisclaimerModal />
-      <Container fluid className="color1">
-        <Row className="py-5 text-center text-white text-shadow justify-content-center">
-          <Col xs={12} md={{ span: 6, offset: 3 }} className="text-center">
-            <h1>
-              <strong>Question Compass</strong>
-            </h1>
-            <h4>
-              Chat with our AI assistant and find relevant medical information
-            </h4>
-          </Col>
-          <Col xs={12} md={{ span: 3, offset: 0 }} className="text-md-start text-center align-content-center">
-            <PageInstructionsModal page="questionCompassPage" />
-          </Col>
-        </Row>
-      </Container>
+      <Header
+        title="Question Compass"
+        subtitle="Chat with our AI assistant and find relevant medical information"
+        background="color1"
+        pageInstructions="questionCompassPage"
+      />
       <Container>
         <Row className="py-3 px-1 justify-content-center">
           <Col sm={12} md={9} className="question-compass-section">
@@ -101,8 +92,8 @@ const QuestionCompass = () => {
                 backgroundColor: '#f8f9fa',
                 borderRadius: '10px',
                 boxShadow: '0 0 10px rgba(0,0,0,0.1)',
-                minHeight: '65vh',
-                maxHeight: '65vh',
+                minHeight: '67vh',
+                maxHeight: '67vh',
                 overflowY: 'auto', // Ensure only this section scrolls
               }}
             >

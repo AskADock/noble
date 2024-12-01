@@ -1,29 +1,20 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col, Container, Form, Pagination, Badge, Tabs, Tab, Card, ButtonGroup, Button } from 'react-bootstrap';
+import { Row, Col, Container, Form, Pagination, Tabs, Tab } from 'react-bootstrap';
 import Fuse from 'fuse.js';
-import QuestionModal from './QuestionModal';
+import QuestionCardManagement from './QuestionCardManagement';
 
 const QuestionManagementList = ({ questions, unansweredQuestions, category }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [searchPerformed, setSearchPerformed] = useState(false);
-  const [activeTab, setActiveTab] = useState('all');
-  const [showModal, setShowModal] = useState(false);
-  const [action, setAction] = useState(null);
-  const [selectedQuestion, setSelectedQuestion] = useState(null);
+  const [activeTab, setActiveTab] = useState('answered');
   const questionsPerPage = 10;
 
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
     setCurrentPage(1);
     setSearchPerformed(!!event.target.value);
-  };
-
-  const handleShowModal = (actionType, question) => {
-    setAction(actionType);
-    setSelectedQuestion(question);
-    setShowModal(true);
   };
 
   const allQuestions = [...questions, ...unansweredQuestions];
@@ -42,7 +33,7 @@ const QuestionManagementList = ({ questions, unansweredQuestions, category }) =>
   }
 
   const filteredQuestions = displayedQuestions.filter(
-    (item) => (activeTab === 'all' ? item.answer : activeTab === 'unanswered' && !item.answer),
+    (item) => (activeTab === 'answered' ? item.answered : !item.answered),
   );
 
   const indexOfLastQuestion = currentPage * questionsPerPage;
@@ -58,13 +49,13 @@ const QuestionManagementList = ({ questions, unansweredQuestions, category }) =>
 
   return (
     <Container>
-      <Container className="d-flex justify-content-center">
+      {/* Search bar */}
+      <Container className="justify-content-center p-0">
         <Form.Group>
           <Form.Control
             type="text"
             placeholder="Search Questions..."
             className="p-2"
-            style={{ minWidth: '35vw', maxWidth: '45vw' }}
             value={searchQuery}
             onChange={handleSearchChange}
           />
@@ -84,56 +75,26 @@ const QuestionManagementList = ({ questions, unansweredQuestions, category }) =>
             }}
             id="faq-tabs"
             className="mb-3"
+            justify
           >
-            <Tab eventKey="all" title="Questions">
+            <Tab eventKey="answered" title="Questions">
               {currentQuestions.length > 0 ? currentQuestions.map((item) => (
-                <Card key={item._id} className="mb-3 rounded-4">
-                  <Card.Body>
-                    <div className="d-flex justify-content-between align-items-center">
-                      <Badge bg="primary" style={{ fontSize: '.9rem' }}>
-                        {item.category}
-                      </Badge>
-                      <p className="text-muted mb-0 ms-2">
-                        Updated: {item.timestamp.toLocaleDateString()}
-                      </p>
-                    </div>
-                    <Card.Title>{item.question}</Card.Title>
-                    <Card.Text>{item.answer}</Card.Text>
-                    <Row className="justify-content-end">
-                      <Col className="col-lg-4 col-xs-6 text-end">
-                        <ButtonGroup>
-                          <Button variant="success" onClick={() => handleShowModal('edit', item)}>Edit</Button>
-                          <Button variant="danger" onClick={() => handleShowModal('delete', item)}>Delete</Button>
-                        </ButtonGroup>
-                      </Col>
-                    </Row>
-                  </Card.Body>
-                </Card>
+                <QuestionCardManagement
+                  key={item._id}
+                  questions={item}
+                  categories={category}
+                  collection="Questions"
+                />
               )) : <p>No results found</p>}
             </Tab>
             <Tab eventKey="unanswered" title="Unanswered Questions">
               {currentQuestions.length > 0 ? currentQuestions.map((item) => (
-                <Card key={item._id} className="mb-3 rounded-4">
-                  <Card.Body>
-                    <div className="d-flex justify-content-between align-items-center">
-                      <Badge bg="primary" style={{ fontSize: '.9rem' }}>
-                        {item.category}
-                      </Badge>
-                      <p className="text-muted mb-0 ms-2">
-                        Updated: {item.timestamp.toLocaleDateString()}
-                      </p>
-                    </div>
-                    <Card.Title>{item.question}</Card.Title>
-                    <Row className="justify-content-end">
-                      <Col className="col-lg-4 col-xs-6 text-end">
-                        <ButtonGroup>
-                          <Button variant="success" onClick={() => handleShowModal('edit', item)}>Reply</Button>
-                          <Button variant="danger" onClick={() => handleShowModal('delete', item)}>Delete</Button>
-                        </ButtonGroup>
-                      </Col>
-                    </Row>
-                  </Card.Body>
-                </Card>
+                <QuestionCardManagement
+                  key={item._id}
+                  questions={item}
+                  categories={category}
+                  collection="Questions"
+                />
               )) : <p>No results found</p>}
             </Tab>
           </Tabs>
@@ -160,16 +121,6 @@ const QuestionManagementList = ({ questions, unansweredQuestions, category }) =>
           </Pagination>
         </Container>
       )}
-
-      {/* Question Modal */}
-      <QuestionModal
-        show={showModal}
-        collection="Questions"
-        action={action}
-        question={selectedQuestion}
-        category={category}
-        onClose={() => setShowModal(false)}
-      />
     </Container>
   );
 };

@@ -6,11 +6,11 @@ import { Questions } from '../../api/question/QuestionCollection';
 import { Categories } from '../../api/category/CategoryCollection';
 import { Passcodes } from '../../api/passcode/PasscodeCollection';
 import { checkPasscodeMethod, defineMethodAskADoc } from '../../api/base/BaseCollection.methods';
+import Header from '../components/Header';
 import DisclaimerModal from '../components/DisclaimerModal';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
-import PageInstructionsModal from '../components/PageInstructionsModal';
 
 export const AskADoc = () => {
   // Fetch categories with useTracker
@@ -62,24 +62,15 @@ export const AskADoc = () => {
       });
   };
 
-  return ready ? (
+  return (ready ? (
     <Container fluid className="ask-a-doc-background p-0" id={PAGE_IDS.ASK_A_DOC}>
       <DisclaimerModal />
-      <Container fluid className="color1">
-        <Row className="py-5 text-center text-white text-shadow justify-content-center">
-          <Col xs={12} md={{ span: 6, offset: 3 }} className="text-center">
-            <h1>
-              <strong>Ask A Doc</strong>
-            </h1>
-            <h4>
-              Anonymously ask a Doctor any question. Your answer will appear in the FAQ page soon
-            </h4>
-          </Col>
-          <Col xs={12} md={{ span: 3, offset: 0 }} className="text-md-start text-center align-content-center">
-            <PageInstructionsModal page="askADocPage" />
-          </Col>
-        </Row>
-      </Container>
+      <Header
+        title="Ask A Doc"
+        subtitle="Anonymously ask a Doctor any question. Your answer will appear in the FAQ page soon"
+        background="color1"
+        pageInstructions="askADocPage"
+      />
       <Container>
         <Row className="justify-content-center py-5">
           <Col xs={12} md={10} lg={8} className="text-center">
@@ -136,8 +127,8 @@ export const AskADoc = () => {
       </Container>
     </Container>
   ) : (
-    <LoadingSpinner message="Loading Categories" />
-  );
+    <LoadingSpinner message="Ask A Doc" />
+  ));
 };
 
 export default AskADoc;
