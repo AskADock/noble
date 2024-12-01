@@ -20,11 +20,7 @@ const LoadingSpinner = ({ message }) => (
 );
 
 LoadingSpinner.propTypes = {
-  message: PropTypes.string,
-};
-
-LoadingSpinner.defaultProps = {
-  message: 'Getting Data',
+  message: PropTypes.string.isRequired,
 };
 
 export default LoadingSpinner;

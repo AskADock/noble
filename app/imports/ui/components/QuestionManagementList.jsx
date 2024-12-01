@@ -8,7 +8,7 @@ const QuestionManagementList = ({ questions, unansweredQuestions, category }) =>
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [searchPerformed, setSearchPerformed] = useState(false);
-  const [activeTab, setActiveTab] = useState('all');
+  const [activeTab, setActiveTab] = useState('answered');
   const questionsPerPage = 10;
 
   const handleSearchChange = (event) => {
@@ -33,7 +33,7 @@ const QuestionManagementList = ({ questions, unansweredQuestions, category }) =>
   }
 
   const filteredQuestions = displayedQuestions.filter(
-    (item) => (activeTab === 'all' ? item.answer : activeTab === 'unanswered' && !item.answer),
+    (item) => (activeTab === 'answered' ? item.answered : !item.answered),
   );
 
   const indexOfLastQuestion = currentPage * questionsPerPage;
@@ -77,7 +77,7 @@ const QuestionManagementList = ({ questions, unansweredQuestions, category }) =>
             className="mb-3"
             justify
           >
-            <Tab eventKey="all" title="Questions">
+            <Tab eventKey="answered" title="Questions">
               {currentQuestions.length > 0 ? currentQuestions.map((item) => (
                 <QuestionCardManagement
                   key={item._id}

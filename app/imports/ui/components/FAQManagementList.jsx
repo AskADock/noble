@@ -103,8 +103,8 @@ const FAQManagementList = ({ faqs, category }) => {
 
 FAQManagementList.propTypes = {
   faqs: PropTypes.arrayOf(PropTypes.shape({
-    _id: PropTypes.string.isRequired,
-    question: PropTypes.string.isRequired,
+    _id: PropTypes.string,
+    question: PropTypes.string,
     answer: PropTypes.string,
     category: PropTypes.string,
     timestamp: PropTypes.instanceOf(Date),

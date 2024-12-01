@@ -38,7 +38,11 @@ const QuestionCardManagement = ({ questions, categories, collection }) => {
         </Card.Body>
         <Card.Footer className="text-end">
           <ButtonGroup>
-            <Button variant="success" onClick={() => handleShowModal('edit', questions)}>Reply</Button>
+            {questions.answered || collection === 'FAQ' ? (
+              <Button variant="success" onClick={() => handleShowModal('edit', questions)}>Edit</Button>
+            ) : (
+              <Button variant="warning" onClick={() => handleShowModal('reply', questions)}>Reply</Button>
+            )}
             <Button variant="danger" onClick={() => handleShowModal('delete', questions)}>Delete</Button>
           </ButtonGroup>
         </Card.Footer>
@@ -62,6 +66,7 @@ QuestionCardManagement.propTypes = {
     category: PropTypes.string,
     question: PropTypes.string,
     answer: PropTypes.string,
+    answered: PropTypes.bool,
     timestamp: PropTypes.instanceOf(Date),
   }).isRequired,
   categories: PropTypes.shape({

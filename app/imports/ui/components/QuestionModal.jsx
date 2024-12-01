@@ -6,7 +6,7 @@ import { removeItMethod, updateMethod } from '../../api/base/BaseCollection.meth
 import { Questions } from '../../api/question/QuestionCollection';
 import { FAQ } from '../../api/faq/FAQCollection';
 
-const QuestionModal = ({ show, collection, action = 'edit', question, onClose, category }) => {
+const QuestionModal = ({ show, collection, action, question, onClose, category }) => {
   const [updatedQuestion, setUpdatedQuestion] = useState(question);
 
   useEffect(() => {
@@ -28,13 +28,30 @@ const QuestionModal = ({ show, collection, action = 'edit', question, onClose, c
           onClose();
         })
         .catch((error) => swal('Error', error.message, 'error'));
-    } else if (action === 'edit' || action === 'reply') {
+    } else if (action === 'reply') {
       const questionData = {
         id: question._id,
         question: updatedQuestion.question,
         answer: updatedQuestion.answer,
         category: updatedQuestion.category,
         answered: true,
+      };
+      console.log('Collection Name:', collectionName);
+      console.log('Question Data:', questionData);
+
+      updateMethod.callPromise({ collectionName, updateData: questionData })
+        .then(() => {
+          swal('Success', `${action === 'edit' ? 'updated' : 'replied to'} successfully`, 'success');
+          onClose();
+        })
+        .catch((error) => swal('Error', error.message, 'error'));
+    } else if (action === 'edit') {
+      const questionData = {
+        id: question._id,
+        question: updatedQuestion.question,
+        answer: updatedQuestion.answer,
+        category: updatedQuestion.category,
+        answered: updatedQuestion.answered,
       };
 
       updateMethod.callPromise({ collectionName, updateData: questionData })
@@ -49,7 +66,7 @@ const QuestionModal = ({ show, collection, action = 'edit', question, onClose, c
   return (
     <Modal show={show} onHide={onClose} backdrop="static" keyboard={false}>
       <Modal.Header closeButton>
-        <Modal.Title>{action === 'delete' ? 'Delete' : 'Edit'} {collection === 'FAQ' ? 'FAQ' : 'Question'}</Modal.Title>
+        <Modal.Title>{action === 'delete' ? 'Delete' : ''}{action === 'reply' ? 'Reply to' : ''}{action === 'edit' ? 'Edit' : ''} {collection === 'FAQ' ? 'FAQ' : 'Question'}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         {action === 'delete' ? (
@@ -90,6 +107,16 @@ const QuestionModal = ({ show, collection, action = 'edit', question, onClose, c
                 onChange={(e) => setUpdatedQuestion({ ...updatedQuestion, answer: e.target.value })}
               />
             </Form.Group>
+            {action === 'edit' && collection === 'Questions' && (
+              <Form.Group>
+                <Form.Check
+                  type="checkbox"
+                  label="Answered"
+                  checked={updatedQuestion?.answered || false}
+                  onChange={(e) => setUpdatedQuestion({ ...updatedQuestion, answered: e.target.checked })}
+                />
+              </Form.Group>
+            )}
           </Form>
         )}
       </Modal.Body>
@@ -105,26 +132,19 @@ const QuestionModal = ({ show, collection, action = 'edit', question, onClose, c
 
 QuestionModal.propTypes = {
   show: PropTypes.bool.isRequired,
-  collection: PropTypes.string,
-  action: PropTypes.string,
+  collection: PropTypes.string.isRequired,
+  action: PropTypes.string.isRequired,
   question: PropTypes.shape({
     _id: PropTypes.string,
     question: PropTypes.string,
     answer: PropTypes.string,
     category: PropTypes.string,
     answered: PropTypes.bool,
-  }),
+  }).isRequired,
   onClose: PropTypes.func.isRequired,
   category: PropTypes.arrayOf(PropTypes.shape({
     category: PropTypes.string,
-  })),
-};
-
-QuestionModal.defaultProps = {
-  collection: '',
-  action: '',
-  question: {},
-  category: [],
+  })).isRequired,
 };
 
 export default QuestionModal;
