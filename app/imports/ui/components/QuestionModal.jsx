@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
+import { ExclamationTriangleFill } from 'react-bootstrap-icons';
 import PropTypes from 'prop-types';
 import swal from 'sweetalert';
 import { removeItMethod, updateMethod } from '../../api/base/BaseCollection.methods';
 import { Questions } from '../../api/question/QuestionCollection';
 import { FAQ } from '../../api/faq/FAQCollection';
 
-const QuestionModal = ({ show, collection, action = 'edit', question, onClose, category }) => {
+const QuestionModal = ({ show, collection, action, question, onClose, category }) => {
   const [updatedQuestion, setUpdatedQuestion] = useState(question);
 
   useEffect(() => {
@@ -28,7 +29,7 @@ const QuestionModal = ({ show, collection, action = 'edit', question, onClose, c
           onClose();
         })
         .catch((error) => swal('Error', error.message, 'error'));
-    } else if (action === 'edit' || action === 'reply') {
+    } else if (action === 'reply') {
       const questionData = {
         id: question._id,
         question: updatedQuestion.question,
@@ -43,19 +44,45 @@ const QuestionModal = ({ show, collection, action = 'edit', question, onClose, c
           onClose();
         })
         .catch((error) => swal('Error', error.message, 'error'));
+    } else if (action === 'edit') {
+      const questionData = {
+        id: question._id,
+        question: updatedQuestion.question,
+        answer: updatedQuestion.answer,
+        category: updatedQuestion.category,
+        answered: updatedQuestion.answered,
+      };
+
+      updateMethod.callPromise({ collectionName, updateData: questionData })
+        .then(() => {
+          swal('Success', `${action === 'edit' ? 'updated' : 'replied to'} successfully`, 'success');
+          onClose();
+        })
+        .catch((error) => swal('Error', error.message, 'error'));
     }
   };
 
   return (
     <Modal show={show} onHide={onClose} backdrop="static" keyboard={false}>
       <Modal.Header closeButton>
-        <Modal.Title>{action === 'delete' ? 'Delete Question' : 'Edit Question'}</Modal.Title>
+        <Modal.Title>{action === 'delete' ? 'Delete' : ''}{action === 'reply' ? 'Reply to' : ''}{action === 'edit' ? 'Edit' : ''} {collection === 'FAQ' ? 'FAQ' : 'Question'}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         {action === 'delete' ? (
           <>
-            <h5>Are you sure you want to delete this question?</h5>
+            <span className="d-flex align-items-center">
+              <ExclamationTriangleFill color="red" size="10%" />
+              <h4>Delete this question?</h4>
+            </span>
+            <hr />
+            <h4>Question</h4>
             <p>{question.question}</p>
+            {question.answer && (
+              <>
+                <h4>Answer</h4>
+                <p>{question.answer}</p>
+              </>
+            )}
           </>
         ) : (
           <Form>
@@ -76,7 +103,7 @@ const QuestionModal = ({ show, collection, action = 'edit', question, onClose, c
               <Form.Label>Question</Form.Label>
               <Form.Control
                 as="textarea"
-                rows={3}
+                rows={5}
                 value={updatedQuestion?.question || ''}
                 onChange={(e) => setUpdatedQuestion({ ...updatedQuestion, question: e.target.value })}
               />
@@ -90,11 +117,21 @@ const QuestionModal = ({ show, collection, action = 'edit', question, onClose, c
                 onChange={(e) => setUpdatedQuestion({ ...updatedQuestion, answer: e.target.value })}
               />
             </Form.Group>
+            {action === 'edit' && collection === 'Questions' && (
+              <Form.Group>
+                <Form.Check
+                  type="checkbox"
+                  label="Answered"
+                  checked={updatedQuestion?.answered || false}
+                  onChange={(e) => setUpdatedQuestion({ ...updatedQuestion, answered: e.target.checked })}
+                />
+              </Form.Group>
+            )}
           </Form>
         )}
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={onClose}>Close</Button>
+        <Button variant="secondary" onClick={onClose}>Cancel</Button>
         <Button variant="primary" onClick={handleSaveChanges}>
           {action === 'delete' ? 'Delete' : 'Save Changes'}
         </Button>
@@ -105,26 +142,19 @@ const QuestionModal = ({ show, collection, action = 'edit', question, onClose, c
 
 QuestionModal.propTypes = {
   show: PropTypes.bool.isRequired,
-  collection: PropTypes.string,
-  action: PropTypes.string,
+  collection: PropTypes.string.isRequired,
+  action: PropTypes.string.isRequired,
   question: PropTypes.shape({
     _id: PropTypes.string,
     question: PropTypes.string,
     answer: PropTypes.string,
     category: PropTypes.string,
     answered: PropTypes.bool,
-  }),
+  }).isRequired,
   onClose: PropTypes.func.isRequired,
   category: PropTypes.arrayOf(PropTypes.shape({
     category: PropTypes.string,
-  })),
-};
-
-QuestionModal.defaultProps = {
-  collection: '',
-  action: '',
-  question: {},
-  category: [],
+  })).isRequired,
 };
 
 export default QuestionModal;

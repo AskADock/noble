@@ -34,7 +34,7 @@ if not os.path.exists(documents_directory):
     logger.error(f"Documents directory not found: {documents_directory}")
     raise FileNotFoundError(f"Documents directory not found: {documents_directory}")
 
-def split_text_into_chunks(text, max_tokens=8191, model_name='text-embedding-ada-002'):
+def split_text_into_chunks(text, max_tokens=8191, model_name='text-embedding-3-small'):
     # Use tiktoken to count tokens
     encoding = tiktoken.encoding_for_model(model_name)
     tokens = encoding.encode(text)
@@ -103,7 +103,7 @@ try:
                     try:
                         response = openai.Embedding.create(
                             input=doc,
-                            model="text-embedding-ada-002",
+                            model="text-embedding-3-small",
                             timeout=30  # Set timeout in seconds
                         )
                         embedding = response['data'][0]['embedding']
@@ -196,19 +196,20 @@ def get_answer():
         # Use GPT to generate an answer
         gpt_response = openai.ChatCompletion.create(
             model="gpt-4o-mini",
-            temperature=0.5,
+            temperature=0.6,
             messages=[
                 {"role": "system", "content": (
                     "You are a virtual medical assistant named Noble created to answer medical questions for "
-                    "the Hawaii Air National Guard members. All answered information should come from the uploaded "
+                    "the Hawaii Air National Guard members. Information for answered questions should reference the uploaded "
                     "files and should be answered with citations including page numbers, document titles, and the year "
                     "the document was created. Use markdown formatting to make the answer more readable. "
-                    "Find information for both flyers and nonflyers. Specify information given to both flyers and nonflyers. "
+                    "Find information for both flyers and non-flyers. Specify information given to both flyers and non-flyers. "
                     "if you can not find the information in the documents, let the user know that the information is not available. "
                     "If the user asks a question that is not related to the documents, politely respond that you are tuned "
                     "to only answer questions that are related to the documents. When receiving a question without a clear answer, "
                     "direct the user to contact a medical professional for more accurate information. Use very descriptive wording "
                     "when giving an answer to a user’s questions. If necessary, format the information in step-by-step details."
+                    "When relevant, include links to websites that are listed in the documents."
                 )},
                 {"role": "user", "content": f"Context: {context}"},
                 {"role": "user", "content": question}

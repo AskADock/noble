@@ -55,12 +55,23 @@ const FAQFilter = ({ faq, questions, categories }) => {
                         checked={isCategoryChecked(theCategory.category)}
                         id={COMPONENT_IDS.FAQ_FILTER_DROPDOWN_SELECT}
                       />
-                      <div className="ms-1">
+                      <button
+                        type="button"
+                        className="ms-1 btn btn-link p-0"
+                        style={{
+                          all: 'unset',
+                          cursor: 'pointer',
+                        }}
+                        onClick={() => handleCheckboxChange({ target: { value: theCategory.category } })}
+                        aria-label={`Toggle ${theCategory.category}`}
+                      >
                         <h5>{theCategory.category}</h5>
-                      </div>
+                      </button>
                     </div>
                   ))}
-                  <Button variant="primary" className="m-2" onClick={resetFilter}>reset</Button>
+                  <Button variant="primary" className="m-2" onClick={resetFilter}>
+                    Reset
+                  </Button>
                 </Form>
               </Accordion.Body>
             </Accordion.Item>

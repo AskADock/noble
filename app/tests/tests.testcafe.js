@@ -16,7 +16,7 @@ import { footer } from './footer.component';
 /* global fixture:false, test:false */
 
 /** Credentials for one of the sample users defined in settings.development.json. */
-const credentials = { username: 'medgroup@foo.com', password: 'Always-Ready-75' };
+const credentials = { username: 'medgroup@foo.com', password: 'changeme' };
 // const adminCredentials = { username: 'admin@foo.com', password: 'changeme' };
 // const newCredentials = { username: 'medgrouptest@foo.com', password: 'Always-Ready-75' };
 

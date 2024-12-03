@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Row, Col, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
-const MedHomeStats = ({ allQuestions, questionsNotAnswer, faq }) => {
+const MedHomeStats = ({ faq, allQuestions, questionsNotAnswer }) => {
   const textStyle = questionsNotAnswer.length > 0 ? { color: 'red' } : { color: 'green' };
 
   return (

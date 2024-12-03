@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Card, Button, Modal } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
-import swal from 'sweetalert';
-import { removeItMethod } from '../../api/base/BaseCollection.methods';
 import { Feedback } from '../../api/feedback/FeedbackCollection';
+import Header from '../components/Header';
+import FeedbackManagementModal from '../components/FeedbackManagementModal';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PAGE_IDS } from '../utilities/PageIDs';
-import PageInstructionsModal from '../components/PageInstructionsModal';
 
 const FeedbackManagement = () => {
   // Subscribe to the Feedback collection
@@ -14,49 +13,26 @@ const FeedbackManagement = () => {
     const subscription = Feedback.subscribeFeedbackAdmin();
     const rdy = subscription.ready();
     const feedbackItems = Feedback.find().fetch();
-    // console.log(feedbackItems);
     return {
       feedback: feedbackItems,
       ready: rdy,
     };
   });
-
-  const [show, setShow] = useState(false);
-  const [selectedFeedback, setSelectedFeedback] = useState(null);
-
-  // Handle the modal close
-  const handleClose = () => setShow(false);
-
-  // Handle the delete button
-  const handleDelete = () => {
-    removeItMethod.callPromise({ collectionName: Feedback.getCollectionName(), instance: selectedFeedback._id })
-      .then(() => {
-        swal('Success', 'Feedback deleted successfully', 'success');
-        handleClose();
-      })
-      .catch((error) => swal('Error', error.message, 'error'));
-  };
+  const [showModal, setShowModal] = useState(false);
+  const defaultFeedback = { feedback: 'Error' };
+  const [selectedFeedback, setSelectedFeedback] = useState(defaultFeedback);
 
   return (ready ? (
     <Container fluid className="p-0 med-staff-background" id={PAGE_IDS.FEEDBACK_MANAGEMENT}>
-      <Container fluid className="color1">
-        <Row className="py-5 text-center text-white text-shadow justify-content-center">
-          <Col xs={12} md={{ span: 6, offset: 3 }} className="text-center">
-            <h1>
-              <strong>Feedback Management</strong>
-            </h1>
-            <h4>
-              Review Feedback
-            </h4>
-          </Col>
-          <Col xs={12} md={{ span: 3, offset: 0 }} className="text-md-start text-center align-content-center">
-            <PageInstructionsModal page="feedbackManagementPage" />
-          </Col>
-        </Row>
-      </Container>
+      <Header
+        title="Feedback Management"
+        subtitle="Review Feedback"
+        background="color1"
+        pageInstructions="feedbackManagementPage"
+      />
       <Container>
         <Row className="py-4">
-          <Col sm={12} md={4} className="p-2">
+          <Col sm={12} md={3} className="p-2">
             <Card className="p-2 text-center rounded-4">
               <Card.Title>
                 <h3>Feedback Total</h3>
@@ -66,46 +42,39 @@ const FeedbackManagement = () => {
               </Card.Body>
             </Card>
           </Col>
-          <Col sm={12} md={8} className="p-2">
+          <Col sm={12} md={9} className="p-2">
             {feedback.map((f) => (
-              <Card key={f._id} className="mb-3">
+              <Card key={f._id} className="rounded-4 mb-3">
                 <Card.Body>
                   <Card.Text>{f.feedback}</Card.Text>
                 </Card.Body>
                 <Card.Footer>
                   <div className="d-flex justify-content-between align-items-center">
+                    <p>Sent on: {f.timestamp.toLocaleDateString()}</p>
                     <Button
                       variant="danger"
                       onClick={() => {
                         setSelectedFeedback(f);
-                        setShow(true);
+                        setShowModal(true);
                       }}
                     >Delete
                     </Button>
-                    <p>Sent on: {f.timestamp.toLocaleDateString()}</p>
                   </div>
                 </Card.Footer>
               </Card>
             ))}
           </Col>
         </Row>
+        <FeedbackManagementModal
+          show={showModal}
+          feedback={selectedFeedback}
+          onClose={() => setShowModal(false)}
+        />
       </Container>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Confirm Deletion</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Are you sure you want to delete this feedback?</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Cancel
-          </Button>
-          <Button variant="danger" onClick={handleDelete}>
-            Delete
-          </Button>
-        </Modal.Footer>
-      </Modal>
     </Container>
-  ) : <LoadingSpinner />);
+  ) : (
+    <LoadingSpinner message="Feedback Management" />
+  ));
 };
 
 export default FeedbackManagement;

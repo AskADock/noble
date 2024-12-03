@@ -45,6 +45,7 @@ const PasscodeGenerateModal = ({ show, onClose }) => {
             <Form.Label>Expiration Time</Form.Label>
             <Form.Control
               type="datetime-local"
+              value={expiration}
               onChange={(e) => setExpiration(e.target.value)}
             />
           </Form.Group>
