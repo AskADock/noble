@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
+import { ExclamationTriangleFill } from 'react-bootstrap-icons';
 import PropTypes from 'prop-types';
 import swal from 'sweetalert';
 import { removeItMethod, updateMethod } from '../../api/base/BaseCollection.methods';
@@ -48,7 +49,12 @@ const PasscodeManagementModal = ({ show, action, passcode, onClose }) => {
       <Modal.Body>
         {action === 'delete' ? (
           <>
-            <h5>Are you sure you want to delete this passcode?</h5>
+            <span className="d-flex align-items-center">
+              <ExclamationTriangleFill color="red" size="10%" />
+              <h5>Delete this passcode?</h5>
+            </span>
+            <hr />
+            <h4>Passcode</h4>
             <p>{passcode.code}</p>
           </>
         ) : (
@@ -90,7 +96,7 @@ const PasscodeManagementModal = ({ show, action, passcode, onClose }) => {
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={onClose}>
-          Close
+          Cancel
         </Button>
         <Button variant="primary" onClick={handleSaveChanges}>
           {action === 'delete' ? 'Delete' : 'Save Changes'}
