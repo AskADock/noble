@@ -40,6 +40,7 @@ class NavBar {
     }
     await t.expect(Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).exists).ok();
     await t.click(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`);
+    await t.expect(Selector(`#${COMPONENT_IDS.NAVBAR_SIGN_OUT}`).visible).ok();
     await t.click(`#${COMPONENT_IDS.NAVBAR_SIGN_OUT}`);
   }
 
