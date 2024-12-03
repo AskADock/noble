@@ -74,7 +74,7 @@ const QuestionManagementList = ({ questions, unansweredQuestions, category }) =>
               setCurrentPage(1); // Reset to the first page on tab change
             }}
             id="faq-tabs"
-            className="mb-3"
+            className="mb-2"
             justify
           >
             <Tab eventKey="answered" title="Questions">

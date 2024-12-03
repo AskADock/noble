@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
+import { ExclamationTriangleFill } from 'react-bootstrap-icons';
 import PropTypes from 'prop-types';
 import swal from 'sweetalert';
 import { removeItMethod, updateMethod } from '../../api/base/BaseCollection.methods';
@@ -69,8 +70,19 @@ const QuestionModal = ({ show, collection, action, question, onClose, category }
       <Modal.Body>
         {action === 'delete' ? (
           <>
-            <h5>Are you sure you want to delete this question?</h5>
+            <span className="d-flex align-items-center">
+              <ExclamationTriangleFill color="red" size="10%" />
+              <h4>Delete this question?</h4>
+            </span>
+            <hr />
+            <h4>Question</h4>
             <p>{question.question}</p>
+            {question.answer && (
+              <>
+                <h4>Answer</h4>
+                <p>{question.answer}</p>
+              </>
+            )}
           </>
         ) : (
           <Form>
@@ -91,7 +103,7 @@ const QuestionModal = ({ show, collection, action, question, onClose, category }
               <Form.Label>Question</Form.Label>
               <Form.Control
                 as="textarea"
-                rows={3}
+                rows={5}
                 value={updatedQuestion?.question || ''}
                 onChange={(e) => setUpdatedQuestion({ ...updatedQuestion, question: e.target.value })}
               />
@@ -119,7 +131,7 @@ const QuestionModal = ({ show, collection, action, question, onClose, category }
         )}
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={onClose}>Close</Button>
+        <Button variant="secondary" onClick={onClose}>Cancel</Button>
         <Button variant="primary" onClick={handleSaveChanges}>
           {action === 'delete' ? 'Delete' : 'Save Changes'}
         </Button>

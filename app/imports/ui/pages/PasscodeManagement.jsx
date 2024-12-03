@@ -14,7 +14,6 @@ const PasscodeManagement = () => {
     const subscription = Passcodes.subscribeAdmin();
     const rdy = subscription.ready();
     const passcodesItems = Passcodes.find({}).fetch();
-    // console.log(passcodesItems);
     return {
       ready: rdy,
       passcodes: passcodesItems,
@@ -23,8 +22,9 @@ const PasscodeManagement = () => {
 
   const [showModal, setShowModal] = useState(false);
   const [showModalGenerate, setShowModalGenerate] = useState(false);
-  const [action, setAction] = React.useState(null);
-  const [selectedPasscode, setSelectedPasscode] = useState({});
+  const [action, setAction] = useState('');
+  const defaultPasscode = { code: '', createdAt: new Date(), expiredAt: new Date(), expired: false };
+  const [selectedPasscode, setSelectedPasscode] = useState(defaultPasscode);
 
   const handleShowModal = (actionType, passcode) => {
     setAction(actionType);

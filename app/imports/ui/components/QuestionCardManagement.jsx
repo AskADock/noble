@@ -6,8 +6,9 @@ import QuestionModal from './QuestionModal';
 const QuestionCardManagement = ({ questions, categories, collection }) => {
   // Modal states
   const [showModal, setShowModal] = useState(false);
-  const [action, setAction] = useState(null);
-  const [selectedQuestion, setSelectedQuestion] = useState(null);
+  const [action, setAction] = useState('');
+  const defaultQuestion = { category: '', question: '', answer: '', answered: false, timestamp: new Date() };
+  const [selectedQuestion, setSelectedQuestion] = useState(defaultQuestion);
 
   const handleShowModal = (actionType, question) => {
     setAction(actionType);

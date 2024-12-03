@@ -65,7 +65,6 @@ class PasscodeCollection extends BaseCollection {
     // Checks that expiredAt date is after createdAt date
     const initDate = new Date(createdAt);
     const expiredDate = new Date(expiredAt);
-    console.log('test', expiredDate, initDate);
     if (expiredDate < initDate) {
       console.error('expiredAt must be after createdAt');
       throw new Meteor.Error('invalid-date', 'expiredAt must be after createdAt');
