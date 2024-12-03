@@ -32,30 +32,12 @@ const CreateFAQModal = ({ show, onClose, categories }) => {
   return (
     <Modal show={show} onHide={onClose} backdrop="static" keyboard={false}>
       <Modal.Header closeButton>
-        <Modal.Title>Create FAQ</Modal.Title>
+        <Modal.Title>Create New FAQ</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
-          <Form.Group controlId="formQuestion">
-            <Form.Label>Question</Form.Label>
-            <Form.Control
-              type="text"
-              value={question}
-              onChange={(e) => setQuestion(e.target.value)}
-              placeholder="Enter question"
-            />
-          </Form.Group>
-          <Form.Group controlId="formAnswer">
-            <Form.Label>Answer</Form.Label>
-            <Form.Control
-              type="text"
-              value={answer}
-              onChange={(e) => setAnswer(e.target.value)}
-              placeholder="Enter answer"
-            />
-          </Form.Group>
           <Form.Group controlId="formCategory">
-            <Form.Label>Category</Form.Label>
+            <Form.Label><strong>Category</strong></Form.Label>
             <Form.Select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
@@ -66,11 +48,30 @@ const CreateFAQModal = ({ show, onClose, categories }) => {
               ))}
             </Form.Select>
           </Form.Group>
+          <Form.Group>
+            <Form.Label><strong>Question</strong></Form.Label>
+            <Form.Control
+              as="textarea"
+              rows={5}
+              value={question}
+              onChange={(e) => setQuestion(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label><strong>Answer</strong></Form.Label>
+            <Form.Control
+              as="textarea"
+              rows={5}
+              value={answer}
+              onChange={(e) => setAnswer(e.target.value)}
+              placeholder="Enter answer"
+            />
+          </Form.Group>
         </Form>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={onClose}>
-          Close
+          Cancel
         </Button>
         <Button variant="primary" onClick={handleCreateFAQ}>
           Create

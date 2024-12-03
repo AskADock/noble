@@ -70,7 +70,7 @@ const FAQList = ({ faq, questions }) => {
         <h4>{searchQuery ? `Total Results: ${displayedQuestions.length}` : 'Latest Questions'}</h4>
       </Row>
       <Row>
-        <Col className="p-0">
+        <Col>
           <Tabs
             activeKey={activeTab}
             onSelect={(tab) => {
