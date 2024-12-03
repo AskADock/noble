@@ -108,7 +108,7 @@ const PasscodeManagementModal = ({ show, action, passcode, onClose }) => {
 
 PasscodeManagementModal.propTypes = {
   show: PropTypes.bool.isRequired,
-  action: PropTypes.string,
+  action: PropTypes.string.isRequired,
   onClose: PropTypes.func.isRequired,
   passcode: PropTypes.shape({
     _id: PropTypes.string,
@@ -116,12 +116,7 @@ PasscodeManagementModal.propTypes = {
     createdAt: PropTypes.instanceOf(Date),
     expiredAt: PropTypes.instanceOf(Date),
     expired: PropTypes.bool,
-  }),
-};
-
-PasscodeManagementModal.defaultProps = {
-  action: '',
-  passcode: {},
+  }).isRequired,
 };
 
 export default PasscodeManagementModal;
