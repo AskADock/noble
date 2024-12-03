@@ -79,7 +79,7 @@ const PasscodeManagementModal = ({ show, action, passcode, onClose }) => {
               <Form.Label>Expires At</Form.Label>
               <Form.Control
                 type="datetime-local"
-                value={updatedPasscode.expiredAt ? new Date(updatedPasscode.expiredAt).toISOString().slice(0, 16) : ''}
+                value={updatedPasscode.expiredAt ? new Date(updatedPasscode.expiredAt) : ''}
                 onChange={(e) => setUpdatedPasscode({ ...updatedPasscode, expiredAt: new Date(e.target.value) })}
               />
             </Form.Group>
