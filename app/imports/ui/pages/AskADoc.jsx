@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col, Button, Form, FloatingLabel } from 'react-bootstrap';
 import swal from 'sweetalert';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Questions } from '../../api/question/QuestionCollection';
@@ -75,32 +75,41 @@ export const AskADoc = () => {
         <Row className="justify-content-center py-5">
           <Col xs={12} md={10} lg={8} className="text-center">
             <Form onSubmit={handleSubmit}>
-              <Form.Group className="mb-4">
+              <Form.Group className="mb-3">
                 <Row>
                   <Col xs={12} md={6}>
-                    <Form.Select
-                      value={category}
-                      onChange={(e) => setCategory(e.target.value)}
-                      required
-                      id={COMPONENT_IDS.ASK_A_DOC_FORM_CATEGORY}
-                      style={{ padding: '15px', fontSize: '1.1rem', marginBottom: '20px', width: '100%' }}
+                    <FloatingLabel
+                      controlId={COMPONENT_IDS.ASK_A_DOC_FORM_CATEGORY}
+                      label="Category"
+                      className="mb-2"
                     >
-                      <option value="" disabled>Select a category</option>
-                      {categories.map((cat) => (
-                        <option key={cat._id} value={cat.category}>{cat.category}</option>
-                      ))}
-                    </Form.Select>
+                      <Form.Select
+                        value={category}
+                        onChange={(e) => setCategory(e.target.value)}
+                        required
+                        id={COMPONENT_IDS.ASK_A_DOC_FORM_CATEGORY}
+                      >
+                        <option value="" disabled>Select a category</option>
+                        {categories.map((cat) => (
+                          <option key={cat._id} value={cat.category}>{cat.category}</option>
+                        ))}
+                      </Form.Select>
+                    </FloatingLabel>
                   </Col>
                   <Col xs={12} md={6}>
-                    <Form.Control
-                      type="password"
-                      placeholder="Passcode"
-                      value={passcode}
-                      onChange={(e) => setPasscode(e.target.value)}
-                      required
-                      id={COMPONENT_IDS.ASK_A_DOC_FORM_PASSCODE}
-                      style={{ padding: '15px', fontSize: '1.1rem', marginBottom: '20px' }}
-                    />
+                    <FloatingLabel
+                      controlId={COMPONENT_IDS.ASK_A_DOC_FORM_PASSCODE}
+                      label="Authenticate"
+                      className="mb-2"
+                    >
+                      <Form.Control
+                        type="password"
+                        placeholder="Authenticate"
+                        value={passcode}
+                        onChange={(e) => setPasscode(e.target.value)}
+                        required
+                      />
+                    </FloatingLabel>
                   </Col>
                 </Row>
               </Form.Group>
