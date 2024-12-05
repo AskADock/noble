@@ -78,7 +78,7 @@ const PageInstructionsModal = ({ page }) => {
           Submitting a Question:
         </h5>
         <p>
-          Select a category, enter the authenication code, and type your question. Click the submit button to submit your question.
+          Select a category, enter the authentication code, and type your question. Click the submit button to submit your question.
         </p>
         <h5>
           Authentication:

@@ -66,7 +66,7 @@ export const AskADoc = () => {
       <DisclaimerModal />
       <Header
         title="Ask A Doc"
-        subtitle="Anonymously ask a Doctor any question. Your answer will appear in the FAQ page soon"
+        subtitle="Anonymously ask a Doctor any question"
         background="color1"
         pageInstructions="askADocPage"
       />
@@ -131,6 +131,14 @@ export const AskADoc = () => {
               </Button>
             </Form>
           </Col>
+        </Row>
+        <Row className="text-center">
+          <h5 className="text-white">
+            <strong>Reminder: Do NOT include any personally identifiable information in your question.</strong>
+          </h5>
+          <h5 className="text-white">
+            Your answer will appear in the <a href="/FAQ" className="text-white">FAQ</a> page soon.
+          </h5>
         </Row>
       </Container>
     </Container>
