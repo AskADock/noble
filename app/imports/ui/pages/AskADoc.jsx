@@ -18,7 +18,6 @@ export const AskADoc = () => {
     const subscription = Categories.subscribeCategoryAll();
     const rdy = subscription.ready();
     const categoryItems = Categories.find().fetch();
-    // console.log(categoryItems);
     return {
       categories: categoryItems,
       ready: rdy,
