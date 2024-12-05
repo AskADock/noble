@@ -25,7 +25,7 @@ const PageInstructionsModal = ({ page }) => {
           Tabs:
         </h5>
         <p>
-          Click the <strong>FAQ tab</strong> for frequently asked questions. Click the <strong>Question tab</strong> to view user submitted questions.
+          Click the <strong>FAQ tab</strong> for frequently asked questions. Click the <strong>Ask A Doc tab</strong> to view user submitted questions.
         </p>
         <h5>
           Accessing Questions:
@@ -78,19 +78,19 @@ const PageInstructionsModal = ({ page }) => {
           Submitting a Question:
         </h5>
         <p>
-          Select a category, enter the passcode, and type your question. Click the submit button to submit your question.
+          Select a category, enter the authentication code, and type your question. Click the submit button to submit your question.
         </p>
         <h5>
-          Passcode:
+          Authentication:
         </h5>
         <p>
-          Passcodes are provided by the medical team. If you do not have a passcode, please contact the medical team.
+          Authentication codes are provided by the medical team. If you do not have a authentication code, please contact the medical team.
         </p>
         <h5>
           Finding Answers:
         </h5>
         <p>
-          After a doctor responds to your question, the answer will appear in the <strong>FAQ</strong> page in the <strong>Questions Tab</strong>.
+          After a doctor responds to your question, the answer will appear in the <strong>FAQ</strong> page in the <strong>Ask A Doc Tab</strong>.
         </p>
       </div>
     );
