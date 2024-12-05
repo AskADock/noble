@@ -90,7 +90,7 @@ const AdminProtectedRoute = ({ ready, children }) => {
   if (!isLogged) {
     return <Navigate to="/signin" />;
   }
-  if (ready) {
+  if (!ready) {
     return <LoadingSpinner message="" />;
   }
   const isAdmin = Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]);
