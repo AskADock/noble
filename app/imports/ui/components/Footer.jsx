@@ -27,7 +27,7 @@ const Footer = () => (
           </Nav>
         </Col>
         <Col md={3} className="text-center">
-          <Image src="/images/154_Logo.png" alt="Logo" fluid />
+          <Image src="/images/154_Logo.png" alt="Logo" width="75%" fluid />
           <p>© Noble 2024</p>
         </Col>
       </Row>
