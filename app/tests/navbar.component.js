@@ -91,14 +91,7 @@ class NavBar {
     await t.click(`#${COMPONENT_IDS.NAVBAR_FEEDBACK}`);
   }
 
-  /* Go to the Privacy Policy page. */
-  async gotoPrivacyPolicyPage() {
-    const visible = await Selector(`#${COMPONENT_IDS.NAVBAR_COLLAPSE}`).visible;
-    if (!visible) {
-      await t.click('button.navbar-toggler');
-    }
-    await t.click(`#${COMPONENT_IDS.NAVBAR_PRIVACY_POLICY}`);
-  }
+  /* Med Group Pages */
 
   /* Go to the Med Home page. */
   async gotoMedHomePage() {
@@ -117,6 +110,7 @@ class NavBar {
       await t.click('button.navbar-toggler');
     }
     await t.expect(Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).exists).ok();
+    await t.click(`#${COMPONENT_IDS.NAVBAR_QUESTIONS_DROPDOWN}`);
     await t.click(`#${COMPONENT_IDS.NAVBAR_FAQ_MANAGEMENT}`);
   }
 
@@ -127,7 +121,19 @@ class NavBar {
       await t.click('button.navbar-toggler');
     }
     await t.expect(Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).exists).ok();
+    await t.click(`#${COMPONENT_IDS.NAVBAR_QUESTIONS_DROPDOWN}`);
     await t.click(`#${COMPONENT_IDS.NAVBAR_QUESTION_MANAGEMENT}`);
+  }
+
+  /* Go to the Passcode Management page. */
+  async gotoPasscodeManagementPage() {
+    const visible = await Selector(`#${COMPONENT_IDS.NAVBAR_COLLAPSE}`).visible;
+    if (!visible) {
+      await t.click('button.navbar-toggler');
+    }
+    await t.expect(Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).exists).ok();
+    await t.click(`#${COMPONENT_IDS.NAVBAR_QUESTIONS_DROPDOWN}`);
+    await t.click(`#${COMPONENT_IDS.NAVBAR_PASSCODE_MANAGEMENT}`);
   }
 
   /* Go to the Feedback Management page. */
@@ -150,14 +156,28 @@ class NavBar {
     await t.click(`#${COMPONENT_IDS.NAVBAR_FLYER_MANAGEMENT}`);
   }
 
-  /* Go to the Passcode Management page. */
-  async gotoPasscodeManagementPage() {
+  /* Admin Pages */
+
+  /* Go to the Feedback Management page. */
+  async gotoAdminFeedbackManagementPage() {
     const visible = await Selector(`#${COMPONENT_IDS.NAVBAR_COLLAPSE}`).visible;
     if (!visible) {
       await t.click('button.navbar-toggler');
     }
     await t.expect(Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).exists).ok();
-    await t.click(`#${COMPONENT_IDS.NAVBAR_PASSCODE_MANAGEMENT}`);
+    await t.click(`#${COMPONENT_IDS.NAVBAR_OTHER_DROPDOWN}`);
+    await t.click(`#${COMPONENT_IDS.NAVBAR_FEEDBACK_MANAGEMENT}`);
+  }
+
+  /* Go to the Flyer Management page. */
+  async gotoAdminFlyerManagementPage() {
+    const visible = await Selector(`#${COMPONENT_IDS.NAVBAR_COLLAPSE}`).visible;
+    if (!visible) {
+      await t.click('button.navbar-toggler');
+    }
+    await t.expect(Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).exists).ok();
+    await t.click(`#${COMPONENT_IDS.NAVBAR_OTHER_DROPDOWN}`);
+    await t.click(`#${COMPONENT_IDS.NAVBAR_FLYER_MANAGEMENT}`);
   }
 
   /* Go to the manage database page. Must be adimin. */

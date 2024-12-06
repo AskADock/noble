@@ -102,12 +102,11 @@ body {
 .landing-background {
   background: url("images/landing/personnel-on-flightline.jpg") fixed;
   background-size: cover;
-    -webkit-background-size: cover;
   background-position: center;
   color: white;
-  min-height: 100vh;
+  min-height: 95vh;
   display: flex;
-  flex-direction: inherit;
+  flex-direction: column;
 }
 
 .hero-section {

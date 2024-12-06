@@ -24,7 +24,10 @@ const credentials = { username: 'medgroup@foo.com', password: 'changeme' };
 const askADocQuestion = { category: 'Readiness', passcode: '1234', question: 'This is a test(Cafe)?' };
 
 fixture('meteor-application-template-production localhost test with default db')
-  .page('http://localhost:3000');
+  .page('http://localhost:3000')
+  .beforeEach(async t => {
+    await t.resizeWindow(430, 900);
+  });
 
 test('Test that landing page shows up', async () => {
   await landingPage.isDisplayed();
