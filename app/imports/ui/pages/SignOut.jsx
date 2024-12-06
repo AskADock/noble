@@ -8,7 +8,7 @@ const SignOut = () => {
   Meteor.logout();
   return (
     <Row>
-      <Col id={PAGE_IDS.SIGN_OUT} className="text-center py-4">
+      <Col id={PAGE_IDS.SIGN_OUT} className="text-center py-5">
         <h2>You are signed out.</h2>
         <Button href="/">Return to Home</Button>
       </Col>

@@ -18,11 +18,14 @@ export const COMPONENT_IDS = {
 
   // User & Admin pages
   NAVBAR_MED_HOME: 'navbar-med-home',
+  NAVBAR_QUESTIONS_DROPDOWN: 'navbar-questions-dropdown',
+  NAVBAR_OTHER_DROPDOWN: 'navbar-other-dropdown',
   NAVBAR_FAQ_MANAGEMENT: 'navbar-faq-management',
   NAVBAR_QUESTION_MANAGEMENT: 'navbar-question-management',
   NAVBAR_PASSCODE_MANAGEMENT: 'navbar-passcode-management',
   NAVBAR_FEEDBACK_MANAGEMENT: 'navbar-feedback-management',
   NAVBAR_FLYER_MANAGEMENT: 'navbar-flyer-management',
+  NAVBAR_MANAGE_DROPDOWN_USERS: 'navbar-manage-dropdown-users',
 
   // Logg in/out
   NAVBAR_CURRENT_USER: 'navbar-current-user',
