@@ -42,9 +42,17 @@ const NavBar = () => {
             {Roles.userIsInRole(Meteor.userId(), [ROLE.USER]) ? (
               [
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_MED_HOME} as={NavLink} to="/home" onClick={() => setExpanded(false)}>Med Home</Nav.Link>,
-                <Nav.Link id={COMPONENT_IDS.NAVBAR_FAQ_MANAGEMENT} as={NavLink} to="/faq-management" onClick={() => setExpanded(false)}>FAQ Management</Nav.Link>,
-                <Nav.Link id={COMPONENT_IDS.NAVBAR_QUESTION_MANAGEMENT} as={NavLink} to="/question-management" onClick={() => setExpanded(false)}>Question Management</Nav.Link>,
-                <Nav.Link id={COMPONENT_IDS.NAVBAR_PASSCODE_MANAGEMENT} as={NavLink} to="/passcode-management" onClick={() => setExpanded(false)}>Passcode Management</Nav.Link>,
+                <NavDropdown id={COMPONENT_IDS.NAVBAR_QUESTIONS_DROPDOWN} title="Questions" key="questions-dropdown">
+                  <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_FAQ_MANAGEMENT} as={NavLink} to="/faq-management" onClick={() => setExpanded(false)}>
+                    FAQ Management
+                  </NavDropdown.Item>
+                  <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_QUESTION_MANAGEMENT} as={NavLink} to="/question-management" onClick={() => setExpanded(false)}>
+                    Question Management
+                  </NavDropdown.Item>
+                  <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_PASSCODE_MANAGEMENT} as={NavLink} to="/passcode-management" onClick={() => setExpanded(false)}>
+                    Passcode Management
+                  </NavDropdown.Item>
+                </NavDropdown>,
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_FLYER_MANAGEMENT} as={NavLink} to="/flyer-management" onClick={() => setExpanded(false)}>Flyer Management</Nav.Link>,
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_FEEDBACK_MANAGEMENT} as={NavLink} to="/feedback-management" onClick={() => setExpanded(false)}>Feedback Management</Nav.Link>,
               ]
@@ -54,14 +62,31 @@ const NavBar = () => {
             {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? (
               [
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_MED_HOME} as={NavLink} to="/home" onClick={() => setExpanded(false)}>Med Home</Nav.Link>,
-                <Nav.Link id={COMPONENT_IDS.NAVBAR_FAQ_MANAGEMENT} as={NavLink} to="/faq-management" onClick={() => setExpanded(false)}>FAQ Management</Nav.Link>,
-                <Nav.Link id={COMPONENT_IDS.NAVBAR_QUESTION_MANAGEMENT} as={NavLink} to="/question-management" onClick={() => setExpanded(false)}>Question Management</Nav.Link>,
-                <Nav.Link id={COMPONENT_IDS.NAVBAR_PASSCODE_MANAGEMENT} as={NavLink} to="/passcode-management" onClick={() => setExpanded(false)}>Passcode Management</Nav.Link>,
-                <Nav.Link id={COMPONENT_IDS.NAVBAR_FLYER_MANAGEMENT} as={NavLink} to="/flyer-management" onClick={() => setExpanded(false)}>Flyer Management</Nav.Link>,
-                <Nav.Link id={COMPONENT_IDS.NAVBAR_FEEDBACK_MANAGEMENT} as={NavLink} to="/feedback-management" onClick={() => setExpanded(false)}>Feedback Management</Nav.Link>,
+                <NavDropdown id={COMPONENT_IDS.NAVBAR_QUESTIONS_DROPDOWN} title="Questions" key="questions-dropdown">
+                  <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_FAQ_MANAGEMENT} as={NavLink} to="/faq-management" onClick={() => setExpanded(false)}>
+                    FAQ Management
+                  </NavDropdown.Item>
+                  <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_QUESTION_MANAGEMENT} as={NavLink} to="/question-management" onClick={() => setExpanded(false)}>
+                    Question Management
+                  </NavDropdown.Item>
+                  <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_PASSCODE_MANAGEMENT} as={NavLink} to="/passcode-management" onClick={() => setExpanded(false)}>
+                    Passcode Management
+                  </NavDropdown.Item>
+                </NavDropdown>,
+                <NavDropdown id={COMPONENT_IDS.NAVBAR_OTHER_DROPDOWN} title="Other" key="other-dropdown">
+                  <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_FLYER_MANAGEMENT} as={NavLink} to="/flyer-management" onClick={() => setExpanded(false)}>
+                    Flyer Management
+                  </NavDropdown.Item>
+                  <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_FEEDBACK_MANAGEMENT} as={NavLink} to="/feedback-management" onClick={() => setExpanded(false)}>
+                    Feedback Management
+                  </NavDropdown.Item>
+                </NavDropdown>,
                 <NavDropdown id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN} title="Manage" key="manage-dropdown">
                   <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN_DATABASE} key="manage-database" as={NavLink} to="/manage-database" onClick={() => setExpanded(false)}>
                     <CloudDownload /> Database
+                  </NavDropdown.Item>
+                  <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN_USERS} key="manage-users" as={NavLink} to="/manage-users" onClick={() => setExpanded(false)}>
+                    <PersonFill /> Users
                   </NavDropdown.Item>
                 </NavDropdown>,
               ]
