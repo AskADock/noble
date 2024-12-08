@@ -266,6 +266,47 @@ const PageInstructionsModal = ({ page }) => {
       </div>
     );
     break;
+  case 'manageDatabasePage':
+    pageTitle = 'Manage Database';
+    instructions = (
+      <div>
+        <p>
+          <strong>Manage the database.</strong>
+        </p>
+        <h5>
+          Download Database:
+        </h5>
+        <p>
+          Click the <strong>Dump Database</strong> button to download the database.
+        </p>
+      </div>
+    );
+    break;
+  case 'userManagementPage':
+    pageTitle = 'User Management';
+    instructions = (
+      <div>
+        <p>
+          <strong>Add and Remove users.</strong>
+        </p>
+        <p>
+          User accounts are used to access the system. User accounts are created by the admin. To change passwords, delete the user and create a new user.
+        </p>
+        <h5>
+          Add User:
+        </h5>
+        <p>
+          Click the <strong>Add User</strong> button to add a new user.
+        </p>
+        <h5>
+          Current Users:
+        </h5>
+        <p>
+          View the current users. Click the <strong>Delete</strong> button to delete a user.
+        </p>
+      </div>
+    );
+    break;
   default:
     pageTitle = 'Not Found';
     instructions = (

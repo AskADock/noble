@@ -85,7 +85,7 @@ const NavBar = () => {
                   <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN_DATABASE} key="manage-database" as={NavLink} to="/manage-database" onClick={() => setExpanded(false)}>
                     <CloudDownload /> Database
                   </NavDropdown.Item>
-                  <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN_USERS} key="manage-users" as={NavLink} to="/manage-users" onClick={() => setExpanded(false)}>
+                  <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN_USERS} key="manage-users" as={NavLink} to="/user-management" onClick={() => setExpanded(false)}>
                     <PersonFill /> Users
                   </NavDropdown.Item>
                 </NavDropdown>,

@@ -1,5 +1,5 @@
 // import { Selector, t } from 'testcafe';
-import { questionCompassPage, privacyPolicyPage, signOutPage, medHomePage, FAQManagementPage, questionManagementPage, feedbackManagementPage, passcodeManagementPage, flyerManagementPage } from './simple.page';
+import { questionCompassPage, privacyPolicyPage, signOutPage, medHomePage, FAQManagementPage, questionManagementPage, feedbackManagementPage, passcodeManagementPage, flyerManagementPage, manageDatabasePage, userManagementPage } from './simple.page';
 import { landingPage } from './landing.page';
 import { disclaimerModal } from './disclaimer-modal.component';
 import { faqPage } from './faq.page';
@@ -17,17 +17,14 @@ import { footer } from './footer.component';
 
 /** Credentials for one of the sample users defined in settings.development.json. */
 const credentials = { username: 'medgroup@foo.com', password: 'changeme' };
-// const adminCredentials = { username: 'admin@foo.com', password: 'changeme' };
+const adminCredentials = { username: 'admin@foo.com', password: 'changeme' };
 // const newCredentials = { username: 'medgrouptest@foo.com', password: 'Always-Ready-75' };
 
 /** Question and replys */
 const askADocQuestion = { category: 'Readiness', passcode: '1234', question: 'This is a test(Cafe)?' };
 
 fixture('meteor-application-template-production localhost test with default db')
-  .page('http://localhost:3000')
-  .beforeEach(async t => {
-    await t.resizeWindow(430, 900);
-  });
+  .page('http://localhost:3000');
 
 test('Test that landing page shows up', async () => {
   await landingPage.isDisplayed();
@@ -181,6 +178,28 @@ test('Test that Passcode Management page shows up', async () => {
   await signInPage.signin(credentials.username, credentials.password);
   await navBar.gotoPasscodeManagementPage();
   await passcodeManagementPage.isDisplayed();
+});
+
+// Admin Pages
+
+// Manage Database
+test('Test that Manage Database page shows up', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await navBar.gotoManageDatabasePage();
+  await manageDatabasePage.isDisplayed();
+  await navBar.logout();
+  await signOutPage.isDisplayed();
+});
+
+// User Management
+test('Test that User Management page shows up', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await navBar.gotoUserManagementPage();
+  await userManagementPage.isDisplayed();
+  await navBar.logout();
+  await signOutPage.isDisplayed();
 });
 
 // test('Test that user pages show up', async () => {
