@@ -266,6 +266,22 @@ const PageInstructionsModal = ({ page }) => {
       </div>
     );
     break;
+  case 'manageDatabasePage':
+    pageTitle = 'Manage Database';
+    instructions = (
+      <div>
+        <p>
+          <strong>Manage the database.</strong>
+        </p>
+        <h5>
+          Download Database:
+        </h5>
+        <p>
+          Click the <strong>Dump Database</strong> button to download the database.
+        </p>
+      </div>
+    );
+    break;
   case 'userManagementPage':
     pageTitle = 'User Management';
     instructions = (
