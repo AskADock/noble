@@ -9,11 +9,12 @@ export const PAGE_IDS = {
   PRIVACY_POLICY: 'privacy-policy',
   NOT_AUTHORIZED: 'not-authorized',
   NOT_FOUND: 'not-found',
+
   // User pages
-  MANAGE_DATABASE: 'manage-database',
   SIGN_IN: 'sign-in',
   SIGN_OUT: 'sign-out',
   SIGN_UP: 'sign-up',
+
   // Med pages
   MED_HOME: 'med-home',
   FAQ_MANAGEMENT: 'faq-management',
@@ -21,4 +22,8 @@ export const PAGE_IDS = {
   FEEDBACK_MANAGEMENT: 'feedback-management',
   PASSCODE_MANAGEMENT: 'passcode-management',
   FLYER_MANAGEMENT: 'flyer-management',
+
+  // Admin pages
+  MANAGE_DATABASE: 'manage-database',
+  USER_MANAGEMENT: 'user-management',
 };

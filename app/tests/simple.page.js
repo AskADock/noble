@@ -18,7 +18,6 @@ class SimplePage {
 
 export const questionCompassPage = new SimplePage(PAGE_IDS.QUESTION_COMPASS);
 export const privacyPolicyPage = new SimplePage(PAGE_IDS.PRIVACY_POLICY);
-export const manageDatabasePage = new SimplePage(PAGE_IDS.MANAGE_DATABASE);
 export const signOutPage = new SimplePage(PAGE_IDS.SIGN_OUT);
 
 // Med Pages
@@ -28,3 +27,7 @@ export const questionManagementPage = new SimplePage(PAGE_IDS.QUESTION_MANAGEMEN
 export const feedbackManagementPage = new SimplePage(PAGE_IDS.FEEDBACK_MANAGEMENT);
 export const flyerManagementPage = new SimplePage(PAGE_IDS.FLYER_MANAGEMENT);
 export const passcodeManagementPage = new SimplePage(PAGE_IDS.PASSCODE_MANAGEMENT);
+
+// Admin Pages
+export const manageDatabasePage = new SimplePage(PAGE_IDS.MANAGE_DATABASE);
+export const userManagementPage = new SimplePage(PAGE_IDS.USER_MANAGEMENT);

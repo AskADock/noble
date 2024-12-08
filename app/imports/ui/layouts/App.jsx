@@ -24,6 +24,7 @@ import NavBar from '../components/NavBar';
 import SignIn from '../pages/SignIn';
 import NotAuthorized from '../pages/NotAuthorized';
 import ManageDatabase from '../pages/ManageDatabase';
+import UserManagement from '../pages/UserManagement';
 import { ROLE } from '../../api/role/Role';
 import LoadingSpinner from '../components/LoadingSpinner';
 
@@ -60,6 +61,8 @@ const App = () => {
           <Route path="/flyer-management" element={<ProtectedRoute><FlyerManagement /></ProtectedRoute>} />
           <Route path="/feedback-management" element={<ProtectedRoute><FeedbackManagement /></ProtectedRoute>} />
           <Route path="/manage-database" element={<AdminProtectedRoute ready={ready} isAdmin={isAdmin}><ManageDatabase /></AdminProtectedRoute>} />
+          <Route path="/user-management" element={<AdminProtectedRoute ready={ready} isAdmin={isAdmin}><UserManagement /></AdminProtectedRoute>} />
+          <Route path="/notfound" element={<NotFound />} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

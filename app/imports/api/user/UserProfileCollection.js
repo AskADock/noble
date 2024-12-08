@@ -1,11 +1,21 @@
 import SimpleSchema from 'simpl-schema';
+import { Meteor } from 'meteor/meteor';
 import BaseProfileCollection from './BaseProfileCollection';
 import { ROLE } from '../role/Role';
 import { Users } from './UserCollection';
 
+const userPublications = {
+  userAdmin: 'Admin',
+};
+
 class UserProfileCollection extends BaseProfileCollection {
   constructor() {
-    super('UserProfile', new SimpleSchema({}));
+    super('UserProfile', new SimpleSchema({
+      firstName: { type: String },
+      lastName: { type: String },
+      email: { type: String },
+      role: { type: String },
+    }));
   }
 
   /**
@@ -99,6 +109,31 @@ class UserProfileCollection extends BaseProfileCollection {
     const firstName = doc.firstName;
     const lastName = doc.lastName;
     return { email, firstName, lastName }; // CAM this is not enough for the define method. We lose the password.
+  }
+
+  /**
+   * Default publication method for entities.
+   * It publishes the entire collection for all users.
+   */
+  publish() {
+    if (Meteor.isServer) {
+      // get the EventCollection instance.
+      const instance = this;
+      // this subscription publishes the entire collection
+      Meteor.publish(userPublications.userAdmin, function publish() {
+        return instance._collection.find();
+      });
+    }
+  }
+
+  /**
+   * Subscription method for event owned by the current user.
+   */
+  subscribeUserAdmin() {
+    if (Meteor.isClient) {
+      return Meteor.subscribe(userPublications.userAdmin);
+    }
+    return null;
   }
 }
 
