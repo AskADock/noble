@@ -2,12 +2,12 @@ import os
 import openai
 import numpy as np
 import faiss
-from PyPDF2 import PdfReader
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from dotenv import load_dotenv
 import pickle
 import logging
+import fitz  # PyMuPDF
 import tiktoken
 import time
 
@@ -34,7 +34,23 @@ if not os.path.exists(documents_directory):
     logger.error(f"Documents directory not found: {documents_directory}")
     raise FileNotFoundError(f"Documents directory not found: {documents_directory}")
 
-def split_text_into_chunks(text, max_tokens=8191, model_name='text-embedding-3-small'):
+# Paths to the saved embeddings, documents, and index
+EMBEDDINGS_FILE = 'embeddings.npy'
+DOCUMENTS_FILE = 'documents.pkl'
+INDEX_FILE = 'index_file.index'
+
+# Load embeddings, documents, and index
+if os.path.exists(EMBEDDINGS_FILE) and os.path.exists(DOCUMENTS_FILE) and os.path.exists(INDEX_FILE):
+    embedding_matrix = np.load(EMBEDDINGS_FILE)
+    with open(DOCUMENTS_FILE, 'rb') as f:
+        documents = pickle.load(f)
+    index = faiss.read_index(INDEX_FILE)
+    logger.info(f"Loaded embeddings, documents, and index. Total documents: {len(documents)}")
+else:
+    logger.error("Embeddings, documents, or index files are missing.")
+    raise FileNotFoundError("Embeddings, documents, or index files are missing.")
+
+def split_text_into_chunks(text, max_tokens=3000, model_name='text-embedding-ada-002'):
     # Use tiktoken to count tokens
     encoding = tiktoken.encoding_for_model(model_name)
     tokens = encoding.encode(text)
@@ -47,112 +63,6 @@ def split_text_into_chunks(text, max_tokens=8191, model_name='text-embedding-3-s
         chunks.append(chunk_text)
         start = end
     return chunks
-
-# Paths to the saved embeddings, documents, and index
-EMBEDDINGS_FILE = 'embeddings.npy'
-DOCUMENTS_FILE = 'documents.pkl'
-INDEX_FILE = 'index_file.index'
-
-# Initialize variables
-documents = []
-embedding_matrix = None
-index = None
-
-try:
-    # Check if embeddings and documents are already saved
-    if os.path.exists(EMBEDDINGS_FILE) and os.path.exists(DOCUMENTS_FILE) and os.path.exists(INDEX_FILE):
-        # Load embeddings
-        embedding_matrix = np.load(EMBEDDINGS_FILE)
-        # Load documents
-        with open(DOCUMENTS_FILE, 'rb') as f:
-            documents = pickle.load(f)
-        # Load FAISS index
-        index = faiss.read_index(INDEX_FILE)
-        logger.info("Loaded embeddings, documents, and index from disk.")
-    else:
-        # Extract text from PDFs and split into chunks
-        for filename in os.listdir(documents_directory):
-            if filename.endswith(".pdf"):
-                file_path = os.path.join(documents_directory, filename)
-                try:
-                    reader = PdfReader(file_path)
-                    text = ""
-                    for page_num, page in enumerate(reader.pages):
-                        page_text = page.extract_text()
-                        if page_text:
-                            text += page_text
-                        else:
-                            logger.warning(f"No text found on page {page_num+1} of {filename}.")
-                    # Split text into chunks
-                    document_chunks = split_text_into_chunks(text)
-                    documents.extend(document_chunks)
-                except Exception as e:
-                    logger.error(f"Error reading {filename}: {e}")
-
-        if not documents:
-            logger.error("No documents found to process.")
-            raise ValueError("No documents found to process.")
-
-        # Generate embeddings for each document chunk
-        embeddings = []
-        for idx, doc in enumerate(documents):
-            try:
-                # Implement retry logic
-                max_retries = 5
-                for attempt in range(max_retries):
-                    try:
-                        response = openai.Embedding.create(
-                            input=doc,
-                            model="text-embedding-3-small",
-                            timeout=30  # Set timeout in seconds
-                        )
-                        embedding = response['data'][0]['embedding']
-                        embeddings.append(embedding)
-                        break  # Break if successful
-                    except openai.error.RateLimitError as e:
-                        logger.error(f"Rate limit error on chunk {idx}, attempt {attempt+1}/{max_retries}: {e}")
-                        if attempt < max_retries - 1:
-                            time.sleep(2 ** attempt)  # Exponential backoff
-                        else:
-                            raise
-                    except openai.error.Timeout as e:
-                        logger.error(f"Timeout error on chunk {idx}, attempt {attempt+1}/{max_retries}: {e}")
-                        if attempt < max_retries - 1:
-                            time.sleep(2 ** attempt)
-                        else:
-                            raise
-                    except Exception as e:
-                        logger.error(f"Error creating embedding for document chunk {idx}, attempt {attempt+1}/{max_retries}: {e}")
-                        if attempt < max_retries - 1:
-                            time.sleep(2 ** attempt)
-                        else:
-                            raise
-            except Exception as e:
-                logger.error(f"Failed to create embedding for document chunk {idx}: {e}")
-                continue
-
-        if not embeddings:
-            logger.error("No embeddings were created. Please check the documents and OpenAI API key.")
-            raise ValueError("No embeddings were created.")
-
-        # Convert embeddings to numpy array
-        embedding_matrix = np.array(embeddings, dtype=np.float32)
-        # Save embeddings
-        np.save(EMBEDDINGS_FILE, embedding_matrix)
-        # Save documents
-        with open(DOCUMENTS_FILE, 'wb') as f:
-            pickle.dump(documents, f)
-        # Create a FAISS index
-        dimension = embedding_matrix.shape[1]
-        index = faiss.IndexFlatL2(dimension)
-        index.add(embedding_matrix)
-        # Save the FAISS index
-        faiss.write_index(index, INDEX_FILE)
-        logger.info("Computed and saved embeddings, documents, and index.")
-
-except Exception as e:
-    logger.error(f"An error occurred during initialization: {e}")
-    raise
 
 @app.route('/api/get-answer', methods=['POST'])
 def get_answer():
@@ -170,61 +80,55 @@ def get_answer():
         # Generate an embedding for the user's question
         response = openai.Embedding.create(
             input=question,
-            model="text-embedding-3-small",
+            model="text-embedding-ada-002",
             timeout=30
         )
         question_embedding = response['data'][0]['embedding']
         question_vector = np.array([question_embedding], dtype=np.float32)
+        logger.info(f"Generated question embedding size: {len(question_embedding)}")
 
         # Ensure index and documents are loaded
         if index is None or not documents:
             logger.error("Index or documents not properly initialized.")
             return jsonify({'error': 'Server error: Index not initialized.'}), 500
 
-        # Search for the most relevant documents
-        k = min(3, len(documents))  # Adjust k as needed
+        # Perform FAISS search
+        k = min(3, len(documents))
         distances, indices = index.search(question_vector, k=k)
-        if indices.size == 0:
+        logger.info(f"FAISS search indices: {indices}, distances: {distances}")
+
+        # Retrieve relevant documents
+        relevant_docs = [documents[idx] for idx in indices[0] if idx < len(documents)]
+        if not relevant_docs:
             logger.warning("No relevant documents found for the question.")
             return jsonify({'error': 'No relevant documents found.'}), 404
 
-        relevant_docs = [documents[idx] for idx in indices[0]]
-
-        # Prepare the context for GPT
+        # Prepare context for GPT
         context = "\n\n".join(relevant_docs)
+        logger.info(f"Context passed to GPT: {context[:500]}")  # Log the first 500 characters
 
         # Use GPT to generate an answer
         gpt_response = openai.ChatCompletion.create(
             model="gpt-4o-mini",
-            temperature=0.6,
+            temperature=0.5,
             messages=[
                 {"role": "system", "content": (
                     "You are a virtual medical assistant named Noble created to answer medical questions for "
-                    "the Hawaii Air National Guard members. Information for answered questions should reference the uploaded "
+                    "the Hawaii Air National Guard members. All answered information should come from the uploaded "
                     "files and should be answered with citations including page numbers, document titles, and the year "
                     "the document was created. Use markdown formatting to make the answer more readable. "
                     "Find information for both flyers and non-flyers. Specify information given to both flyers and non-flyers. "
-                    "if you can not find the information in the documents, let the user know that the information is not available. "
-                    "If the user asks a question that is not related to the documents, politely respond that you are tuned "
-                    "to only answer questions that are related to the documents. When receiving a question without a clear answer, "
-                    "direct the user to contact a medical professional for more accurate information. Use very descriptive wording "
-                    "when giving an answer to a user’s questions. If necessary, format the information in step-by-step details."
-                    "When relevant, include links to websites that are listed in the documents."
+                    "If you cannot find the information, state explicitly that it is not available in the documents."
                 )},
-                {"role": "user", "content": f"Context: {context}"},
-                {"role": "user", "content": question}
-            ],
-            timeout=60  
+                {"role": "user", "content": f"Context:\n\n{context}\n\nQuestion:\n{question}"}
+            ]
         )
-
         answer = gpt_response['choices'][0]['message']['content']
+        logger.info(f"GPT Response: {answer}")
         return jsonify({'answer': answer})
-    except openai.error.OpenAIError as e:
-        logger.error(f"OpenAI API error: {e}")
-        return jsonify({'error': f'OpenAI API error: {e}'}), 500
     except Exception as e:
-        logger.error(f"An error occurred: {e}")
-        return jsonify({'error': f'An error occurred: {e}'}), 500
+        logger.error(f"Error generating answer: {e}")
+        return jsonify({'error': 'Error generating answer.'}), 500
 
 if __name__ == '__main__':
     try:
