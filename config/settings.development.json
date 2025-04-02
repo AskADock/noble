@@ -6,15 +6,22 @@
   ],
 
   "defaultCategories": [
+    { "category": "Deployment" },
+    { "category": "IMR"},
+    { "category": "DRHA"},
+    { "category": "Immunizations" },
+    { "category": "PHAQ" },
+    { "category": "Dental" },
+    { "category": "Lab" },
+    { "category": "Optometry" },
+    { "category": "Occupational Health" },
+    { "category": "Other" },
     { "category": "Readiness" },
     { "category": "Line of Duty" },
     { "category": "Profiles/Waivers" },
     { "category": "Medical Clearance" },
     { "category": "FLYERS" },
-    { "category": "NON-FLYERS" },
-    { "category": "Deployment" },
-    { "category": "Occupational Health" },
-    { "category": "Other" }
+    { "category": "NON-FLYERS" }
   ],
 
   "defaultQuestions": [

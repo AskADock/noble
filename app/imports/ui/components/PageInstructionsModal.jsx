@@ -197,6 +197,34 @@ const PageInstructionsModal = ({ page }) => {
       </div>
     );
     break;
+  case 'categoryManagementPage':
+    pageTitle = 'Category Management';
+    instructions = (
+      <div>
+        <p>
+          <strong>Manage the categories</strong>
+        </p>
+        <h5>
+          Adding a Category:
+        </h5>
+        <p>
+          Click the <strong>Add Category</strong> button to add a new category.
+        </p>
+        <h5>
+          Editing a Category:
+        </h5>
+        <p>
+          Click the <strong>Edit</strong> button to edit the category. This will edit all questions in this category.
+        </p>
+        <h5>
+          Deleting a Category:
+        </h5>
+        <p>
+          Click the <strong>Delete</strong> button to delete the category. This does <strong>NOT</strong> delete the questions in this category.
+        </p>
+      </div>
+    );
+    break;
   case 'passcodeManagementPage':
     pageTitle = 'Passcode Management';
     instructions = (

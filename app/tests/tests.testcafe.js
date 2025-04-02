@@ -1,5 +1,18 @@
 // import { Selector, t } from 'testcafe';
-import { questionCompassPage, privacyPolicyPage, signOutPage, medHomePage, FAQManagementPage, questionManagementPage, feedbackManagementPage, passcodeManagementPage, flyerManagementPage, manageDatabasePage, userManagementPage } from './simple.page';
+import {
+  questionCompassPage,
+  privacyPolicyPage,
+  signOutPage,
+  medHomePage,
+  FAQManagementPage,
+  questionManagementPage,
+  categoryManagementPage,
+  feedbackManagementPage,
+  passcodeManagementPage,
+  flyerManagementPage,
+  manageDatabasePage,
+  userManagementPage,
+} from './simple.page';
 import { landingPage } from './landing.page';
 import { disclaimerModal } from './disclaimer-modal.component';
 import { faqPage } from './faq.page';
@@ -154,6 +167,14 @@ test('Test that Question Management page shows up', async () => {
   await signInPage.signin(credentials.username, credentials.password);
   await navBar.gotoQuestionManagementPage();
   await questionManagementPage.isDisplayed();
+});
+
+// Category Management
+test('Test that Category Management page shows up', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(credentials.username, credentials.password);
+  await navBar.gotoCategoryManagementPage();
+  await categoryManagementPage.isDisplayed();
 });
 
 // Feedback Management

@@ -52,6 +52,9 @@ const NavBar = () => {
                   <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_PASSCODE_MANAGEMENT} as={NavLink} to="/passcode-management" onClick={() => setExpanded(false)}>
                     Passcode Management
                   </NavDropdown.Item>
+                  <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_CATEGORY_MANAGEMENT} as={NavLink} to="/category-management" onClick={() => setExpanded(false)}>
+                    Category Management
+                  </NavDropdown.Item>
                 </NavDropdown>,
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_FLYER_MANAGEMENT} as={NavLink} to="/flyer-management" onClick={() => setExpanded(false)}>Flyer Management</Nav.Link>,
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_FEEDBACK_MANAGEMENT} as={NavLink} to="/feedback-management" onClick={() => setExpanded(false)}>Feedback Management</Nav.Link>,
@@ -71,6 +74,9 @@ const NavBar = () => {
                   </NavDropdown.Item>
                   <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_PASSCODE_MANAGEMENT} as={NavLink} to="/passcode-management" onClick={() => setExpanded(false)}>
                     Passcode Management
+                  </NavDropdown.Item>
+                  <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_CATEGORY_MANAGEMENT} as={NavLink} to="/category-management" onClick={() => setExpanded(false)}>
+                    Category Management
                   </NavDropdown.Item>
                 </NavDropdown>,
                 <NavDropdown id={COMPONENT_IDS.NAVBAR_OTHER_DROPDOWN} title="Other" key="other-dropdown">
