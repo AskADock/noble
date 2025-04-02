@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import { check } from 'meteor/check';
 import BaseCollection from '../base/BaseCollection';
+import { ROLE } from '../role/Role';
 import { FAQ } from '../faq/FAQCollection';
 import { Questions } from '../question/QuestionCollection';
 
@@ -103,6 +104,16 @@ class CategoryCollection extends BaseCollection {
       return Meteor.subscribe(categoryPublications.categoryAll);
     }
     return null;
+  }
+
+  /**
+     * Default implementation of assertValidRoleForMethod. Asserts that userId is logged in as an Admin or User.
+     * This is used in the define, update, and removeIt Meteor methods associated with each class.
+     * @param userId The userId of the logged-in user. Can be null or undefined
+     * @throws { Meteor.Error } If there is no logged-in user, or the user is not an Admin or User.
+     */
+  assertValidRoleForMethod(userId) {
+    this.assertRole(userId, [ROLE.ADMIN, ROLE.USER]);
   }
 
   /**
