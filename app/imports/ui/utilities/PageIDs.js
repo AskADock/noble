@@ -19,6 +19,7 @@ export const PAGE_IDS = {
   MED_HOME: 'med-home',
   FAQ_MANAGEMENT: 'faq-management',
   QUESTION_MANAGEMENT: 'question-management',
+  CATEGORY_MANAGEMENT: 'category-management',
   FEEDBACK_MANAGEMENT: 'feedback-management',
   PASSCODE_MANAGEMENT: 'passcode-management',
   FLYER_MANAGEMENT: 'flyer-management',

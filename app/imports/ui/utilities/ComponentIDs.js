@@ -22,6 +22,7 @@ export const COMPONENT_IDS = {
   NAVBAR_OTHER_DROPDOWN: 'navbar-other-dropdown',
   NAVBAR_FAQ_MANAGEMENT: 'navbar-faq-management',
   NAVBAR_QUESTION_MANAGEMENT: 'navbar-question-management',
+  NAVBAR_CATEGORY_MANAGEMENT: 'navbar-category-management',
   NAVBAR_PASSCODE_MANAGEMENT: 'navbar-passcode-management',
   NAVBAR_FEEDBACK_MANAGEMENT: 'navbar-feedback-management',
   NAVBAR_FLYER_MANAGEMENT: 'navbar-flyer-management',
