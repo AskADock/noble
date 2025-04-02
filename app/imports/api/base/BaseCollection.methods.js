@@ -101,6 +101,31 @@ export const updateMethod = new ValidatedMethod({
   },
 });
 
+export const updateMethodCategory = new ValidatedMethod({
+  name: 'BaseCollection.updateCategory',
+  mixins: [CallPromiseMixin],
+  validate: null,
+  run({ collectionName, updateData }) {
+    if (Meteor.isServer) {
+      // Validate input
+      if (!updateData || !updateData.categoryName || !updateData.newCategory) {
+        throw new Meteor.Error(
+          'invalid-arguments',
+          'Missing required fields: categoryName or newCategory in updateData',
+        );
+      }
+
+      const collection = MATPCollections.getCollection(collectionName);
+      collection.assertValidRoleForMethod(this.userId);
+
+      // Call the updateCategory method in the collection
+      collection.updateCategory(updateData.categoryName, {
+        category: updateData.newCategory,
+      });
+    }
+  },
+});
+
 export const removeItMethod = new ValidatedMethod({
   name: 'BaseCollection.removeIt',
   mixins: [CallPromiseMixin],

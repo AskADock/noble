@@ -2,6 +2,8 @@ import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import { check } from 'meteor/check';
 import BaseCollection from '../base/BaseCollection';
+import { FAQ } from '../faq/FAQCollection';
+import { Questions } from '../question/QuestionCollection';
 
 export const categoryPublications = {
   categoryAll: 'categoryAll',
@@ -34,13 +36,36 @@ class CategoryCollection extends BaseCollection {
    * @param docID the id of the document to update.
    * @param category the new category (optional).
    */
-  update(docID, { category }) {
-    const updateData = {};
-    if (category) {
-      updateData.category = category;
+  updateCategory(categoryName, updateData = {}) {
+    const { category } = updateData; // Safely destructure category from updateData
+    const doc = this._collection.findOne({ category: categoryName });
+    if (!doc) {
+      throw new Meteor.Error('not-found', `Category with name ${categoryName} not found`);
     }
 
-    this._collection.update(docID, { $set: updateData });
+    const oldCategory = doc.category; // Store the old category name
+    const updateFields = {};
+    if (category) {
+      updateFields.category = category;
+    }
+
+    // Update the category in the Categories collection
+    this._collection.update(doc._id, { $set: updateFields });
+
+    // Update FAQs and Questions with the same category
+    if (category && oldCategory !== category) {
+      FAQ._collection.update(
+        { category: oldCategory }, // Match FAQs with the old category name
+        { $set: { category } }, // Update to the new category name
+        { multi: true }, // Update multiple documents
+      );
+
+      Questions._collection.update(
+        { category: oldCategory }, // Match Questions with the old category name
+        { $set: { category } }, // Update to the new category name
+        { multi: true }, // Update multiple documents
+      );
+    }
   }
 
   /**

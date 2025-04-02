@@ -6,7 +6,7 @@ import swal from 'sweetalert';
 import {
   defineMethod,
   removeItMethod,
-  updateMethod,
+  updateMethodCategory,
 } from '../../api/base/BaseCollection.methods';
 import { Categories } from '../../api/category/CategoryCollection';
 
@@ -29,14 +29,13 @@ const CategoryManagementModal = ({ show, action, category, onClose }) => {
         })
         .catch((error) => swal('Error', error.message, 'error'));
     } else if (action === 'edit') {
-      const categoryData = {
-        id: category._id,
-        category: updatedCategory.category,
-        question: updatedCategory.question,
+      const updateData = {
+        categoryName: category.category, // Current category name
+        newCategory: updatedCategory.category, // New category name
       };
 
-      updateMethod
-        .callPromise({ collectionName, updateData: categoryData })
+      updateMethodCategory
+        .callPromise({ collectionName, updateData })
         .then(() => {
           swal('Success', 'Category updated successfully', 'success');
           onClose();
@@ -45,7 +44,6 @@ const CategoryManagementModal = ({ show, action, category, onClose }) => {
     } else if (action === 'add') {
       const newCategoryData = {
         category: updatedCategory.category,
-        question: updatedCategory.question,
       };
 
       defineMethod

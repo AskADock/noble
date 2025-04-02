@@ -63,31 +63,37 @@ const CategoryManagement = () => {
           {/* Display each category with edit and delete buttons */}
           <Col sm={12} md={9}>
             {categories.map((category) => (
-              <Card className="rounded-4 text-center">
-                <Card.Title>{category.category}</Card.Title>
+              <Card className="rounded-4 text-center mb-2">
                 <Card.Body>
-                  <ButtonGroup>
-                    <Button
-                      variant="warning"
-                      onClick={() => {
-                        setAction('edit');
-                        setShowModal(true);
-                        setSelectedCategory(category);
-                      }}
-                    >
-                      Edit
-                    </Button>
-                    <Button
-                      variant="danger"
-                      onClick={() => {
-                        setAction('delete');
-                        setShowModal(true);
-                        setSelectedCategory(category);
-                      }}
-                    >
-                      Delete
-                    </Button>
-                  </ButtonGroup>
+                  <Row>
+                    <Col>
+                      <h5>{category.category}</h5>
+                    </Col>
+                    <Col>
+                      <ButtonGroup>
+                        <Button
+                          variant="warning"
+                          onClick={() => {
+                            setAction('edit');
+                            setShowModal(true);
+                            setSelectedCategory(category);
+                          }}
+                        >
+                          Edit
+                        </Button>
+                        <Button
+                          variant="danger"
+                          onClick={() => {
+                            setAction('delete');
+                            setShowModal(true);
+                            setSelectedCategory(category);
+                          }}
+                        >
+                          Delete
+                        </Button>
+                      </ButtonGroup>
+                    </Col>
+                  </Row>
                 </Card.Body>
               </Card>
             ))}
