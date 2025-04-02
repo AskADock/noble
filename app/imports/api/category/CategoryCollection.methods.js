@@ -2,6 +2,8 @@ import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 import { generateID } from '../../utilities/Utilities';
 import { Categories } from './CategoryCollection';
+import { FAQ } from '../faq/FAQCollection';
+import { Questions } from '../question/QuestionCollection';
 
 Meteor.methods({
   'Categories.define': function (data) {
@@ -22,17 +24,42 @@ Meteor.methods({
       throw new Meteor.Error('create-failed', 'Failed to create new Categories:', error);
     }
   },
-  'Categories.update': function (data) {
+  'Categories.updateCategory': function (data) {
     check(data, Object);
-    const doc = Categories._collection.findOne({ _id: data._id });
+
+    const { category, newCategory } = data; // Safely destructure category and newCategory
+    if (!category || !newCategory) {
+      throw new Meteor.Error('invalid-arguments', 'Both category and newCategory are required.');
+    }
+
+    const doc = Categories._collection.findOne({ category });
     if (!doc) {
       console.error('Categories not found');
       throw new Meteor.Error('Categories not found');
     }
+
     try {
-      Categories._collection.update(data._id, { $set: data });
+    // Update the category in the Categories collection
+      Categories._collection.update(
+        { category },
+        { $set: { category: newCategory } },
+      );
+
+      // Update FAQs with the same category
+      FAQ._collection.update(
+        { category }, // Match FAQs with the old category name
+        { $set: { category: newCategory } }, // Update to the new category name
+        { multi: true }, // Update multiple documents
+      );
+
+      // Update Questions with the same category
+      Questions._collection.update(
+        { category }, // Match Questions with the old category name
+        { $set: { category: newCategory } }, // Update to the new category name
+        { multi: true }, // Update multiple documents
+      );
     } catch (error) {
-      throw new Meteor.Error('update-failed', 'Failed to update Categories:', error);
+      throw new Meteor.Error('update-failed', `Failed to update category: ${error.message}`);
     }
   },
   'Categories.remove': function (data) {

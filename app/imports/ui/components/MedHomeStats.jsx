@@ -33,9 +33,14 @@ const MedHomeStats = ({ faq, allQuestions, questionsNotAnswer }) => {
                   <h5>Question Management</h5>
                 </Button>
               </Row>
-              <Row>
+              <Row className="mb-2">
                 <Button href="/passcode-management" className="text-center">
                   <h5>Passcode Management</h5>
+                </Button>
+              </Row>
+              <Row>
+                <Button href="/category-management" className="text-center">
+                  <h5>Category Management</h5>
                 </Button>
               </Row>
             </Col>

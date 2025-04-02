@@ -2,9 +2,10 @@ import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import { check } from 'meteor/check';
 import BaseCollection from '../base/BaseCollection';
+import { ROLE } from '../role/Role';
+import { FAQ } from '../faq/FAQCollection';
+import { Questions } from '../question/QuestionCollection';
 
-export const categories = ['Readiness', 'Line of Duty', 'Profiles/Waivers', 'Medical Clearance', 'FLYERS', 'NON-FLYERS',
-  'Deployment', 'Occupational Health', 'Other'];
 export const categoryPublications = {
   categoryAll: 'categoryAll',
 };
@@ -14,7 +15,6 @@ class CategoryCollection extends BaseCollection {
     super('Category', new SimpleSchema({
       category: {
         type: String,
-        allowedValues: categories,
         required: true,
       },
     }));
@@ -37,13 +37,36 @@ class CategoryCollection extends BaseCollection {
    * @param docID the id of the document to update.
    * @param category the new category (optional).
    */
-  update(docID, { category }) {
-    const updateData = {};
-    if (category) {
-      updateData.category = category;
+  updateCategory(categoryName, updateData = {}) {
+    const { category } = updateData; // Safely destructure category from updateData
+    const doc = this._collection.findOne({ category: categoryName });
+    if (!doc) {
+      throw new Meteor.Error('not-found', `Category with name ${categoryName} not found`);
     }
 
-    this._collection.update(docID, { $set: updateData });
+    const oldCategory = doc.category; // Store the old category name
+    const updateFields = {};
+    if (category) {
+      updateFields.category = category;
+    }
+
+    // Update the category in the Categories collection
+    this._collection.update(doc._id, { $set: updateFields });
+
+    // Update FAQs and Questions with the same category
+    if (category && oldCategory !== category) {
+      FAQ._collection.update(
+        { category: oldCategory }, // Match FAQs with the old category name
+        { $set: { category } }, // Update to the new category name
+        { multi: true }, // Update multiple documents
+      );
+
+      Questions._collection.update(
+        { category: oldCategory }, // Match Questions with the old category name
+        { $set: { category } }, // Update to the new category name
+        { multi: true }, // Update multiple documents
+      );
+    }
   }
 
   /**
@@ -81,6 +104,16 @@ class CategoryCollection extends BaseCollection {
       return Meteor.subscribe(categoryPublications.categoryAll);
     }
     return null;
+  }
+
+  /**
+     * Default implementation of assertValidRoleForMethod. Asserts that userId is logged in as an Admin or User.
+     * This is used in the define, update, and removeIt Meteor methods associated with each class.
+     * @param userId The userId of the logged-in user. Can be null or undefined
+     * @throws { Meteor.Error } If there is no logged-in user, or the user is not an Admin or User.
+     */
+  assertValidRoleForMethod(userId) {
+    this.assertRole(userId, [ROLE.ADMIN, ROLE.USER]);
   }
 
   /**

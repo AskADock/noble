@@ -25,6 +25,7 @@ export const medHomePage = new SimplePage(PAGE_IDS.MED_HOME);
 export const FAQManagementPage = new SimplePage(PAGE_IDS.FAQ_MANAGEMENT);
 export const questionManagementPage = new SimplePage(PAGE_IDS.QUESTION_MANAGEMENT);
 export const feedbackManagementPage = new SimplePage(PAGE_IDS.FEEDBACK_MANAGEMENT);
+export const categoryManagementPage = new SimplePage(PAGE_IDS.CATEGORY_MANAGEMENT);
 export const flyerManagementPage = new SimplePage(PAGE_IDS.FLYER_MANAGEMENT);
 export const passcodeManagementPage = new SimplePage(PAGE_IDS.PASSCODE_MANAGEMENT);
 

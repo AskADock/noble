@@ -125,6 +125,17 @@ class NavBar {
     await t.click(`#${COMPONENT_IDS.NAVBAR_QUESTION_MANAGEMENT}`);
   }
 
+  /* Go to the Category Management page. */
+  async gotoCategoryManagementPage() {
+    const visible = await Selector(`#${COMPONENT_IDS.NAVBAR_COLLAPSE}`).visible;
+    if (!visible) {
+      await t.click('button.navbar-toggler');
+    }
+    await t.expect(Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).exists).ok();
+    await t.click(`#${COMPONENT_IDS.NAVBAR_QUESTIONS_DROPDOWN}`);
+    await t.click(`#${COMPONENT_IDS.NAVBAR_CATEGORY_MANAGEMENT}`);
+  }
+
   /* Go to the Passcode Management page. */
   async gotoPasscodeManagementPage() {
     const visible = await Selector(`#${COMPONENT_IDS.NAVBAR_COLLAPSE}`).visible;
