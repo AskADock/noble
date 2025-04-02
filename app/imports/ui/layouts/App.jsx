@@ -14,6 +14,7 @@ import Privacy from '../pages/Privacy';
 import MedHome from '../pages/MedHome';
 import QuestionManagement from '../pages/QuestionManagement';
 import FAQManagement from '../pages/FAQManagement';
+import CategoryManagement from '../pages/CategoryManagement';
 import PasscodeManagement from '../pages/PasscodeManagement';
 import FlyerManagement from '../pages/FlyerManagement';
 import FeedbackManagement from '../pages/FeedbackManagement';
@@ -57,6 +58,7 @@ const App = () => {
           <Route path="/home" element={<ProtectedRoute><MedHome /></ProtectedRoute>} />
           <Route path="/question-management" element={<ProtectedRoute><QuestionManagement /></ProtectedRoute>} />
           <Route path="/faq-management" element={<ProtectedRoute><FAQManagement /></ProtectedRoute>} />
+          <Route path="/category-management" element={<ProtectedRoute><CategoryManagement /></ProtectedRoute>} />
           <Route path="/passcode-management" element={<ProtectedRoute><PasscodeManagement /></ProtectedRoute>} />
           <Route path="/flyer-management" element={<ProtectedRoute><FlyerManagement /></ProtectedRoute>} />
           <Route path="/feedback-management" element={<ProtectedRoute><FeedbackManagement /></ProtectedRoute>} />

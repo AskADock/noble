@@ -3,8 +3,6 @@ import SimpleSchema from 'simpl-schema';
 import { check } from 'meteor/check';
 import BaseCollection from '../base/BaseCollection';
 
-export const categories = ['Readiness', 'Line of Duty', 'Profiles/Waivers', 'Medical Clearance', 'FLYERS', 'NON-FLYERS',
-  'Deployment', 'Occupational Health', 'Other'];
 export const categoryPublications = {
   categoryAll: 'categoryAll',
 };
@@ -14,7 +12,6 @@ class CategoryCollection extends BaseCollection {
     super('Category', new SimpleSchema({
       category: {
         type: String,
-        allowedValues: categories,
         required: true,
       },
     }));
